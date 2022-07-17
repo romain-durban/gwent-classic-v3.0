@@ -2926,15 +2926,17 @@ class DeckMaker {
 			let deck = d;
 			return {
 				abilities: [deck["faction"]],
-				filename: deck["faction"],
+				name: card_dict[deck["leader"]]["name"],
+				row: "leader",
+				filename: card_dict[deck["leader"]]["filename"],
 				desc_name: deck["title"],
-				desc: deck["title"],
-				faction: "faction"
+				desc: "Faction ability: "+ability_dict[card_dict[deck["leader"]]["ability"]].description+"<br>Deck description: "+deck["description"],
+				faction: deck["faction"]
 			};
 		});
-		let index = container.cards.reduce((a, c, i) => c.filename === this.faction ? i : a, 0);
+		let index = container.cards.reduce((a, c, i) => c.faction === this.faction ? i : a, 0);
 		ui.queueCarousel(container, 1, (c, i) => {
-			let change = this.setFaction(c.cards[i].filename);
+			let change = this.setFaction(c.cards[i].faction);
 			if (!change)
 				return;
 			this.deckFromJSON(premade_deck[i],false);

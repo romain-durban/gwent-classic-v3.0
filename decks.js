@@ -1,6 +1,7 @@
 let premade_deck = [
     {
         "title": "Default Northern Realms Deck 1",
+        "description": "TBD",
         "leader": "nr_foltest_copper",
         "faction": "realms",
         "init_cards": [
@@ -41,6 +42,7 @@ let premade_deck = [
     },
     {
         "title": "Default Northern Realms Deck 2",
+        "description": "TBD",
         "leader": "nr_foltest_copper",
         "faction": "realms",
         "init_cards": [
@@ -84,6 +86,7 @@ let premade_deck = [
     },
     {
         "title": "Default Nilfgaard Deck 1",
+        "description": "TBD",
         "leader": "ne_emhyr_gold",
         "faction": "nilfgaard",
         "init_cards": [
@@ -124,6 +127,7 @@ let premade_deck = [
     },
     {
         "title": "Default Nilfgaard Deck 2",
+        "description": "TBD",
         "leader": "ne_emhyr_bronze",
         "faction": "nilfgaard",
         "init_cards": [
@@ -164,6 +168,7 @@ let premade_deck = [
     },
     {
         "title": "Default Monster Deck 1",
+        "description": "TBD",
         "leader": "mo_eredin_silver",
         "faction": "monsters",
         "init_cards": [
@@ -205,6 +210,7 @@ let premade_deck = [
     },
     {
         "title": "Default Monster Deck 2",
+        "description": "TBD",
         "leader": "mo_eredin_bronze",
         "faction": "monsters",
         "init_cards": [
@@ -238,6 +244,7 @@ let premade_deck = [
     },
     {
         "title": "Default Scoia'Tael Deck 1",
+        "description": "TBD",
         "leader": "sc_francesca_copper",
         "faction": "scoiatael",
         "init_cards": [
@@ -274,6 +281,7 @@ let premade_deck = [
     },
     {
         "title": "Default Scoia'Tael Deck 2",
+        "description": "TBD",
         "leader": "sc_francesca_hope_of_the_aen_seidhe",
         "faction": "scoiatael",
         "init_cards": [
@@ -310,6 +318,7 @@ let premade_deck = [
     },
     {
         "title": "Default Skellige Deck 1",
+        "description": "TBD",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
         "init_cards": [
@@ -344,6 +353,7 @@ let premade_deck = [
     },
     {
         "title": "Default Skellige Deck 2",
+        "description": "TBD",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
         "init_cards": [
