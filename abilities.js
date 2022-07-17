@@ -49,8 +49,7 @@ var ability_dict = {
 			if (row.effects.mardroeme === 0)
 				return;
 			row.removeCard(card);
-			let cardId = card.name.indexOf("Young") === -1 ? 206 : 207;
-			await row.addCard(new Card(card_dict[cardId], card.holder));
+			await row.addCard(new Card(card.target, card_dict[card.target], card.holder));
 		}
 	},
 	scorch: {
@@ -97,9 +96,7 @@ var ability_dict = {
 		name:"muster", 
 		description: "Find any cards with the same name in your deck and play them instantly. ",
 		placed: async (card) => {
-			let i = card.name.indexOf('-');
-			let cardName = i === -1 ?  card.name : card.name.substring(0, i);
-			let pred = c => c.name.startsWith(cardName);
+			let pred = c => c.target === card.target;
 			let units = card.holder.hand.getCards(pred).map(x => [card.holder.hand, x])
 			.concat(card.holder.deck.getCards(pred).map( x => [card.holder.deck, x] ) );
 			if (units.length === 0)
@@ -151,7 +148,7 @@ var ability_dict = {
 		name: "Tight Bond",
 		description: "Place next to a card with the same name to double the strength of both cards. ",
 		placed: async card => {
-			let bonds = board.getRow(card, card.row, card.holder).findCards(c => c.name === card.name);
+			let bonds = board.getRow(card, card.row, card.holder).findCards(c => c.target === card.target);
 			if (bonds.length > 1)
 				await Promise.all( bonds.map(c => c.animate("bond")) );
 		}
@@ -160,7 +157,7 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
-			let bdf = new Card(card_dict[21], card.holder);
+			let bdf = new Card("ntr_chort",card_dict["ntr_chort"], card.holder);
 			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
 			await board.addCardToRow(bdf, "close", card.holder);
 		},
@@ -170,7 +167,7 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async card => {
-			let bdf = new Card(card_dict[196], card.holder);
+			let bdf = new Card("sk_hemdall",card_dict["sk_hemdall"], card.holder);
 			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
 			await board.addCardToRow(bdf, "close", card.holder);
 		},

@@ -489,8 +489,7 @@ class Player {
 		this.grave = new Grave(document.getElementById("grave-" + this.tag));
 		this.deck = new Deck(deck.faction, document.getElementById("deck-" + this.tag));
 		this.deck_data = deck;
-
-		this.leader = new Card(deck.leader, this);
+		this.leader = new Card(deck.leader.index, deck.leader.card, this);
 		this.elem_leader = document.getElementById("leader-" + this.tag);
 		this.elem_leader.children[0].appendChild(this.leader.elem);
 
@@ -911,7 +910,7 @@ class Deck extends CardContainer {
 
 	// Creates duplicates of cards with a count of more than one, then initializes deck
 	initializeFromID(card_id_list, player) {
-		this.initialize(card_id_list.reduce((a, c) => a.concat(clone(c.count, card_dict[c.index])), []), player);
+		this.initialize(card_id_list.reduce((a, c) => a.concat(clone(c.count, c)), []), player);
 
 		function clone(n, elem) {
 			for (var i = 0, a = []; i < n; ++i) a.push(elem);
@@ -922,7 +921,7 @@ class Deck extends CardContainer {
 	// Populates a this deck with a list of card data and associated those cards with the owner of this deck.
 	initialize(card_data_list, player) {
 		for (let i = 0; i < card_data_list.length; ++i) {
-			let card = new Card(card_data_list[i], player);
+			let card = new Card(card_data_list[i].index, card_dict[card_data_list[i].index], player);
 			card.holder = player;
 			this.addCardRandom(card);
 			this.addCardElement();
@@ -1182,7 +1181,7 @@ class Row extends CardContainer {
 	async leaderHorn() {
 		if (this.special !== null)
 			return;
-		let horn = new Card(card_dict[5], null);
+		let horn = new Card("spe_horn",card_dict["spe_horn"], null);
 		await this.addCard(horn);
 		game.roundEnd.push(() => this.removeCard(horn));
 	}
@@ -1684,7 +1683,8 @@ class Game {
 // Contians information and behavior of a Card
 class Card {
 
-	constructor(card_data, player) {
+	constructor(key, card_data, player) {
+		this.key = key;
 		this.name = card_data.name;
 		this.basePower = this.power = Number(card_data.strength);
 		this.faction = card_data.deck;
@@ -1695,6 +1695,10 @@ class Card {
 		this.removed = [];
 		this.activated = [];
 		this.holder = player;
+		this.target = ""
+		if ("target" in card_data) {
+			this.target = card_data.target;
+        }
 
 		this.hero = false;
 		if (this.abilities.length > 0) {
@@ -2590,7 +2594,7 @@ class DeckMaker {
 		this.faction = "realms";
 		this.setFaction(this.faction, true);
 
-		let start_deck = JSON.parse(premade_deck[0]);
+		let start_deck = premade_deck[0];
 		start_deck.cards = start_deck.cards.map(c => ({
 			index: c[0],
 			count: c[1]
@@ -2641,9 +2645,9 @@ class DeckMaker {
 		document.getElementById("faction-description").innerHTML = factions[faction_name].description;
 
 		this.leaders =
-			card_dict.map((c, i) => ({
-				index: i,
-				card: c
+			Object.keys(card_dict).map(cid => ({
+				card: card_dict[cid],
+				index: cid
 			}))
 			.filter(c => c.card.deck === faction_name && c.card.row === "leader");
 		if (!this.leader || this.faction !== faction_name) {
@@ -2667,9 +2671,9 @@ class DeckMaker {
 	// If a deck is provided, will not add cards to bank that are already in the deck.
 	makeBank(faction, deck) {
 		this.clear();
-		let cards = card_dict.map((c, i) => ({
-			card: c,
-			index: i
+		let cards = Object.keys(card_dict).map(cid => ({
+			card: card_dict[cid],
+			index: cid
 		})).filter(
 			p => [faction, "neutral", "weather", "special"].includes(p.card.deck) && p.card.row !== "leader");
 
@@ -2791,7 +2795,7 @@ class DeckMaker {
 	selectLeader() {
 		let container = new CardContainer();
 		container.cards = this.leaders.map(c => {
-			let card = new Card(c.card, player_me);
+			let card = new Card(c.index, c.card, player_me);
 			card.data = c;
 			return card;
 		});
@@ -2882,19 +2886,23 @@ class DeckMaker {
 
 		let me_deck = {
 			faction: this.faction,
-			leader: card_dict[this.leader.index],
+			leader: this.leader,
 			cards: this.deck.filter(x => x.count > 0)
 		};
 
-		let op_deck = JSON.parse(premade_deck[randomInt(Object.keys(premade_deck).length)]);
+		let op_deck = premade_deck[randomInt(Object.keys(premade_deck).length)];
 		op_deck.cards = op_deck.cards.map(c => ({
 			index: c[0],
 			count: c[1]
 		}));
 
-		let leaders = card_dict.filter(c => c.row === "leader" && c.deck === op_deck.faction);
+		let leaders = Object.keys(card_dict).map(cid => {
+			return {
+				index: cid,
+				card: card_dict[cid]
+			};
+		}).filter(c => c.card.row === "leader" && c.card.deck === op_deck.faction);
 		op_deck.leader = leaders[randomInt(leaders.length)];
-
 		player_me = new Player(0, "Player 1", me_deck);
 		player_op = new Player(1, "Player 2", op_deck);
 
@@ -2918,7 +2926,7 @@ class DeckMaker {
 	selectDeck() {
 		let container = new CardContainer();
 		container.cards = Object.values(premade_deck).map(d => {
-			let deck = JSON.parse(d);
+			let deck = d;
 			return {
 				abilities: [deck["faction"]],
 				filename: deck["faction"],
@@ -2932,7 +2940,7 @@ class DeckMaker {
 			let change = this.setFaction(c.cards[i].filename);
 			if (!change)
 				return;
-			this.deckFromJSON(premade_deck[i]);
+			this.deckFromJSON(premade_deck[i],false);
 		}, () => true, false, true);
 		Carousel.curr.index = index;
 		Carousel.curr.update();
@@ -2956,7 +2964,7 @@ class DeckMaker {
 		let fr = new FileReader();
 		fr.onload = e => {
 			try {
-				this.deckFromJSON(e.target.result);
+				this.deckFromJSON(e.target.result,true);
 			} catch (e) {
 				aviso("Uploaded deck is not formatted correctly!");
 			}
@@ -2968,14 +2976,18 @@ class DeckMaker {
 
 	// Creates a deck from a JSON file's contents and sets that as the current deck
 	// Notifies client with warnings if the deck is invalid
-	deckFromJSON(json) {
+	deckFromJSON(json,parse) {
 		let deck;
-		try {
-			deck = JSON.parse(json);
-		} catch (e) {
-			aviso("Uploaded deck is not parsable!");
-			return;
-		}
+		if (parse) {
+			try {
+				deck = JSON.parse(json);
+			} catch (e) {
+				aviso("Uploaded deck is not parsable!");
+				return;
+			}
+		} else {
+			deck = json;
+        }
 		let warning = "";
 		if (card_dict[deck.leader].row !== "leader")
 			warning += "'" + card_dict[deck.leader].name + "' is cannot be used as a leader\n";
