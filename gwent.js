@@ -2601,6 +2601,7 @@ class DeckMaker {
 		this.change_elem = document.getElementById("change-faction");
 		this.change_elem.addEventListener("click", () => this.selectFaction(), false);
 
+		document.getElementById("select-deck").addEventListener("click", () => this.selectDeck(), false);
 		document.getElementById("download-deck").addEventListener("click", () => this.downloadDeck(), false);
 		document.getElementById("add-file").addEventListener("change", () => this.uploadDeck(), false);
 		document.getElementById("start-game").addEventListener("click", () => this.startNewGame(), false);
@@ -2912,6 +2913,30 @@ class DeckMaker {
 		};
 		return JSON.stringify(obj);
 	}
+
+	// Select a premade deck
+	selectDeck() {
+		let container = new CardContainer();
+		container.cards = Object.values(premade_deck).map(d => {
+			let deck = JSON.parse(d);
+			return {
+				abilities: [deck["faction"]],
+				filename: deck["faction"],
+				desc_name: deck["title"],
+				desc: deck["title"],
+				faction: "faction"
+			};
+		});
+		let index = container.cards.reduce((a, c, i) => c.filename === this.faction ? i : a, 0);
+		ui.queueCarousel(container, 1, (c, i) => {
+			let change = this.setFaction(c.cards[i].filename);
+			if (!change)
+				return;
+			this.deckFromJSON(premade_deck[i]);
+		}, () => true, false, true);
+		Carousel.curr.index = index;
+		Carousel.curr.update();
+    }
 
 	// Called by the client to downlaod the current deck as a JSON file
 	downloadDeck() {

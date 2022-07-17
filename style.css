@@ -1154,16 +1154,20 @@ html {
 	top: 15%
 }
 
+#select-deck {
+	left: 35%
+}
+
 #download-deck {
-	left: 55%
+	left: 57%
 }
 
 #upload-deck {
-	left: 40%
+	left: 42%
 }
 
 #change-faction {
-	left: 47%
+	left: 49%
 }
 
 .card-array {
