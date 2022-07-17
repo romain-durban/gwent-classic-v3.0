@@ -1524,9 +1524,14 @@ class Game {
 	}
 
 	// Initiates a new round of the game
-	async startRound() {
+	async startRound(verdict=false) {
 		this.roundCount++;
-		this.currPlayer = (this.roundCount % 2 === 0) ? this.firstPlayer : this.firstPlayer.opponent();
+		if (verdict) {
+			//Last round winner starts the round
+			this.currPlayer = verdict.winner.opponent();
+		} else {
+			this.currPlayer = (this.roundCount % 2 === 0) ? this.firstPlayer : this.firstPlayer.opponent();
+		}
 		await this.runEffects(this.roundStart);
 
 		if (!player_me.canPlay())
@@ -1610,7 +1615,7 @@ class Game {
 		if (player_me.health === 0 || player_op.health === 0)
 			this.endGame();
 		else
-			this.startRound();
+			this.startRound(verdict);
 	}
 
 	// Sets up and displays the end-game screen
@@ -2594,7 +2599,7 @@ class DeckMaker {
 		this.faction = "realms";
 		this.setFaction(this.faction, true);
 
-		let start_deck = premade_deck[0];
+		let start_deck = JSON.parse(JSON.stringify(premade_deck[0]));
 		start_deck.cards = start_deck.init_cards.map(c => ({
 			index: c[0],
 			count: c[1]
@@ -2887,7 +2892,7 @@ class DeckMaker {
 			cards: this.deck.filter(x => x.count > 0)
 		};
 
-		let op_deck = premade_deck[randomInt(Object.keys(premade_deck).length)];
+		let op_deck = JSON.parse(JSON.stringify(premade_deck[randomInt(Object.keys(premade_deck).length)]));
 		op_deck.cards = op_deck.init_cards.map(c => ({
 			index: c[0],
 			count: c[1]
@@ -2985,7 +2990,7 @@ class DeckMaker {
 				return;
 			}
 		} else {
-			deck = json;
+			deck = JSON.parse(JSON.stringify(json));
         }
 		let warning = "";
 		if (card_dict[deck.leader].row !== "leader")
