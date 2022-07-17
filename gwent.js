@@ -2113,7 +2113,7 @@ class UI {
 	showPreviewVisuals(card) {
 		this.previewCard = card;
 		this.preview.classList.remove("hide");
-		this.preview.getElementsByClassName("card-lg")[0].style.backgroundImage = largeURL(card.faction + "_" + card.filename);
+		getPreviewElem(this.preview.getElementsByClassName("card-lg")[0],card)
 		this.preview.getElementsByClassName("card-lg")[0].addEventListener("mousedown", function() {
 			if (fileira_clicavel !== null && may_act_card) {
 				ui.selectRow(fileira_clicavel);
@@ -2491,7 +2491,7 @@ class Carousel {
 			let curr = this.index - 2 + i;
 			if (curr >= 0 && curr < this.indices.length) {
 				let card = this.container.cards[this.indices[curr]];
-				this.previews[i].style.backgroundImage = largeURL(card.faction + "_" + card.filename);
+				getPreviewElem(this.previews[i], card);
 				this.previews[i].classList.remove("hide");
 				this.previews[i].classList.remove("noclick");
 			} else {
@@ -2595,7 +2595,7 @@ class DeckMaker {
 		this.setFaction(this.faction, true);
 
 		let start_deck = premade_deck[0];
-		start_deck.cards = start_deck.cards.map(c => ({
+		start_deck.cards = start_deck.init_cards.map(c => ({
 			index: c[0],
 			count: c[1]
 		}));
@@ -2652,7 +2652,7 @@ class DeckMaker {
 			.filter(c => c.card.deck === faction_name && c.card.row === "leader");
 		if (!this.leader || this.faction !== faction_name) {
 			this.leader = this.leaders[0];
-			this.leader_elem.children[1].style.backgroundImage = largeURL(this.leader.card.deck + "_" + this.leader.card.filename);
+			getPreviewElem(this.leader_elem.children[1], this.leader.card)
 		}
 		this.faction = faction_name;
 		setTimeout(function() {
@@ -2664,7 +2664,7 @@ class DeckMaker {
 	// Called when client selects a leader for their deck
 	setLeader(index) {
 		this.leader = this.leaders.filter(l => l.index == index)[0];
-		this.leader_elem.children[1].style.backgroundImage = largeURL(this.leader.card.deck + "_" + this.leader.card.filename);
+		getPreviewElem(this.leader_elem.children[1], this.leader.card)
 	}
 
 	// Constructs a bank of cards that can be used by the faction's deck.
@@ -2710,10 +2710,8 @@ class DeckMaker {
 		let card_data = card_dict[index];
 
 		let elem = document.createElement("div");
-		elem.style.backgroundImage = largeURL(card_data.deck + "_" + card_data.filename);
 		elem.classList.add("card-lg");
-		let count = document.createElement("div");
-		elem.appendChild(count);
+		elem = getPreviewElem(elem, card_data, num);
 		container_elem.appendChild(elem);
 
 		let bankID = {
@@ -2722,7 +2720,6 @@ class DeckMaker {
 			elem: elem
 		};
 		let isBank = cards === this.bank;
-		count.innerHTML = bankID.count;
 		cards.push(bankID);
 		let cardIndex = cards.length - 1;
 		elem.addEventListener("dblclick", () => this.select(cardIndex, isBank), false);
@@ -2804,7 +2801,7 @@ class DeckMaker {
 		ui.queueCarousel(container, 1, (c, i) => {
 			let data = c.cards[i].data;
 			this.leader = data;
-			this.leader_elem.children[1].style.backgroundImage = largeURL(data.card.deck + "_" + data.card.filename);
+			getPreviewElem(this.leader_elem.children[1], data.card);
 		}, () => true, false, true);
 		Carousel.curr.index = index;
 		Carousel.curr.update();
@@ -2891,7 +2888,7 @@ class DeckMaker {
 		};
 
 		let op_deck = premade_deck[randomInt(Object.keys(premade_deck).length)];
-		op_deck.cards = op_deck.cards.map(c => ({
+		op_deck.cards = op_deck.init_cards.map(c => ({
 			index: c[0],
 			count: c[1]
 		}));
@@ -2994,7 +2991,7 @@ class DeckMaker {
 		if (deck.faction != card_dict[deck.leader].deck)
 			warning += "Leader '" + card_dict[deck.leader].name + "' doesn't match deck faction '" + deck.faction + "'.\n";
 
-		let cards = deck.cards.filter(c => {
+		let cards = deck.init_cards.filter(c => {
 				let card = card_dict[c[0]];
 				if (!card) {
 					warning += "ID " + c[0] + " does not correspond to a card.\n";
@@ -3025,7 +3022,7 @@ class DeckMaker {
 		this.setFaction(deck.faction, true);
 		if (card_dict[deck.leader].row === "leader" && deck.faction === card_dict[deck.leader].deck) {
 			this.leader = this.leaders.filter(c => c.index === deck.leader)[0];
-			this.leader_elem.children[1].style.backgroundImage = largeURL(this.leader.card.deck + "_" + this.leader.card.filename);
+			getPreviewElem(this.leader_elem.children[1], this.leader.card);
 		}
 		this.makeBank(deck.faction, cards);
 		this.update();
@@ -3174,8 +3171,116 @@ function smallURL(name, ext = "jpg") {
 	return imgURL("sm/" + name, ext);
 }
 
+function bottomBgURL() {
+	return imgURL("icons/gwent_bottom_bg","png");
+}
+
 function imgURL(path, ext) {
-	return "url('img/" + path + "." + ext;
+	return "url('img/" + path + "." + ext + "')";
+}
+
+function getPreviewElem(elem, card, nb = 0) {
+	// Cleaning existing child nodes
+	while (elem.hasChildNodes()) {
+		elem.removeChild(elem.lastChild);
+	}
+	elem.classList.remove("hero");
+	elem.classList.remove("faction");
+	
+	let c_abilities = "";
+	if ("ability" in card) {
+		c_abilities = card.ability.split(" ");
+	} else {
+		c_abilities = card.abilities;
+	}
+	let faction = ""
+	if ("deck" in card) {
+		faction = card.deck;
+	} else {
+		faction = card.faction;
+    }
+
+	elem.style.backgroundImage = smallURL(faction + "_" + card.filename);
+
+	if (faction == "faction") {
+		elem.classList.add("faction");
+		return elem;
+    }
+	
+	let cardbg = document.createElement("div");
+	cardbg.style.backgroundImage = bottomBgURL();
+	cardbg.classList.add("card-large-bg");
+	elem.appendChild(cardbg);
+
+	let card_name = document.createElement("div");
+	card_name.classList.add("card-large-name");
+	card_name.appendChild(document.createTextNode(card.name));
+	elem.appendChild(card_name);
+
+	// Nothing else to display for leaders
+	if (card.row === "leader") {
+		return elem;
+    }
+
+	if (nb > 0) {
+		let count = document.createElement("div");
+		count.innerHTML = nb;
+		count.classList.add("card-count");
+		cardbg.appendChild(count);
+	}
+
+	let power = document.createElement("div");
+	power.classList.add("card-large-power");
+	elem.appendChild(power);
+	let bg;
+	if (c_abilities[0] === "hero" || ("hero" in card && card.hero)) {
+		bg = "power_hero";
+		elem.classList.add("hero");
+	} else if (faction === "weather") {
+		bg = "power_" + c_abilities[0];
+	} else if (faction === "special") {
+		bg = "power_" + c_abilities[0];
+		elem.classList.add("special");
+	} else {
+		bg = "power_normal";
+	}
+	power.style.backgroundImage = iconURL(bg);
+
+	let row = document.createElement("div");
+	row.classList.add("card-large-row");
+	elem.appendChild(row);
+	if (card.row === "close" || card.row === "ranged" || card.row === "siege" || card.row === "agile") {
+		let num = document.createElement("div");
+		if ("strength" in card) { 
+			num.appendChild(document.createTextNode(card.strength));
+		} else {
+		num.appendChild(document.createTextNode(card.basePower));
+		}
+		num.classList.add("card-large-power-strength");
+		power.appendChild(num);
+		row.style.backgroundImage = iconURL("card_row_" + card.row);
+	}
+
+	if (c_abilities.length > 0) {
+		let abi = document.createElement("div");
+		abi.classList.add("card-large-ability");
+		elem.appendChild(abi);
+
+		if (faction !== "special" && faction !== "weather" && c_abilities.length > 0) {
+			let str = c_abilities[c_abilities.length - 1];
+			if (str === "cerys")
+				str = "muster";
+			if (str.startsWith("avenger"))
+				str = "avenger";
+			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
+				str = "scorch";
+			abi.style.backgroundImage = iconURL("card_ability_" + str);
+		} else if (card.row === "agile") {
+			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
+		}
+	}
+
+	return elem;
 }
 
 // Returns true if n is an Number

@@ -343,7 +343,8 @@ html {
 	width: 16.1vw;
 	border-radius: 1.5vw;
 	background-size: contain;
-	background-position: center
+	background-position: top;
+	background-repeat: no-repeat;
 }
 
 .card-description {
@@ -432,8 +433,18 @@ html {
 
 #carousel .card-lg {
 	display: inline-block;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top;
+	position: relative;
+}
+
+#carousel .faction {
+	display: inline-block;
+	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center
+	background-position: top;
+	position: relative;
 }
 
 .card-lg {
@@ -1191,17 +1202,32 @@ html {
 	left: 58.4%
 }
 
+/*
+	Custom display of cards in Array in customization window
+*/
+
 .card-array .card-lg {
 	width: 9.88vw;
 	height: 18.45vw;
 	border-radius: 1vw;
-	margin-bottom: .75vw
+	margin-bottom: .75vw;
+	position: relative;
 }
 
-.card-array .card-lg>div {
+.card-array .card-lg .card-large-bg {
+	width: 9.88vw;
+	height: 18.45vw;
+	border-radius: 1vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top;
+}
+
+.card-array .card-lg div.card-count {
 	position: relative;
-	top: 82.5%;
-	left: 76%;
+	top: 91%;
+	left: 74%;
 	width: 20%;
 	height: 7%;
 	font-size: 1.2vw;
@@ -1210,15 +1236,352 @@ html {
 	background-image: url(img/icons/preview_count.png);
 	background-position: left;
 	background-repeat: no-repeat;
-	background-size: contain
+	background-size: contain;
 }
+
+.card-array .card-lg .card-large-name {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 76%;
+	left: 0%;
+	width: 100%;
+	height: 5vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+}
+
+.card-array .card-lg .card-large-power {
+	position: absolute;
+	top: -2%;
+	left: -4%;
+	width: 5vw;
+	height: 5vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.card-array .card-lg .card-large-power .card-large-power-strength {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 1.4vw;
+	margin-left: -1.8vw;
+	margin-top: 0.75vw;
+}
+
+.card-array .hero .card-large-power {
+	top: -2%;
+	left: -4%;
+}
+
+.card-array .hero .card-large-power .card-large-power-strength {
+	color: #fff;
+}
+
+.card-array .card-lg .card-large-row {
+	position: absolute;
+	top: 25%;
+	left: 2%;
+	width: 3vw;
+	height: 2vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.card-array .card-lg .card-large-ability {
+	position: absolute;
+	top: 40%;
+	left: 2%;
+	width: 3vw;
+	height: 2vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+/*
+	Custom display of cards in Preview
+*/
+
+
+.card-preview .card-lg .card-large-bg {
+	width: 100%;
+	height: 100%;
+	border-radius: 1vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top;
+}
+
+.card-preview .card-lg .card-large-name {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 75%;
+	left: 0%;
+	width: 100%;
+	height: 5vw;
+	font-size: 1.4vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+}
+
+.card-preview .card-lg .card-large-power {
+	position: absolute;
+	top: -2%;
+	left: -4%;
+	width: 10vw;
+	height: 10vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.card-preview .card-lg .card-large-power .card-large-power-strength {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 2.5vw;
+	margin-left: -3.6vw;
+	margin-top: 1.7vw;
+}
+
+.card-preview .hero .card-large-power {
+	top: -3%;
+	left: -6%;
+}
+
+.card-preview .hero .card-large-power .card-large-power-strength {
+	color: #fff;
+}
+
+.card-preview .card-lg .card-large-row {
+	position: absolute;
+	top: 25%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.card-preview .card-lg .card-large-ability {
+	position: absolute;
+	top: 40%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+/*
+	Custom display of carousel cards
+*/
+
+#carousel .card-lg .card-large-bg {
+	height: 100%;
+	width: 100%;
+	border-radius: 1vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: bottom;
+}
+
+#carousel .card-lg .card-large-name {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 75%;
+	left: 0%;
+	width: 100%;
+	height: 5vw;
+	font-size: 1.4vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+}
+
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-name {
+	font-size: 1.3vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-name {
+	font-size: 1.2vw;
+}
+
+#carousel .card-lg .card-large-power {
+	position: absolute;
+	top: -2%;
+	left: -4%;
+	width: 10vw;
+	height: 10vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#carousel .card-lg .card-large-power .card-large-power-strength {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 2.5vw;
+	margin-left: -3.6vw;
+	margin-top: 1.7vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-power {
+	top: -2%;
+	left: -4%;
+	width: 8vw;
+	height: 8vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-power .card-large-power-strength {
+	margin-left: -2.8vw;
+	margin-top: 1.1vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-power {
+	top: -2%;
+	left: -4%;
+	width: 7vw;
+	height: 7vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-power .card-large-power-strength {
+	margin-left: -2.7vw;
+	margin-top: 0.9vw;
+	font-size: 2.3vw;
+}
+
+#carousel .hero .card-large-power {
+	top: -3%;
+	left: -6%;
+}
+
+#carousel .hero .card-large-power .card-large-power-strength {
+	color: #fff;
+}
+
+#carousel .card-lg .card-large-row {
+	position: absolute;
+	top: 25%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-row {
+	height: 3.8vw;
+	left: 0%;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-row {
+	height: 3.4vw;
+	left: 0%;
+}
+
+#carousel .card-lg .card-large-ability {
+	position: absolute;
+	top: 40%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-ability {
+	height: 3.8vw;
+	top: 43%;
+	left: 0%;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-ability {
+	height: 3.4vw;
+	top: 45%;
+	left: 0%;
+}
+
+#carousel .hide .card-large-bg, #carousel .hide .card-large-name, #carousel .hide .card-large-power,
+#carousel .hide .card-large-power-strength, #carousel .hide .card-large-row, #carousel .hide .card-large-ability {
+	display: none;
+}
+/*
+	Custom display of leader card
+*/
+#card-leader .card-large-bg {
+	width: 100%;
+	height: 100%;
+	border-radius: 1vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: top;
+}
+
+#card-leader .card-large-name {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 75%;
+	left: 0%;
+	width: 100%;
+	height: 5vw;
+	font-size: 0.9vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+}
+
+/*
+	---
+*/
 
 #card-leader {
 	position: absolute;
 	height: 27%;
 	width: 6.9%;
 	top: 20.8%;
-	left: 46.6%
+	left: 46.6%;
 }
 
 #card-leader p {
@@ -1226,15 +1589,16 @@ html {
 	text-align: center;
 	color: #8f6c36;
 	line-height: 0%;
-	margin: 9%
+	margin: 9%;
 }
 
-#card-leader>div {
+#card-leader > div {
 	position: relative;
 	height: 84.5%;
 	margin-top: 24.5%;
 	background-size: contain;
-	border-radius: .5vw
+	border-radius: .5vw;
+	background-repeat: no-repeat;
 }
 
 #deck-stats {

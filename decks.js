@@ -1,8 +1,9 @@
 let premade_deck = [
     {
+        "title": "Default Northern Realms Deck 1",
         "leader": "nr_foltest_copper",
         "faction": "realms",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_frost", 1],
@@ -39,9 +40,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Northern Realms Deck 2",
         "leader": "nr_foltest_copper",
         "faction": "realms",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_frost", 1],
@@ -81,9 +83,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Nilfgaard Deck 1",
         "leader": "ne_emhyr_gold",
         "faction": "nilfgaard",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -120,9 +123,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Nilfgaard Deck 2",
         "leader": "ne_emhyr_bronze",
         "faction": "nilfgaard",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 2],
@@ -159,9 +163,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Monster Deck 1",
         "leader": "mo_eredin_silver",
         "faction": "monsters",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -199,9 +204,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Monster Deck 2",
         "leader": "mo_eredin_bronze",
         "faction": "monsters",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 1],
             ["spe_scorch", 3],
@@ -231,9 +237,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Scoia'Tael Deck 1",
         "leader": "sc_francesca_copper",
         "faction": "scoiatael",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -266,9 +273,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Scoia'Tael Deck 2",
         "leader": "sc_francesca_hope_of_the_aen_seidhe",
         "faction": "scoiatael",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -301,9 +309,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Skellige Deck 1",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_mardroeme", 1],
             ["spe_scorch", 1],
@@ -334,9 +343,10 @@ let premade_deck = [
         ]
     },
     {
+        "title": "Default Skellige Deck 2",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
-        "cards": [
+        "init_cards": [
             ["spe_horn", 1],
             ["spe_decoy", 2],
             ["ntr_ciri", 1],

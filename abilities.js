@@ -221,7 +221,9 @@ var ability_dict = {
 				return;
 			let container = new CardContainer();
 			container.cards = card.holder.opponent().hand.findCardsRandom(() => true, 3);
-			Carousel.curr.cancel();
+			try {
+				Carousel.curr.cancel();
+			} catch (err) { }
 			await ui.viewCardsInContainer(container);
 		},
 		weight: card => {
@@ -244,7 +246,9 @@ var ability_dict = {
 				await board.toHand(newCard, grave);
 				return;
 			}
-			Carousel.curr.cancel();
+			try {
+				Carousel.curr.cancel();
+			} catch (err) { }
 			await ui.queueCarousel(grave, 1, (c,i) => {
 				let newCard = c.cards[i];
 				newCard.holder = card.holder;
@@ -307,7 +311,9 @@ var ability_dict = {
 			if (card.holder.controller instanceof ControllerAI) {
 				await ability_dict["eredin_king"].helper(card).card.autoplay(card.holder.deck);
 			} else {
-				Carousel.curr.cancel();
+				try {
+					Carousel.curr.cancel();
+				} catch (err) { }
 				await ui.queueCarousel(deck, 1, (c,i) => board.toWeather(c.cards[i], deck), c => c.faction === "weather", true);
 			}
 		},
