@@ -1700,10 +1700,14 @@ class Card {
 		this.removed = [];
 		this.activated = [];
 		this.holder = player;
-		this.target = ""
+		this.target = "";
 		if ("target" in card_data) {
 			this.target = card_data.target;
-        }
+		}
+		this.quote = "";
+		if ("quote" in card_data) {
+			this.quote = card_data.quote;
+		}
 
 		this.hero = false;
 		if (this.abilities.length > 0) {
@@ -1889,7 +1893,7 @@ class Card {
 			if (str.startsWith("avenger"))
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
-				str = "scorch";
+				str = "scorch_combat";
 			abi.style.backgroundImage = iconURL("card_ability_" + str);
 		} else if (card.row === "agile")
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
@@ -2156,9 +2160,12 @@ class UI {
 			if (str.startsWith("avenger"))
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
-				str = "scorch";
-			if (card.row === "leader" || card.faction === "faction" || card.abilities.length === 0 && card.row !== "agile")
+				str = "scorch_combat";
+			
+			if (card.faction === "faction" || card.abilities.length === 0 && card.row !== "agile")
 				desc.children[0].style.backgroundImage = "";
+			else if (card.row === "leader")
+				desc.children[0].style.backgroundImage = iconURL("deck_shield_" + card.faction);
 			else
 				desc.children[0].style.backgroundImage = iconURL("card_ability_" + str);
 			desc.children[1].innerHTML = card.desc_name;
@@ -2600,7 +2607,7 @@ class DeckMaker {
 		this.setFaction(this.faction, true);
 
 		let start_deck = JSON.parse(JSON.stringify(premade_deck[0]));
-		start_deck.cards = start_deck.init_cards.map(c => ({
+		start_deck.cards = start_deck.cards.map(c => ({
 			index: c[0],
 			count: c[1]
 		}));
@@ -2893,7 +2900,7 @@ class DeckMaker {
 		};
 
 		let op_deck = JSON.parse(JSON.stringify(premade_deck[randomInt(Object.keys(premade_deck).length)]));
-		op_deck.cards = op_deck.init_cards.map(c => ({
+		op_deck.cards = op_deck.cards.map(c => ({
 			index: c[0],
 			count: c[1]
 		}));
@@ -2935,7 +2942,7 @@ class DeckMaker {
 				row: "leader",
 				filename: card_dict[deck["leader"]]["filename"],
 				desc_name: deck["title"],
-				desc: "Faction ability: "+ability_dict[card_dict[deck["leader"]]["ability"]].description+"<br>Deck description: "+deck["description"],
+				desc: "<p><b>Faction ability:</b> " + factions[deck["faction"]]["description"]+"</p><p><b>Leader ability:</b> "+ability_dict[card_dict[deck["leader"]]["ability"]].description+"</p><p><b>Deck description:</b> "+deck["description"],
 				faction: deck["faction"]
 			};
 		});
@@ -2998,7 +3005,7 @@ class DeckMaker {
 		if (deck.faction != card_dict[deck.leader].deck)
 			warning += "Leader '" + card_dict[deck.leader].name + "' doesn't match deck faction '" + deck.faction + "'.\n";
 
-		let cards = deck.init_cards.filter(c => {
+		let cards = deck.cards.filter(c => {
 				let card = card_dict[c[0]];
 				if (!card) {
 					warning += "ID " + c[0] + " does not correspond to a card.\n";
@@ -3212,17 +3219,32 @@ function getPreviewElem(elem, card, nb = 0) {
 	if (faction == "faction") {
 		elem.classList.add("faction");
 		return elem;
-    }
+	}
+
+	if (card.row != "leader" && (faction != "special" || faction != "neutral" || faction != "weather")) {
+		let factionBand = document.createElement("div");
+		factionBand.style.backgroundImage = iconURL("faction-band-" + faction);
+		factionBand.classList.add("card-large-faction-band");
+		elem.appendChild(factionBand);
+	}
 	
 	let cardbg = document.createElement("div");
 	cardbg.style.backgroundImage = bottomBgURL();
 	cardbg.classList.add("card-large-bg");
 	elem.appendChild(cardbg);
 
+
 	let card_name = document.createElement("div");
 	card_name.classList.add("card-large-name");
 	card_name.appendChild(document.createTextNode(card.name));
 	elem.appendChild(card_name);
+
+	if ("quote" in card) {
+		let quote_elem = document.createElement("div");
+		quote_elem.classList.add("card-large-quote");
+		quote_elem.appendChild(document.createTextNode(card.quote));
+		elem.appendChild(quote_elem);
+    }
 
 	// Nothing else to display for leaders
 	if (card.row === "leader") {
@@ -3273,14 +3295,14 @@ function getPreviewElem(elem, card, nb = 0) {
 		abi.classList.add("card-large-ability");
 		elem.appendChild(abi);
 
-		if (faction !== "special" && faction !== "weather" && c_abilities.length > 0) {
+		if (faction !== "special" && faction !== "weather" && c_abilities.length > 0 && c_abilities[c_abilities.length - 1] != "hero") {
 			let str = c_abilities[c_abilities.length - 1];
 			if (str === "cerys")
 				str = "muster";
 			if (str.startsWith("avenger"))
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
-				str = "scorch";
+				str = "scorch_combat";
 			abi.style.backgroundImage = iconURL("card_ability_" + str);
 		} else if (card.row === "agile") {
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");

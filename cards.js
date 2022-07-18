@@ -1,13 +1,14 @@
 var card_dict = {
     "ntr_mysterious_elf": {
-        "name": "Mysterious Elf",
+        "name": "Avallach'h",
         "id": 0,
         "deck": "neutral",
         "row": "close",
         "strength": "0",
         "ability": "hero spy",
         "filename": "mysterious_elf",
-        "count": "1"
+        "count": "1",
+        "quote": "You humans have... unusual tastes."
     },
     "spe_decoy": {
         "name": "Decoy",
@@ -17,7 +18,8 @@ var card_dict = {
         "strength": "",
         "ability": "decoy",
         "filename": "decoy",
-        "count": "3"
+        "count": "3",
+        "quote": "When you run out of peasants, decoys also make decent arrow fodder."
     },
     "spe_frost": {
         "name": "Biting Frost",
@@ -27,7 +29,8 @@ var card_dict = {
         "strength": "",
         "ability": "frost",
         "filename": "frost",
-        "count": "3"
+        "count": "3",
+        "quote": "Best part about frost - bodies of the fallen don't rot so quickly."
     },
     "ntr_ciri": {
         "name": "Cirilla Fiona Elen Riannon",
@@ -37,7 +40,8 @@ var card_dict = {
         "strength": "15",
         "ability": "hero",
         "filename": "ciri",
-        "count": "1"
+        "count": "1",
+        "quote": "Know when fairy tales cease to be tales? When people start believing in them."
     },
     "spe_clear": {
         "name": "Clear Weather",
@@ -47,7 +51,8 @@ var card_dict = {
         "strength": "",
         "ability": "clear",
         "filename": "clear",
-        "count": "2"
+        "count": "2",
+        "quote": "The sun' shinin', Dromle! The sun's shinin'! Maybe there's hope left after all..."
     },
     "spe_horn": {
         "name": "Commander's Horn",
@@ -57,7 +62,8 @@ var card_dict = {
         "strength": "",
         "ability": "horn",
         "filename": "horn",
-        "count": "3"
+        "count": "3",
+        "quote": "Plus one to morale, minus three to hearing."
     },
     "ntr_dandelion": {
         "name": "Dandelion",
@@ -67,7 +73,8 @@ var card_dict = {
         "strength": "2",
         "ability": "horn",
         "filename": "dandelion",
-        "count": "1"
+        "count": "1",
+        "quote": "Dandelion, you're a cynic, a lecher, a whoremonger, a liar - and my best friend."
     },
     "ntr_emiel": {
         "name": "Emiel Regis Rohellec Terzieff",
@@ -77,7 +84,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "emiel",
-        "count": "1"
+        "count": "1",
+        "quote": "Men, the polites ones at least, would call me a monster. A blood-drinking freak."
     },
     "ntr_geralt": {
         "name": "Geralt of Rivia",
@@ -87,7 +95,8 @@ var card_dict = {
         "strength": "15",
         "ability": "hero",
         "filename": "geralt",
-        "count": "1"
+        "count": "1",
+        "quote": "If that's what it takes to save the world, it's better to let that world die."
     },
     "spe_fog": {
         "name": "Impenetrable Fog",
@@ -97,7 +106,8 @@ var card_dict = {
         "strength": "",
         "ability": "fog",
         "filename": "fog",
-        "count": "3"
+        "count": "3",
+        "quote": "A good commander's dream... a bad one's horror."
     },
     "spe_scorch": {
         "name": "Scorch",
@@ -107,7 +117,8 @@ var card_dict = {
         "strength": "",
         "ability": "scorch",
         "filename": "scorch",
-        "count": "3"
+        "count": "3",
+        "quote": "Pillars of flame turn the mightiest to ash. All others tremble in shock and awe."
     },
     "spe_rain": {
         "name": "Torrential Rain",
@@ -117,7 +128,8 @@ var card_dict = {
         "strength": "",
         "ability": "rain",
         "filename": "rain",
-        "count": "2"
+        "count": "2",
+        "quote": "Even the rain in this land smells like piss."
     },
     "ntr_triss": {
         "name": "Triss Merigold",
@@ -127,7 +139,8 @@ var card_dict = {
         "strength": "7",
         "ability": "hero",
         "filename": "triss",
-        "count": "1"
+        "count": "1",
+        "quote": "I can take care of myself. Trust me."
     },
     "ntr_vesemir": {
         "name": "Vesemir",
@@ -137,7 +150,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "vesemir",
-        "count": "1"
+        "count": "1",
+        "quote": "If you're to be hanged, ask for water. Anything can happen before they fetch it."
     },
     "ntr_villen": {
         "name": "Villentretenmerth",
@@ -147,7 +161,8 @@ var card_dict = {
         "strength": "7",
         "ability": "scorch_c",
         "filename": "villen",
-        "count": "1"
+        "count": "1",
+        "quote": "Also calls himself Borkh Three Jackdaws... he's not the best at names."
     },
     "ntr_yennefer": {
         "name": "Yennefer of Vengerberg",
@@ -157,7 +172,8 @@ var card_dict = {
         "strength": "7",
         "ability": "hero medic",
         "filename": "yennefer",
-        "count": "1"
+        "count": "1",
+        "quote": "Magic is Chaos, Art and Science. It is a curse, a blessing and a progression."
     },
     "ntr_zoltan": {
         "name": "Zoltan Chivay",
@@ -167,7 +183,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "zoltan",
-        "count": "1"
+        "count": "1",
+        "quote": "Life without old mates and booze is like a woman without a rump."
     },
     "ntr_olgierd": {
         "name": "Olgierd von Everec",
@@ -177,7 +194,8 @@ var card_dict = {
         "strength": "6",
         "ability": "morale",
         "filename": "olgierd",
-        "count": "1"
+        "count": "1",
+        "quote": "At least you now know I don't easily lose my head."
     },
     "ntr_gaunter_odimm": {
         "name": "Gaunter O'Dimm",
@@ -188,7 +206,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "gaunter_odimm",
         "count": "1",
-        "target": "ntr_gaunter_odimm"
+        "target": "ntr_gaunter_odimm",
+        "quote": "He always grants exactly what you wish for. That's the problem."
     },
     "ntr_gaunter_odimm_darkness": {
         "name": "Gaunter O'Dimm - Darkness",
@@ -199,7 +218,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "gaunter_odimm_darkness",
         "count": "3",
-        "target": "ntr_gaunter_odimm"
+        "target": "ntr_gaunter_odimm",
+        "quote": "Fear not the shadows, but the light."
     },
     "ntr_cow": {
         "name": "Cow",
@@ -210,7 +230,8 @@ var card_dict = {
         "ability": "avenger",
         "filename": "cow",
         "count": "1",
-        "target": "ntr_chort"
+        "target": "ntr_chort",
+        "quote": "Mooo!"
     },
     "ntr_chort": {
         "name": "Bovine Defense Force",
@@ -220,7 +241,8 @@ var card_dict = {
         "strength": "8",
         "ability": "",
         "filename": "chort",
-        "count": "0"
+        "count": "0",
+        "quote": "Grrrrr!"
     },
     "nr_foltest_silver": {
         "name": "Foltest - King of Temeria",
@@ -250,7 +272,8 @@ var card_dict = {
         "strength": "",
         "ability": "foltest_siegemaster",
         "filename": "foltest_copper",
-        "count": "1"
+        "count": "1",
+        "quote": "This is a very long test of quote"
     },
     "nr_foltest_bronze": {
         "name": "Foltest - The Steel-Forged",
@@ -1091,7 +1114,8 @@ var card_dict = {
         "strength": "",
         "ability": "eredin_commander",
         "filename": "eredin_silver",
-        "count": "1"
+        "count": "1",
+        "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch."
     },
     "mo_eredin_bronze": {
         "name": "Eredin - Bringer of Death",
@@ -1101,7 +1125,8 @@ var card_dict = {
         "strength": "",
         "ability": "eredin_bringer_of_death",
         "filename": "eredin_bronze",
-        "count": "1"
+        "count": "1",
+        "quote": "It is unavoidable."
     },
     "mo_eredin_gold": {
         "name": "Eredin - Destroyer of Worlds",
@@ -1111,7 +1136,8 @@ var card_dict = {
         "strength": "",
         "ability": "eredin_destroyer",
         "filename": "eredin_gold",
-        "count": "1"
+        "count": "1",
+        "quote": "I've long awaited this..."
     },
     "mo_eredin_copper": {
         "name": "Eredin - King of the Wild Hunt",
@@ -1121,7 +1147,8 @@ var card_dict = {
         "strength": "",
         "ability": "eredin_king",
         "filename": "eredin_copper",
-        "count": "1"
+        "count": "1",
+        "quote": "Have some dignity. You know how this will end."
     },
     "mo_eredin_the_treacherous": {
         "name": "Eredin Bréacc Glas - The Treacherous",
@@ -1131,7 +1158,8 @@ var card_dict = {
         "strength": "",
         "ability": "eredin_treacherous",
         "filename": "eredin_the_treacherous",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm enjoying this. You are my toy."
     },
     "mo_arachas": {
         "name": "Arachas ",
@@ -1142,7 +1170,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "arachas",
         "count": "1",
-        "target": "mo_arachas"
+        "target": "mo_arachas",
+        "quote": "Ugly - nature's way of saying 'Stay the fuck away'"
     },
     "mo_arachas_1": {
         "name": "Arachas ",
@@ -1153,7 +1182,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "arachas_1",
         "count": "1",
-        "target": "mo_arachas"
+        "target": "mo_arachas",
+        "quote": "Ugly - nature's way of saying 'Stay the fuck away'"
     },
     "mo_arachas_2": {
         "name": "Arachas ",
@@ -1164,7 +1194,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "arachas_2",
         "count": "1",
-        "target": "mo_arachas"
+        "target": "mo_arachas",
+        "quote": "Ugly - nature's way of saying 'Stay the fuck away'"
     },
     "mo_arachas_behemoth": {
         "name": "Arachas- Behemoth",
@@ -1175,7 +1206,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "arachas_behemoth",
         "count": "1",
-        "target": "mo_arachas"
+        "target": "mo_arachas",
+        "quote": "Like a cross between a crab, a spider... and a ploughin' moutain."
     },
     "mo_poroniec": {
         "name": "Botchling",
@@ -1185,7 +1217,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "poroniec",
-        "count": "1"
+        "count": "1",
+        "quote": "Admit your mistakes and bury them proper - else they'll come back to haunt you."
     },
     "mo_celaeno_harpy": {
         "name": "Celaeno Harpy",
@@ -1195,7 +1228,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "celaeno_harpy",
-        "count": "1"
+        "count": "1",
+        "quote": "Common harpies feed on carrion. Calaeno harpies... they feed on dreams."
     },
     "mo_cockatrice": {
         "name": "Cockatrice",
@@ -1205,7 +1239,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "cockatrice",
-        "count": "1"
+        "count": "1",
+        "quote": "Born of an egg laid by a cockerel... if you believe such peasant drivel."
     },
     "mo_witch_velen": {
         "name": "Crone - Brewess",
@@ -1216,7 +1251,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "witch_velen",
         "count": "1",
-        "target": "mo_witch_velen"
+        "target": "mo_witch_velen",
+        "quote": "We'll cut you up, boy. A fina broth you will make."
     },
     "mo_witch_velen_1": {
         "name": "Crone - Weavess",
@@ -1227,7 +1263,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "witch_velen_1",
         "count": "1",
-        "target": "mo_witch_velen"
+        "target": "mo_witch_velen",
+        "quote": "I sense your pain. I see your fear..."
     },
     "mo_witch_velen_2": {
         "name": "Crone - Whispess",
@@ -1238,7 +1275,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "witch_velen_2",
         "count": "1",
-        "target": "mo_witch_velen"
+        "target": "mo_witch_velen",
+        "quote": "I'l be your best - and last."
     },
     "mo_draug": {
         "name": "Draug",
@@ -1248,7 +1286,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "draug",
-        "count": "1"
+        "count": "1",
+        "quote": "Some men cannot admit defeat. Some keep fighting from beyond the grave."
     },
     "mo_earth_elemental": {
         "name": "Earth Elemental",
@@ -1258,7 +1297,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "earth_elemental",
-        "count": "1"
+        "count": "1",
+        "quote": "How to fight an earth elemental? You don't. You run. Fast as you can."
     },
     "mo_endrega": {
         "name": "Endrega",
@@ -1268,7 +1308,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "endrega",
-        "count": "1"
+        "count": "1",
+        "quote": "The nest! Take out the nest, or the bastard'll just keep coming!"
     },
     "mo_fiend": {
         "name": "Fiend",
@@ -1278,7 +1319,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "fiend",
-        "count": "1"
+        "count": "1",
+        "quote": "A fiend looks like a deer. An enormous, evil deer."
     },
     "mo_fire_elemental": {
         "name": "Fire Elemental",
@@ -1288,7 +1330,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "fire_elemental",
-        "count": "1"
+        "count": "1",
+        "quote": "Fire is so delightful."
     },
     "mo_fogling": {
         "name": "Foglet",
@@ -1298,7 +1341,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "fogling",
-        "count": "1"
+        "count": "1",
+        "quote": "Fog creeps on little cat feet. Foglets creep over the bodies of their victims."
     },
     "mo_forktail": {
         "name": "Forktail",
@@ -1308,7 +1352,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "forktail",
-        "count": "1"
+        "count": "1",
+        "quote": "Fork tail.. Bah! Fuckers' tails're more like cleavers."
     },
     "mo_frightener": {
         "name": "Frightener",
@@ -1318,7 +1363,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "frightener",
-        "count": "1"
+        "count": "1",
+        "quote": "'What have I done?' the mage cried out, frightened of his own creation."
     },
     "mo_gargoyle": {
         "name": "Gargoyle",
@@ -1328,7 +1374,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "gargoyle",
-        "count": "1"
+        "count": "1",
+        "quote": "Ancient sculptors' nightmarish fantasies brought to life by bored mages."
     },
     "mo_ghoul": {
         "name": "Ghoul",
@@ -1339,7 +1386,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "ghoul",
         "count": "1",
-        "target": "mo_ghoul"
+        "target": "mo_ghoul",
+        "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle."
     },
     "mo_ghoul_1": {
         "name": "Ghoul",
@@ -1350,7 +1398,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "ghoul_1",
         "count": "1",
-        "target": "mo_ghoul"
+        "target": "mo_ghoul",
+        "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle."
     },
     "mo_ghoul_2": {
         "name": "Ghoul",
@@ -1361,7 +1410,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "ghoul_2",
         "count": "1",
-        "target": "mo_ghoul"
+        "target": "mo_ghoul",
+        "quote": "If ghouls are part of the Circle of Life... then it's a damn vicious circle."
     },
     "mo_gravehag": {
         "name": "Grave Hag",
@@ -1371,7 +1421,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "gravehag",
-        "count": "1"
+        "count": "1",
+        "quote": "Their long tongues're for slurping marrow - and whipping prey."
     },
     "mo_gryffin": {
         "name": "Griffin",
@@ -1381,7 +1432,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "gryffin",
-        "count": "1"
+        "count": "1",
+        "quote": "Griffins like to toy with their prey. Eat 'em alive, piece by piece."
     },
     "mo_harpy": {
         "name": "Harpy",
@@ -1391,7 +1443,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "harpy",
-        "count": "1"
+        "count": "1",
+        "quote": "There are many species of harpy, and all are klepmaniacs."
     },
     "mo_frost_giant": {
         "name": "Ice Giant",
@@ -1401,7 +1454,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "frost_giant",
-        "count": "1"
+        "count": "1",
+        "quote": "Fled one time in my life. From the Ice Giant. And I'm not a bit ashamed."
     },
     "mo_imlerith": {
         "name": "Imlerith",
@@ -1411,7 +1465,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "imlerith",
-        "count": "1"
+        "count": "1",
+        "quote": "Ladd nahw! Kill them! Litter the earth with their entrails!"
     },
     "mo_kayran": {
         "name": "Kayran",
@@ -1421,7 +1476,8 @@ var card_dict = {
         "strength": "8",
         "ability": "hero morale",
         "filename": "kayran",
-        "count": "1"
+        "count": "1",
+        "quote": "Kill a kayran? Simple. Take your best sword... then sell it and hire a witcher."
     },
     "mo_leshen": {
         "name": "Leshen",
@@ -1431,7 +1487,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "leshen",
-        "count": "1"
+        "count": "1",
+        "quote": "We never hunt in these woods. Not even if it means the whole village starves."
     },
     "mo_nekker": {
         "name": "Nekker",
@@ -1442,7 +1499,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "nekker",
         "count": "1",
-        "target": "mo_nekker"
+        "target": "mo_nekker",
+        "quote": "Damn things are almost cute, if you ignore the whole vicious killer aspect."
     },
     "mo_nekker_1": {
         "name": "Nekker",
@@ -1453,7 +1511,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "nekker_1",
         "count": "1",
-        "target": "mo_nekker"
+        "target": "mo_nekker",
+        "quote": "Damn things are almost cute, if you ignore the whole vicious killer aspect."
     },
     "mo_nekker_2": {
         "name": "Nekker",
@@ -1464,7 +1523,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "nekker_2",
         "count": "1",
-        "target": "mo_nekker"
+        "target": "mo_nekker",
+        "quote": "Damn things are almost cute, if you ignore the whole vicious killer aspect."
     },
     "mo_mighty_maiden": {
         "name": "Plague Maiden",
@@ -1474,7 +1534,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mighty_maiden",
-        "count": "1"
+        "count": "1",
+        "quote": "The sick rave about a boil-pocked woman surrounded by herds of rabid rats..."
     },
     "mo_bruxa": {
         "name": "Vampire - Bruxa",
@@ -1485,7 +1546,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "bruxa",
         "count": "1",
-        "target": "mo_vampire"
+        "target": "mo_vampire",
+        "quote": "A vile, bloodthirsty, man-eating hag. Kind of like my mother-in-law."
     },
     "mo_ekkima": {
         "name": "Vampire - Ekimmara",
@@ -1496,7 +1558,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "ekkima",
         "count": "1",
-        "target": "mo_vampire"
+        "target": "mo_vampire",
+        "quote": "Who would think overgrown bats would have a taste for gaudy jewelry?"
     },
     "mo_fleder": {
         "name": "Vampire - Fleder",
@@ -1507,7 +1570,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "fleder",
         "count": "1",
-        "target": "mo_vampire"
+        "target": "mo_vampire",
+        "quote": "Higher vampieres embrace their victims. Fleders rim them to shreds."
     },
     "mo_garkain": {
         "name": "Vampire - Garkain",
@@ -1518,7 +1582,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "garkain",
         "count": "1",
-        "target": "mo_vampire"
+        "target": "mo_vampire",
+        "quote": "Blood-drinkers and corpse-eaters so foul their very ugliness paralyses foes."
     },
     "mo_katakan": {
         "name": "Vampire - Katakan",
@@ -1529,7 +1594,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "katakan",
         "count": "1",
-        "target": "mo_vampire"
+        "target": "mo_vampire",
+        "quote": "Drinking the blood of the Continent since the Conjunction."
     },
     "mo_werewolf": {
         "name": "Werewolf",
@@ -1539,7 +1605,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "werewolf",
-        "count": "1"
+        "count": "1",
+        "quote": "Wolves aren't as bad as they say. Werewolves, though - they're worse."
     },
     "mo_wyvern": {
         "name": "Wyvern",
@@ -1549,7 +1616,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "wyvern",
-        "count": "1"
+        "count": "1",
+        "quote": "Imagine a cross between a winged snake and a nightmare. Wyverns are worse."
     },
     "mo_toad": {
         "name": "Toad",
@@ -1559,7 +1627,8 @@ var card_dict = {
         "strength": "7",
         "ability": "scorch_r",
         "filename": "toad",
-        "count": "1"
+        "count": "1",
+        "quote": "Big. Bad. Ugly. Squats in the sewers."
     },
     "sc_francesca_silver": {
         "name": "Francesca Findabair - Queen of Dol Blathanna",
@@ -2238,7 +2307,8 @@ var card_dict = {
         "strength": "",
         "ability": "mardroeme",
         "filename": "mardroeme",
-        "count": "3"
+        "count": "3",
+        "quote": "Eat enough of them, and the world will never be the same..."
     },
     "sk_olaf": {
         "name": "Olaf",
@@ -2258,7 +2328,8 @@ var card_dict = {
         "strength": "",
         "ability": "rain fog",
         "filename": "storm",
-        "count": "3"
+        "count": "3",
+        "quote": "This ain't no normal storm. This here's the wrath of the gods."
     },
     "sk_svanrige": {
         "name": "Svanrige",

@@ -274,7 +274,9 @@ var ability_dict = {
 			if (card.holder.controller instanceof ControllerAI) {
 				newCard = card.holder.controller.medic(card, card.holder.grave)
 			} else {
-				Carousel.curr.exit();
+				try {
+					Carousel.curr.exit();
+				} catch (err) { }
 				await ui.queueCarousel(card.holder.grave, 1, (c,i) => newCard = c.cards[i], c => c.isUnit(), false, false);
 			}
 			if (newCard)
@@ -288,12 +290,15 @@ var ability_dict = {
 			let hand = board.getRow(card, "hand", card.holder);
 			let deck = board.getRow(card, "deck", card.holder);
 			if (card.holder.controller instanceof ControllerAI) {
-				let cards = card.holder.controller.discardOrder(card).splice(0,2).filter(c => c.basePower < 7);
+				let cards = card.holder.controller.discardOrder(card).splice(0, 2).filter(c => c.basePower < 7);
 				await Promise.all(cards.map(async c => await board.toGrave(c, card.holder.hand)));
 				card.holder.deck.draw(card.holder.hand);
 				return;
-			} else
-				Carousel.curr.exit();
+			} else {
+				try {
+					Carousel.curr.exit();
+				} catch (err) { }
+            }
 			await ui.queueCarousel(hand, 2, (c,i) => board.toGrave(c.cards[i], c), () => true);
 			await ui.queueCarousel(deck, 1, (c,i) => board.toHand(c.cards[i], deck), () => true, true);
 		},

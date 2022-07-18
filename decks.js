@@ -4,7 +4,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "nr_foltest_copper",
         "faction": "realms",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_frost", 1],
@@ -45,7 +45,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "nr_foltest_copper",
         "faction": "realms",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_frost", 1],
@@ -89,7 +89,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "ne_emhyr_gold",
         "faction": "nilfgaard",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -130,7 +130,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "ne_emhyr_bronze",
         "faction": "nilfgaard",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 2],
@@ -171,7 +171,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "mo_eredin_silver",
         "faction": "monsters",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -213,7 +213,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "mo_eredin_bronze",
         "faction": "monsters",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 1],
             ["spe_scorch", 3],
@@ -247,7 +247,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "sc_francesca_copper",
         "faction": "scoiatael",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -284,7 +284,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "sc_francesca_hope_of_the_aen_seidhe",
         "faction": "scoiatael",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 3],
             ["spe_scorch", 1],
@@ -321,7 +321,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_mardroeme", 1],
             ["spe_scorch", 1],
@@ -356,7 +356,7 @@ let premade_deck = [
         "description": "TBD",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
-        "init_cards": [
+        "cards": [
             ["spe_horn", 1],
             ["spe_decoy", 2],
             ["ntr_ciri", 1],

@@ -349,7 +349,7 @@ html {
 
 .card-description {
 	position: absolute;
-	height: 7.87vw;
+	height: 11vw;
 	width: 29.12vw;
 	background-color: rgba(20, 20, 20, .95);
 	color: tan;
@@ -385,7 +385,7 @@ html {
 }
 
 .card-description>p {
-	top: 37%;
+	top: 25%;
 	left: 5%;
 	width: 90%;
 	height: 50%;
@@ -1222,6 +1222,19 @@ html {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top;
+	margin-left: -0.1vw;
+}
+
+.card-array .card-lg .card-large-faction-band {
+	left: -0.05vw;
+	top: 0.55vw;
+	width: 2.5vw;
+	height: 12.8vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: bottom;
+	position: absolute;
 }
 
 .card-array .card-lg div.card-count {
@@ -1244,11 +1257,28 @@ html {
 	justify-content: center;
 	text-align: center;
 	position: absolute;
-	top: 76%;
+	top: 75.5%;
 	left: 0%;
 	width: 100%;
 	height: 5vw;
-	font-size: 1.2vw;
+	font-size: 1vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+	line-height: 0.8vw;
+}
+
+.card-array .card-lg .card-large-quote {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 83%;
+	left: 0%;
+	width: 98%;
+	height: 5vw;
+	font-size: 0.7vw;
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -1275,7 +1305,7 @@ html {
 	font-weight: bold;
 	font-size: 1.4vw;
 	margin-left: -1.8vw;
-	margin-top: 0.75vw;
+	margin-top: 0.8vw;
 }
 
 .card-array .hero .card-large-power {
@@ -1289,10 +1319,10 @@ html {
 
 .card-array .card-lg .card-large-row {
 	position: absolute;
-	top: 25%;
-	left: 2%;
-	width: 3vw;
-	height: 2vw;
+	top: 22%;
+	left: 0vw;
+	width: 3.5vw;
+	height: 2.5vw;
 	font-size: 1.2vw;
 	background-position: left;
 	background-repeat: no-repeat;
@@ -1302,9 +1332,9 @@ html {
 .card-array .card-lg .card-large-ability {
 	position: absolute;
 	top: 40%;
-	left: 2%;
-	width: 3vw;
-	height: 2vw;
+	left: 0vw;
+	width: 3.5vw;
+	height: 2.5vw;
 	font-size: 1.2vw;
 	background-position: left;
 	background-repeat: no-repeat;
@@ -1326,6 +1356,18 @@ html {
 	background-position: top;
 }
 
+.card-preview .card-lg .card-large-faction-band {
+	left: 0.15vw;
+	top: 1.15vw;
+	width: 4.5vw;
+	height: 20.5vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: bottom;
+	position: absolute;
+}
+
 .card-preview .card-lg .card-large-name {
 	display: flex;
 	justify-content: center;
@@ -1336,6 +1378,23 @@ html {
 	width: 100%;
 	height: 5vw;
 	font-size: 1.4vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+	line-height: 1.1vw;
+}
+
+.card-preview .card-lg .card-large-quote {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 84%;
+	left: 0%;
+	width: 96%;
+	height: 5vw;
+	font-size: 0.9vw;
 	background-position: left;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -1411,6 +1470,32 @@ html {
 	background-position: bottom;
 }
 
+#carousel .card-lg .card-large-faction-band {
+	left: 0.15vw;
+	top: 1.15vw;
+	width: 4.5vw;
+	height: 20.5vw;
+	margin-bottom: .75vw;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: bottom;
+	position: absolute;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-faction-band {
+	left: 0.5vw;
+	top: 0.6vw;
+	width: 3vw;
+	height: 18vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-faction-band {
+	left: 0.5vw;
+	top: 0.5vw;
+	width: 2.5vw;
+	height: 14.7vw;
+}
+
 #carousel .card-lg .card-large-name {
 	display: flex;
 	justify-content: center;
@@ -1427,13 +1512,33 @@ html {
 	color: #000;
 }
 
+#carousel .card-lg .card-large-quote {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: absolute;
+	top: 86%;
+	left: 0%;
+	width: 96%;
+	height: 5vw;
+	font-size: 0.9vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: #000;
+}
+
 
 #carousel > :nth-child(1) > :nth-child(2n) .card-large-name {
 	font-size: 1.3vw;
 }
 
 #carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-name {
-	font-size: 1.2vw;
+	font-size: 1.1vw;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-quote {
+	font-size: 0.7vw;
 }
 
 #carousel .card-lg .card-large-power {
@@ -1572,10 +1677,12 @@ html {
 	color: #000;
 }
 
+#card-leader .card-large-quote {
+	display: none;
+}
 /*
 	---
 */
-
 #card-leader {
 	position: absolute;
 	height: 27%;
