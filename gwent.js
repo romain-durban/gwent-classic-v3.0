@@ -47,6 +47,7 @@ class ControllerAI {
 			}
 			await player.passRound();
 		} else {
+			weights.sort((a, b) => b.weight - a.weight);
 			let rand = randomInt(weightTotal);
 			for (var i = 0; i < weights.length; ++i) {
 				rand -= weights[i].weight;
@@ -331,7 +332,7 @@ class ControllerAI {
 	// Calculates the weight for playing a weather card
 	weightWeather(card) {
 		let rows;
-		if (card.name === "Clear Weather")
+		if (card.key === "spe_clear")	//Replace card.name === "Clear Weather"
 			rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
 		else
 			rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.abilities[0]).flatMap(t => t.rows);
@@ -350,14 +351,18 @@ class ControllerAI {
 
 	// Calculates the weight for playing a mardroeme card
 	weightMardroemeRow(card, row) {
-		if (card.name === "Mardroeme" && row.special !== null)
+		if (card.key === "spe_mardroeme" && row.special !== null)
 			return 0;
-		let ermion = card.holder.hand.cards.filter(c => c.name === "Ermion").length > 0;
-		if (ermion && card.name !== "Ermion" && row === board.row[1])
+		let ermion = card.holder.hand.cards.filter(c => c.key === "sk_ermion").length > 0;
+		if (ermion && card.key !== "sk_ermion" && row === board.row[1])
 			return 0;
-		let name = row === board.row[1] ? "Young Berserker" : "Berserker";
-		let n = row.cards.filter(c => c.name === name).length;
-		let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
+		//let name = row === board.row[1] ? "Young Berserker" : "Berserker";
+		//let n = row.cards.filter(c => c.abilities[-1] === "berserker").length;
+		//let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
+		let bers_cards = row.cards.filter(c => c.abilities[-1] === "berserker");
+		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower);
+		weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
+		weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length -1;
 		return Math.max(1, weight);
 	}
 
@@ -373,16 +378,18 @@ class ControllerAI {
 		if (card.holder.hand.cards.filter(c => c.abilities.includes("mardroeme")).length < 1 && !row.effects.mardroeme > 0)
 			return score;
 		score -= card.basePower;
-		if (card.row === "close")
-			score += 14;
-		else {
+		if (card.key === "sk_berserker")
+			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
+		else if (card.key === "sk_young_berserker") {
 			let n = 0;
 			if (!row.effects.mardroeme)
-				n = row.cards.filter(c => c.name === "Young Berserker").length;
+				n = row.cards.filter(c => c.key === "sk_young_berserker").length;
 			else
-				n = row.cards.filter(c => "Transformed Young Vildkaarl").length;
-			score = 8 * ((n + 1) * (n + 1) - n * n) + n * score;
-		}
+				n = row.cards.filter(c => c.key === "sk_young_vildkaarl").length;
+			score = card_dict["sk_young_vildkaarl"]["strength"] * ( n * n );
+		} else {
+			score = card_dict[card.target]["strength"];
+        }
 		return Math.max(1, score);
 	}
 
@@ -398,9 +405,14 @@ class ControllerAI {
 
 	// Assigns a weights for how likely the controller with play a card from its hand
 	weightCard(card, max, data) {
-		if (card.name === "Decoy")
+		let abi
+		if (card.abilities)
+			abi = card.abilities
+		else
+			abi = card.ability.split(" ")
+		if (abi.includes("decoy"))
 			return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
-		if (card.name === "Commander's Horn") {
+		if (abi.includes("horn")) {
 			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => r.special === null);
 			if (!rows.length)
 				return 0;
@@ -408,18 +420,18 @@ class ControllerAI {
 			return Math.max(...rows) / 2;
 		}
 
-		if (card.abilities) {
-			if (card.abilities.includes("scorch")) {
+		if (abi) {
+			if (abi.includes("scorch")) {
 				let power_op = max.op.length ? max.op[0].card.power : 0;
 				let power_me = max.me.length ? max.me[0].card.power : 0;
 				let total_op = power_op * max.op.length;
 				let total_me = power_me * max.me.length;
 				return power_me > power_op ? 0 : power_me < power_op ? total_op : Math.max(0, total_op - total_me);
 			}
-			if (card.abilities.includes("decoy")) {
+			if (abi.includes("decoy")) {
 				return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 			}
-			if (card.abilities.includes("mardroeme")) {
+			if (abi.includes("mardroeme")) {
 				let rows = [1, 2].map(i => board.row[i]);
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
 			}
@@ -431,7 +443,7 @@ class ControllerAI {
 
 		let row = board.getRow(card, card.row === "agile" ? "close" : card.row, this.player);
 		let score = row.calcCardScore(card);
-		switch (card.abilities[card.abilities.length - 1]) {
+		switch (abi[abi.length - 1]) {
 			case "bond":
 			case "morale":
 			case "horn":
@@ -444,7 +456,9 @@ class ControllerAI {
 				score = 15 + score;
 				break;
 			case "muster":
-				score *= 3;
+				let pred = c => c.target === card.target;
+				let units = card.holder.hand.getCards(pred).concat(card.holder.deck.getCards(pred));
+				score *= units.length;
 				break;
 			case "scorch_c":
 				score = Math.max(1, this.weightScorchRow(card, max, "close"));
@@ -460,7 +474,7 @@ class ControllerAI {
 				break;
 			case "avenger":
 			case "avenger_kambi":
-				return score + ability_dict[card.abilities[card.abilities.length - 1]].weight();
+				return score + ability_dict[abi[abi.length - 1]].weight();
 		}
 
 		return score;
@@ -1171,9 +1185,9 @@ class Row extends CardContainer {
 		let bond = this.effects.bond[card.id()];
 		if (isNumber(bond) && bond > 1)
 			total *= Number(bond);
-		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		if (this.effects.horn - (card.abilities.includes("horn") ? 1 : 0) > 0)
 			total *= 2;
+		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		return total;
 	}
 
@@ -1181,7 +1195,7 @@ class Row extends CardContainer {
 	async leaderHorn() {
 		if (this.special !== null)
 			return;
-		let horn = new Card("spe_horn",card_dict["spe_horn"], null);
+		let horn = new Card("spe_horn", card_dict["spe_horn"], null);
 		await this.addCard(horn);
 		game.roundEnd.push(() => this.removeCard(horn));
 	}
@@ -1372,7 +1386,10 @@ class Board {
 			cartaNaLinha(dest.elem.id, card);
 		} catch(err) {}
 		await translateTo(card, source ? source : null, dest);
-		await dest.addCard(source ? source.removeCard(card) : card);
+		if (dest instanceof Row || dest instanceof Weather)
+			await dest.addCard(source ? source.removeCard(card) : card);	//Only the override in the Row/Weather classes are asynchronous
+		else
+			dest.addCard(source ? source.removeCard(card) : card);
 	}
 
 	// Sends and translates a card from the source to a row name associated with the passed player
@@ -3221,7 +3238,7 @@ function getPreviewElem(elem, card, nb = 0) {
 		return elem;
 	}
 
-	if (card.row != "leader" && (faction != "special" || faction != "neutral" || faction != "weather")) {
+	if (card.row != "leader" && faction != "special" && faction != "neutral" && faction != "weather") {
 		let factionBand = document.createElement("div");
 		factionBand.style.backgroundImage = iconURL("faction-band-" + faction);
 		factionBand.classList.add("card-large-faction-band");

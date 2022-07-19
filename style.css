@@ -1644,8 +1644,8 @@ html {
 	left: 0%;
 }
 
-#carousel .hide .card-large-bg, #carousel .hide .card-large-name, #carousel .hide .card-large-power,
-#carousel .hide .card-large-power-strength, #carousel .hide .card-large-row, #carousel .hide .card-large-ability {
+#carousel .hide .card-large-bg, #carousel .hide .card-large-faction-band, #carousel .hide .card-large-name, #carousel .hide .card-large-power,
+#carousel .hide .card-large-power-strength, #carousel .hide .card-large-row, #carousel .hide .card-large-ability, #carousel .hide .card-large-quote {
 	display: none;
 }
 /*
