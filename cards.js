@@ -252,7 +252,8 @@ var card_dict = {
         "strength": "",
         "ability": "foltest_king",
         "filename": "foltest_silver",
-        "count": "1"
+        "count": "1",
+        "quote": "It is natural and beautiful that a man should love his sister."
     },
     "nr_foltest_gold": {
         "name": "Foltest - Lord Commander of the North",
@@ -262,7 +263,8 @@ var card_dict = {
         "strength": "",
         "ability": "foltest_lord",
         "filename": "foltest_gold",
-        "count": "1"
+        "count": "1",
+        "quote": "Sod advisors and their schemes. I place my trust in my soldiers' blades."
     },
     "nr_foltest_copper": {
         "name": "Foltest - The Siegemaster",
@@ -273,7 +275,7 @@ var card_dict = {
         "ability": "foltest_siegemaster",
         "filename": "foltest_copper",
         "count": "1",
-        "quote": "This is a very long test of quote"
+        "quote": "A well-aimed ballista razes not just the enemy's wall, but his morale as well."
     },
     "nr_foltest_bronze": {
         "name": "Foltest - The Steel-Forged",
@@ -283,7 +285,8 @@ var card_dict = {
         "strength": "",
         "ability": "foltest_steelforged",
         "filename": "foltest_bronze",
-        "count": "1"
+        "count": "1",
+        "quote": "A beautiful day for battle"
     },
     "nr_foltest_son_of_medell": {
         "name": "Foltest - Son of Medell",
@@ -293,7 +296,8 @@ var card_dict = {
         "strength": "",
         "ability": "foltest_son",
         "filename": "foltest_son_of_medell",
-        "count": "1"
+        "count": "1",
+        "quote": "Dammit, I rule this land and I refuse to creep around its corners."
     },
     "nr_ballista": {
         "name": "Ballista",
@@ -303,7 +307,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "ballista",
-        "count": "1"
+        "count": "1",
+        "quote": "'Usually we give 'em female names.' 'Like Jenny?' 'More like Bertha.'"
     },
     "nr_blue_stripes_1": {
         "name": "Blue Stripes Commando",
@@ -314,7 +319,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "blue_stripes_1",
         "count": "1",
-        "target": "nr_blue_stripes"
+        "target": "nr_blue_stripes",
+        "quote": "I'd do anything for Temeria. Mostly, though, I kill for her."
     },
     "nr_blue_stripes_2": {
         "name": "Blue Stripes Commando",
@@ -325,7 +331,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "blue_stripes_2",
         "count": "1",
-        "target": "nr_blue_stripes"
+        "target": "nr_blue_stripes",
+        "quote": "I'd do anything for Temeria. Mostly, though, I kill for her."
     },
     "nr_blue_stripes_3": {
         "name": "Blue Stripes Commando",
@@ -336,7 +343,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "blue_stripes_3",
         "count": "1",
-        "target": "nr_blue_stripes"
+        "target": "nr_blue_stripes",
+        "quote": "I'd do anything for Temeria. Mostly, though, I kill for her."
     },
     "nr_catapult_1": {
         "name": "Catapult",
@@ -347,7 +355,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "catapult_1",
         "count": "1",
-        "target": "nr_catapult"
+        "target": "nr_catapult",
+        "quote": "The gods help those who have better catapults."
     },
     "nr_catapult_2": {
         "name": "Catapult",
@@ -358,7 +367,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "catapult_2",
         "count": "1",
-        "target": "nr_catapult"
+        "target": "nr_catapult",
+        "quote": "The gods help those who have better catapults."
     },
     "nr_crinfrid_1": {
         "name": "Crinfrid Reavers Dragon Hunter",
@@ -369,7 +379,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "crinfrid_1",
         "count": "1",
-        "target": "nr_crinfrid"
+        "target": "nr_crinfrid",
+        "quote": "Haven't had much luck with monsters of late, so we enlisted."
     },
     "nr_crinfrid_2": {
         "name": "Crinfrid Reavers Dragon Hunter",
@@ -380,7 +391,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "crinfrid_2",
         "count": "1",
-        "target": "nr_crinfrid"
+        "target": "nr_crinfrid",
+        "quote": "Haven't had much luck with monsters of late, so we enlisted."
     },
     "nr_crinfrid_3": {
         "name": "Crinfrid Reavers Dragon Hunter",
@@ -391,7 +403,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "crinfrid_3",
         "count": "1",
-        "target": "nr_crinfrid"
+        "target": "nr_crinfrid",
+        "quote": "Haven't had much luck with monsters of late, so we enlisted."
     },
     "nr_dethmold": {
         "name": "Dethmold",
@@ -401,7 +414,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "dethmold",
-        "count": "1"
+        "count": "1",
+        "quote": "I conce made a prisoner vomit his own entrails... Ah, good times..."
     },
     "nr_banner_nurse": {
         "name": "Dun Banner Medic",
@@ -411,7 +425,8 @@ var card_dict = {
         "strength": "5",
         "ability": "medic",
         "filename": "banner_nurse",
-        "count": "1"
+        "count": "1",
+        "quote": "Stitch red to red, white to white, and everything will be all right."
     },
     "nr_esterad": {
         "name": "Esterad Thyssen",
@@ -421,7 +436,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "esterad",
-        "count": "1"
+        "count": "1",
+        "quote": "Like all Thyssen men, he was tall, powerfully built and criminally handsome"
     },
     "nr_natalis": {
         "name": "John Natalis",
@@ -431,7 +447,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "natalis",
-        "count": "1"
+        "count": "1",
+        "quote": "That square should bear the names of my soldiers, of the dead. Not mine."
     },
     "nr_kaedwen_siege": {
         "name": "Kaedweni Siege Expert",
@@ -441,7 +458,8 @@ var card_dict = {
         "strength": "1",
         "ability": "morale",
         "filename": "kaedwen_siege",
-        "count": "1"
+        "count": "1",
+        "quote":"'You gotta recalibrate the arm by five degrees.' 'Do what by the what now?'"
     },
     "nr_kaedwen_siege_1": {
         "name": "Kaedweni Siege Expert",
@@ -451,7 +469,8 @@ var card_dict = {
         "strength": "1",
         "ability": "morale",
         "filename": "kaedwen_siege_1",
-        "count": "1"
+        "count": "1",
+        "quote": "'You gotta recalibrate the arm by five degrees.' 'Do what by the what now?'"
     },
     "nr_kaedwen_siege_2": {
         "name": "Kaedweni Siege Expert",
@@ -461,7 +480,8 @@ var card_dict = {
         "strength": "1",
         "ability": "morale",
         "filename": "kaedwen_siege_2",
-        "count": "1"
+        "count": "1",
+        "quote": "'You gotta recalibrate the arm by five degrees.' 'Do what by the what now?'"
     },
     "nr_keira": {
         "name": "Keira Metz",
@@ -471,7 +491,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "keira",
-        "count": "1"
+        "count": "1",
+        "quote": "If I'm to die today, I wish to look smashing for the occasion."
     },
     "nr_philippa": {
         "name": "Philippa Eilhart",
@@ -481,7 +502,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "philippa",
-        "count": "1"
+        "count": "1",
+        "quote": "Soon the power of kings will wither, and the Lodge shall seize its rightful place."
     },
     "nr_poor_infantry_1": {
         "name": "Poor Fucking Infantry",
@@ -492,7 +514,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "poor_infantry_1",
         "count": "1",
-        "target": "nr_poor_infantry"
+        "target": "nr_poor_infantry",
+        "quote": "I's a war veteran! ... spare me a crown?"
     },
     "nr_poor_infantry_2": {
         "name": "Poor Fucking Infantry",
@@ -503,7 +526,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "poor_infantry_2",
         "count": "1",
-        "target": "nr_poor_infantry"
+        "target": "nr_poor_infantry",
+        "quote": "I's a war veteran! ... spare me a crown?"
     },
     "nr_poor_infantry_3": {
         "name": "Poor Fucking Infantry",
@@ -514,7 +538,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "poor_infantry_3",
         "count": "1",
-        "target": "nr_poor_infantry"
+        "target": "nr_poor_infantry",
+        "quote": "I's a war veteran! ... spare me a crown?"
     },
     "nr_poor_infantry_4": {
         "name": "Poor Fucking Infantry",
@@ -525,7 +550,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "poor_infantry_4",
         "count": "1",
-        "target": "nr_poor_infantry"
+        "target": "nr_poor_infantry",
+        "quote": "I's a war veteran! ... spare me a crown?"
     },
     "nr_stennis": {
         "name": "Prince Stennis",
@@ -535,7 +561,8 @@ var card_dict = {
         "strength": "5",
         "ability": "spy",
         "filename": "stennis",
-        "count": "1"
+        "count": "1",
+        "quote": "He ploughin' wears the golden armor. Golden. 'Course he's an arsehole."
     },
     "nr_redania": {
         "name": "Redanian Foot Soldier",
@@ -545,7 +572,8 @@ var card_dict = {
         "strength": "1",
         "ability": "",
         "filename": "redania",
-        "count": "1"
+        "count": "1",
+        "quote": "I've bled for Redania! I've killed for Redania... Dammit, I've even raped for Redania!"
     },
     "nr_redania_1": {
         "name": "Redanian Foot Soldier",
@@ -555,7 +583,8 @@ var card_dict = {
         "strength": "1",
         "ability": "",
         "filename": "redania_1",
-        "count": "1"
+        "count": "1",
+        "quote": "I've bled for Redania! I've killed for Redania... Dammit, I've even raped for Redania!"
     },
     "nr_sheldon": {
         "name": "Sheldon Skaggs",
@@ -565,7 +594,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "sheldon",
-        "count": "1"
+        "count": "1",
+        "quote": "I was there, on the front lines! Right where the fightin' was the thickest!"
     },
     "nr_siege_tower": {
         "name": "Siege Tower",
@@ -575,7 +605,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "siege_tower",
-        "count": "1"
+        "count": "1",
+        "quote": "I love the clamor of siege towers in the morning. Sounds like victory."
     },
     "nr_siegfried": {
         "name": "Siegfried of Denesle",
@@ -585,7 +616,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "siegfried",
-        "count": "1"
+        "count": "1",
+        "quote": "We're on the same side, witcher. You'll realize this one day."
     },
     "nr_dijkstra": {
         "name": "Sigismund Dijkstra",
@@ -595,7 +627,8 @@ var card_dict = {
         "strength": "4",
         "ability": "spy",
         "filename": "dijkstra",
-        "count": "1"
+        "count": "1",
+        "quote": "Gwent's like politics, just more honest."
     },
     "nr_sheala": {
         "name": "Síle de Tansarville",
@@ -605,7 +638,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "sheala",
-        "count": "1"
+        "count": "1",
+        "quote": "The Lodge lacks humility. Our lust for power may yet be our undoing."
     },
     "nr_thaler": {
         "name": "Thaler",
@@ -615,7 +649,8 @@ var card_dict = {
         "strength": "1",
         "ability": "spy",
         "filename": "thaler",
-        "count": "1"
+        "count": "1",
+        "quote": "Fuck off! We aren't all ploughin' philanderers. Some of us have depth..."
     },
     "nr_sabrina": {
         "name": "Sabrina Glevissig",
@@ -625,7 +660,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "sabrina",
-        "count": "1"
+        "count": "1",
+        "quote": "The Daughter of the Kaedweni Wilderness."
     },
     "nr_vernon": {
         "name": "Vernon Roche",
@@ -635,7 +671,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "vernon",
-        "count": "1"
+        "count": "1",
+        "quote": "A partiot... and a real son of a bitch."
     },
     "nr_ves": {
         "name": "Ves",
@@ -645,7 +682,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "ves",
-        "count": "1"
+        "count": "1",
+        "quote": "Better to live one day as a king than a whole life as a beggar."
     },
     "nr_yarpen": {
         "name": "Yarpen Zigrin",
@@ -655,7 +693,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "yarpen",
-        "count": "1"
+        "count": "1",
+        "quote": "The world belongs to whoever's best at crackin' skulls and impregnatin' lasses."
     },
     "nr_trebuchet": {
         "name": "Trebuchet",
@@ -665,7 +704,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "trebuchet",
-        "count": "1"
+        "count": "1",
+        "quote": "Castle won't batter itself down, now will it? Get them trebuchets rollin'!"
     },
     "nr_trebuchet_1": {
         "name": "Trebuchet",
@@ -675,7 +715,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "trebuchet_1",
-        "count": "1"
+        "count": "1",
+        "quote": "Castle won't batter itself down, now will it? Get them trebuchets rollin'!"
     },
     "ne_emhyr_silver": {
         "name": "Emhyr var Emreis - His Imperial Majesty",
@@ -685,7 +726,8 @@ var card_dict = {
         "strength": "",
         "ability": "emhyr_imperial",
         "filename": "emhyr_silver",
-        "count": "1"
+        "count": "1",
+        "quote": "The skies wept when my Pavetta died. They will not weep for me."
     },
     "ne_emhyr_copper": {
         "name": "Emhyr var Emreis - Emperor of Nilfgaard",
@@ -695,7 +737,8 @@ var card_dict = {
         "strength": "",
         "ability": "emhyr_emperor",
         "filename": "emhyr_copper",
-        "count": "1"
+        "count": "1",
+        "quote": "Your motives do not interest me. Only results."
     },
     "ne_emhyr_bronze": {
         "name": "Emhyr var Emreis - the White Flame",
@@ -705,7 +748,8 @@ var card_dict = {
         "strength": "",
         "ability": "emhyr_whiteflame",
         "filename": "emhyr_bronze",
-        "count": "1"
+        "count": "1",
+        "quote" :"A sword is but one of many tools at a ruler's disposal."
     },
     "ne_emhyr_gold": {
         "name": "Emhyr var Emreis - The Relentless",
@@ -715,7 +759,8 @@ var card_dict = {
         "strength": "",
         "ability": "emhyr_relentless",
         "filename": "emhyr_gold",
-        "count": "1"
+        "count": "1",
+        "quote": "They do not call me the Patient. Take care they do not call you the Headless."
     },
     "ne_emhyr_invader_of_the_north": {
         "name": "Emhyr var Emreis - Invader of the North",
@@ -725,7 +770,8 @@ var card_dict = {
         "strength": "",
         "ability": "emhyr_invader",
         "filename": "emhyr_invader_of_the_north",
-        "count": "1"
+        "count": "1",
+        "quote": "Emperors command multitudes, yet cannot control two things: their time and their hearts."
     },
     "ne_albrich": {
         "name": "Albrich",
@@ -735,7 +781,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "albrich",
-        "count": "1"
+        "count": "1",
+        "quote": "A fireball? Of course. Whatever Your Imperial Majesty whishes."
     },
     "ne_assire": {
         "name": "Assire var Anahid",
@@ -745,7 +792,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "assire",
-        "count": "1"
+        "count": "1",
+        "quote": "Nilfgaardian mages do have a choice, servile submission, or the gallows."
     },
     "ne_black_archer": {
         "name": "Black Infantry Archer",
@@ -755,7 +803,8 @@ var card_dict = {
         "strength": "10",
         "ability": "",
         "filename": "black_archer",
-        "count": "1"
+        "count": "1",
+        "quote": "I aim for the knee. Always."
     },
     "ne_black_archer_1": {
         "name": "Black Infantry Archer",
@@ -765,7 +814,8 @@ var card_dict = {
         "strength": "10",
         "ability": "",
         "filename": "black_archer_1",
-        "count": "1"
+        "count": "1",
+        "quote": "I aim for the knee. Always."
     },
     "ne_cahir": {
         "name": "Cahir Mawr Dyffryn aep Ceallach",
@@ -775,7 +825,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "cahir",
-        "count": "1"
+        "count": "1",
+        "quote": "His eyes flashed under his winged helmet. Fire gleamed from his sword's blade."
     },
     "ne_cynthia": {
         "name": "Cynthia",
@@ -785,7 +836,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "cynthia",
-        "count": "1"
+        "count": "1",
+        "quote": "Cynthia's talents can be deadly. She needs a tight leash."
     },
     "ne_archer_support": {
         "name": "Etolian Auxiliary Archers",
@@ -795,7 +847,8 @@ var card_dict = {
         "strength": "1",
         "ability": "medic",
         "filename": "archer_support",
-        "count": "1"
+        "count": "1",
+        "quote": "Double or nothing, aim for his cock"
     },
     "ne_archer_support_1": {
         "name": "Etolian Auxiliary Archers",
@@ -805,7 +858,8 @@ var card_dict = {
         "strength": "1",
         "ability": "medic",
         "filename": "archer_support_1",
-        "count": "1"
+        "count": "1",
+        "quote": "Double or nothing, aim for his cock"
     },
     "ne_fringilla": {
         "name": "Fringilla Vigo",
@@ -815,7 +869,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "fringilla",
-        "count": "1"
+        "count": "1",
+        "quote": "Magic is the highest good. It transcends all borders and divisions."
     },
     "ne_heavy_zerri": {
         "name": "Heavy Zerrikanian Fire Scorpion",
@@ -825,7 +880,8 @@ var card_dict = {
         "strength": "10",
         "ability": "",
         "filename": "heavy_zerri",
-        "count": "1"
+        "count": "1",
+        "quote": "Not the best for taking cities, but great for razing them to the ground."
     },
     "ne_imperal_brigade_1": {
         "name": "Impera Brigade Guard",
@@ -836,7 +892,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "imperal_brigade_1",
         "count": "1",
-        "target": "ne_imperal_brigade"
+        "target": "ne_imperal_brigade",
+        "quote": "The Impera Brigade never surrenders. Ever."
     },
     "ne_imperal_brigade_2": {
         "name": "Impera Brigade Guard",
@@ -847,7 +904,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "imperal_brigade_2",
         "count": "1",
-        "target": "ne_imperal_brigade"
+        "target": "ne_imperal_brigade",
+        "quote": "The Impera Brigade never surrenders. Ever."
     },
     "ne_imperal_brigade_3": {
         "name": "Impera Brigade Guard",
@@ -858,7 +916,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "imperal_brigade_3",
         "count": "1",
-        "target": "ne_imperal_brigade"
+        "target": "ne_imperal_brigade",
+        "quote": "The Impera Brigade never surrenders. Ever."
     },
     "ne_imperal_brigade_4": {
         "name": "Impera Brigade Guard",
@@ -869,7 +928,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "imperal_brigade_4",
         "count": "1",
-        "target": "ne_imperal_brigade"
+        "target": "ne_imperal_brigade",
+        "quote": "The Impera Brigade never surrenders. Ever."
     },
     "ne_letho": {
         "name": "Letho of Gulet",
@@ -879,7 +939,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "letho",
-        "count": "1"
+        "count": "1",
+        "quote": "Witchers never die in the beds."
     },
     "ne_menno": {
         "name": "Menno Coehoorn",
@@ -889,7 +950,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero medic",
         "filename": "menno",
-        "count": "1"
+        "count": "1",
+        "quote": "I'll take an attentive reconnaissance unit over a fine cavalry brigade any day."
     },
     "ne_morteisen": {
         "name": "Morteisen",
@@ -899,7 +961,8 @@ var card_dict = {
         "strength": "3",
         "ability": "",
         "filename": "morteisen",
-        "count": "1"
+        "count": "1",
+        "quote" :"No Nordling pikemen or dwarven spearbearers can hope to best trained cavalary."
     },
     "ne_moorvran": {
         "name": "Morvran Voorhis",
@@ -909,7 +972,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "moorvran",
-        "count": "1"
+        "count": "1",
+        "quote": "Summer sun reflecting in the quiet waters of Alba - that's Nilfgaard to me."
     },
     "ne_nauzicaa_1": {
         "name": "Nausicaa Cavalry Rider",
@@ -920,7 +984,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "nauzicaa_1",
         "count": "1",
-        "target": "ne_nauzicaa"
+        "target": "ne_nauzicaa",
+        "quote": "The Emperor will teach the North discipline."
     },
     "ne_nauzicaa_2": {
         "name": "Nausicaa Cavalry Rider",
@@ -931,7 +996,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "nauzicaa_2",
         "count": "1",
-        "target": "ne_nauzicaa"
+        "target": "ne_nauzicaa",
+        "quote": "The Emperor will teach the North discipline."
     },
     "ne_nauzicaa_3": {
         "name": "Nausicaa Cavalry Rider",
@@ -942,7 +1008,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "nauzicaa_3",
         "count": "1",
-        "target": "ne_nauzicaa"
+        "target": "ne_nauzicaa",
+        "quote": "The Emperor will teach the North discipline."
     },
     "ne_puttkammer": {
         "name": "Puttkammer",
@@ -952,7 +1019,8 @@ var card_dict = {
         "strength": "3",
         "ability": "",
         "filename": "puttkammer",
-        "count": "1"
+        "count": "1",
+        "quote": "Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance."
     },
     "ne_rainfarn": {
         "name": "Rainfarn",
@@ -962,7 +1030,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "rainfarn",
-        "count": "1"
+        "count": "1",
+        "quote": "You'll die as painfully as the pathetic traitor Windhalm did."
     },
     "ne_renuald": {
         "name": "Renuald aep Matsen",
@@ -972,7 +1041,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "renuald",
-        "count": "1"
+        "count": "1",
+        "quote": "They say the Impera fear nothing. Untrue. Renuald scares them shitless."
     },
     "ne_rotten": {
         "name": "Rotten Mangonel",
@@ -982,7 +1052,8 @@ var card_dict = {
         "strength": "3",
         "ability": "",
         "filename": "rotten",
-        "count": "1"
+        "count": "1",
+        "quote": "The rotten smell brings back childhood memories."
     },
     "ne_shilard": {
         "name": "Shilard Fitz-Oesterlen",
@@ -992,7 +1063,8 @@ var card_dict = {
         "strength": "7",
         "ability": "spy",
         "filename": "shilard",
-        "count": "1"
+        "count": "1",
+        "quote": "Warfare is mere sound and fury - diplomacy is what truly shapes history."
     },
     "ne_siege_engineer": {
         "name": "Siege Engineer",
@@ -1002,7 +1074,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "siege_engineer",
-        "count": "1"
+        "count": "1",
+        "quote": "Wielded correctly, a protactor can be a deadly weapon."
     },
     "ne_siege_support": {
         "name": "Siege Technician",
@@ -1012,7 +1085,8 @@ var card_dict = {
         "strength": "0",
         "ability": "medic",
         "filename": "siege_support",
-        "count": "1"
+        "count": "1",
+        "quote": "I never miss twice."
     },
     "ne_stefan": {
         "name": "Stefan Skellen",
@@ -1022,7 +1096,8 @@ var card_dict = {
         "strength": "9",
         "ability": "spy",
         "filename": "stefan",
-        "count": "1"
+        "count": "1",
+        "quote": "My mark scards the face of our future empress. That is my proudest achievement."
     },
     "ne_sweers": {
         "name": "Sweers",
@@ -1032,7 +1107,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "sweers",
-        "count": "1"
+        "count": "1",
+        "quote": "And hands off the girl! Whatever we may be, we're not savages."
     },
     "ne_tibor": {
         "name": "Tibor Eggebracht",
@@ -1042,7 +1118,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "tibor",
-        "count": "1"
+        "count": "1",
+        "quote": "Albaaaa! Forward!! Alba! Long live the Emperor!"
     },
     "ne_vanhemar": {
         "name": "Vanhemar",
@@ -1052,7 +1129,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "vanhemar",
-        "count": "1"
+        "count": "1",
+        "quote": "For a fire mage, he's not very... flamboyant."
     },
     "ne_vattier": {
         "name": "Vattier de Rideaux",
@@ -1062,7 +1140,8 @@ var card_dict = {
         "strength": "4",
         "ability": "spy",
         "filename": "vattier",
-        "count": "1"
+        "count": "1",
+        "quote": "There's never been a problem a well-planned assassination couldn't solve."
     },
     "ne_vreemde": {
         "name": "Vreemde",
@@ -1072,7 +1151,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "vreemde",
-        "count": "1"
+        "count": "1",
+        "quote": "Discipline is the Empire's deadliest weapon."
     },
     "ne_young_emissary_1": {
         "name": "Young Emissary",
@@ -1083,7 +1163,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "young_emissary_1",
         "count": "1",
-        "target": "ne_young_emissary"
+        "target": "ne_young_emissary",
+        "quote": "If I acquit myself well, perhaps next they'll post me somewhere more civilized."
     },
     "ne_young_emissary_2": {
         "name": "Young Emissary",
@@ -1094,7 +1175,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "young_emissary_2",
         "count": "1",
-        "target": "ne_young_emissary"
+        "target": "ne_young_emissary",
+        "quote": "If I acquit myself well, perhaps next they'll post me somewhere more civilized."
     },
     "ne_zerri": {
         "name": "Zerrikanian Fire Scorpion",
@@ -1104,7 +1186,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "zerri",
-        "count": "1"
+        "count": "1",
+        "quote": "The Zerrikanian Desert used to be a lush garden. Then these came along."
     },
     "mo_eredin_silver": {
         "name": "Eredin - Commander of the Red Riders",
@@ -1638,7 +1721,8 @@ var card_dict = {
         "strength": "",
         "ability": "francesca_queen",
         "filename": "francesca_silver",
-        "count": "1"
+        "count": "1",
+        "quote": "Ash shall fertilize the soil. By spring, the valley shall bloom once more."
     },
     "sc_francesca_gold": {
         "name": "Francesca Findabair - the Beautiful",
@@ -1648,7 +1732,8 @@ var card_dict = {
         "strength": "",
         "ability": "francesca_beautiful",
         "filename": "francesca_gold",
-        "count": "1"
+        "count": "1",
+        "quote": "The Elder Races have forgotten more than humans can ever hope to know."
     },
     "sc_francesca_copper": {
         "name": "Francesca Findabair - Daisy of the Valley",
@@ -1658,7 +1743,8 @@ var card_dict = {
         "strength": "",
         "ability": "francesca_daisy",
         "filename": "francesca_copper",
-        "count": "1"
+        "count": "1",
+        "quote": "Do not let my beauty distract your aim."
     },
     "sc_francesca_bronze": {
         "name": "Francesca Findabair - Pureblood Elf",
@@ -1668,7 +1754,8 @@ var card_dict = {
         "strength": "",
         "ability": "francesca_pureblood",
         "filename": "francesca_bronze",
-        "count": "1"
+        "count": "1",
+        "quote": "To live in peave, we first must kill. This is human oppression's cruel finale."
     },
     "sc_francesca_hope_of_the_aen_seidhe": {
         "name": "Francesca Findabair - Hope of the Aen Seidhe",
@@ -1678,7 +1765,8 @@ var card_dict = {
         "strength": "",
         "ability": "francesca_hope",
         "filename": "francesca_hope_of_the_aen_seidhe",
-        "count": "1"
+        "count": "1",
+        "quote": "Daede sian caente, Aen Seidhe en'allane ael coeden..."
     },
     "sc_ciaran": {
         "name": "Ciaran aep Easnillien",
@@ -1688,7 +1776,8 @@ var card_dict = {
         "strength": "3",
         "ability": "",
         "filename": "ciaran",
-        "count": "1"
+        "count": "1",
+        "quote": "The path to freedom is paved in blood not ink."
     },
     "sc_barclay": {
         "name": "Barclay Els",
@@ -1698,7 +1787,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "barclay",
-        "count": "1"
+        "count": "1",
+        "quote": "Our mead smells like piss, do it? Easy to fix - I'll break your fuckin' nose!"
     },
     "sc_dennis": {
         "name": "Dennis Cranmer",
@@ -1708,7 +1798,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "dennis",
-        "count": "1"
+        "count": "1",
+        "quote": "I know how to carry out orders, so you can shove you advice up your coal chute."
     },
     "sc_dol_archer": {
         "name": "Dol Blathanna Archer",
@@ -1718,7 +1809,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "dol_archer",
-        "count": "1"
+        "count": "1",
+        "quote": "Take another step, dh'oine. You'd look better with an arrow between your eyes."
     },
     "sc_dol_infantry": {
         "name": "Dol Blathanna Scout",
@@ -1728,7 +1820,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "dol_infantry",
-        "count": "1"
+        "count": "1",
+        "quote": "They track like hounds, run like deer and kill like cold-hearted bastards."
     },
     "sc_dol_infantry_1": {
         "name": "Dol Blathanna Scout",
@@ -1738,7 +1831,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "dol_infantry_1",
-        "count": "1"
+        "count": "1",
+        "quote": "They track like hounds, run like deer and kill like cold-hearted bastards."
     },
     "sc_dol_infantry_2": {
         "name": "Dol Blathanna Scout",
@@ -1748,7 +1842,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "dol_infantry_2",
-        "count": "1"
+        "count": "1",
+        "quote": "They track like hounds, run like deer and kill like cold-hearted bastards."
     },
     "sc_dwarf": {
         "name": "Dwarven Skirmisher",
@@ -1759,7 +1854,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "dwarf",
         "count": "1",
-        "target": "sc_dwarf"
+        "target": "sc_dwarf",
+        "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble."
     },
     "sc_dwarf_1": {
         "name": "Dwarven Skirmisher",
@@ -1770,7 +1866,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "dwarf_1",
         "count": "1",
-        "target": "sc_dwarf"
+        "target": "sc_dwarf",
+        "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble."
     },
     "sc_dwarf_2": {
         "name": "Dwarven Skirmisher",
@@ -1781,7 +1878,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "dwarf_2",
         "count": "1",
-        "target": "sc_dwarf"
+        "target": "sc_dwarf",
+        "quote": "Worked a pickaxe all me life. Battleaxe won't be any trouble."
     },
     "sc_eithne": {
         "name": "Eithné",
@@ -1791,7 +1889,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "eithne",
-        "count": "1"
+        "count": "1",
+        "quote": "The dryad queen has eyes of molten silver, and a heart of cold-forged steel."
     },
     "sc_elf_skirmisher": {
         "name": "Elven Skirmisher",
@@ -1802,7 +1901,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "elf_skirmisher",
         "count": "1",
-        "target": "sc_elf_skirmisher"
+        "target": "sc_elf_skirmisher",
+        "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice."
     },
     "sc_elf_skirmisher_1": {
         "name": "Elven Skirmisher",
@@ -1813,7 +1913,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "elf_skirmisher_1",
         "count": "1",
-        "target": "sc_elf_skirmisher"
+        "target": "sc_elf_skirmisher",
+        "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice."
     },
     "sc_elf_skirmisher_2": {
         "name": "Elven Skirmisher",
@@ -1824,7 +1925,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "elf_skirmisher_2",
         "count": "1",
-        "target": "sc_elf_skirmisher"
+        "target": "sc_elf_skirmisher",
+        "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice."
     },
     "sc_filavandrel": {
         "name": "Filavandrel aen Fidhail",
@@ -1834,7 +1936,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "filavandrel",
-        "count": "1"
+        "count": "1",
+        "quote": "Though we are now few and scattered, our hearts burn brighter than ever."
     },
     "sc_havekar_nurse": {
         "name": "Havekar Healer",
@@ -1844,7 +1947,8 @@ var card_dict = {
         "strength": "0",
         "ability": "medic",
         "filename": "havekar_nurse",
-        "count": "1"
+        "count": "1",
+        "quote": "Sure, I'll patch you up. Gonna cost you, though."
     },
     "sc_havekar_nurse_1": {
         "name": "Havekar Healer",
@@ -1854,7 +1958,8 @@ var card_dict = {
         "strength": "0",
         "ability": "medic",
         "filename": "havekar_nurse_1",
-        "count": "1"
+        "count": "1",
+        "quote": "Sure, I'll patch you up. Gonna cost you, though."
     },
     "sc_havekar_nurse_2": {
         "name": "Havekar Healer",
@@ -1864,7 +1969,8 @@ var card_dict = {
         "strength": "0",
         "ability": "medic",
         "filename": "havekar_nurse_2",
-        "count": "1"
+        "count": "1",
+        "quote": "Sure, I'll patch you up. Gonna cost you, though."
     },
     "sc_havekar_support": {
         "name": "Havekar Smuggler",
@@ -1875,7 +1981,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "havekar_support",
         "count": "1",
-        "target": "sc_havekar_support"
+        "target": "sc_havekar_support",
+        "quote": "I fight for whoever's paying the best. Or whoever's easiest to rob."
     },
     "sc_havekar_support_1": {
         "name": "Havekar Smuggler",
@@ -1886,7 +1993,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "havekar_support_1",
         "count": "1",
-        "target": "sc_havekar_support"
+        "target": "sc_havekar_support",
+        "quote": "I fight for whoever's paying the best. Or whoever's easiest to rob."
     },
     "sc_havekar_support_2": {
         "name": "Havekar Smuggler",
@@ -1897,7 +2005,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "havekar_support_2",
         "count": "1",
-        "target": "sc_havekar_support"
+        "target": "sc_havekar_support",
+        "quote": "I fight for whoever's paying the best. Or whoever's easiest to rob."
     },
     "sc_ida": {
         "name": "Ida Emean aep Sivney",
@@ -1907,7 +2016,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "ida",
-        "count": "1"
+        "count": "1",
+        "quote": "I am a Sage. My power lies in possessing knowledge. Not sharing it."
     },
     "sc_iorveth": {
         "name": "Iorveth",
@@ -1917,7 +2027,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "iorveth",
-        "count": "1"
+        "count": "1",
+        "quote": "King or beggar, what's the difference? One dh'oine less."
     },
     "sc_isengrim": {
         "name": "Isengrim Faoiltiarna",
@@ -1927,7 +2038,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero morale",
         "filename": "isengrim",
-        "count": "1"
+        "count": "1",
+        "quote": "It dawns on them once they notice my scar: a realization of imminent death."
     },
     "sc_mahakam": {
         "name": "Mahakaman Defender",
@@ -1937,7 +2049,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mahakam",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm telling ye, we're born for battle - we slash straight at their kneed!"
     },
     "sc_mahakam_1": {
         "name": "Mahakaman Defender",
@@ -1947,7 +2060,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mahakam_1",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm telling ye, we're born for battle - we slash straight at their kneed!"
     },
     "sc_mahakam_2": {
         "name": "Mahakaman Defender",
@@ -1957,7 +2071,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mahakam_2",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm telling ye, we're born for battle - we slash straight at their kneed!"
     },
     "sc_mahakam_3": {
         "name": "Mahakaman Defender",
@@ -1967,7 +2082,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mahakam_3",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm telling ye, we're born for battle - we slash straight at their kneed!"
     },
     "sc_mahakam_4": {
         "name": "Mahakaman Defender",
@@ -1977,7 +2093,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "mahakam_4",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm telling ye, we're born for battle - we slash straight at their kneed!"
     },
     "sc_milva": {
         "name": "Milva",
@@ -1987,7 +2104,8 @@ var card_dict = {
         "strength": "10",
         "ability": "morale",
         "filename": "milva",
-        "count": "1"
+        "count": "1",
+        "quote": "With each arrow I loose, I think of my da. He'd be proud. I think."
     },
     "sc_riordain": {
         "name": "Riordain",
@@ -1997,7 +2115,8 @@ var card_dict = {
         "strength": "1",
         "ability": "",
         "filename": "riordain",
-        "count": "1"
+        "count": "1",
+        "quote": "Stare into their eyes, feast on their terror. Then go in for the kill."
     },
     "sc_saskia": {
         "name": "Saesenthessis",
@@ -2007,7 +2126,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "saskia",
-        "count": "1"
+        "count": "1",
+        "quote": "Beautiful, pure, fierce - the perfect icon for a rebellion."
     },
     "sc_toruviel": {
         "name": "Toruviel",
@@ -2017,7 +2137,8 @@ var card_dict = {
         "strength": "2",
         "ability": "",
         "filename": "toruviel",
-        "count": "1"
+        "count": "1",
+        "quote": "I'd gladly kill you from up close, stare in your eyese... But you reek, human."
     },
     "sc_vrihedd_cadet": {
         "name": "Vrihedd Brigade Recruit",
@@ -2027,7 +2148,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "vrihedd_cadet",
-        "count": "1"
+        "count": "1",
+        "quote": "Hatred burns brighter than any fire, and cuts deeper than any blade."
     },
     "sc_vrihedd_brigade": {
         "name": "Vrihedd Brigade Veteran",
@@ -2037,7 +2159,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "vrihedd_brigade",
-        "count": "1"
+        "count": "1",
+        "quote": "'Vrihedd? What's that mean?' 'Trouble.'"
     },
     "sc_vrihedd_brigade_1": {
         "name": "Vrihedd Brigade Veteran",
@@ -2047,7 +2170,8 @@ var card_dict = {
         "strength": "5",
         "ability": "",
         "filename": "vrihedd_brigade_1",
-        "count": "1"
+        "count": "1",
+        "quote": "'Vrihedd? What's that mean?' 'Trouble.'"
     },
     "sc_yaevinn": {
         "name": "Yaevinn",
@@ -2057,7 +2181,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "yaevinn",
-        "count": "1"
+        "count": "1",
+        "quote": "We are drops of rain that together make a ferocious storm."
     },
     "sk_berserker": {
         "name": "Berserker",
@@ -2068,7 +2193,8 @@ var card_dict = {
         "ability": "berserker",
         "filename": "berserker",
         "count": "1",
-        "target": "sk_vildkaarl"
+        "target": "sk_vildkaarl",
+        "quote": "Kill, crush, cleave!"
     },
     "sk_birna": {
         "name": "Birna Bran",
@@ -2078,7 +2204,8 @@ var card_dict = {
         "strength": "2",
         "ability": "medic",
         "filename": "birna",
-        "count": "1"
+        "count": "1",
+        "quote": "Skellige must have a strong king. No matter what it takes."
     },
     "sk_blueboy": {
         "name": "Blueboy Lugos",
@@ -2088,7 +2215,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "blueboy",
-        "count": "1"
+        "count": "1",
+        "quote": "I'm damn near ready to puke from boredom."
     },
     "sk_cerys": {
         "name": "Cerys",
@@ -2099,17 +2227,19 @@ var card_dict = {
         "ability": "hero muster",
         "filename": "cerys",
         "count": "1",
-        "target": "sk_shield_maiden"
+        "target": "sk_shield_maiden",
+        "quote": "They call me Sparrowhawk, know why? Because I eat rats like you for breakfast."
     },
     "sk_brokva_archer": {
-        "name": "Clan Brokva Archer",
+        "name": "Clan Brokvar Archer",
         "id": 198,
         "deck": "skellige",
         "row": "ranged",
         "strength": "6",
         "ability": "",
         "filename": "brokva_archer",
-        "count": "2"
+        "count": "2",
+        "quote": "So ye can hit a movin' target at two hundred paces. Me, too. In a storm."
     },
     "sk_dimun_pirate": {
         "name": "Clan Dimun Pirate",
@@ -2119,7 +2249,8 @@ var card_dict = {
         "strength": "6",
         "ability": "scorch",
         "filename": "dimun_pirate",
-        "count": "1"
+        "count": "1",
+        "quote": "Can see the fear in their eyes. Fear o' me... fer o' Clan Dimun!"
     },
     "sk_shield_maiden_1": {
         "name": "Cerys - Clan Drummond Shield Maiden",
@@ -2130,7 +2261,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "shield_maiden_1",
         "count": "1",
-        "target": "sk_shield_maiden"
+        "target": "sk_shield_maiden",
+        "quote": "They'll shatter on our shields like waves on a rocky shore."
     },
     "sk_shield_maiden_2": {
         "name": "Cerys - Clan Drummond Shield Maiden",
@@ -2141,7 +2273,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "shield_maiden_2",
         "count": "1",
-        "target": "sk_shield_maiden"
+        "target": "sk_shield_maiden",
+        "quote": "They'll shatter on our shields like waves on a rocky shore."
     },
     "sk_shield_maiden_3": {
         "name": "Cerys - Clan Drummond Shield Maiden",
@@ -2152,7 +2285,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "shield_maiden_3",
         "count": "1",
-        "target": "sk_shield_maiden"
+        "target": "sk_shield_maiden",
+        "quote": "They'll shatter on our shields like waves on a rocky shore."
     },
     "sk_heymaey": {
         "name": "Clan Heymaey Skald",
@@ -2162,7 +2296,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "heymaey",
-        "count": "1"
+        "count": "1",
+        "quote": "The deeds of Clan Haymaeu will go down in history."
     },
     "sk_tordarroch": {
         "name": "Clan Tordarroch Armorsmith",
@@ -2172,7 +2307,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "tordarroch",
-        "count": "1"
+        "count": "1",
+        "quote": "Ye're in for poundin'."
     },
     "sk_craite_warrior_1": {
         "name": "Clan an Craite Warrior",
@@ -2183,7 +2319,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "craite_warrior_1",
         "count": "1",
-        "target": "sk_craite_warrior"
+        "target": "sk_craite_warrior",
+        "quote": "I'll bring the an Craites such glory, bards'll go hoarse singin' me praises!"
     },
     "sk_craite_warrior_2": {
         "name": "Clan an Craite Warrior",
@@ -2194,7 +2331,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "craite_warrior_2",
         "count": "1",
-        "target": "sk_craite_warrior"
+        "target": "sk_craite_warrior",
+        "quote": "I'll bring the an Craites such glory, bards'll go hoarse singin' me praises!"
     },
     "sk_craite_warrior_3": {
         "name": "Clan an Craite Warrior",
@@ -2205,7 +2343,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "craite_warrior_3",
         "count": "1",
-        "target": "sk_craite_warrior"
+        "target": "sk_craite_warrior",
+        "quote": "I'll bring the an Craites such glory, bards'll go hoarse singin' me praises!"
     },
     "sk_donar": {
         "name": "Donar an Hindar",
@@ -2215,7 +2354,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "donar",
-        "count": "1"
+        "count": "1",
+        "quote": "I've gathered all the jarls together. Now make your case."
     },
     "sk_draig": {
         "name": "Draig Bon-Dhu",
@@ -2225,7 +2365,8 @@ var card_dict = {
         "strength": "2",
         "ability": "horn",
         "filename": "draig",
-        "count": "1"
+        "count": "1",
+        "quote": "Hear ye now the tale of the heroic deeds of Clan an Craite."
     },
     "sk_ermion": {
         "name": "Ermion",
@@ -2235,7 +2376,8 @@ var card_dict = {
         "strength": "8",
         "ability": "hero mardroeme",
         "filename": "ermion",
-        "count": "1"
+        "count": "1",
+        "quote": "Only the ignorant dismiss the importance of myths."
     },
     "sk_hemdall": {
         "name": "Hemdall",
@@ -2245,7 +2387,8 @@ var card_dict = {
         "strength": "11",
         "ability": "hero",
         "filename": "hemdall",
-        "count": "0"
+        "count": "0",
+        "quote": "When the time of the White Frost comes, Hemdall will sound the call for battle."
     },
     "sk_hjalmar": {
         "name": "Hjalmar",
@@ -2255,7 +2398,8 @@ var card_dict = {
         "strength": "10",
         "ability": "hero",
         "filename": "hjalmar",
-        "count": "1"
+        "count": "1",
+        "quote": "Instead of mournin' the fallen, let's drink to their memory!"
     },
     "sk_holger": {
         "name": "Holger Blackhand",
@@ -2265,7 +2409,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "holger",
-        "count": "1"
+        "count": "1",
+        "quote": "Now let's drink to Emperor of Nilfgaard - may his prick forever stay limp!"
     },
     "sk_kambi": {
         "name": "Kambi",
@@ -2276,7 +2421,8 @@ var card_dict = {
         "ability": "avenger_kambi",
         "filename": "kambi",
         "count": "1",
-        "target": "sk_hemdall"
+        "target": "sk_hemdall",
+        "quote": "When the time comes, the cockerel Kambi shall crow and awaken Hemdall."
     },
     "sk_light_longship": {
         "name": "Light Longship",
@@ -2287,7 +2433,8 @@ var card_dict = {
         "ability": "muster",
         "filename": "light_longship",
         "count": "3",
-        "target": "sk_light_longship"
+        "target": "sk_light_longship",
+        "quote": "Escape them? In the waters of Skellige? Good luck."
     },
     "sk_madmad_lugos": {
         "name": "Madman Lugos",
@@ -2297,7 +2444,8 @@ var card_dict = {
         "strength": "6",
         "ability": "",
         "filename": "madmad_lugos",
-        "count": "1"
+        "count": "1",
+        "quote": "WAAAAAAAGH!!!!"
     },
     "spe_mardroeme": {
         "name": "Mardroeme",
@@ -2318,7 +2466,8 @@ var card_dict = {
         "strength": "12",
         "ability": "morale",
         "filename": "olaf",
-        "count": "1"
+        "count": "1",
+        "quote": "Many've tried to defeat Olaf. But wont' hear about it from them - they're dead."
     },
     "spe_storm": {
         "name": "Skellige Storm",
@@ -2339,7 +2488,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "svanrige",
-        "count": "1"
+        "count": "1",
+        "quote": "The emperor also thought him an accidental king. At first."
     },
     "sk_vildkaarl": {
         "name": "Transformed Vildkaarl",
@@ -2349,7 +2499,8 @@ var card_dict = {
         "strength": "14",
         "ability": "morale",
         "filename": "vildkaarl",
-        "count": "0"
+        "count": "0",
+        "quote": "Saw them fight once in my life... and once was enough."
     },
     "sk_young_vildkaarl": {
         "name": "Transformed Young Vildkaarl",
@@ -2360,7 +2511,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "young_vildkaarl",
         "count": "0",
-        "target": "sk_young_vildkaarl"
+        "target": "sk_young_vildkaarl",
+        "quote": "Rooaaar!"
     },
     "sk_udalryk": {
         "name": "Udalryk",
@@ -2370,7 +2522,8 @@ var card_dict = {
         "strength": "4",
         "ability": "",
         "filename": "udalryk",
-        "count": "1"
+        "count": "1",
+        "quote": "Haaaargh! After me, if ye've the bollocks!"
     },
     "sk_war_longship_1": {
         "name": "War Longship",
@@ -2381,7 +2534,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "war_longship_1",
         "count": "1",
-        "target": "sk_war_longship"
+        "target": "sk_war_longship",
+        "quote": "They say Hemdall's heart swells whenever the longships sail out on a raid."
     },
     "sk_war_longship_2": {
         "name": "War Longship",
@@ -2392,7 +2546,8 @@ var card_dict = {
         "ability": "bond",
         "filename": "war_longship_2",
         "count": "1",
-        "target": "sk_war_longship"
+        "target": "sk_war_longship",
+        "quote": "They say Hemdall's heart swells whenever the longships sail out on a raid."
     },
     "sk_young_berserker": {
         "name": "Young Berserker",
@@ -2403,7 +2558,8 @@ var card_dict = {
         "ability": "berserker",
         "filename": "young_berserker",
         "count": "3",
-        "target": "sk_young_vildkaarl"
+        "target": "sk_young_vildkaarl",
+        "quote": "Want some?"
     },
     "sk_crach_an_craite": {
         "name": "Crach an Craite",
@@ -2413,7 +2569,8 @@ var card_dict = {
         "strength": "",
         "ability": "crach_an_craite",
         "filename": "crach_an_craite",
-        "count": "0"
+        "count": "0",
+        "quote": "A king's gotta be wise. A king's gotta command respect. A king's gotta have stones."
     },
     "sk_king_bran": {
         "name": "King Bran",
@@ -2423,7 +2580,8 @@ var card_dict = {
         "strength": "",
         "ability": "king_bran",
         "filename": "king_bran",
-        "count": "0"
+        "count": "0",
+        "quote": "No one can replace Bran. Though they're sure to try."
     },
     "sc_schirru": {
         "name": "Schirru",
@@ -2433,6 +2591,7 @@ var card_dict = {
         "strength": "8",
         "ability": "scorch_s",
         "filename": "schirru",
-        "count": "1"
+        "count": "1",
+        "quote": "Time to look death in the face."
     }
 };
