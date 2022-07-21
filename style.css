@@ -1162,23 +1162,33 @@ html {
 	position: absolute;
 	font-size: 1vw;
 	color: #fff;
-	top: 15%
+	top: 15%;
 }
 
 #select-deck {
-	left: 35%
-}
-
-#download-deck {
-	left: 57%
+	left: 33%;
 }
 
 #upload-deck {
-	left: 42%
+	left: 42%;
 }
 
 #change-faction {
-	left: 49%
+	left: 49%;
+}
+
+#download-deck {
+	left: 57%;
+}
+
+#select-op-deck {
+	left: 65%;
+}
+
+#op-deck-name {
+	left: 75%;
+	color: #cccccc;
+	font-style: italic;
 }
 
 .card-array {

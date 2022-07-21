@@ -360,7 +360,7 @@ class ControllerAI {
 		//let n = row.cards.filter(c => c.abilities[-1] === "berserker").length;
 		//let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
 		let bers_cards = row.cards.filter(c => c.abilities[-1] === "berserker");
-		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower);
+		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower,0);
 		weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
 		weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length -1;
 		return Math.max(1, weight);
@@ -409,7 +409,7 @@ class ControllerAI {
 		if (card.abilities)
 			abi = card.abilities
 		else
-			abi = card.ability.split(" ")
+			abi = card["ability"].split(" ")
 		if (abi.includes("decoy"))
 			return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 		if (abi.includes("horn")) {
@@ -457,7 +457,7 @@ class ControllerAI {
 				break;
 			case "muster":
 				let pred = c => c.target === card.target;
-				let units = card.holder.hand.getCards(pred).concat(card.holder.deck.getCards(pred));
+				let units = card.holder.hand.cards.filter(pred).concat(card.holder.deck.cards.filter(pred));
 				score *= units.length;
 				break;
 			case "scorch_c":
@@ -1768,7 +1768,7 @@ class Card {
 
 	// Sets and displays the current power of this card
 	setPower(n) {
-		if (this.name === "Decoy")
+		if (this.key === "spe_decoy")
 			return;
 		let elem = this.elem.children[0].children[0];
 		if (n !== this.power) {
@@ -2631,10 +2631,13 @@ class DeckMaker {
 		this.setLeader(start_deck.leader);
 		this.makeBank(this.faction, start_deck.cards);
 
+		this.start_op_deck;
+
 		this.change_elem = document.getElementById("change-faction");
 		this.change_elem.addEventListener("click", () => this.selectFaction(), false);
 
 		document.getElementById("select-deck").addEventListener("click", () => this.selectDeck(), false);
+		document.getElementById("select-op-deck").addEventListener("click", () => this.selectOPDeck(), false);
 		document.getElementById("download-deck").addEventListener("click", () => this.downloadDeck(), false);
 		document.getElementById("add-file").addEventListener("change", () => this.uploadDeck(), false);
 		document.getElementById("start-game").addEventListener("click", () => this.startNewGame(), false);
@@ -2916,21 +2919,24 @@ class DeckMaker {
 			cards: this.deck.filter(x => x.count > 0)
 		};
 
-		let op_deck = JSON.parse(JSON.stringify(premade_deck[randomInt(Object.keys(premade_deck).length)]));
-		op_deck.cards = op_deck.cards.map(c => ({
-			index: c[0],
-			count: c[1]
-		}));
+		if (!this.start_op_deck) {
+			this.start_op_deck = JSON.parse(JSON.stringify(premade_deck[randomInt(Object.keys(premade_deck).length)]));
+			this.start_op_deck.cards = this.start_op_deck.cards.map(c => ({
+				index: c[0],
+				count: c[1]
+			}));
 
-		let leaders = Object.keys(card_dict).map(cid => {
-			return {
-				index: cid,
-				card: card_dict[cid]
-			};
-		}).filter(c => c.card.row === "leader" && c.card.deck === op_deck.faction);
-		op_deck.leader = leaders[randomInt(leaders.length)];
+			let leaders = Object.keys(card_dict).map(cid => {
+				return {
+					index: cid,
+					card: card_dict[cid]
+				};
+			}).filter(c => c.card.row === "leader" && c.card.deck === this.start_op_deck.faction);
+			this.start_op_deck.leader = leaders[randomInt(leaders.length)];
+        }
+		
 		player_me = new Player(0, "Player 1", me_deck);
-		player_op = new Player(1, "Player 2", op_deck);
+		player_op = new Player(1, "Player 2", this.start_op_deck);
 
 		this.elem.classList.add("hide");
 		called_leader = false;
@@ -2965,10 +2971,36 @@ class DeckMaker {
 		});
 		let index = container.cards.reduce((a, c, i) => c.faction === this.faction ? i : a, 0);
 		ui.queueCarousel(container, 1, (c, i) => {
-			let change = this.setFaction(c.cards[i].faction);
-			if (!change)
-				return;
+			this.setFaction(c.cards[i].faction);
 			this.deckFromJSON(premade_deck[i],false);
+		}, () => true, false, true);
+		Carousel.curr.index = index;
+		Carousel.curr.update();
+	}
+
+	selectOPDeck() {
+		let container = new CardContainer();
+		container.cards = Object.values(premade_deck).map(d => {
+			let deck = d;
+			return {
+				abilities: [deck["faction"]],
+				name: card_dict[deck["leader"]]["name"],
+				row: "leader",
+				filename: card_dict[deck["leader"]]["filename"],
+				desc_name: deck["title"],
+				desc: "<p><b>Faction ability:</b> " + factions[deck["faction"]]["description"] + "</p><p><b>Leader ability:</b> " + ability_dict[card_dict[deck["leader"]]["ability"]].description + "</p><p><b>Deck description:</b> " + deck["description"],
+				faction: deck["faction"]
+			};
+		});
+		let index = container.cards.reduce((a, c, i) => c.faction === (this.start_op_deck ? this.start_op_deck.leader.index : "none") ? i : a, 0);
+		ui.queueCarousel(container, 1, (c, i) => {
+			this.start_op_deck = JSON.parse(JSON.stringify(premade_deck[i]));
+			this.start_op_deck.cards = this.start_op_deck.cards.map(c => ({
+				index: c[0],
+				count: c[1]
+			}));
+			this.start_op_deck.leader = { index: this.start_op_deck.leader, card: card_dict[this.start_op_deck.leader] };
+			document.getElementById("op-deck-name").innerHTML = premade_deck[i]["title"];
 		}, () => true, false, true);
 		Carousel.curr.index = index;
 		Carousel.curr.update();
