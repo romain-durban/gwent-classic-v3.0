@@ -240,6 +240,7 @@ var ability_dict = {
 			let grave = board.getRow(card, "grave", card.holder.opponent());
 			if (grave.findCards(c => c.isUnit()).length === 0)
 				return;
+
 			if (card.holder.controller instanceof ControllerAI) {
 				let newCard = card.holder.controller.medic(card, grave);
 				newCard.holder = card.holder;
@@ -272,7 +273,7 @@ var ability_dict = {
 		activated: async card => {
 			let newCard;
 			if (card.holder.controller instanceof ControllerAI) {
-				newCard = card.holder.controller.medic(card, card.holder.grave)
+				newCard = card.holder.controller.medic(card, card.holder.grave);
 			} else {
 				try {
 					Carousel.curr.exit();

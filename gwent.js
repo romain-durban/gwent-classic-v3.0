@@ -643,8 +643,8 @@ class Player {
 	async activateLeader() {
 		try {
 			Carousel.curr.cancel();
-		} catch(err) {}
-		if (!called_leader) {
+		} catch (err) {	}
+		if (this.leaderAvailable) {
 			called_leader = true;
 			await this.leader.activated[0](this.leader, this);
 			this.disableLeader();
@@ -1281,7 +1281,7 @@ class Weather extends CardContainer {
 	async addCard(card) {
 		super.addCard(card);
 		card.elem.classList.add("noclick");
-		if (card.name === "Clear Weather") {
+		if (card.key === "spe_clear") {
 			// TODO Sunlight animation
 			tocar("clear", false);
 			await sleep(500);
@@ -1847,7 +1847,7 @@ class Card {
 
 	// Returns true if card is sent to a Row's special slot
 	isSpecial() {
-		return this.name === "Commander's Horn" || this.name === "Mardroeme";
+		return this.key === "spe_horn" || this.key === "spe_mardroeme";
 	}
 
 	// Compares by type then power then name
