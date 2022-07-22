@@ -1,4 +1,8 @@
-var card_dict = {
+/*
+ * Original cards from The Witcher 3
+ */
+
+var default_cards = {
     "ntr_mysterious_elf": {
         "name": "Avallach'h",
         "id": 0,
@@ -244,47 +248,47 @@ var card_dict = {
         "count": "0",
         "quote": "Grrrrr!"
     },
-    "nr_foltest_silver": {
+    "nr_foltest_king": {
         "name": "Foltest - King of Temeria",
         "id": 22,
         "deck": "realms",
         "row": "leader",
         "strength": "",
         "ability": "foltest_king",
-        "filename": "foltest_silver",
+        "filename": "foltest_king",
         "count": "1",
         "quote": "It is natural and beautiful that a man should love his sister."
     },
-    "nr_foltest_gold": {
+    "nr_foltest_lord": {
         "name": "Foltest - Lord Commander of the North",
         "id": 23,
         "deck": "realms",
         "row": "leader",
         "strength": "",
         "ability": "foltest_lord",
-        "filename": "foltest_gold",
+        "filename": "foltest_lord",
         "count": "1",
         "quote": "Sod advisors and their schemes. I place my trust in my soldiers' blades."
     },
-    "nr_foltest_copper": {
+    "nr_foltest_siegemaster": {
         "name": "Foltest - The Siegemaster",
         "id": 24,
         "deck": "realms",
         "row": "leader",
         "strength": "",
         "ability": "foltest_siegemaster",
-        "filename": "foltest_copper",
+        "filename": "foltest_siegemaster",
         "count": "1",
         "quote": "A well-aimed ballista razes not just the enemy's wall, but his morale as well."
     },
-    "nr_foltest_bronze": {
+    "nr_foltest_steelforged": {
         "name": "Foltest - The Steel-Forged",
         "id": 25,
         "deck": "realms",
         "row": "leader",
         "strength": "",
         "ability": "foltest_steelforged",
-        "filename": "foltest_bronze",
+        "filename": "foltest_steelforged",
         "count": "1",
         "quote": "A beautiful day for battle"
     },
@@ -718,47 +722,47 @@ var card_dict = {
         "count": "1",
         "quote": "Castle won't batter itself down, now will it? Get them trebuchets rollin'!"
     },
-    "ne_emhyr_silver": {
+    "ne_emhyr_imperial": {
         "name": "Emhyr var Emreis - His Imperial Majesty",
         "id": 64,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
         "ability": "emhyr_imperial",
-        "filename": "emhyr_silver",
+        "filename": "emhyr_imperial",
         "count": "1",
         "quote": "The skies wept when my Pavetta died. They will not weep for me."
     },
-    "ne_emhyr_copper": {
+    "ne_emhyr_emperor": {
         "name": "Emhyr var Emreis - Emperor of Nilfgaard",
         "id": 65,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
         "ability": "emhyr_emperor",
-        "filename": "emhyr_copper",
+        "filename": "emhyr_emperor",
         "count": "1",
         "quote": "Your motives do not interest me. Only results."
     },
-    "ne_emhyr_bronze": {
+    "ne_emhyr_whiteflame": {
         "name": "Emhyr var Emreis - the White Flame",
         "id": 66,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
         "ability": "emhyr_whiteflame",
-        "filename": "emhyr_bronze",
+        "filename": "emhyr_whiteflame",
         "count": "1",
         "quote" :"A sword is but one of many tools at a ruler's disposal."
     },
-    "ne_emhyr_gold": {
+    "ne_emhyr_relentless": {
         "name": "Emhyr var Emreis - The Relentless",
         "id": 67,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
         "ability": "emhyr_relentless",
-        "filename": "emhyr_gold",
+        "filename": "emhyr_relentless",
         "count": "1",
         "quote": "They do not call me the Patient. Take care they do not call you the Headless."
     },
@@ -1189,47 +1193,47 @@ var card_dict = {
         "count": "1",
         "quote": "The Zerrikanian Desert used to be a lush garden. Then these came along."
     },
-    "mo_eredin_silver": {
+    "mo_eredin_commander": {
         "name": "Eredin - Commander of the Red Riders",
         "id": 106,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
         "ability": "eredin_commander",
-        "filename": "eredin_silver",
+        "filename": "eredin_commander",
         "count": "1",
         "quote": "Go on. Show me your spins, pirouettes and feints. I want to watch."
     },
-    "mo_eredin_bronze": {
+    "mo_eredin_bringer_of_death": {
         "name": "Eredin - Bringer of Death",
         "id": 107,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
         "ability": "eredin_bringer_of_death",
-        "filename": "eredin_bronze",
+        "filename": "eredin_bringer_of_death",
         "count": "1",
         "quote": "It is unavoidable."
     },
-    "mo_eredin_gold": {
+    "mo_eredin_destroyer": {
         "name": "Eredin - Destroyer of Worlds",
         "id": 108,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
         "ability": "eredin_destroyer",
-        "filename": "eredin_gold",
+        "filename": "eredin_destroyer",
         "count": "1",
         "quote": "I've long awaited this..."
     },
-    "mo_eredin_copper": {
+    "mo_eredin_king": {
         "name": "Eredin - King of the Wild Hunt",
         "id": 109,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
         "ability": "eredin_king",
-        "filename": "eredin_copper",
+        "filename": "eredin_king",
         "count": "1",
         "quote": "Have some dignity. You know how this will end."
     },
@@ -1713,47 +1717,47 @@ var card_dict = {
         "count": "1",
         "quote": "Big. Bad. Ugly. Squats in the sewers."
     },
-    "sc_francesca_silver": {
+    "sc_francesca_queen": {
         "name": "Francesca Findabair - Queen of Dol Blathanna",
         "id": 152,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
         "ability": "francesca_queen",
-        "filename": "francesca_silver",
+        "filename": "francesca_queen",
         "count": "1",
         "quote": "Ash shall fertilize the soil. By spring, the valley shall bloom once more."
     },
-    "sc_francesca_gold": {
+    "sc_francesca_beautiful": {
         "name": "Francesca Findabair - the Beautiful",
         "id": 153,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
         "ability": "francesca_beautiful",
-        "filename": "francesca_gold",
+        "filename": "francesca_beautiful",
         "count": "1",
         "quote": "The Elder Races have forgotten more than humans can ever hope to know."
     },
-    "sc_francesca_copper": {
+    "sc_francesca_daisy": {
         "name": "Francesca Findabair - Daisy of the Valley",
         "id": 154,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
         "ability": "francesca_daisy",
-        "filename": "francesca_copper",
+        "filename": "francesca_daisy",
         "count": "1",
         "quote": "Do not let my beauty distract your aim."
     },
-    "sc_francesca_bronze": {
+    "sc_francesca_pureblood": {
         "name": "Francesca Findabair - Pureblood Elf",
         "id": 155,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
         "ability": "francesca_pureblood",
-        "filename": "francesca_bronze",
+        "filename": "francesca_pureblood",
         "count": "1",
         "quote": "To live in peave, we first must kill. This is human oppression's cruel finale."
     },
@@ -2595,3 +2599,293 @@ var card_dict = {
         "quote": "Time to look death in the face."
     }
 };
+
+/*
+ * Custom new cards
+ */
+
+
+var ext_nr_cards = {
+    "nr_foltest_pride": {
+        "name": "Foltest's Pride",
+        "id": 1001,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "9",
+        "ability": "",
+        "filename": "foltest_pride",
+        "count": "1",
+        "quote": "As King Foltest likes to say, it's not size that count, but whether it gets the job done."
+    },
+    "nr_temerian_soldier_1": {
+        "name": "Temerian Foot Solider",
+        "id": 1002,
+        "deck": "realms",
+        "row": "close",
+        "strength": "2",
+        "ability": "bond",
+        "filename": "temerian_soldier_1",
+        "count": "1",
+        "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
+    },
+    "nr_temerian_soldier_2": {
+        "name": "Temerian Foot Solider",
+        "id": 1003,
+        "deck": "realms",
+        "row": "close",
+        "strength": "2",
+        "ability": "bond",
+        "filename": "temerian_soldier_2",
+        "count": "1",
+        "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
+    },
+    "nr_temerian_soldier_3": {
+        "name": "Temerian Foot Solider",
+        "id": 1004,
+        "deck": "realms",
+        "row": "close",
+        "strength": "2",
+        "ability": "bond",
+        "filename": "temerian_soldier_3",
+        "count": "1",
+        "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
+    },
+    "nr_reaver_scout": {
+        "name": "Reaver Scout",
+        "id": 1005,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "spy",
+        "filename": "reaver_scout",
+        "count": "1",
+        "quote": "Haven't had much luck with monsters of late, so we enlisted."
+    },
+    "nr_temerian_drummer": {
+        "name": "Temerian Drummer",
+        "id": 1006,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "temerian_drummer",
+        "count": "1",
+        "quote": "Not the career he had in mind when he told mummy he wanted to be a musician."
+    },
+    "nr_stripes_scout": {
+        "name": "Blue Stripes Scout",
+        "id": 1007,
+        "deck": "realms",
+        "row": "close",
+        "strength": "5",
+        "ability": "scorch",
+        "filename": "stripes_scout",
+        "count": "1",
+        "quote": "Blue Stripes and Scoia'Tael are similar in one regard - hatred fuels both."
+    },
+    "nr_tridam_infantry": {
+        "name": "Tridam Infantry",
+        "id": 1008,
+        "deck": "realms",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "tridam_infantry",
+        "count": "1",
+        "quote": "Soldiers loyal to the old baron of Tridam left the city with Falibor..."
+    },
+    "nr_vandergrift": {
+        "name": "Vandergrift",
+        "id": 1009,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "vandergrift",
+        "count": "1",
+        "quote": "What has that witch done?!"
+    },
+    "nr_kaedweni_siege_support_1": {
+        "name": "Kaedweni Siege Support",
+        "id": 1010,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "2",
+        "ability": "morale",
+        "filename": "kaedweni_siege_support_1",
+        "count": "1",
+        "quote": "I never miss twice."
+    },
+    "nr_kaedweni_siege_support_2": {
+        "name": "Kaedweni Siege Support",
+        "id": 1011,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "2",
+        "ability": "morale",
+        "filename": "kaedweni_siege_support_2",
+        "count": "1",
+        "quote": "I never miss twice."
+    },
+    "nr_henselt": {
+        "name": "Henselt",
+        "id": 1012,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "henselt",
+        "count": "1",
+        "quote": "King Henselt did not look like a thief, but, with all due respect, that's really what he was."
+    },
+    "nr_kaedweni_reinforcement": {
+        "name": "Kaedweni Reinforcement",
+        "id": 1013,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "medic",
+        "filename": "kaedweni_reinforcement",
+        "count": "1",
+        "quote": "Sound the retreat! Regroup! And wait for reinforcements!"
+    },
+    "nr_reinforced_ballista_1": {
+        "name": "Reinforced Ballista",
+        "id": 1014,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "reinforced_ballista_1",
+        "count": "1",
+        "quote": "Never manages to hit the same place twice, which might constitute a real problem."
+    },
+    "nr_reinforced_ballista_2": {
+        "name": "Reinforced Ballista",
+        "id": 1015,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "reinforced_ballista_2",
+        "count": "1",
+        "quote": "Never manages to hit the same place twice, which might constitute a real problem."
+    },
+    "nr_reinforced_trebuchet_1": {
+        "name": "Reinforced Trebuchet",
+        "id": 1016,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "reinforced_trebuchet_1",
+        "count": "1",
+        "quote": "Feel that? The earth trembles each time Big Bertha loose a stone."
+    },
+    "nr_reinforced_trebuchet_2": {
+        "name": "Reinforced Trebuchet",
+        "id": 1017,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "reinforced_trebuchet_2",
+        "count": "1",
+        "quote": "Feel that? The earth trembles each time Big Bertha loose a stone."
+    },
+    "nr_ban_ard_tutor": {
+        "name": "Ban Ard Tutor",
+        "id": 1018,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "ban_ard_tutor",
+        "count": "1",
+        "quote": "Ban Ard deserved a mention, for it is famous for the school of young adepts of the magical arts."
+    },
+    "nr_demavend": {
+        "name": "Demavend",
+        "id": 1019,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "demavend",
+        "count": "1",
+        "quote": "War's crux lies in winning, not in being persistent."
+    },
+    "nr_kaedweni_knight": {
+        "name": "Kaedweni Knight",
+        "id": 1020,
+        "deck": "realms",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "kaedweni_knight",
+        "count": "1",
+        "quote": "Not every man in the Kaedweni army supports his king's politics..."
+    },
+    "nr_dun_banner_heavy_cavalry_1": {
+        "name": "Dun Banner Heavy Cavalry",
+        "id": 1021,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "dun_banner_heavy_cavalry_1",
+        "count": "1",
+        "quote": "Always wondered... how the blazes do those lads handle nature's call...?"
+    },
+    "nr_dun_banner_heavy_cavalry_2": {
+        "name": "Dun Banner Heavy Cavalry",
+        "id": 1022,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "dun_banner_heavy_cavalry_2",
+        "count": "1",
+        "quote": "Always wondered... how the blazes do those lads handle nature's call...?"
+    },
+    "nr_odrin": {
+        "name": "Odrin",
+        "id": 1023,
+        "deck": "realms",
+        "row": "agile",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "odrin",
+        "count": "1",
+        "quote": "Drinkin' without Odrin is like rowin' without a paddle."
+    },
+    "nr_seltkirk": {
+        "name": "Seltkirk of Gulet",
+        "id": 1024,
+        "deck": "realms",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "seltkirk",
+        "count": "1",
+        "quote": "Seltkirk of Gulet was Demavend champion, known as the invincible white knight."
+    },
+    "nr_kaedweni_sergeant": {
+        "name": "Kaedweni Sergeant",
+        "id": 1025,
+        "deck": "realms",
+        "row": "siege",
+        "strength": "5",
+        "ability": "morale",
+        "filename": "kaedweni_sergeant",
+        "count": "1",
+        "quote": "Forward, you sorry sods! Or you'll see the Nilfgaardians are the least of your worries!"
+    }
+};
+
+/*
+ * Selecting decks to use
+ */
+var card_dict = default_cards;
+
+card_dict = Object.assign({}, card_dict, ext_nr_cards);

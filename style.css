@@ -385,7 +385,7 @@ html {
 }
 
 .card-description>p {
-	top: 25%;
+	top: 16%;
 	left: 5%;
 	width: 90%;
 	height: 50%;
@@ -1166,27 +1166,27 @@ html {
 }
 
 #select-deck {
-	left: 33%;
+	left: 30%;
 }
 
 #upload-deck {
-	left: 42%;
+	left: 39%;
 }
 
 #change-faction {
-	left: 49%;
+	left: 46%;
 }
 
 #download-deck {
-	left: 57%;
+	left: 54%;
 }
 
 #select-op-deck {
-	left: 65%;
+	left: 62%;
 }
 
 #op-deck-name {
-	left: 75%;
+	left: 72%;
 	color: #cccccc;
 	font-style: italic;
 }
@@ -1232,7 +1232,7 @@ html {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top;
-	margin-left: -0.1vw;
+	margin-left: -0.05vw;
 }
 
 .card-array .card-lg .card-large-faction-band {

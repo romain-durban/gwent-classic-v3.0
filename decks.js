@@ -1,8 +1,8 @@
-let premade_deck = [
+let default_decks = [
     {
         "title": "Default Northern Realms Deck 1",
         "description": "TBD",
-        "leader": "nr_foltest_copper",
+        "leader": "nr_foltest_siegemaster",
         "faction": "realms",
         "cards": [
             ["spe_horn", 1],
@@ -43,7 +43,7 @@ let premade_deck = [
     {
         "title": "Default Northern Realms Deck 2",
         "description": "TBD",
-        "leader": "nr_foltest_copper",
+        "leader": "nr_foltest_siegemaster",
         "faction": "realms",
         "cards": [
             ["spe_horn", 1],
@@ -87,7 +87,7 @@ let premade_deck = [
     {
         "title": "Default Nilfgaard Deck 1",
         "description": "TBD",
-        "leader": "ne_emhyr_gold",
+        "leader": "ne_emhyr_relentless",
         "faction": "nilfgaard",
         "cards": [
             ["spe_horn", 1],
@@ -128,7 +128,7 @@ let premade_deck = [
     {
         "title": "Default Nilfgaard Deck 2",
         "description": "TBD",
-        "leader": "ne_emhyr_bronze",
+        "leader": "ne_emhyr_whiteflame",
         "faction": "nilfgaard",
         "cards": [
             ["spe_horn", 1],
@@ -169,7 +169,7 @@ let premade_deck = [
     {
         "title": "Default Monster Deck 1",
         "description": "TBD",
-        "leader": "mo_eredin_silver",
+        "leader": "mo_eredin_commander",
         "faction": "monsters",
         "cards": [
             ["spe_horn", 1],
@@ -211,7 +211,7 @@ let premade_deck = [
     {
         "title": "Default Monster Deck 2",
         "description": "TBD",
-        "leader": "mo_eredin_bronze",
+        "leader": "mo_eredin_bringer_of_death",
         "faction": "monsters",
         "cards": [
             ["spe_horn", 1],
@@ -245,7 +245,7 @@ let premade_deck = [
     {
         "title": "Default Scoia'Tael Deck 1",
         "description": "TBD",
-        "leader": "sc_francesca_copper",
+        "leader": "sc_francesca_daisy",
         "faction": "scoiatael",
         "cards": [
             ["spe_horn", 1],
@@ -381,3 +381,87 @@ let premade_deck = [
         ]
     }
 ];
+
+/*
+ * Custom decks with custom cards
+ */
+
+var custom_decks = [
+    {
+        "title": "Northern Realms - Temeria",
+        "description": "Northern Realms deck focusing on Temerian cards - Playstyle: Tight Bond, Spy",
+        "leader": "nr_foltest_lord",
+        "faction": "realms",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_decoy", 1],
+            ["spe_fog", 1],
+            ["spe_scorch", 1],
+            ["nr_esterad", 1],
+            ["nr_natalis", 1],
+            ["nr_philippa", 1],
+            ["nr_vernon", 1],
+            ["nr_ballista", 1],
+            ["nr_siege_tower", 1],
+            ["nr_trebuchet_1", 1],
+            ["nr_crinfrid_1", 1],
+            ["nr_crinfrid_2", 1],
+            ["nr_crinfrid_3", 1],
+            ["nr_blue_stripes_1", 1],
+            ["nr_blue_stripes_2", 1],
+            ["nr_blue_stripes_3", 1],
+            ["nr_dijkstra", 1],
+            ["nr_thaler", 1],
+            ["nr_tridam_infantry", 1],
+            ["nr_temerian_soldier_1", 1],
+            ["nr_temerian_soldier_2", 1],
+            ["nr_temerian_soldier_3", 1],
+            ["nr_stripes_scout", 1],
+            ["nr_temerian_drummer", 1],
+            ["nr_foltest_pride", 1],
+            ["nr_reaver_scout", 1]
+        ]
+    },
+    {
+        "title": "Northern Realms - Kaedwen & Aedirn",
+        "description": "Northern Realms deck focusing on Kaedwen and Aedirn cards - Playstyle: Siege units, Morale boost, Tight Bond",
+        "leader": "nr_foltest_siegemaster",
+        "faction": "realms",
+        "cards": [
+            ["spe_horn", 2],
+            ["spe_decoy", 2],
+            ["spe_fog", 1],
+            ["spe_clear", 1],
+            ["spe_scorch", 2],
+            ["nr_stennis", 1],
+            ["nr_vandergrift", 1],
+            ["nr_kaedweni_siege_support_1", 1],
+            ["nr_kaedweni_siege_support_2", 1],
+            ["nr_catapult_1", 1],
+            ["nr_catapult_2", 1],
+            ["nr_henselt", 1],
+            ["nr_kaedweni_reinforcement", 1],
+            ["nr_reinforced_ballista_1", 1],
+            ["nr_reinforced_ballista_2", 1],
+            ["nr_reinforced_trebuchet_1", 1],
+            ["nr_reinforced_trebuchet_2", 1],
+            ["nr_banner_nurse", 1],
+            ["nr_ban_ard_tutor", 1],
+            ["nr_demavend", 1],
+            ["nr_kaedweni_knight", 1],
+            ["nr_dun_banner_heavy_cavalry_1", 1],
+            ["nr_dun_banner_heavy_cavalry_2", 1],
+            ["nr_odrin", 1],
+            ["nr_seltkirk", 1],
+            ["nr_kaedweni_sergeant", 1],
+            ["nr_dethmold", 1]
+        ]
+    }
+];
+
+/*
+ * 
+ */
+
+var premade_deck = default_decks;
+premade_deck = premade_deck.concat(custom_decks);

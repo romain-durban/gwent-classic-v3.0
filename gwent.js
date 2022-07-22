@@ -47,7 +47,6 @@ class ControllerAI {
 			}
 			await player.passRound();
 		} else {
-			weights.sort((a, b) => b.weight - a.weight);
 			let rand = randomInt(weightTotal);
 			for (var i = 0; i < weights.length; ++i) {
 				rand -= weights[i].weight;
@@ -900,8 +899,8 @@ class Grave extends CardContainer {
 	// Override
 	removeCardElement(card, index) {
 		card.elem.style.left = "";
-		super.removeCardElement(card, index);
 		for (let i = index; i < this.cards.length; ++i) this.setCardOffset(this.cards[i], i);
+		super.removeCardElement(card, index);
 	}
 
 	// Offsets the card element in the deck
@@ -1455,6 +1454,7 @@ class Game {
 		this.customize_elem.addEventListener("click", () => this.returnToCustomization(), false);
 		this.replay_elem.addEventListener("click", () => this.restartGame(), false);
 		this.reset();
+		this.randomOPDeck = true;
 	}
 
 	reset() {
@@ -1680,7 +1680,7 @@ class Game {
 		document.getElementById("deck-customization").classList.remove("hide");
 	}
 
-	// Restarts the last game with the dame decks
+	// Restarts the last game with the same decks
 	restartGame() {
 		iniciarMusica();
 		limpar();
@@ -2632,6 +2632,8 @@ class DeckMaker {
 		this.makeBank(this.faction, start_deck.cards);
 
 		this.start_op_deck;
+		this.me_deck_index = 0;
+		this.op_deck_index = 0;
 
 		this.change_elem = document.getElementById("change-faction");
 		this.change_elem.addEventListener("click", () => this.selectFaction(), false);
@@ -2919,7 +2921,7 @@ class DeckMaker {
 			cards: this.deck.filter(x => x.count > 0)
 		};
 
-		if (!this.start_op_deck) {
+		if (game.randomOPDeck || !this.start_op_deck) {
 			this.start_op_deck = JSON.parse(JSON.stringify(premade_deck[randomInt(Object.keys(premade_deck).length)]));
 			this.start_op_deck.cards = this.start_op_deck.cards.map(c => ({
 				index: c[0],
@@ -2971,16 +2973,19 @@ class DeckMaker {
 		});
 		let index = container.cards.reduce((a, c, i) => c.faction === this.faction ? i : a, 0);
 		ui.queueCarousel(container, 1, (c, i) => {
+			this.me_deck_index = i;
 			this.setFaction(c.cards[i].faction);
 			this.deckFromJSON(premade_deck[i],false);
 		}, () => true, false, true);
-		Carousel.curr.index = index;
+		Carousel.curr.index = this.me_deck_index;
 		Carousel.curr.update();
 	}
 
 	selectOPDeck() {
 		let container = new CardContainer();
-		container.cards = Object.values(premade_deck).map(d => {
+		// Adding first the option to select a random deck
+		container.cards = [{ abilities: [], name: "Random deck", row: "faction", filename: "random", desc_name: "Random deck", desc: "A random deck from the pool that will change every game.", faction: "faction" }];
+		container.cards = container.cards.concat(Object.values(premade_deck).map(d => {
 			let deck = d;
 			return {
 				abilities: [deck["faction"]],
@@ -2991,18 +2996,24 @@ class DeckMaker {
 				desc: "<p><b>Faction ability:</b> " + factions[deck["faction"]]["description"] + "</p><p><b>Leader ability:</b> " + ability_dict[card_dict[deck["leader"]]["ability"]].description + "</p><p><b>Deck description:</b> " + deck["description"],
 				faction: deck["faction"]
 			};
-		});
-		let index = container.cards.reduce((a, c, i) => c.faction === (this.start_op_deck ? this.start_op_deck.leader.index : "none") ? i : a, 0);
+		}));
 		ui.queueCarousel(container, 1, (c, i) => {
-			this.start_op_deck = JSON.parse(JSON.stringify(premade_deck[i]));
-			this.start_op_deck.cards = this.start_op_deck.cards.map(c => ({
-				index: c[0],
-				count: c[1]
-			}));
-			this.start_op_deck.leader = { index: this.start_op_deck.leader, card: card_dict[this.start_op_deck.leader] };
-			document.getElementById("op-deck-name").innerHTML = premade_deck[i]["title"];
+			this.op_deck_index = i;
+			if (i === 0) {
+				game.randomOPDeck = true;
+				document.getElementById("op-deck-name").innerHTML = "Random deck";
+			} else {
+				this.start_op_deck = JSON.parse(JSON.stringify(premade_deck[i-1]));
+				this.start_op_deck.cards = this.start_op_deck.cards.map(c => ({
+					index: c[0],
+					count: c[1]
+				}));
+				this.start_op_deck.leader = { index: this.start_op_deck.leader, card: card_dict[this.start_op_deck.leader] };
+				document.getElementById("op-deck-name").innerHTML = premade_deck[i-1]["title"];
+				game.randomOPDeck = false;
+			}
 		}, () => true, false, true);
-		Carousel.curr.index = index;
+		Carousel.curr.index = this.op_deck_index;
 		Carousel.curr.update();
     }
 
