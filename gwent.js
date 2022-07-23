@@ -173,13 +173,13 @@ class ControllerAI {
 
 	// Tells the Player that this object controls to play a card
 	async playCard(c, max, data) {
-		if (c.name === "Commander's Horn")
+		if (c.key === "spe_horn")
 			await this.horn(c);
-		else if (c.name === "Mardroeme")
+		else if (c.key === "spe_mardroeme")
 			await this.mardroeme(c);
-		else if (c.name === "Decoy")
+		else if (c.key === "spe_decoy")
 			await this.decoy(c, max, data);
-		else if (c.name === "Scorch")
+		else if (c.key === "spe_scorch")
 			await this.scorch(c, max, data);
 		else
 			await this.player.playCard(c);
@@ -187,7 +187,7 @@ class ControllerAI {
 
 	// Plays a Commander's Horn to the most beneficial row. Assumes at least one viable row.
 	async horn(card) {
-		let rows = [0, 1, 2].map(i => board.row[i]).filter(r => r.special === null);
+		let rows = [0, 1, 2].map(i => board.row[i]).filter(r => r.special.isEmpty());
 		let max_row;
 		let max = 0;
 		for (let i = 0; i < rows.length; ++i) {
@@ -306,9 +306,9 @@ class ControllerAI {
 		return score;
 	}
 
-	// Calculates a weight for how likely the conroller will use horn on this row
+	// Calculates a weight for how likely the controller will use horn on this row
 	weightHornRow(card, row) {
-		return row.special !== null ? 0 : this.weightRowChange(card, row);
+		return row.special.containsCardByKey("spe_horn") ? 0 : this.weightRowChange(card, row);
 	}
 
 	// Calculates weight for playing a card on a given row, min 0
@@ -350,7 +350,7 @@ class ControllerAI {
 
 	// Calculates the weight for playing a mardroeme card
 	weightMardroemeRow(card, row) {
-		if (card.key === "spe_mardroeme" && row.special !== null)
+		if (card.key === "spe_mardroeme" && row.special.containsCardByKey("spe_mardroeme"))
 			return 0;
 		let ermion = card.holder.hand.cards.filter(c => c.key === "sk_ermion").length > 0;
 		if (ermion && card.key !== "sk_ermion" && row === board.row[1])
@@ -405,14 +405,19 @@ class ControllerAI {
 	// Assigns a weights for how likely the controller with play a card from its hand
 	weightCard(card, max, data) {
 		let abi
-		if (card.abilities)
-			abi = card.abilities
-		else
-			abi = card["ability"].split(" ")
+		if (card.abilities) {
+			abi = card.abilities;
+		} else if (card["ability"]) {
+			abi = card["ability"].split(" ");
+		} else {
+			abi = [];
+			console.log("Missing abilities for card:");
+			console.log(card);
+		}
 		if (abi.includes("decoy"))
 			return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 		if (abi.includes("horn")) {
-			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => r.special === null);
+			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn"));
 			if (!rows.length)
 				return 0;
 			rows = rows.map(r => this.weightHornRow(card, r));
@@ -731,6 +736,11 @@ class CardContainer {
 		this.cards = [];
 	}
 
+	// Indicates whether or not this container contains any card
+	isEmpty() {
+		return this.cards.length === 0;
+	}
+
 	// Returns the first card that satisfies the predcicate. Does not modify container.
 	findCard(predicate) {
 		for (let i = this.cards.length - 1; i >= 0; --i)
@@ -742,6 +752,11 @@ class CardContainer {
 	findCards(predicate) {
 		return this.cards.filter(predicate);
 	}
+
+	// Indicates whether or not the card with given Key can be found in container
+	containsCardByKey(key) {
+		return (this.findCards(c => c.key === key).length) > 0; 
+    }
 
 	// Returns a list of up to n cards that satisfy the predicate. Does not modify container.
 	findCardsRandom(predicate, n) {
@@ -857,7 +872,7 @@ class CardContainer {
 		alteraClicavel(this, true);
 	}
 
-	// Disallows teh row to be clicked
+	// Disallows the row to be clicked
 	clearSelectable() {
 		this.elem.classList.remove("row-selectable");
 		alteraClicavel(this, false);
@@ -907,6 +922,39 @@ class Grave extends CardContainer {
 	setCardOffset(card, n) {
 		card.elem.style.left = -0.03 * n + "vw";
 	}
+}
+
+// Contians all special cards for a given row
+class RowSpecial extends CardContainer {
+	constructor(elem,row) {
+		super(elem)
+		this.row = row;
+	}
+
+	// Override
+	addCard(card) {
+		this.setCardOffset(card, this.cards.length);
+		super.addCard(card, this.cards.length);
+	}
+
+	// Override
+	removeCard(card) {
+		let n = isNumber(card) ? card : this.cards.indexOf(card);
+		return super.removeCard(card, n);
+	}
+
+	// Override
+	removeCardElement(card, index) {
+		card.elem.style.left = "";
+		for (let i = index; i < this.cards.length; ++i) this.setCardOffset(this.cards[i], i);
+		super.removeCardElement(card, index);
+	}
+
+	// Offsets the card element in the deck
+	setCardOffset(card, n) {
+		card.elem.style.left = (1+n) + "vw";
+	}
+
 }
 
 // Contains a randomized set of cards to be drawn from
@@ -1036,8 +1084,7 @@ class Row extends CardContainer {
 	constructor(elem) {
 		super(elem.getElementsByClassName("row-cards")[0]);
 		this.elem_parent = elem;
-		this.elem_special = elem.getElementsByClassName("row-special")[0];
-		this.special = null;
+		this.special = new RowSpecial(elem.getElementsByClassName("row-special")[0],this);
 		this.total = 0;
 		this.effects = {
 			weather: false,
@@ -1066,14 +1113,13 @@ class Row extends CardContainer {
 		window.addEventListener("keyup", function (e) {
 			if (e.keyCode == 13) may_act_card = true;
 		});
-		this.elem_special.addEventListener("click", () => ui.selectRow(this), false, true);
+		this.special.elem.addEventListener("click", () => ui.selectRow(this), false, true);
 	}
 
 	// Override
 	async addCard(card) {
 		if (card.isSpecial()) {
-			this.special = card;
-			this.elem_special.appendChild(card.elem);
+			this.special.addCard(card);
 		} else {
 			let index = this.addCardSorted(card);
 			this.addCardElement(card, index);
@@ -1089,10 +1135,15 @@ class Row extends CardContainer {
 
 	// Override
 	removeCard(card) {
-		card = isNumber(card) ? card === -1 ? this.special : this.cards[card] : card;
+		// TODO: This case should no longer happen
+		if (isNumber(card) && card === -1) {
+			card = this.special.cards[0];
+			this.special.reset();
+			return card;
+        }
+		card = isNumber(card) ? this.cards[card] : card;
 		if (card.isSpecial()) {
-			this.special = null;
-			this.elem_special.removeChild(card.elem);
+			this.special.removeCard(card);
 		} else {
 			super.removeCard(card);
 			card.resetPower();
@@ -1192,7 +1243,7 @@ class Row extends CardContainer {
 
 	// Applies a temporary leader horn affect that is removed at the end of the round
 	async leaderHorn() {
-		if (this.special !== null)
+		if (this.special.containsCardByKey("spe_horn"))
 			return;
 		let horn = new Card("spe_horn", card_dict["spe_horn"], null);
 		await this.addCard(horn);
@@ -1210,8 +1261,7 @@ class Row extends CardContainer {
 
 	// Removes all cards and effects from this row
 	clear() {
-		if (this.special != null)
-			board.toGrave(this.special, this);
+		this.special.cards.filter(c => !c.noRemove).forEach(c => board.toGrave(c, this));
 		this.cards.filter(c => !c.noRemove).forEach(c => board.toGrave(c, this));
 	}
 
@@ -1233,10 +1283,7 @@ class Row extends CardContainer {
 	// Override
 	reset() {
 		super.reset();
-		while (this.special)
-			this.removeCard(this.special);
-		while (this.elem_special.firstChild)
-			this.elem_special.removeChild(this.elem_speical.firstChild);
+		this.special.reset();
 		this.total = 0;
 		this.effects = {
 			weather: false,
@@ -1405,6 +1452,10 @@ class Board {
 	getRow(card, row_name, player) {
 		player = player ? player : card ? card.holder : player_me;
 		let isMe = player === player_me;
+		if (!card.abilities) {
+			console.log("Abilities missing for card:");
+			console.log(card);
+        }
 		let isSpy = card.abilities.includes("spy");
 		switch (row_name) {
 			case "weather":
@@ -2081,7 +2132,7 @@ class UI {
 		if (pCard === null || card.holder.hand.cards.includes(card)) {
 			this.setSelectable(null, false);
 			this.showPreview(card);
-		} else if (pCard.name === "Decoy") {
+		} else if (pCard.key === "spe_decoy") {
 			this.hidePreview(card);
 			this.enablePlayer(false);
 			board.toHand(card, row);
@@ -2097,16 +2148,16 @@ class UI {
 			await ui.viewCardsInContainer(row);
 			return;
 		}
-		if (this.previewCard.name === "Decoy")
+		if (this.previewCard.key === "spe_decoy")
 			return;
 		let card = this.previewCard;
 		let holder = card.holder;
 		this.hidePreview();
 		this.enablePlayer(false);
-		if (card.name === "Scorch") {
+		if (card.key === "spe_scorch") {
 			this.hidePreview();
 			await ability_dict["scorch"].activated(card);
-		} else if (card.name === "Decoy") {
+		} else if (card.key === "spe_decoy") {
 			return;
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
@@ -2303,10 +2354,9 @@ class UI {
 			for (let row of board.row) {
 				row.elem.classList.remove("row-selectable");
 				row.elem.classList.remove("noclick");
-				row.elem_special.classList.remove("row-selectable");
-				row.elem_special.classList.remove("noclick");
+				row.special.elem.classList.remove("row-selectable");
+				row.special.elem.classList.remove("noclick");
 				alteraClicavel(row, false);
-				row.elem.classList.add("card-selectable");
 
 				for (let card of row.cards) {
 					card.elem.classList.add("noclick");
@@ -2320,7 +2370,7 @@ class UI {
 		if (card.faction === "weather") {
 			for (let row of board.row) {
 				row.elem.classList.add("noclick");
-				row.elem_special.classList.add("noclick");
+				row.special.elem.classList.add("noclick");
 			}
 			weather.elem.classList.add("row-selectable");
 			carta_c = true;
@@ -2336,10 +2386,10 @@ class UI {
 
 		weather.elem.classList.add("noclick");
 
-		if (card.name === "Scorch") {
+		if (card.key === "spe_scorch") {
 			for (let r of board.row) {
 				r.elem.classList.add("row-selectable");
-				r.elem_special.classList.add("row-selectable");
+				r.special.elem.classList.add("row-selectable");
 				alteraClicavel(r, true);
 			}
 			return;
@@ -2347,26 +2397,24 @@ class UI {
 		if (card.isSpecial()) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
-				if (i < 3 || r.special !== null) {
+				if (i < 3 || r.special.containsCardByKey(card.key)) {
 					r.elem.classList.add("noclick");
-					r.elem_special.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
 				} else {
-					r.elem_special.classList.add("row-selectable");
+					r.special.elem.classList.add("row-selectable");
 					fileira_clicavel = null;
 				}
 			}
 			return;
 		}
 
-		board.row.forEach(r => r.elem_special.classList.add("noclick"));
-
-		if (card.name === "Decoy") {
+		if (card.key === "spe_decoy") {
 			for (let i = 0; i < 6; ++i) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());
 				if (i < 3 || units.length === 0) {
 					r.elem.classList.add("noclick");
-					r.elem_special.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
 					r.elem.classList.remove("card-selectable");
 				} else {
 					r.elem.classList.add("row-selectable");
@@ -2883,13 +2931,16 @@ class DeckMaker {
 	// Adds a card to container (Bank or deck)
 	add(index, cards) {
 		let id = cards[index];
-		id.elem.children[0].innerHTML = ++id.count;
+		id.elem.getElementsByClassName("card-count")[0].innerHTML = ++id.count;
+		id.elem.getElementsByClassName("card-count")[0].classList.remove("hide");
 	}
 
 	// Removes a card from container (bank or deck)
 	remove(index, cards) {
 		let id = cards[index];
-		id.elem.children[0].innerHTML = --id.count;
+		id.elem.getElementsByClassName("card-count")[0].innerHTML = --id.count;
+		if (id.count === 0)
+			id.elem.getElementsByClassName("card-count")[0].classList.add("hide");
 	}
 
 	// Removes all elements in the bank and deck
@@ -3168,7 +3219,8 @@ async function translateTo(card, container_source, container_dest) {
 		if (dest instanceof HandAI)
 			return dest.hidden_elem;
 		if (card.isSpecial() && dest instanceof Row)
-			return dest.elem_special;
+			//return dest.elem_special;
+			return dest.special.elem;
 		if (dest instanceof Row || dest instanceof Hand || dest instanceof Weather) {
 			if (dest.cards.length === 0)
 				return dest.elem;
@@ -3311,11 +3363,12 @@ function getPreviewElem(elem, card, nb = 0) {
 		return elem;
     }
 
-	if (nb > 0) {
-		let count = document.createElement("div");
-		count.innerHTML = nb;
-		count.classList.add("card-count");
-		cardbg.appendChild(count);
+	let count = document.createElement("div");
+	count.innerHTML = nb;
+	count.classList.add("card-count");
+	cardbg.appendChild(count);
+	if (nb == 0) {
+		count.classList.add("hide");
 	}
 
 	let power = document.createElement("div");

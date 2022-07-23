@@ -188,7 +188,7 @@ var ability_dict = {
 			tocar("clear", false);
 			await weather.clearWeather()
 		},
-		weight: (card, ai) =>  ai.weightCard( {row:"weather", name:"Clear Weather"} )
+		weight: (card, ai) =>  ai.weightCard( card_dict["spe_clear"] )
 	},
 	foltest_siegemaster: {
 		description: "Doubles the strength of all your Siege units (unless a Commander's Horn is also present on that row).",

@@ -1071,6 +1071,25 @@ html {
 	pointer-events: none
 }
 
+/*
+	Special cards cardpile
+*/
+
+.field-row .cardpile {
+	width: 14.25%;
+	height: 100%;
+	left: 5.1%;
+	margin-bottom: -12.65%;
+	flex: none;
+	position: relative;
+}
+
+.field-row .cardpile .special {
+	top: -1.7vw;
+	margin-top: 2.2vw;
+	position: absolute;
+}
+
 #grave-op {
 	top: 6.5%;
 	left: 6.5%
