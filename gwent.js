@@ -594,6 +594,11 @@ class Player {
 		await this.playCardAction(card, async () => await ability_dict["scorch"].activated(card));
 	}
 
+	// Plays a Slaughter of Cintra card
+	async playSlaughterCintra(card) {
+		await this.playCardAction(card, async () => await ability_dict["cintra_slaughter"].activated(card)); 
+	}
+
 	// Plays a card to a specific row
 	async playCardToRow(card, row) {
 		await this.playCardAction(card, async () => await board.moveTo(card, row, this.hand));
@@ -2157,6 +2162,9 @@ class UI {
 		if (card.key === "spe_scorch") {
 			this.hidePreview();
 			await ability_dict["scorch"].activated(card);
+		} else if (card.key.startsWith("spe_slaughther_cintra_")) {
+			this.hidePreview();
+			await ability_dict["cintra_slaughter"].activated(card);
 		} else if (card.key === "spe_decoy") {
 			return;
 		} else {
@@ -2386,7 +2394,7 @@ class UI {
 
 		weather.elem.classList.add("noclick");
 
-		if (card.key === "spe_scorch") {
+		if (card.key === "spe_scorch" || card.key.startsWith("spe_slaughther_cintra_")) {
 			for (let r of board.row) {
 				r.elem.classList.add("row-selectable");
 				r.special.elem.classList.add("row-selectable");

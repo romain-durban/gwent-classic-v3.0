@@ -157,7 +157,7 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
-			let bdf = new Card("ntr_chort",card_dict["ntr_chort"], card.holder);
+			let bdf = new Card(card.target, card_dict[card.target], card.holder);
 			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
 			await board.addCardToRow(bdf, "close", card.holder);
 		},
@@ -173,6 +173,24 @@ var ability_dict = {
 		},
 		weight: () => 50
 	},
+	cintra_slaughter: {
+		name: "Slaughter of Cintra",
+		description: "When using the Slaugther of Cintra special card, destroy all units on your side of the board having the Slaughter of Cintra ability then draw as many cards as units destroyed.",
+		activated: async card => {
+			let targets = board.row.map(r => [r, r.findCards(c => c.abilities.includes("cintra_slaughter")).filter(c => c.holder === card.holder)]);
+			let cards = targets.reduce((a, p) => a.concat(p[1].map(u => [p[0], u])), []);
+			let nb_draw = cards.length;
+			await Promise.all(cards.map(async u => await u[1].animate("scorch", true, false)));
+			await Promise.all(cards.map(async u => await board.toGrave(u[1], u[0])));
+			await board.toGrave(card, card.holder.hand);
+
+			for (let i = 0; i < nb_draw; i++) {
+				if (card.holder.deck.cards.length > 0)
+					await card.holder.deck.draw(card.holder.hand);
+			}
+		},
+		weight: () => 30
+    },
 	foltest_king: {
 		description: "Pick an Impenetrable Fog card from your deck and play it instantly.",
 		activated: async card => {
@@ -417,5 +435,25 @@ var ability_dict = {
 	king_bran: {
 		description: "Units only lose half their Strength in bad weather conditions.",
 		placed: card => board.row.filter((c,i) => card.holder === player_me ^ i<3).forEach(r => r.halfWeather = true)
+	}	,
+	queen_calanthe: {
+		description: "Play a unit then draw a card from you deck.",
+		activated: async card => {
+			let units = card.holder.hand.cards.filter(c => c.isUnit());
+			if (units.length === 0)
+				return;
+			let wrapper = { card: null };
+			await ui.queueCarousel(board.getRow(card, "hand", card.holder), 1, (c, i) => wrapper.card = c.cards[i], c => c.isUnit(), true);
+			wrapper.card.autoplay();
+			card.holder.hand.removeCard(wrapper.card);
+			if (card.holder.deck.cards.length > 0)
+				await card.holder.deck.draw(card.holder.hand);
+		},
+		weight: (card, ai) => {
+			let units = card.holder.hand.cards.filter(c => c.isUnit());
+			if (units.length === 0)
+				return 0;
+			return 15;
+        }
 	}
 };
