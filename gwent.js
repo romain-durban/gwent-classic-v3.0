@@ -181,6 +181,8 @@ class ControllerAI {
 			await this.decoy(c, max, data);
 		else if (c.key === "spe_scorch")
 			await this.scorch(c, max, data);
+		else if (c.key.startsWith("spe_slaughther_cintra_"))
+			await this.slaughterCintra(c);
 		else
 			await this.player.playCard(c);
 	}
@@ -273,6 +275,11 @@ class ControllerAI {
 	// Tells the controlled Player to play the Scorch card
 	async scorch(card, max, data) {
 		await this.player.playScorch(card);
+	}
+
+	// Tells the controlled Player to play the Scorch card
+	async slaughterCintra(card) {
+		await this.player.playSlaughterCintra(card);
 	}
 
 	// Assigns a weight for how likely the conroller is to Pass the round
@@ -438,6 +445,9 @@ class ControllerAI {
 			if (abi.includes("mardroeme")) {
 				let rows = [1, 2].map(i => board.row[i]);
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
+			}
+			if (abi.includes("cintra_slaughter")) {
+				return ability_dict["cintra_slaughter"].weight();
 			}
 		}
 
@@ -2394,7 +2404,8 @@ class UI {
 
 		weather.elem.classList.add("noclick");
 
-		if (card.key === "spe_scorch" || card.key.startsWith("spe_slaughther_cintra_")) {
+		// Affects all board
+		if (card.key === "spe_scorch") {
 			for (let r of board.row) {
 				r.elem.classList.add("row-selectable");
 				r.special.elem.classList.add("row-selectable");
@@ -2402,6 +2413,19 @@ class UI {
 			}
 			return;
 		}
+		// Affects only own side of board
+		if (card.key.startsWith("spe_slaughther_cintra_")) {
+			for (let i = 0; i < 6; i++) {
+				let r = board.row[i];
+				if (i > 2) {
+					r.elem.classList.add("row-selectable");
+					r.special.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+                }
+			}
+			return;
+		}
+		//Affects only own rows that are available
 		if (card.isSpecial()) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];

@@ -2903,21 +2903,9 @@ var ext_nr_cards = {
         "count": "1",
         "quote": "Revenge is a dish that tastes best when served for two."
     },
-    "nr_kerack_fleet_marine_1": {
-        "name": "Kerack Fleet: Marine",
-        "id": 1028,
-        "deck": "realms",
-        "row": "ranged",
-        "strength": "3",
-        "ability": "muster",
-        "filename": "kerack_fleet_marine_1",
-        "count": "1",
-        "target": "nr_kerack_fleet",
-        "quote": "I spy with my little eye something that is... green. Oh, shite! That's a dryad!"
-    },
     "nr_kerack_fleet_marine_2": {
         "name": "Kerack Fleet: Marine",
-        "id": 1029,
+        "id": 1028,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -2939,9 +2927,21 @@ var ext_nr_cards = {
         "target": "nr_kerack_fleet",
         "quote": "'I should buy a boat' said a Kerackian cat once. Or so claims the drunken ballad."
     },
+    "nr_kerack_fleet_marine_1": {
+        "name": "Kerack Fleet: Marine",
+        "id": 1030,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "kerack_fleet_marine_1",
+        "count": "1",
+        "target": "nr_kerack_fleet",
+        "quote": "I spy with my little eye something that is... green. Oh, shite! That's a dryad!"
+    },
     "nr_vissegerd": {
         "name": "Vissegerd",
-        "id": 1030,
+        "id": 1031,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -2952,7 +2952,7 @@ var ext_nr_cards = {
     },
     "nr_cintrian_royal_guard": {
         "name": "Cintrian Royal Guard",
-        "id": 1031,
+        "id": 1032,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -2963,7 +2963,7 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_1": {
         "name": "Slaughter of Cintra",
-        "id": 1032,
+        "id": 1033,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -2974,7 +2974,7 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_2": {
         "name": "Slaughter of Cintra",
-        "id": 1033,
+        "id": 1034,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -2985,7 +2985,7 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_3": {
         "name": "Slaughter of Cintra",
-        "id": 1034,
+        "id": 1035,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -2996,7 +2996,7 @@ var ext_nr_cards = {
     },
     "nr_eist_tuirseach": {
         "name": "Eist Tuirseach",
-        "id": 1035,
+        "id": 1036,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -3008,7 +3008,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_1": {
         "name": "Skellige Raiders Fleet",
-        "id": 1036,
+        "id": 1037,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3020,7 +3020,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_2": {
         "name": "Skellige Raiders Fleet",
-        "id": 1037,
+        "id": 1038,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3032,7 +3032,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_3": {
         "name": "Skellige Raiders Fleet",
-        "id": 1038,
+        "id": 1039,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3044,7 +3044,7 @@ var ext_nr_cards = {
     },
     "nr_cintrian_knight": {
         "name": "Cintrian Knight",
-        "id": 1039,
+        "id": 1040,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3055,7 +3055,7 @@ var ext_nr_cards = {
     },
     "nr_roegner": {
         "name": "Roegner de Salm",
-        "id": 1040,
+        "id": 1041,
         "deck": "realms",
         "row": "close",
         "strength": "6",
@@ -3066,7 +3066,7 @@ var ext_nr_cards = {
     },
     "nr_pavetta": {
         "name": "Roegner de Salm",
-        "id": 1041,
+        "id": 1042,
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -3077,7 +3077,7 @@ var ext_nr_cards = {
     },
     "nr_kistrin_verden": {
         "name": "Kistrin of Verden",
-        "id": 1042,
+        "id": 1043,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -3088,7 +3088,7 @@ var ext_nr_cards = {
     },
     "nr_sha": {
         "name": "Sha",
-        "id": 1043,
+        "id": 1044,
         "deck": "realms",
         "row": "siege",
         "strength": "3",
@@ -3100,7 +3100,7 @@ var ext_nr_cards = {
     },
     "nr_kraken": {
         "name": "Kraken",
-        "id": 1044,
+        "id": 1045,
         "deck": "realms",
         "row": "ranged",
         "strength": "11",
@@ -3111,7 +3111,7 @@ var ext_nr_cards = {
     },
     "nr_egmund": {
         "name": "Egmund",
-        "id": 1045,
+        "id": 1046,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3122,7 +3122,7 @@ var ext_nr_cards = {
     },
     "nr_eylembert_tigg": {
         "name": "Eylembert of Tigg",
-        "id": 1046,
+        "id": 1047,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -3133,7 +3133,7 @@ var ext_nr_cards = {
     },
     "nr_young_ciri": {
         "name": "Young Ciri",
-        "id": 1047,
+        "id": 1048,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -3145,7 +3145,7 @@ var ext_nr_cards = {
     },
     "nr_cintrian_peasants": {
         "name": "Cintrian Peasants",
-        "id": 1048,
+        "id": 1049,
         "deck": "realms",
         "row": "close",
         "strength": "3",
@@ -3156,7 +3156,7 @@ var ext_nr_cards = {
     },
     "nr_windhalm": {
         "name": "Windhalm of Attre",
-        "id": 1049,
+        "id": 1050,
         "deck": "realms",
         "row": "close",
         "strength": "6",
