@@ -574,7 +574,7 @@ var custom_decks = [
     {
         "title": "Monsters - Wild Hunt & Giants",
         "description": "Monsters deck focusing on the wild hunt and giants - Playstyle: Muster, Tall units",
-        "leader": "mo_eredin_destroyer",
+        "leader": "mo_eredin_bringer_of_death",
         "faction": "monsters",
         "cards": [
             ["spe_fog", 2],
@@ -608,9 +608,9 @@ var custom_decks = [
         ]
     },
     {
-        "title": "Monsters - Beast & Creatures",
+        "title": "Monsters - Beasts & Creatures",
         "description": "Monsters deck focusing on the multitude of beasts and creatures - Playstyle: Muster",
-        "leader": "mo_eredin_king",
+        "leader": "mo_eredin_commander",
         "faction": "monsters",
         "cards": [
             ["spe_rain", 2],
@@ -717,6 +717,42 @@ var custom_decks = [
             ["sc_yannick_brass", 1],
             ["sc_dol_blathanna_trapper", 1],
             ["sc_gabor_zigrin", 1]
+        ]
+    },
+    {
+        "title": "Skellige - Ard Skellig & Svalblod",
+        "description": "Skellige deck focusing on the cards from Ard Skellige and the Svalblod cult - Playstyle: Berserker, Must, Tight Bond",
+        "leader": "sk_crach_an_craite",
+        "faction": "skellige",
+        "cards": [
+            ["spe_storm", 2],
+            ["spe_mardroeme", 3],
+            ["spe_decoy", 1],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["spe_horn", 1],
+            ["spe_horn", 1],
+            ["sk_blueboy", 1],
+            ["sk_hjalmar", 1],
+            ["sk_vabjorn", 1],
+            ["sk_young_berserker", 3],
+            ["sk_shield_maiden_1", 1],
+            ["sk_shield_maiden_2", 1],
+            ["sk_shield_maiden_3", 1],
+            ["sk_an_craite_greatsword", 1],
+            ["sk_drummond_warmonger", 1],
+            ["sk_madman_lugos", 1],
+            ["sk_harald_cripple", 1],
+            ["sk_craite_warrior_1", 1],
+            ["sk_craite_warrior_2", 1],
+            ["sk_craite_warrior_3", 1],
+            ["sk_cerys", 1],
+            ["sk_ermion", 1],
+            ["sk_svalblod_fanatic", 1],
+            ["sk_an_craite_raiders", 1],
+            ["sk_berserker", 1],
+            ["sk_svalblod", 1],
+            ["sk_morkvarg", 1]
         ]
     }
 ];

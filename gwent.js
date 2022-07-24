@@ -374,9 +374,13 @@ class ControllerAI {
 		//let n = row.cards.filter(c => c.abilities[-1] === "berserker").length;
 		//let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
 		let bers_cards = row.cards.filter(c => c.abilities[-1] === "berserker");
-		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower,0);
-		weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
-		weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length -1;
+		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower, 0);
+		if (bers_cards.filter(c => c.key === "sk_young_berserker").length)
+			weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
+		if (bers_cards.filter(c => c.key === "sk_berserker").length)
+			weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
+		if (bers_cards.filter(c => c.key === "sk_drummond_berserker").length)
+			weight += bers_cards.filter(c => c.key === "sk_drummond_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
 		return Math.max(1, weight);
 	}
 
@@ -393,6 +397,8 @@ class ControllerAI {
 			return score;
 		score -= card.basePower;
 		if (card.key === "sk_berserker")
+			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
+		else if (card.key === "sk_drummond_berserker")
 			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
 		else if (card.key === "sk_young_berserker") {
 			let n = 0;
@@ -459,7 +465,7 @@ class ControllerAI {
 			}
 		}
 
-		if (card.row === "weather" || card.deck === "weather") {
+		if (card.row === "weather" || (card.deck && card.deck.startsWith("weather"))) {
 			return Math.max(0, this.weightWeather(card));
 		}
 
@@ -1799,7 +1805,7 @@ class Card {
 			this.faction = this.faction.split(" ")[0];
         }
 		this.abilities = (card_data.ability === "") ? [] : card_data.ability.split(" ");
-		this.row = (this.faction === "weather") ? card_data.deck : card_data.row;
+		this.row = (this.faction === "weather") ? this.faction : card_data.row;
 		this.filename = card_data.filename;
 		this.placed = [];
 		this.removed = [];

@@ -2429,14 +2429,14 @@ var default_cards = {
         "target": "sk_light_longship",
         "quote": "Escape them? In the waters of Skellige? Good luck."
     },
-    "sk_madmad_lugos": {
+    "sk_madman_lugos": {
         "name": "Madman Lugos",
         "id": 216,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
         "ability": "",
-        "filename": "madmad_lugos",
+        "filename": "madman_lugos",
         "count": "1",
         "quote": "WAAAAAAAGH!!!!"
     },
@@ -4931,6 +4931,120 @@ var ext_st_cards = {
     }
 };
 
+var ext_sk_cards = {
+    "sk_svalblod": {
+        "name": "Svalblod",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "svalblod",
+        "count": "1",
+        "quote": "He proclaimed to his worshippers but one commandement. Kill."
+    },
+    "sk_an_craite_raiders": {
+        "name": "Clan an Craite Raiders",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "an_craite_raiders",
+        "count": "1",
+        "quote": "Cabbage, really? It’s just the worst when there’s nothing good to plunder."
+    },
+    "sk_svalblod_fanatic": {
+        "name": "Svalblod Fanatic",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "svalblod_fanatic",
+        "count": "1",
+        "quote": "Not all are worthy of Svalblod's blessing."
+    },
+    "sk_harald_cripple": {
+        "name": "Harald the Cripple",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "harald_cripple",
+        "count": "1",
+        "quote": "He did not stop until the islands were his and the head of the old jarl lay on the ground before him."
+    },
+    "sk_drummond_warmonger": {
+        "name": "Drummond Warmonger",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "drummond_warmonger",
+        "count": "1",
+        "quote": "Think o' the greater good?! War's the greatest good, the greatest bad, the greatest damn anythin' man's ever come up with!"
+    },
+    "sk_an_craite_greatsword": {
+        "name": "Clan an Craite Greatsword",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "an_craite_greatsword",
+        "count": "1",
+        "quote": "Ahh, ye gave me a good laugh there, Nordling! Why, this bastard, ye couldn't even grip it, let alone gut me with it."
+    },
+    "sk_vabjorn": {
+        "name": "Vabjorn",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "vabjorn",
+        "count": "1",
+        "quote": "Blood for Svalblod! Skulls for his throne!"
+    },
+    "sk_tuirseach_bearmaster": {
+        "name": "Tuirseach Bearmaster",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "tuirseach_bearmaster",
+        "count": "1",
+        "quote": "Blood for Svalblod! Skulls for his throne!"
+    },
+    "sk_tuirseach_bearmaster": {
+        "name": "Tuirseach Bearmaster",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "tuirseach_bearmaster",
+        "count": "1",
+        "quote": "Blood for Svalblod! Skulls for his throne!"
+    },
+    "sk_morkvarg": {
+        "name": "Morkvarg",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "morkvarg",
+        "count": "1",
+        "quote": "The vilest man Skellige's ever known."
+    },
+    "sk_drummond_berserker": {
+        "name": "Drummond Berserker",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "5",
+        "ability": "berserker",
+        "filename": "drummond_berserker",
+        "count": "1",
+        "target": "sk_vildkaarl",
+        "quote": "The vilest man Skellige's ever known."
+    },
+};
+
 /*
  * Selecting decks to use
  */
@@ -4940,3 +5054,4 @@ card_dict = Object.assign({}, card_dict, ext_nr_cards);
 card_dict = Object.assign({}, card_dict, ext_ne_cards);
 card_dict = Object.assign({}, card_dict, ext_mo_cards);
 card_dict = Object.assign({}, card_dict, ext_st_cards);
+card_dict = Object.assign({}, card_dict, ext_sk_cards);
