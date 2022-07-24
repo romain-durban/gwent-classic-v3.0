@@ -4431,6 +4431,506 @@ var ext_mo_cards = {
     }
 };
 
+var ext_st_cards = {
+    "sc_elven_mercenary_1": {
+        "name": "Elven Mercenary",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "elven_mercenary_1",
+        "count": "1",
+        "target":"sc_elven_mercenary",
+        "quote": "I spit on Scoia'Tael ideals, but not on their coin."
+    },
+    "sc_elven_mercenary_2": {
+        "name": "Elven Mercenary",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "elven_mercenary_2",
+        "count": "1",
+        "target": "sc_elven_mercenary",
+        "quote": "I spit on Scoia'Tael ideals, but not on their coin."
+    },
+    "sc_vrihedd_sapper": {
+        "name": "Vrihedd Sapper",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "scorch",
+        "filename": "vrihedd_sapper",
+        "count": "1",
+        "quote": "No matter what you may have heard, elves don't take human scalps. Too much lice."
+    },
+    "sc_vrihedd_dragoon_1": {
+        "name": "Vrihedd Dragoon",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "vrihedd_dragoon_1",
+        "count": "1",
+        "target": "sc_vrihedd_dragoon",
+        "quote": "Most terrible things I've witnessed? The Catriona plague, the razing of Vengerberg and the charge of the Vrihedd Dragoons."
+    },
+    "sc_vrihedd_dragoon_2": {
+        "name": "Vrihedd Dragoon",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "vrihedd_dragoon_2",
+        "count": "1",
+        "target": "sc_vrihedd_dragoon",
+        "quote": "Most terrible things I've witnessed? The Catriona plague, the razing of Vengerberg and the charge of the Vrihedd Dragoons."
+    },
+    "sc_vrihedd_dragoon_3": {
+        "name": "Vrihedd Dragoon",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "vrihedd_dragoon_3",
+        "count": "1",
+        "target": "sc_vrihedd_dragoon",
+        "quote": "Most terrible things I've witnessed? The Catriona plague, the razing of Vengerberg and the charge of the Vrihedd Dragoons."
+    },
+    "sc_aelirenn": {
+        "name": "Aelirenn",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero medic",
+        "filename": "aelirenn",
+        "count": "1",
+        "quote": "Was also known as the White Rose of Shaerrawedd."
+    },
+    "sc_saesenthessis_saskia": {
+        "name": "Saesenthessis: Saskia",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero avenger",
+        "filename": "saesenthessis_saskia",
+        "count": "1",
+        "target": "sc_saesenthessis_dragon",
+        "quote": "Beautiful, pure, fierce... the perfect icon for a rebellion."
+    },
+    "sc_saesenthessis_dragon": {
+        "name": "Saesenthessis: Dragon",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "saesenthessis_dragon",
+        "count": "1",
+        "quote": "I care not for kings and their titles. In the east lives one who truly deserves a crown."
+    },
+    "sc_neophyte": {
+        "name": "Commando Neophyte",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "neophyte",
+        "count": "1",
+        "quote": "Many nonhumans, fed up with the racism and xenophobia they encounter in the cities, decide to join the Scoia'tael."
+    },
+    "sc_vrihedd_officer": {
+        "name": "Vrihedd Officer",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "vrihedd_officer",
+        "count": "1",
+        "quote": "Temerians, Redanians, all the same. Better off dead."
+    },
+    "sc_dol_blathanna_sentry": {
+        "name": "Dol Blathanna Sentry",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "dol_blathanna_sentry",
+        "count": "1",
+        "quote": "As long as we stand, no human foot shall trample Dol Blathanna's meadows."
+    },
+    "sc_dryads_1": {
+        "name": "Dryads",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "dryads_1",
+        "count": "1",
+        "target": "sc_dryads",
+        "quote": "I do not live in the forst of Brokilon. I am part of it."
+    },
+    "sc_dryads_2": {
+        "name": "Dryads",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "dryads_2",
+        "count": "1",
+        "target": "sc_dryads",
+        "quote": "I do not live in the forst of Brokilon. I am part of it."
+    },
+    "sc_dryads_3": {
+        "name": "Dryads",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "dryads_3",
+        "count": "1",
+        "target": "sc_dryads",
+        "quote": "I do not live in the forst of Brokilon. I am part of it."
+    },
+    "sc_dryads_4": {
+        "name": "Dryads",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "dryads_4",
+        "count": "1",
+        "target": "sc_dryads",
+        "quote": "I do not live in the forst of Brokilon. I am part of it."
+    },
+    "sc_brouver_hoog": {
+        "name": "Brouver Hoog",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "brouver_hoog",
+        "count": "1",
+        "quote": "That doddery dolt? Ye cannae even tell if he's alive or stuffed!"
+    },
+    "sc_dol_blathanna_guard_1": {
+        "name": "Dol Blathanna Guard",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "dol_blathanna_guard_1",
+        "count": "1",
+        "target": "sc_dol_blathanna_guard",
+        "quote": "We are the drops of rain that together make a ferocious storm."
+    },
+    "sc_dol_blathanna_guard_2": {
+        "name": "Dol Blathanna Guard",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "dol_blathanna_guard_2",
+        "count": "1",
+        "target": "sc_dol_blathanna_guard",
+        "quote": "We are the drops of rain that together make a ferocious storm."
+    },
+    "sc_dol_blathanna_guard_3": {
+        "name": "Dol Blathanna Guard",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "dol_blathanna_guard_3",
+        "count": "1",
+        "target": "sc_dol_blathanna_guard",
+        "quote": "We are the drops of rain that together make a ferocious storm."
+    },
+    "sc_aglais": {
+        "name": "Aglais",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "8",
+        "ability": "medic",
+        "filename": "aglais",
+        "count": "1",
+        "quote": "Brokilon bleeds… and not even I can heal it."
+    },
+    "sc_elven_deadeye": {
+        "name": "Elven Deadeye",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "",
+        "filename": "elven_deadeye",
+        "count": "1",
+        "quote": "One, two, come into view. Three, four, hide 'hind the door..."
+    },
+    "sc_morenn": {
+        "name": "Morenn",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "morenn",
+        "count": "1",
+        "quote": "Lady Eithné's daughter had inherited her sublime beauty and her wild hatred for all that is human."
+    },
+    "sc_mahakam_pyrotechnician": {
+        "name": "Mahakam Pyrotechnician",
+        "deck": "scoiatael",
+        "row": "siege",
+        "strength": "8",
+        "ability": "",
+        "filename": "mahakam_pyrotechnician",
+        "count": "1",
+        "quote": "An extraordinarily risky, and thus much revered, Mahakam trade. Its best-known practitioner was a dwarf by the name of Mikkel Bay."
+    },
+    "sc_mahakam_guard_1": {
+        "name": "Mahakam Guard",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "mahakam_guard_1",
+        "count": "1",
+        "target": "sc_mahakam_guard",
+        "quote": "Only one punishment for disturbin' the peace in Mahakam: a hammer to the heid."
+    },
+    "sc_mahakam_guard_2": {
+        "name": "Mahakam Guard",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "mahakam_guard_2",
+        "count": "1",
+        "target": "sc_mahakam_guard",
+        "quote": "Only one punishment for disturbin' the peace in Mahakam: a hammer to the heid."
+    },
+    "sc_mahakam_ale": {
+        "name": "Mahakam Ale",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "mahakam_ale",
+        "count": "1",
+        "quote": "Considered to be the dwarves' greatest contribution to world culture."
+    },
+    "sc_yannick_brass": {
+        "name": "Yannick Brass",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "yannick_brass",
+        "count": "1",
+        "quote": "Any of uz wanna gud luk at mah axe?!"
+    },
+    "sc_dol_blathanna_trapper": {
+        "name": "Dol Blathanna Trapper",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "dol_blathanna_trapper",
+        "count": "1",
+        "quote": "They track like hounds, run like deer and kill like heartless demons."
+    },
+    "sc_gabor_zigrin": {
+        "name": "Gabor Zigrin",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "9",
+        "ability": "hero morale",
+        "filename": "gabor_zigrin",
+        "count": "1",
+        "quote": "Brouver Hoog wanted to kick him out of Mahakam once for having a lama in his living room... it's a long story."
+    },
+    "sc_eleyas": {
+        "name": "Ele'yas",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "7",
+        "ability": "hero morale",
+        "filename": "eleyas",
+        "count": "1",
+        "quote": "Love justifies madness in any of its forms."
+    },
+    "sc_ithlinne": {
+        "name": "Ithlinne Aegli aep Aevenien",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "ithlinne",
+        "count": "1",
+        "quote": "Famed for constantly prophesying the world's doom. Not much fun at parties."
+    },
+    "sc_malena": {
+        "name": "Malena",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "1",
+        "ability": "hero horn",
+        "filename": "malena",
+        "count": "1",
+        "quote": "I hate you, dh'oine. You are all the same."
+    },
+    "sc_dwarven_mercenary_1": {
+        "name": "Dwarven Mercenary",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "dwarven_mercenary_1",
+        "count": "1",
+        "targer": "sc_dwarven_mercenary",
+        "quote": "The key's mixin' pleasure an' business – like smackin' foes and gettin' coin for it."
+    },
+    "sc_dwarven_mercenary_2": {
+        "name": "Dwarven Mercenary",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "dwarven_mercenary_2",
+        "count": "1",
+        "targer": "sc_dwarven_mercenary",
+        "quote": "The key's mixin' pleasure an' business – like smackin' foes and gettin' coin for it."
+    },
+    "sc_hawker_smuggler": {
+        "name": "Hawker Smuggler",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "hawker_smuggler",
+        "count": "1",
+        "quote": "I fight for whoever's paying the best. Or whoever's easiest to rob."
+    },
+    "sc_dwarven_agitator": {
+        "name": "Dwarven Agitator",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "dwarven_agitator",
+        "count": "1",
+        "quote": "Mark me words, if ye dinnae get up off yer arses, humans're gonnae come here an' steal our wenches!"
+    },
+    "sc_mahakam_marauder": {
+        "name": "Mahakam Marauder",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "6",
+        "ability": "",
+        "filename": "mahakam_marauder",
+        "count": "1",
+        "quote": "Hunting on Mahakam's craggy cliffs is not particularly easy… but nor are dwarves particularly put off by danger."
+    },
+    "sc_fauve": {
+        "name": "Fauve",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "5",
+        "ability": "",
+        "filename": "fauve",
+        "count": "1",
+        "quote": "Dandelion recognized her at once – the very same with green hair who had given them light in dark of night and urged the bard to continue his ballads."
+    },
+    "sc_farseer": {
+        "name": "Farseer",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "farseer",
+        "count": "1",
+        "quote": "Her words might seem unintelligible at times, but they always contain hidden meanings and tremendous wisdom."
+    },
+    "sc_sirssa": {
+        "name": "Sirssa",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "sirssa",
+        "count": "1",
+        "quote": "With silent grace, a dark-haired dryad nimbly descended a spiralling cascade of mushrooms along the tree's trunk."
+    },
+    "sc_braenn": {
+        "name": "Braenn",
+        "deck": "scoiatael",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "braenn",
+        "count": "1",
+        "quote": "Mona…? No… no. I'm Braenn. A daughter of Brokilon."
+    },
+    "sc_hawker_support": {
+        "name": "Hawker Support",
+        "deck": "scoiatael",
+        "row": "siege",
+        "strength": "4",
+        "ability": "medic",
+        "filename": "hawker_support",
+        "count": "1",
+        "quote": "Elf, dwarf, makes no difference – long as they've got coin."
+    },
+    "sc_eldain": {
+        "name": "Eldain",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "eldain",
+        "count": "1",
+        "quote": "The king once dispatched an envoy to Eldain… despite my advice to the contrary."
+    },
+    "sc_giantslayer": {
+        "name": "Giantslayer",
+        "deck": "scoiatael",
+        "row": "agile",
+        "strength": "5",
+        "ability": "scorch",
+        "filename": "giantslayer",
+        "count": "1",
+        "quote": "Aye, they call me the Giantslayer, and nay, it ain't from bein' a humongous bastard now, is it?"
+    },
+    "sc_elven_scout": {
+        "name": "Elven Scout",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "10",
+        "ability": "spy",
+        "filename": "elven_scout",
+        "count": "1",
+        "quote": "They say elves leave no tracks in the snow, but if you ask me, they are just a pack of village idiots, babbling nonsense."
+    },
+    "sc_elven_swordmaster": {
+        "name": "Elven Swordmaster",
+        "deck": "scoiatael",
+        "row": "close",
+        "strength": "7",
+        "ability": "scorch_c",
+        "filename": "elven_swordmaster",
+        "count": "1",
+        "quote": "Combat is a dance, and you must never allow your opponent to lead."
+    },
+    "sc_vrihedd_saboteur": {
+        "name": "Vrihedd Saboteur",
+        "deck": "scoiatael",
+        "row": "siege",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "vrihedd_saboteur",
+        "count": "1",
+        "quote": "The gates were ordered to be closed… But they didn't budge."
+    }
+};
+
 /*
  * Selecting decks to use
  */
@@ -4439,3 +4939,4 @@ var card_dict = default_cards;
 card_dict = Object.assign({}, card_dict, ext_nr_cards);
 card_dict = Object.assign({}, card_dict, ext_ne_cards);
 card_dict = Object.assign({}, card_dict, ext_mo_cards);
+card_dict = Object.assign({}, card_dict, ext_st_cards);

@@ -818,6 +818,7 @@ class CardContainer {
 		this.cards.push(card);
 		this.addCardElement(card, index ? index : 0);
 		this.resize();
+		card.currentLocation = this;
 	}
 
 	// Removes a card from the container along with its associated HTML element.
@@ -1148,6 +1149,7 @@ class Row extends CardContainer {
 			this.addCardElement(card, index);
 			this.resize();
 		}
+		card.currentLocation = this;
 		this.updateState(card, true);
 		for (let x of card.placed)
 			await x(card, this);
@@ -1463,7 +1465,12 @@ class Board {
 
 	// Sends and translates a card from the source to a row name associated with the passed player
 	async addCardToRow(card, row_name, player, source) {
-		let row = this.getRow(card, row_name, player);
+		let row;
+		if (row_name instanceof Row) {
+			row = row_name;
+		} else {
+			row = this.getRow(card, row_name, player);
+        }
 		try {
 			cartaNaLinha(row.elem.id, card);
 		} catch(err) {}
@@ -1799,6 +1806,7 @@ class Card {
 		this.activated = [];
 		this.holder = player;
 		this.target = "";
+		this.currentLocation = board;	// By default, updated later
 		if ("target" in card_data) {
 			this.target = card_data.target;
 		}

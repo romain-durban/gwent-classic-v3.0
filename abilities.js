@@ -102,7 +102,11 @@ var ability_dict = {
 			if (units.length === 0)
 				return;
 			await card.animate("muster");
-			await Promise.all( units.map( async p =>  await board.addCardToRow(p[1], p[1].row, p[1].holder, p[0])));
+			if (card.row === "agile") {
+				await Promise.all(units.map(async p => await board.addCardToRow(p[1], card.currentLocation, p[1].holder, p[0])));
+			} else {
+				await Promise.all(units.map(async p => await board.addCardToRow(p[1], p[1].row, p[1].holder, p[0])));
+            }
 		}
 	},
 	spy: {
