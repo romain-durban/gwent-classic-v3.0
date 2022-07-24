@@ -1284,15 +1284,16 @@ var default_cards = {
         "target": "mo_arachas",
         "quote": "Like a cross between a crab, a spider... and a ploughin' moutain."
     },
-    "mo_poroniec": {
+    "mo_botchling": {
         "name": "Botchling",
         "id": 115,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
-        "ability": "",
-        "filename": "poroniec",
+        "ability": "avenger",
+        "filename": "botchling",
         "count": "1",
+        "target": "mo_lubberkin",
         "quote": "Admit your mistakes and bury them proper - else they'll come back to haunt you."
     },
     "mo_celaeno_harpy": {
@@ -3996,6 +3997,440 @@ var ext_ne_cards = {
     }
 };
 
+var ext_mo_cards = {
+    "mo_golem": {
+        "name": "Golem",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "golem",
+        "count": "1",
+        "quote": "Does not drink. Does not eat. Does walk, however. And fight."
+    },
+    "mo_geels": {
+        "name": "Ge'els",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "geels",
+        "count": "1",
+        "quote": "Paintings should convey emotion, not words."
+    },
+    "mo_ifrit_1": {
+        "name": "Ifrit",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "ifrit_1",
+        "count": "1",
+        "target": "mo_ifrit",
+        "quote": "Can't stand the heat? Then you don't stand a chance."
+    },
+    "mo_ifrit_2": {
+        "name": "Ifrit",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "ifrit_2",
+        "count": "1",
+        "target": "mo_ifrit",
+        "quote": "Can't stand the heat? Then you don't stand a chance."
+    },
+    "mo_wild_hunt_rider_1": {
+        "name": "Wild Hunt Rider",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "wild_hunt_rider_1",
+        "count": "1",
+        "target": "mo_wild_hunt_rider",
+        "quote": "First the buffalo horns atop their helms penetrate one's view, then the crest betwixt them."
+    },
+    "mo_wild_hunt_rider_2": {
+        "name": "Wild Hunt Rider",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "wild_hunt_rider_2",
+        "count": "1",
+        "target": "mo_wild_hunt_rider",
+        "quote": "First the buffalo horns atop their helms penetrate one's view, then the crest betwixt them."
+    },
+    "mo_wild_hunt_rider_3": {
+        "name": "Wild Hunt Rider",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "wild_hunt_rider_3",
+        "count": "1",
+        "target": "mo_wild_hunt_rider",
+        "quote": "First the buffalo horns atop their helms penetrate one's view, then the crest betwixt them."
+    },
+    "mo_nithral": {
+        "name": "Nithral",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "nithral",
+        "count": "1",
+        "quote": "Eredin's personal cavalcade includes only the most brutal and most ferocious of the Aen Elle."
+    },
+    "mo_therazane": {
+        "name": "Therazane",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "therazane",
+        "count": "1",
+        "quote": "Fighting such a monster is no easy task."
+    },
+    "mo_naglfar": {
+        "name": "Naglfar",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "10",
+        "ability": "",
+        "filename": "naglfar",
+        "count": "1",
+        "quote": "Naglfar will wage the final battle of good and evil known as Ragh nar Roog."
+    },
+    "mo_caranthir": {
+        "name": "Caranthir Ar-Feiniel",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "caranthir",
+        "count": "1",
+        "quote": "Zirael! I await."
+    },
+    "mo_jotunn": {
+        "name": "Jotunnl",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "jotunn",
+        "count": "1",
+        "quote": "Skellige legend claims the mighty and terrible Jotunn, King of Giants, reigned over the isles in ancient times."
+    },
+    "mo_old_speartip": {
+        "name": "Old Speartip",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "old_speartip",
+        "count": "1",
+        "quote": "Old Speartip is one deep sleeper, wake him up and you'll sleep deeper."
+    },
+    "mo_navigator": {
+        "name": "Wild Hunt Navigator",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "5",
+        "ability": "hero",
+        "filename": "navigator",
+        "count": "1",
+        "quote": "For hundreds of years, Avallac'h tried to recreate the Elder Blood gene through back breeding."
+    },
+    "mo_cyclops": {
+        "name": "Cyclops",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "cyclops",
+        "count": "1",
+        "quote": "Don't stare at his eye, he hates that..."
+    },
+    "mo_ice_troll": {
+        "name": "Ice Troll",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "ice_troll",
+        "count": "1",
+        "quote": "Trolls come in many shapes, but always with about as much brains as a bucket of rusty nails."
+    },
+    "mo_morvudd": {
+        "name": "Morvudd",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "7",
+        "ability": "hero",
+        "filename": "morvudd",
+        "count": "1",
+        "quote": "An unusual fiend specimen found on Ard Skellig. Unusually picky in terms of food."
+    },
+    "mo_lamia_1": {
+        "name": "Lamia",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "lamia_1",
+        "count": "1",
+        "target": "mo_lamia",
+        "quote": "The fool didn't hear the warning. He ran his ship straight into the rocks."
+    },
+    "mo_lamia_2": {
+        "name": "Lamia",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "lamia_2",
+        "count": "1",
+        "target": "mo_lamia",
+        "quote": "The fool didn't hear the warning. He ran his ship straight into the rocks."
+    },
+    "mo_lamia_3": {
+        "name": "Lamia",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "lamia_3",
+        "count": "1",
+        "target": "mo_lamia",
+        "quote": "The fool didn't hear the warning. He ran his ship straight into the rocks."
+    },
+    "mo_glustyworp": {
+        "name": "Glustyworp",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "glustyworp",
+        "count": "1",
+        "quote": "Two long, mantis-like forelimbs bristling with spikes shot out from the murk."
+    },
+    "mo_alghoul": {
+        "name": "Alghoul",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "6",
+        "ability": "muster",
+        "filename": "alghoul",
+        "count": "1",
+        "target": "mo_ghoul",
+        "quote": "A particularly large ghoul that is fattened and craves warm meat is called an alghoul."
+    },
+    "mo_archgriffin": {
+        "name": "Archgriffin",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "archgriffin",
+        "count": "1",
+        "quote": "It's a griffin, just more... griffiny."
+    },
+    "mo_alp": {
+        "name": "Alp",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "7",
+        "ability": "",
+        "filename": "alp",
+        "count": "1",
+        "quote": "No other monster inspires so many myths and fallacies as the alp."
+    },
+    "mo_armoured_arachas": {
+        "name": "Armoured Arachas",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "7",
+        "ability": "",
+        "filename": "armoured_arachas",
+        "count": "1",
+        "quote": "Like a cross between a crab, a spider... and a ploughin' mountain."
+    },
+    "mo_arachas_queen": {
+        "name": "Arachas Queen",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero avenger",
+        "filename": "arachas_queen",
+        "count": "1",
+        "target": "mo_arachas_drone",
+        "quote": "Her children inherited her beauty."
+    },
+    "mo_arachas_drone": {
+        "name": "Arachas Drone",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "2",
+        "ability": "muster",
+        "filename": "arachas_drone",
+        "count": "4",
+        "target": "mo_arachas_drone_spawn",
+        "quote": "Ugly – nature's way of saying stay away."
+    },
+    "mo_dragon_fyresdal": {
+        "name": "Dragon of Fyresdal",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "dragon_fyresdal",
+        "count": "1",
+        "quote": "It's got scales, wings, claws.. A dragon's a dragon! No point gabbin', just go kill it!"
+    },
+    "mo_manticore": {
+        "name": "Imperial Manticore",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "manticore",
+        "count": "1",
+        "quote": "Thoug many have seen manticores, very few have lived to tell their tale."
+    },
+    "mo_manticore_venom": {
+        "name": "Manticore Venom",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "3",
+        "ability": "scorch_c",
+        "filename": "manticore_venom",
+        "count": "1",
+        "quote": "Kills quicker than you can recite the Emperor of Nilfgaard's title in full."
+    },
+    "mo_great_oak": {
+        "name": "The Great Oak",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "great_oak",
+        "count": "1",
+        "quote": "The trees of Brokilon oft rustle amongst themselves, despairing of the ancient oak whose heart now rots with hatred."
+    },
+    "mo_striga": {
+        "name": "Striga",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "striga",
+        "count": "1",
+        "quote": "She is filled with hatred towards all living beings."
+    },
+    "mo_noonwraith": {
+        "name": "Noonwraith",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "noonwraith",
+        "count": "1",
+        "quote": "They are born of some horrible tragedy tied to ill-fated love."
+    },
+    "mo_vran_warrior": {
+        "name": "Vran Warrior",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "vran_warrior",
+        "count": "1",
+        "quote": "He saw their weapons – short spears with wide tips."
+    },
+    "mo_caretaker": {
+        "name": "Caretaker",
+        "deck": "monsters",
+        "row": "close",
+        "strength": "5",
+        "ability": "scorch",
+        "filename": "caretaker",
+        "count": "1",
+        "quote": "There are more things in heaven and earth than all the world's philosophers have dreamt."
+    },
+    "mo_lubberkin": {
+        "name": "Lubberkin",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "lubberkin",
+        "count": "1",
+        "quote": "I name thee Dea and embrace thee as my daugther."
+    },
+    "mo_ruehin": {
+        "name": "Ruehin",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "ruehin",
+        "count": "1",
+        "quote": "No one has ever entered that forest and lived to tell the tale..."
+    },
+    "mo_queen_night": {
+        "name": "Queen of the Night",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "queen_night",
+        "count": "1",
+        "quote": "Those seduced by her charms find themselves willing to pay any price."
+    },
+    "mo_moonlight": {
+        "name": "Moonlight",
+        "deck": "monsters",
+        "row": "agile",
+        "strength": "2",
+        "ability": "scorch_c",
+        "filename": "moonlight",
+        "count": "1",
+        "quote": "When the moon is full, nightmares crawl out of the dark nooks and crannies of the world."
+    },
+    "mo_dagon": {
+        "name": "Dagon",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "dagon",
+        "count": "1",
+        "quote": "That is not dead which can eternal lie, and with strange aeons even death may die."
+    },
+    "mo_aguara": {
+        "name": "Aguara",
+        "deck": "monsters",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "aguara",
+        "count": "1",
+        "quote": "Smarten up right now, or it's off to an aguara with you!"
+    },
+    "mo_succubus": {
+        "name": "Succubus",
+        "deck": "monsters",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "succubus",
+        "count": "1",
+        "quote": "Why fight? There are much better ways to work off excess energy..."
+    }
+};
+
 /*
  * Selecting decks to use
  */
@@ -4003,3 +4438,4 @@ var card_dict = default_cards;
 
 card_dict = Object.assign({}, card_dict, ext_nr_cards);
 card_dict = Object.assign({}, card_dict, ext_ne_cards);
+card_dict = Object.assign({}, card_dict, ext_mo_cards);

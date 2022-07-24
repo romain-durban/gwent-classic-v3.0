@@ -459,7 +459,7 @@ class ControllerAI {
 			}
 		}
 
-		if (card.row === "weather") {
+		if (card.row === "weather" || card.deck === "weather") {
 			return Math.max(0, this.weightWeather(card));
 		}
 

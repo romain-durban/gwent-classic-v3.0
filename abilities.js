@@ -157,9 +157,19 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
-			let bdf = new Card(card.target, card_dict[card.target], card.holder);
-			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
-			await board.addCardToRow(bdf, bdf.row, card.holder);
+			// Some avengers are related to muster
+			if (card_dict[card.target]["ability"].includes("muster")) {
+				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
+					let bdf = new Card(card.target, card_dict[card.target], card.holder);
+					bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
+					await board.addCardToRow(bdf, bdf.row, card.holder);
+				}
+			} else {
+				let bdf = new Card(card.target, card_dict[card.target], card.holder);
+				bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
+				await board.addCardToRow(bdf, bdf.row, card.holder);
+            }
+			
 		},
 		weight: () => 50
 	},
@@ -304,7 +314,7 @@ var ability_dict = {
 		weight: (card, ai, max, data) => ai.weightMedic(data, 0, card.holder)
 	},
 	eredin_destroyer: {
-		description: "Discard 2 card and draw 1 card of your choice from your deck.",
+		description: "Discard 2 cards and draw 1 card of your choice from your deck.",
 		activated: async (card) => {
 			let hand = board.getRow(card, "hand", card.holder);
 			let deck = board.getRow(card, "deck", card.holder);
