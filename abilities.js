@@ -159,7 +159,7 @@ var ability_dict = {
 		removed: async (card) => {
 			let bdf = new Card(card.target, card_dict[card.target], card.holder);
 			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
-			await board.addCardToRow(bdf, "close", card.holder);
+			await board.addCardToRow(bdf, bdf.row, card.holder);
 		},
 		weight: () => 50
 	},

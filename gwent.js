@@ -338,10 +338,18 @@ class ControllerAI {
 	// Calculates the weight for playing a weather card
 	weightWeather(card) {
 		let rows;
-		if (card.key === "spe_clear")	//Replace card.name === "Clear Weather"
-			rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
-		else
-			rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.abilities[0]).flatMap(t => t.rows);
+		if (card.abilities) {
+			if (card.key === "spe_clear")	//Replace card.name === "Clear Weather"
+				rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
+			else
+				rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.abilities[0]).flatMap(t => t.rows);
+		} else {
+			if (card.ability == "clear")	//Replace card.name === "Clear Weather"
+				rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
+			else
+				rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.ability).flatMap(t => t.rows);
+        }
+		
 		if (!rows.length)
 			return 1;
 		let dif = [0, 0];
@@ -1772,12 +1780,19 @@ class Game {
 class Card {
 
 	constructor(key, card_data, player) {
+		if (!card_data) {
+			console.log("Invalid card data for: "+key);
+        }
 		this.key = key;
 		this.name = card_data.name;
 		this.basePower = this.power = Number(card_data.strength);
 		this.faction = card_data.deck;
+		// To clean the field in case it is a faction specific weather/special card
+		if (this.faction.startsWith("weather") || this.faction.startsWith("special")) {
+			this.faction = this.faction.split(" ")[0];
+        }
 		this.abilities = (card_data.ability === "") ? [] : card_data.ability.split(" ");
-		this.row = (card_data.deck === "weather") ? card_data.deck : card_data.row;
+		this.row = (this.faction === "weather") ? card_data.deck : card_data.row;
 		this.filename = card_data.filename;
 		this.placed = [];
 		this.removed = [];
@@ -2789,7 +2804,9 @@ class DeckMaker {
 			card: card_dict[cid],
 			index: cid
 		})).filter(
-			p => [faction, "neutral", "weather", "special"].includes(p.card.deck) && p.card.row !== "leader");
+			p => ( ([faction, "neutral", "weather", "special"].includes(p.card.deck) ||
+				(["weather", "special"].includes(p.card.deck.split(" ")[0]) && p.card.deck.split(" ").includes(faction)))
+					&& p.card.row !== "leader"));
 
 		cards.sort(function (id1, id2) {
 			let a = card_dict[id1.index],
@@ -2797,12 +2814,12 @@ class DeckMaker {
 			let c1 = {
 				name: a.name,
 				basePower: -a.strength,
-				faction: a.deck
+				faction: a.deck.split(" ")[0] // Cleaning for faction specific special/weather cards
 			};
 			let c2 = {
 				name: b.name,
 				basePower: -b.strength,
-				faction: b.deck
+				faction: b.deck.split(" ")[0] // Cleaning for faction specific special/weather cards
 			};
 			return Card.compare(c1, c2);
 		});
@@ -2870,7 +2887,7 @@ class DeckMaker {
 			else
 				x.elem.classList.add("hide");
 			total += x.count;
-			if (card_data.deck === "special" || card_data.deck === "weather") {
+			if (card_data.deck.startsWith("special") || card_data.deck.startsWith("weather")) {
 				special += x.count;
 				continue;
 			}
@@ -3154,7 +3171,8 @@ class DeckMaker {
 					warning += "ID " + c[0] + " does not correspond to a card.\n";
 					return false
 				}
-				if (![deck.faction, "neutral", "special", "weather"].includes(card.deck)) {
+				if (!([deck.faction, "neutral", "special", "weather"].includes(card.deck)
+					|| (["special", "weather"].includes(card.deck.split(" ")[0]) && card.deck.split(" ").includes(deck.faction)))){
 					warning += "'" + card.name + "' cannot be used in a deck of faction type '" + deck.faciton + "'\n";
 					return false;
 				}
@@ -3353,7 +3371,7 @@ function getPreviewElem(elem, card, nb = 0) {
 	}
 	let faction = ""
 	if ("deck" in card) {
-		faction = card.deck;
+		faction = card.deck.split(" ")[0];	// Cleaning in case of special/weather cards being faction specific
 	} else {
 		faction = card.faction;
     }
@@ -3365,7 +3383,7 @@ function getPreviewElem(elem, card, nb = 0) {
 		return elem;
 	}
 
-	if (card.row != "leader" && faction != "special" && faction != "neutral" && faction != "weather") {
+	if (card.row != "leader" && !faction.startsWith("special") && faction != "neutral" && !faction.startsWith("weather")) {
 		let factionBand = document.createElement("div");
 		factionBand.style.backgroundImage = iconURL("faction-band-" + faction);
 		factionBand.classList.add("card-large-faction-band");
@@ -3410,9 +3428,9 @@ function getPreviewElem(elem, card, nb = 0) {
 	if (c_abilities[0] === "hero" || ("hero" in card && card.hero)) {
 		bg = "power_hero";
 		elem.classList.add("hero");
-	} else if (faction === "weather") {
+	} else if (faction.startsWith("weather")) {
 		bg = "power_" + c_abilities[0];
-	} else if (faction === "special") {
+	} else if (faction.startsWith("special")) {
 		bg = "power_" + c_abilities[0];
 		elem.classList.add("special");
 	} else {
@@ -3440,7 +3458,7 @@ function getPreviewElem(elem, card, nb = 0) {
 		abi.classList.add("card-large-ability");
 		elem.appendChild(abi);
 
-		if (faction !== "special" && faction !== "weather" && c_abilities.length > 0 && c_abilities[c_abilities.length - 1] != "hero") {
+		if (!faction.startsWith("special") && !faction.startsWith("weather") && c_abilities.length > 0 && c_abilities[c_abilities.length - 1] != "hero") {
 			let str = c_abilities[c_abilities.length - 1];
 			if (str === "cerys")
 				str = "muster";

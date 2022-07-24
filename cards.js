@@ -2442,7 +2442,7 @@ var default_cards = {
     "spe_mardroeme": {
         "name": "Mardroeme",
         "id": 217,
-        "deck": "special",
+        "deck": "special skellige",
         "row": "",
         "strength": "",
         "ability": "mardroeme",
@@ -2464,7 +2464,7 @@ var default_cards = {
     "spe_storm": {
         "name": "Skellige Storm",
         "id": 219,
-        "deck": "weather",
+        "deck": "weather realms skellige",
         "row": "",
         "strength": "",
         "ability": "rain fog",
@@ -2952,7 +2952,7 @@ var ext_nr_cards = {
     "spe_slaughther_cintra_1": {
         "name": "Slaughter of Cintra",
         "id": 1033,
-        "deck": "special",
+        "deck": "special realms",
         "row": "",
         "strength": "",
         "ability": "cintra_slaughter",
@@ -2963,7 +2963,7 @@ var ext_nr_cards = {
     "spe_slaughther_cintra_2": {
         "name": "Slaughter of Cintra",
         "id": 1034,
-        "deck": "special",
+        "deck": "special realms",
         "row": "",
         "strength": "",
         "ability": "cintra_slaughter",
@@ -2974,7 +2974,7 @@ var ext_nr_cards = {
     "spe_slaughther_cintra_3": {
         "name": "Slaughter of Cintra",
         "id": 1035,
-        "deck": "special",
+        "deck": "special realms",
         "row": "",
         "strength": "",
         "ability": "cintra_slaughter",
@@ -3666,7 +3666,7 @@ var ext_ne_cards = {
         "name": "Slave Infantry",
         "id": 1208,
         "deck": "nilfgaard",
-        "row": "siege",
+        "row": "close",
         "strength": "4",
         "ability": "bond",
         "filename": "slave_infantry_1",
