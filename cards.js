@@ -875,52 +875,52 @@ var default_cards = {
         "count": "1",
         "quote": "Not the best for taking cities, but great for razing them to the ground."
     },
-    "ne_imperal_brigade_1": {
+    "ne_impera_brigade_1": {
         "name": "Impera Brigade Guard",
         "id": 79,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
         "ability": "bond",
-        "filename": "imperal_brigade_1",
+        "filename": "impera_brigade_1",
         "count": "1",
-        "target": "ne_imperal_brigade",
+        "target": "ne_impera_brigade",
         "quote": "The Impera Brigade never surrenders. Ever."
     },
-    "ne_imperal_brigade_2": {
+    "ne_impera_brigade_2": {
         "name": "Impera Brigade Guard",
         "id": 80,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
         "ability": "bond",
-        "filename": "imperal_brigade_2",
+        "filename": "impera_brigade_2",
         "count": "1",
-        "target": "ne_imperal_brigade",
+        "target": "ne_impera_brigade",
         "quote": "The Impera Brigade never surrenders. Ever."
     },
-    "ne_imperal_brigade_3": {
+    "ne_impera_brigade_3": {
         "name": "Impera Brigade Guard",
         "id": 81,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
         "ability": "bond",
-        "filename": "imperal_brigade_3",
+        "filename": "impera_brigade_3",
         "count": "1",
-        "target": "ne_imperal_brigade",
+        "target": "ne_impera_brigade",
         "quote": "The Impera Brigade never surrenders. Ever."
     },
-    "ne_imperal_brigade_4": {
+    "ne_impera_brigade_4": {
         "name": "Impera Brigade Guard",
         "id": 82,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
         "ability": "bond",
-        "filename": "imperal_brigade_4",
+        "filename": "impera_brigade_4",
         "count": "1",
-        "target": "ne_imperal_brigade",
+        "target": "ne_impera_brigade",
         "quote": "The Impera Brigade never surrenders. Ever."
     },
     "ne_letho": {
@@ -3570,6 +3570,429 @@ var ext_nr_cards = {
         "filename": "battering_ram",
         "count": "1",
         "quote": "The hulking siege engine rolled to the front, within few bashes the gates crashed open."
+    },
+    "nr_fake_ciri": {
+        "name": "Fake Ciri: Empress of Nilfgaard",
+        "id": 1088,
+        "deck": "realms",
+        "row": "leader",
+        "strength": "",
+        "ability": "fake_ciri",
+        "filename": "fake_ciri",
+        "count": "1",
+        "quote": "It is a dull name. A name just right for somebody who's a nobody. As long as a am Cirilla Fiona I mean something."
+    }
+};
+
+var ext_ne_cards = {
+    "ne_vicovaro_medic": {
+        "name": "Vicovaro Medic",
+        "id": 1201,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "hero medic",
+        "filename": "vicovaro_medic",
+        "count": "1",
+        "quote": "Both war and plague always take men by surprise."
+    },
+    "ne_alba_pikeman_1": {
+        "name": "Alba Pikeman",
+        "id": 1202,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "5",
+        "ability": "hero",
+        "filename": "alba_pikeman_1",
+        "count": "1",
+        "quote": "Pledge your allegiance to our Emperor Emhyr van Emreis... or die."
+    },
+    "ne_alba_spearman": {
+        "name": "Alba Spearman",
+        "id": 1203,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "5",
+        "ability": "hero",
+        "filename": "alba_spearman",
+        "count": "1",
+        "quote": "Death and glory!"
+    },
+    "ne_nausicaa_brigade": {
+        "name": "Nausicaa Brigade",
+        "id": 1204,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "nausicaa_brigade",
+        "count": "1",
+        "quote": "They call us the Death's Heads. Care to find out why?"
+    },
+    "ne_imperial_golem": {
+        "name": "Imperial Golem",
+        "id": 1205,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "imperial_golem",
+        "count": "1",
+        "quote": "The most powerful of Nilfgaard's mages have mastered the oart of creating golems."
+    },
+    "ne_daerlan_soldier": {
+        "name": "Daerlan Foot Soldier",
+        "id": 1206,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "daerlan_soldier",
+        "count": "1",
+        "quote": "Learned a lot at Braibant Military Academy. How to scrub potatoes, for instance."
+    },
+    "ne_hefty_helge": {
+        "name": "Hefty Helge",
+        "id": 1207,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "7",
+        "ability": "",
+        "filename": "hefty_helge",
+        "count": "1",
+        "quote": "Not the best for taking cities, but great for razing them to the ground."
+    },
+    "ne_slave_infantry_1": {
+        "name": "Slave Infantry",
+        "id": 1208,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "slave_infantry_1",
+        "count": "1",
+        "quote": "A free man's got a choice. A slave's choices are made for him."
+    },
+    "ne_slave_infantry_2": {
+        "name": "Slave Infantry",
+        "id": 1209,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "slave_infantry_2",
+        "count": "1",
+        "quote": "A free man's got a choice. A slave's choices are made for him."
+    },
+    "ne_magne_division": {
+        "name": "Magne Division",
+        "id": 1210,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "magne_division",
+        "count": "1",
+        "quote": "A garrison in this blasted waste is like a chastity belt on a grave hag."
+    },
+    "ne_emissary": {
+        "name": "Emissary",
+        "id": 1211,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "10",
+        "ability": "spy",
+        "filename": "emissary",
+        "count": "1",
+        "quote": "But there's no justice in it! One does not kill the messenger!"
+    },
+    "ne_standard_bearer": {
+        "name": "Standard Bearer",
+        "id": 1212,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "standard_bearer",
+        "count": "1",
+        "quote": "You shall defend this standard if it costs you your lives! Gloir aen Ard Feainn!"
+    },
+    "ne_deithwen_arbalest": {
+        "name": "Deithwen Arbalest",
+        "id": 1213,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "deithwen_arbalest",
+        "count": "1",
+        "quote": "I aim for the knees. Always."
+    },
+    "ne_guardian": {
+        "name": "The Guardian",
+        "id": 1214,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "guardian",
+        "count": "1",
+        "quote": "Stone fists to stop intruders armed with swords. Ironclad logic to stop those armed with lies."
+    },
+    "ne_nausicaa_standard_bearer": {
+        "name": "Nausicaa Standard Bearer",
+        "id": 1215,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "nausicaa_standard_bearer",
+        "count": "1",
+        "quote": "The Emperor will teach the North discipline."
+    },
+    "ne_knight": {
+        "name": "Nilfgaardian Knight",
+        "id": 1216,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "knight",
+        "count": "1",
+        "quote": "Sons of noble houses, born in the City of the Golden Towers, form the elite backbone of the Imperial Army."
+    },
+    "ne_alba_armored_cavalry": {
+        "name": "Alba Armored Cavalry",
+        "id": 1217,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "alba_armored_cavalry",
+        "count": "1",
+        "quote": "The wedge of riders thundered into the phalanx with crushing momentum."
+    },
+    "ne_peter_saar_gwynleve": {
+        "name": "Peter Saar Gwynleve",
+        "id": 1218,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "peter_saar_gwynleve",
+        "count": "1",
+        "quote": "These are not the hands of an Excellency, but of a farmer. So we speak peasant to peasant."
+    },
+    "ne_impera_brigade_5": {
+        "name": "Impera Brigade Guard",
+        "id": 1219,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "impera_brigade_5",
+        "count": "1",
+        "target": "ne_impera_brigade",
+        "quote": "The Impera Brigade never surrenders. Ever."
+    },
+    "ne_jan_calveit": {
+        "name": "Jan Calveit",
+        "id": 1220,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "jan_calveit",
+        "count": "1",
+        "quote": "To prepare for the future, it’s best to first know it."
+    },
+    "ne_bribery": {
+        "name": "Bribery",
+        "id": 1221,
+        "deck": "nilfgaard",
+        "row": "agile",
+        "strength": "10",
+        "ability": "spy",
+        "filename": "Bribery",
+        "count": "1",
+        "quote": "In truth, the Nilfgaardian floren rules the world."
+    },
+    "ne_rot_tosser": {
+        "name": "Rot Tosser",
+        "id": 1222,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "0",
+        "ability": "avenger",
+        "filename": "rot_tosser",
+        "count": "1",
+        "target": "ne_epidemic",
+        "quote": "Let historians debate whether spreading plague in a besieged city is ethical."
+    },
+    "ne_epidemic": {
+        "name": "Epidemic",
+        "id": 1223,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "7",
+        "ability": "",
+        "filename": "epidemic",
+        "count": "1",
+        "quote": "Epidemics respect no persons, no borders."
+    },
+    "ne_joachim_de_wett": {
+        "name": "Joachim de Wett",
+        "id": 1224,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "7",
+        "ability": "",
+        "filename": "joachim_de_wett",
+        "count": "1",
+        "quote": "To describe the manner in which Duke de Wett led the Verden Group as incompetent would be far too kind."
+    },
+    "ne_ardal_aep_dahy": {
+        "name": "Ardal aep Dahy",
+        "id": 1225,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "ardal_aep_dahy",
+        "count": "1",
+        "quote": "In my home, in the civilized world, a general commands his forces. He does not rush and thrash about like some rabid hound."
+    },
+    "ne_cantarella": {
+        "name": "Cantarella",
+        "id": 1226,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero spy",
+        "filename": "cantarella",
+        "count": "1",
+        "quote": "Men require constant alluring. Mystique and refinement do the job quite well."
+    },
+    "ne_treason": {
+        "name": "Treason",
+        "id": 1227,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "3",
+        "ability": "scorch",
+        "filename": "treason",
+        "count": "1",
+        "quote": "In Nilfgaard, trustful people are considered an endangered species."
+    },
+    "ne_usurper": {
+        "name": "Usurper",
+        "id": 1228,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "usurper",
+        "count": "1",
+        "quote": "Why should something as trivial as birth decide who rules over us?"
+    },
+    "ne_infiltrator": {
+        "name": "Infiltrator",
+        "id": 1229,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "infiltrator",
+        "count": "1",
+        "quote": "You can run, but you'll never hide."
+    },
+    "ne_venendal_elite": {
+        "name": "Venendal Elite",
+        "id": 1230,
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "venendal_elite",
+        "count": "1",
+        "quote": "Ebbing is famed for its top-notch mercenaries and light cavalry."
+    },
+    "ne_master_disguise": {
+        "name": "Master of Disguise",
+        "id": 1231,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "hero spy",
+        "filename": "master_disguise",
+        "count": "1",
+        "quote": "O Great Sun which dost in Heavens fly, save us from the lice which do so stubbornly infest our bloomers. "
+    },
+    "ne_fake_ciri": {
+        "name": "Fake Ciri",
+        "id": 1232,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "",
+        "filename": "fake_ciri",
+        "count": "1",
+        "quote": "A mock-princess, a mock-queen for Cintra. A mock-ruler for the mouth of the Yarra, future lifeblood of the empire."
+    },
+    "ne_imperial_diviner": {
+        "name": "Imperial Diviner",
+        "id": 1233,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "imperial_diviner",
+        "count": "1",
+        "quote": "All these signs can mean but one thing. The starts contend you shall be victorious today."
+    },
+    "ne_xarthisius": {
+        "name": "Xarthisius",
+        "id": 1234,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "xarthisius",
+        "count": "1",
+        "quote": "Astrology, hydromancy, haruspicy, ceromancy. Ovomancy, spodomancy, metroscopy, brontoscopy..."
+    },
+    "ne_impera_enforcers": {
+        "name": "Impera Enforcers",
+        "id": 1235,
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "impera_enforcers",
+        "count": "1",
+        "quote": "Members of the emperor's fanatic body guard fight to the bitter end."
+    },
+    "ne_mangonel": {
+        "name": "Mangonel",
+        "id": 1236,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "mangonel",
+        "count": "1",
+        "quote": "This model specializes in slinging corpses and ripe dung."
+    },
+    "ne_combat_engineer": {
+        "name": "Combat Engineer",
+        "id": 1237,
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "combat_engineer",
+        "count": "1",
+        "quote": "Look at war. Man gets better at killing with each one. "
     }
 };
 
@@ -3579,3 +4002,4 @@ var ext_nr_cards = {
 var card_dict = default_cards;
 
 card_dict = Object.assign({}, card_dict, ext_nr_cards);
+card_dict = Object.assign({}, card_dict, ext_ne_cards);

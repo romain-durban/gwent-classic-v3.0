@@ -494,6 +494,83 @@ var custom_decks = [
             ["nr_cintrian_peasants", 1],
             ["nr_windhalm", 1]
         ]
+    },
+    {
+        "title": "Nilfgaard Empire - Army",
+        "description": "Nilfgaard Empire deck focusing on army cards - Playstyle: Tight Bond, Heroes, Medic, Horn",
+        "leader": "ne_emhyr_relentless",
+        "faction": "nilfgaard",
+        "cards": [
+            ["spe_fog", 1],
+            ["spe_decoy", 2],
+            ["spe_rain", 1],
+            ["spe_clear", 2],
+            ["spe_scorch", 2],
+            ["ne_vicovaro_medic", 1],
+            ["ne_nauzicaa_1", 1],
+            ["ne_nauzicaa_2", 1],
+            ["ne_nauzicaa_3", 1],
+            ["ne_shilard", 1],
+            ["ne_alba_pikeman_1", 1],
+            ["ne_archer_support", 1],
+            ["ne_archer_support_1", 1],
+            ["ne_nausicaa_brigade", 1],
+            ["ne_imperial_golem", 1],
+            ["ne_daerlan_soldier", 1],
+            ["ne_hefty_helge", 1],
+            ["ne_heavy_zerri", 1],
+            ["ne_slave_infantry_1", 1],
+            ["ne_slave_infantry_2", 1],
+            ["ne_magne_division", 1],
+            ["ne_emissary", 1],
+            ["ne_alba_spearman", 1],
+            ["ne_standard_bearer", 1],
+            ["ne_black_archer", 1],
+            ["ne_black_archer_1", 1],
+            ["ne_deithwen_arbalest", 1],
+            ["ne_guardian", 1],
+            ["ne_siege_support", 1],
+            ["ne_nausicaa_standard_bearer", 1],
+            ["ne_knight", 1],
+            ["ne_alba_armored_cavalry", 1],
+            ["ne_menno", 1]
+            
+        ]
+    },
+    {
+        "title": "Nilfgaard Empire - Nobility",
+        "description": "Nilfgaard Empire deck focusing on the nobility & aristocrats - Playstyle: Tight Bond, Spy",
+        "leader": "ne_emhyr_emperor",
+        "faction": "nilfgaard",
+        "cards": [
+            ["spe_fog", 2],
+            ["spe_horn", 2],
+            ["spe_clear", 2],
+            ["spe_scorch", 1],
+            ["ne_impera_brigade_1", 1],
+            ["ne_impera_brigade_2", 1],
+            ["ne_impera_brigade_3", 1],
+            ["ne_impera_brigade_4", 1],
+            ["ne_impera_brigade_5", 1],
+            ["ne_jan_calveit", 1],
+            ["ne_vattier", 1],
+            ["ne_letho", 1],
+            ["ne_bribery", 1],
+            ["ne_epidemic", 1],
+            ["ne_rot_tosser", 1],
+            ["ne_moorvran", 1],
+            ["ne_fringilla", 1],
+            ["ne_tibor", 1],
+            ["ne_young_emissary_1", 1],
+            ["ne_young_emissary_2", 1],
+            ["ne_cahir", 1],
+            ["ne_stefan", 1],
+            ["ne_joachim_de_wett", 1],
+            ["ne_ardal_aep_dahy", 1],
+            ["ne_cantarella", 1],
+            ["ne_assire", 1],
+            ["ne_treason", 1]
+        ]
     }
 ];
 
@@ -502,4 +579,4 @@ var custom_decks = [
  */
 
 var premade_deck = default_decks;
-premade_deck = premade_deck.concat(custom_decks);
+premade_deck = custom_decks.concat(premade_deck);

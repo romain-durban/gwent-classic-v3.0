@@ -435,7 +435,7 @@ var ability_dict = {
 	king_bran: {
 		description: "Units only lose half their Strength in bad weather conditions.",
 		placed: card => board.row.filter((c,i) => card.holder === player_me ^ i<3).forEach(r => r.halfWeather = true)
-	}	,
+	},
 	queen_calanthe: {
 		description: "Play a unit then draw a card from you deck.",
 		activated: async card => {
@@ -455,5 +455,32 @@ var ability_dict = {
 				return 0;
 			return 15;
         }
+	},
+	fake_ciri: {
+		description: "Discard a card from your hand and then draw two cards from your deck.",
+		activated: async card => {
+			if (card.holder.hand.cards.length === 0)
+				return;
+			let hand = board.getRow(card, "hand", card.holder);
+			if (card.holder.controller instanceof ControllerAI) {
+				let cards = card.holder.controller.discardOrder(card).splice(0, 1).filter(c => c.basePower < 7);
+				await Promise.all(cards.map(async c => await board.toGrave(c, card.holder.hand)));
+			} else {
+				try {
+					Carousel.curr.exit();
+				} catch (err) { }
+				await ui.queueCarousel(hand, 1, (c, i) => board.toGrave(c.cards[i], c), () => true);
+			}
+			
+			for (let i = 0; i < 2; i++) {
+				if (card.holder.deck.cards.length > 0)
+					await card.holder.deck.draw(card.holder.hand);
+			}
+		},
+		weight: (card, ai) => {
+			if (card.holder.hand.cards.length === 0)
+				return 0;
+			return 15;
+		}
 	}
 };
