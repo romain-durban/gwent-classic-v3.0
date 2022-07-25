@@ -3187,11 +3187,12 @@ class DeckMaker {
 				}
 				if (!([deck.faction, "neutral", "special", "weather"].includes(card.deck)
 					|| (["special", "weather"].includes(card.deck.split(" ")[0]) && card.deck.split(" ").includes(deck.faction)))){
-					warning += "'" + card.name + "' cannot be used in a deck of faction type '" + deck.faciton + "'\n";
+					warning += "'" + card.name + "' cannot be used in a deck of faction type '" + deck.faction + "'\n";
 					return false;
 				}
 				if (card.count < c[1]) {
-					warning += "Deck contains " + c[1] + "/" + card.count + " available " + card_dict[c.index].name + " cards\n";
+					console.log(card);
+					warning += "Deck contains " + c[1] + "/" + card.count + " available " + card_dict[c[0]].name + " cards\n";
 					return false;
 				}
 				return true;

@@ -721,7 +721,7 @@ var custom_decks = [
     },
     {
         "title": "Skellige - Ard Skellig & Svalblod",
-        "description": "Skellige deck focusing on the cards from Ard Skellige and the Svalblod cult - Playstyle: Berserker, Must, Tight Bond",
+        "description": "Skellige deck focusing on the cards from Ard Skellige and the Svalblod cult - Playstyle: Berserker, Muster, Tight Bond",
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
         "cards": [
@@ -730,7 +730,6 @@ var custom_decks = [
             ["spe_decoy", 1],
             ["spe_clear", 1],
             ["spe_scorch", 1],
-            ["spe_horn", 1],
             ["spe_horn", 1],
             ["sk_blueboy", 1],
             ["sk_hjalmar", 1],
@@ -753,6 +752,38 @@ var custom_decks = [
             ["sk_berserker", 1],
             ["sk_svalblod", 1],
             ["sk_morkvarg", 1]
+        ]
+    },
+    {
+        "title": "Skellige - Small islands",
+        "description": "Skellige deck focusing on the cards from the other islands - Playstyle: Muster, Tight Bond, Medic",
+        "leader": "sk_king_bran",
+        "faction": "skellige",
+        "cards": [
+            ["spe_frost", 3],
+            ["spe_decoy", 2],
+            ["spe_scorch", 2],
+            ["spe_horn", 2],
+            ["sk_olaf", 1],
+            ["sk_birna", 1],
+            ["sk_war_longship_1", 1],
+            ["sk_war_longship_2", 1],
+            ["sk_war_longship_3", 1],
+            ["sk_dimun_pirate_captain", 1],
+            ["sk_vigi_loon", 1],
+            ["sk_light_longship", 3],
+            ["sk_brokva_archer", 2],
+            ["sk_tuirseach_warrior_1", 1],
+            ["sk_tuirseach_warrior_2", 1],
+            ["sk_heymaey_flaminica", 1],
+            ["sk_eist_tuirseach", 1],
+            ["sk_kambi", 1],
+            ["sk_arnjolf", 1],
+            ["sk_otkell", 1],
+            ["sk_dagur", 1],
+            ["sk_sigrdrifa", 1],
+            ["sk_dimun_pirate", 1],
+            ["sk_jutta", 1]
         ]
     }
 ];

@@ -5012,16 +5012,6 @@ var ext_sk_cards = {
         "count": "1",
         "quote": "Blood for Svalblod! Skulls for his throne!"
     },
-    "sk_tuirseach_bearmaster": {
-        "name": "Tuirseach Bearmaster",
-        "deck": "skellige",
-        "row": "close",
-        "strength": "7",
-        "ability": "",
-        "filename": "tuirseach_bearmaster",
-        "count": "1",
-        "quote": "Blood for Svalblod! Skulls for his throne!"
-    },
     "sk_morkvarg": {
         "name": "Morkvarg",
         "deck": "skellige",
@@ -5043,6 +5033,279 @@ var ext_sk_cards = {
         "target": "sk_vildkaarl",
         "quote": "The vilest man Skellige's ever known."
     },
+    "sk_war_longship_3": {
+        "name": "War Longship",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "war_longship_3",
+        "count": "1",
+        "target": "sk_war_longship",
+        "quote": "They say Hemdall's heart swells whenever the longships sail out on a raid."
+    },
+    "sk_dimun_pirate_captain": {
+        "name": "Clan Dimun Pirate Captain",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "6",
+        "ability": "",
+        "filename": "dimun_pirate_captain",
+        "count": "1",
+        "quote": "Haul together, hoist the colors high!"
+    },
+    "sk_vigi_loon": {
+        "name": "Vigi the Loon",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "vigi_loon",
+        "count": "1",
+        "quote": "Even for Skelligers Vigi's fearlessness went far beyond the pale of bravery."
+    },
+    "sk_tuirseach_warrior_1": {
+        "name": "Clan Tuirseach Warrior",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "tuirseach_warrior_1",
+        "count": "1",
+        "target": "sk_tuirseach_warrior",
+        "quote": "Friends we show heart, foes we show our axe. Remember that."
+    },
+    "sk_tuirseach_warrior_2": {
+        "name": "Clan Tuirseach Warrior",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "tuirseach_warrior_2",
+        "count": "1",
+        "target": "sk_tuirseach_warrior",
+        "quote": "Friends we show heart, foes we show our axe. Remember that."
+    },
+    "sk_heymaey_flaminica": {
+        "name": "Clan Heymaey Flaminica",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "3",
+        "ability": "medic",
+        "filename": "heymaey_flaminica",
+        "count": "1",
+        "quote": "A flaminica, the highest position among the druidesses, commands a great deal of respect and wields a great deal of power."
+    },
+    "sk_arnjolf": {
+        "name": "Arnjolf the Patricide",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "",
+        "filename": "arnjolf",
+        "count": "1",
+        "quote": "Only death can cleanse me o' shame."
+    },
+    "sk_otkell": {
+        "name": "otkell",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero morale",
+        "filename": "otkell",
+        "count": "1",
+        "quote": "The mother Godess' power knows no bounds."
+    },
+    "sk_dagur": {
+        "name": "Dagur Two Blades",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "dagur",
+        "count": "1",
+        "quote": "Shields are for flower-pickin' saps."
+    },
+    "sk_sigrdrifa": {
+        "name": "Sigrdrifa",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "0",
+        "ability": "medic",
+        "filename": "sigrdrifa",
+        "count": "1",
+        "quote": "Fall on your knees and beg Modron Freya for forgiveness."
+    },
+    "sk_jutta": {
+        "name": "Jutta an Dimun",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "jutta",
+        "count": "1",
+        "quote": "Some call her the Iron Maiden."
+    },
+    "sk_eist_tuirseach": {
+        "name": "Eist Tuirseach",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "eist_tuirseach",
+        "count": "1",
+        "quote": "Skellige and Cintra shall stand ever together!"
+    },
+    "sk_troll_errant": {
+        "name": "Troll Errant",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "troll_errant",
+        "count": "1",
+        "quote": "Champion of Champions!"
+    },
+    "sk_giant_boar": {
+        "name": "Giant Boar",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "giant_boar",
+        "count": "1",
+        "quote": "Most men, seeing a massive boar in the woods, mess their trousers and scurry up the nearest tree. A Skelliger, though - he just drools."
+    },
+    "sk_harald_houndsnout": {
+        "name": "Harald Houndsnout",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "3",
+        "ability": "",
+        "filename": "harald_houndsnout",
+        "count": "1",
+        "quote": "Once proud jarl of Clan Tordarroch, now a muttering madman."
+    },
+    "sk_skjall": {
+        "name": "Skjall",
+        "deck": "skellige",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "skjall",
+        "count": "1",
+        "quote": "Strike his name from the Saga of Elders! No one dare grant him shelter or sustenance!"
+    },
+    "sk_brokvar_hunter": {
+        "name": "Clan Brokvar Hunter",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "4",
+        "ability": "",
+        "filename": "brokvar_hunter",
+        "count": "1",
+        "quote": "Better believe we can hunt. Thing is, not much game on Spikeroog..."
+    },
+    "sk_tuirseach_veteran": {
+        "name": "Clan Tuirseach Veteran",
+        "deck": "skellige",
+        "row": "agile",
+        "strength": "4",
+        "ability": "",
+        "filename": "tuirseach_veteran",
+        "count": "1",
+        "quote": "I've seen wonders no man's ever dreamt of, and done things no man should ever do."
+    },
+    "sk_djenge_frett": {
+        "name": "Djenge Frett",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "hero",
+        "filename": "djenge_frett",
+        "count": "1",
+        "quote": "Should I catch you, you'll hang, and I'll tickle your feet as you expire."
+    },
+    "sk_heymaey_herbalist": {
+        "name": "Heymaey Herbalist",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "hero medic",
+        "filename": "heymaey_herbalist",
+        "count": "1",
+        "quote": "We don't burn cunning women in Skellige - we take their advice."
+    },
+    "sk_gremist": {
+        "name": "Gremist",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "gremist",
+        "count": "1",
+        "quote": "An archdruid, a master of alchemy, and the grumpiest old fart in the Isles."
+    },
+    "sk_holger_blackhand": {
+        "name": "Holger Blackhand",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "4",
+        "ability": "",
+        "filename": "holger_blackhand",
+        "count": "1",
+        "quote": "Now let's drink to the Emperor of Nilfgaard – may he die of somethin' hideous!"
+    },
+    "sk_an_craite_blacksmith": {
+        "name": "Clan an Craite Blacksmith",
+        "deck": "skellige",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "",
+        "filename": "an_craite_blacksmith",
+        "count": "1",
+        "quote": "Remember me words – a good shield can save yer life."
+    },
+    "sk_hym": {
+        "name": "Hym",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "hym",
+        "count": "1",
+        "quote": "The gods' speak to me... I hear them whisper from the shadows..."
+    },
+    "sk_wild_boar": {
+        "name": "Wild Boar of the Sea",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "wild_boar",
+        "count": "1",
+        "quote": "Merely mention this name to a Nilfgaardian, and they'll feel a spreading warmth in their knickers..."
+    },
+    "sk_whale_harpooner": {
+        "name": "Whale Harpooner",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "7",
+        "ability": "",
+        "filename": "whale_harpooner",
+        "count": "1",
+        "quote": "Skelligers have long known that harpoons are effective against more than mere whales..."
+    },
+    "sk_blue_whale": {
+        "name": "Blue Whale",
+        "deck": "skellige",
+        "row": "siege",
+        "strength": "8",
+        "ability": "",
+        "filename": "blue_whale",
+        "count": "1",
+        "quote": "Too big for a razorback. That's a blue."
+    }
 };
 
 /*
