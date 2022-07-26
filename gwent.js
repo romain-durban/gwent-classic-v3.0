@@ -22,7 +22,8 @@ class ControllerAI {
 		let weights = player.hand.cards.map(c =>
 			({
 				weight: this.weightCard(c, data_max, data_board),
-				action: async () => await this.playCard(c, data_max, data_board)
+				action: async () => await this.playCard(c, data_max, data_board),
+				card: c
 			}));
 		if (player.leaderAvailable)
 			weights.push({
@@ -47,7 +48,16 @@ class ControllerAI {
 			}
 			await player.passRound();
 		} else {
+			for (var i = 0; i < weights.length; ++i) {
+				if (weights[i].card)
+					console.log("[" + weights[i].card.name + "] Weight: " + weights[i].weight);
+				else if (i == weights.length - 2)
+					console.log("[Leader] Weight: " + weights[i].weight);
+				else
+					console.log("[Pass] Weight: " + weights[i].weight);
+			}
 			let rand = randomInt(weightTotal);
+			console.log("Chosen weight: " + rand);
 			for (var i = 0; i < weights.length; ++i) {
 				rand -= weights[i].weight;
 				if (rand < 0)
@@ -373,14 +383,31 @@ class ControllerAI {
 		//let name = row === board.row[1] ? "Young Berserker" : "Berserker";
 		//let n = row.cards.filter(c => c.abilities[-1] === "berserker").length;
 		//let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
-		let bers_cards = row.cards.filter(c => c.abilities[-1] === "berserker");
-		let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower, 0);
+		let bers_cards = row.cards.filter(c => c.abilities.includes("berserker"));
+		let weightData = { bond: {}, strength:0 };
+
+		for (var i = 0; i < bers_cards.length; i++) {
+			var c = bers_cards[i];
+			var ctarget = card_dict[c.target];
+			weightData.strength -= c.power;
+			if (ctarget.ability.includes("morale"))
+				weightData.strength += Number(ctarget["strength"]) + row.cards.filter(c => c.isUnit()).length - 1;
+			if (ctarget.ability.includes("bond")) {
+				if (!weightData.bond[c.target])
+					weightData.bond[c.target] = [0, Number(ctarget["strength"])];
+				weightData.bond[c.target][0]++;
+            }
+		}
+		let weight = weightData.strength + Object.keys(weightData.bond).reduce((s, c) => s + Math.pow(weightData.bond[c][0],2) * weightData.bond[c][1], 0)
+		console.log(weight);
+		console.log(weightData);
+		/*let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower, 0);
 		if (bers_cards.filter(c => c.key === "sk_young_berserker").length)
 			weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
 		if (bers_cards.filter(c => c.key === "sk_berserker").length)
 			weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
 		if (bers_cards.filter(c => c.key === "sk_drummond_berserker").length)
-			weight += bers_cards.filter(c => c.key === "sk_drummond_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
+			weight += bers_cards.filter(c => c.key === "sk_drummond_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;*/
 		return Math.max(1, weight);
 	}
 
@@ -396,6 +423,21 @@ class ControllerAI {
 		if (card.holder.hand.cards.filter(c => c.abilities.includes("mardroeme")).length < 1 && !row.effects.mardroeme > 0)
 			return score;
 		score -= card.basePower;
+		let ctarget = card_dict[card.target];
+		if (ctarget.ability.includes("morale")) {
+			score += Number(ctarget["strength"]) + row.cards.filter(c => c.isUnit()).length - 1;
+		}
+		else if (ctarget.ability.includes("bond")) {
+			let n = 1;
+			if (!row.effects.mardroeme)
+				n += row.cards.filter(c => c.key === card.key).length;
+			else
+				n += row.cards.filter(c => c.key === card.target).length;
+			score += Number(ctarget["strength"]) * (n * n);
+		} else {
+			score += Number(ctarget["strength"]);
+        }
+		/*
 		if (card.key === "sk_berserker")
 			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
 		else if (card.key === "sk_drummond_berserker")
@@ -409,7 +451,7 @@ class ControllerAI {
 			score = card_dict["sk_young_vildkaarl"]["strength"] * ( n * n );
 		} else {
 			score = card_dict[card.target]["strength"];
-        }
+        }*/
 		return Math.max(1, score);
 	}
 
@@ -1253,9 +1295,9 @@ class Row extends CardContainer {
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "bond":
-					if (!this.effects.bond[card.id()])
-						this.effects.bond[card.id()] = 0;
-					this.effects.bond[card.id()] += activate ? 1 : -1;
+					if (!this.effects.bond[card.key])
+						this.effects.bond[card.key] = 0;
+					this.effects.bond[card.key] += activate ? 1 : -1;
 					break;
 			}
 		}
@@ -1312,7 +1354,7 @@ class Row extends CardContainer {
 			total = Math.min(1, total);
 		if (game.doubleSpyPower && card.abilities.includes("spy"))
 			total *= 2;
-		let bond = this.effects.bond[card.id()];
+		let bond = this.effects.bond[card.key];
 		if (isNumber(bond) && bond > 1)
 			total *= Number(bond);
 		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
@@ -1845,7 +1887,10 @@ class Card {
 	constructor(key, card_data, player) {
 		if (!card_data) {
 			console.log("Invalid card data for: "+key);
-        }
+		}
+		this.id;
+		if (card_data.id)
+			this.id = Number(card_data.id);
 		this.key = key;
 		this.name = card_data.name;
 		this.basePower = this.power = Number(card_data.strength);
@@ -1907,8 +1952,8 @@ class Card {
 	}
 
 	// Returns the identifier for this type of card
-	id() {
-		return this.name;
+	getId() {
+		return this.key;
 	}
 
 	// Sets and displays the current power of this card
@@ -2000,9 +2045,17 @@ class Card {
 		var dif = factionRank(a) - factionRank(b);
 		if (dif !== 0)
 			return dif;
+		// Muster/Bond cards
+		if (a.target && b.target && a.target === b.target) {
+			if (a.id && b.id)
+				return Number(a.id) - Number(b.id);
+			if (a.key && b.key)
+				return a.key.localeCompare(b.key);
+        }
 		dif = a.basePower - b.basePower;
 		if (dif && dif !== 0)
 			return dif;
+		
 		return a.name.localeCompare(b.name);
 
 		function factionRank(c) {

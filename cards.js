@@ -5,7 +5,6 @@
 var default_cards = {
     "ntr_mysterious_elf": {
         "name": "Avallach'h",
-        "id": 0,
         "deck": "neutral",
         "row": "close",
         "strength": "0",
@@ -16,7 +15,6 @@ var default_cards = {
     },
     "spe_decoy": {
         "name": "Decoy",
-        "id": 1,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -27,7 +25,6 @@ var default_cards = {
     },
     "spe_frost": {
         "name": "Biting Frost",
-        "id": 2,
         "deck": "weather",
         "row": "",
         "strength": "",
@@ -38,7 +35,6 @@ var default_cards = {
     },
     "ntr_ciri": {
         "name": "Cirilla Fiona Elen Riannon",
-        "id": 3,
         "deck": "neutral",
         "row": "close",
         "strength": "15",
@@ -49,7 +45,6 @@ var default_cards = {
     },
     "spe_clear": {
         "name": "Clear Weather",
-        "id": 4,
         "deck": "weather",
         "row": "",
         "strength": "",
@@ -60,7 +55,6 @@ var default_cards = {
     },
     "spe_horn": {
         "name": "Commander's Horn",
-        "id": 5,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -71,7 +65,6 @@ var default_cards = {
     },
     "ntr_dandelion": {
         "name": "Dandelion",
-        "id": 6,
         "deck": "neutral",
         "row": "close",
         "strength": "2",
@@ -82,7 +75,6 @@ var default_cards = {
     },
     "ntr_emiel": {
         "name": "Emiel Regis Rohellec Terzieff",
-        "id": 7,
         "deck": "neutral",
         "row": "close",
         "strength": "5",
@@ -93,7 +85,6 @@ var default_cards = {
     },
     "ntr_geralt": {
         "name": "Geralt of Rivia",
-        "id": 8,
         "deck": "neutral",
         "row": "close",
         "strength": "15",
@@ -104,7 +95,6 @@ var default_cards = {
     },
     "spe_fog": {
         "name": "Impenetrable Fog",
-        "id": 9,
         "deck": "weather",
         "row": "",
         "strength": "",
@@ -115,7 +105,6 @@ var default_cards = {
     },
     "spe_scorch": {
         "name": "Scorch",
-        "id": 10,
         "deck": "special",
         "row": "",
         "strength": "",
@@ -126,7 +115,6 @@ var default_cards = {
     },
     "spe_rain": {
         "name": "Torrential Rain",
-        "id": 11,
         "deck": "weather",
         "row": "",
         "strength": "",
@@ -137,7 +125,6 @@ var default_cards = {
     },
     "ntr_triss": {
         "name": "Triss Merigold",
-        "id": 12,
         "deck": "neutral",
         "row": "close",
         "strength": "7",
@@ -148,7 +135,6 @@ var default_cards = {
     },
     "ntr_vesemir": {
         "name": "Vesemir",
-        "id": 13,
         "deck": "neutral",
         "row": "close",
         "strength": "6",
@@ -159,7 +145,6 @@ var default_cards = {
     },
     "ntr_villen": {
         "name": "Villentretenmerth",
-        "id": 14,
         "deck": "neutral",
         "row": "close",
         "strength": "7",
@@ -170,7 +155,6 @@ var default_cards = {
     },
     "ntr_yennefer": {
         "name": "Yennefer of Vengerberg",
-        "id": 15,
         "deck": "neutral",
         "row": "ranged",
         "strength": "7",
@@ -181,7 +165,6 @@ var default_cards = {
     },
     "ntr_zoltan": {
         "name": "Zoltan Chivay",
-        "id": 16,
         "deck": "neutral",
         "row": "close",
         "strength": "5",
@@ -192,7 +175,6 @@ var default_cards = {
     },
     "ntr_olgierd": {
         "name": "Olgierd von Everec",
-        "id": 17,
         "deck": "neutral",
         "row": "agile",
         "strength": "6",
@@ -203,7 +185,7 @@ var default_cards = {
     },
     "ntr_gaunter_odimm": {
         "name": "Gaunter O'Dimm",
-        "id": 18,
+        "id": 1,
         "deck": "neutral",
         "row": "siege",
         "strength": "2",
@@ -215,7 +197,7 @@ var default_cards = {
     },
     "ntr_gaunter_odimm_darkness": {
         "name": "Gaunter O'Dimm - Darkness",
-        "id": 19,
+        "id": 2,
         "deck": "neutral",
         "row": "ranged",
         "strength": "4",
@@ -227,7 +209,6 @@ var default_cards = {
     },
     "ntr_cow": {
         "name": "Cow",
-        "id": 20,
         "deck": "neutral",
         "row": "ranged",
         "strength": "0",
@@ -239,7 +220,6 @@ var default_cards = {
     },
     "ntr_chort": {
         "name": "Bovine Defense Force",
-        "id": 21,
         "deck": "neutral",
         "row": "close",
         "strength": "8",
@@ -250,7 +230,6 @@ var default_cards = {
     },
     "nr_foltest_king": {
         "name": "Foltest - King of Temeria",
-        "id": 22,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -261,7 +240,6 @@ var default_cards = {
     },
     "nr_foltest_lord": {
         "name": "Foltest - Lord Commander of the North",
-        "id": 23,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -272,7 +250,6 @@ var default_cards = {
     },
     "nr_foltest_siegemaster": {
         "name": "Foltest - The Siegemaster",
-        "id": 24,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -283,7 +260,6 @@ var default_cards = {
     },
     "nr_foltest_steelforged": {
         "name": "Foltest - The Steel-Forged",
-        "id": 25,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -294,7 +270,6 @@ var default_cards = {
     },
     "nr_foltest_son_of_medell": {
         "name": "Foltest - Son of Medell",
-        "id": 26,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -305,7 +280,6 @@ var default_cards = {
     },
     "nr_ballista": {
         "name": "Ballista",
-        "id": 27,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -316,7 +290,7 @@ var default_cards = {
     },
     "nr_blue_stripes_1": {
         "name": "Blue Stripes Commando",
-        "id": 28,
+        "id": 1,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -328,7 +302,7 @@ var default_cards = {
     },
     "nr_blue_stripes_2": {
         "name": "Blue Stripes Commando",
-        "id": 29,
+        "id": 2,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -340,7 +314,7 @@ var default_cards = {
     },
     "nr_blue_stripes_3": {
         "name": "Blue Stripes Commando",
-        "id": 30,
+        "id": 3,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -352,7 +326,7 @@ var default_cards = {
     },
     "nr_catapult_1": {
         "name": "Catapult",
-        "id": 31,
+        "id": 1,
         "deck": "realms",
         "row": "siege",
         "strength": "8",
@@ -364,7 +338,7 @@ var default_cards = {
     },
     "nr_catapult_2": {
         "name": "Catapult",
-        "id": 32,
+        "id": 2,
         "deck": "realms",
         "row": "siege",
         "strength": "8",
@@ -376,7 +350,7 @@ var default_cards = {
     },
     "nr_crinfrid_1": {
         "name": "Crinfrid Reavers Dragon Hunter",
-        "id": 33,
+        "id": 1,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -388,7 +362,7 @@ var default_cards = {
     },
     "nr_crinfrid_2": {
         "name": "Crinfrid Reavers Dragon Hunter",
-        "id": 34,
+        "id": 2,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -400,7 +374,7 @@ var default_cards = {
     },
     "nr_crinfrid_3": {
         "name": "Crinfrid Reavers Dragon Hunter",
-        "id": 35,
+        "id": 3,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -412,7 +386,6 @@ var default_cards = {
     },
     "nr_dethmold": {
         "name": "Dethmold",
-        "id": 36,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -423,7 +396,6 @@ var default_cards = {
     },
     "nr_banner_nurse": {
         "name": "Dun Banner Medic",
-        "id": 37,
         "deck": "realms",
         "row": "siege",
         "strength": "5",
@@ -434,7 +406,6 @@ var default_cards = {
     },
     "nr_esterad": {
         "name": "Esterad Thyssen",
-        "id": 38,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -445,7 +416,6 @@ var default_cards = {
     },
     "nr_natalis": {
         "name": "John Natalis",
-        "id": 39,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -456,18 +426,16 @@ var default_cards = {
     },
     "nr_kaedwen_siege": {
         "name": "Kaedweni Siege Expert",
-        "id": 40,
         "deck": "realms",
         "row": "siege",
         "strength": "1",
         "ability": "morale",
         "filename": "kaedwen_siege",
         "count": "1",
-        "quote":"'You gotta recalibrate the arm by five degrees.' 'Do what by the what now?'"
+        "quote": "'You gotta recalibrate the arm by five degrees.' 'Do what by the what now?'"
     },
     "nr_kaedwen_siege_1": {
         "name": "Kaedweni Siege Expert",
-        "id": 41,
         "deck": "realms",
         "row": "siege",
         "strength": "1",
@@ -478,7 +446,6 @@ var default_cards = {
     },
     "nr_kaedwen_siege_2": {
         "name": "Kaedweni Siege Expert",
-        "id": 42,
         "deck": "realms",
         "row": "siege",
         "strength": "1",
@@ -489,7 +456,6 @@ var default_cards = {
     },
     "nr_keira": {
         "name": "Keira Metz",
-        "id": 43,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -500,7 +466,6 @@ var default_cards = {
     },
     "nr_philippa": {
         "name": "Philippa Eilhart",
-        "id": 44,
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -511,7 +476,7 @@ var default_cards = {
     },
     "nr_poor_infantry_1": {
         "name": "Poor Fucking Infantry",
-        "id": 45,
+        "id": 1,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -523,7 +488,7 @@ var default_cards = {
     },
     "nr_poor_infantry_2": {
         "name": "Poor Fucking Infantry",
-        "id": 46,
+        "id": 2,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -535,7 +500,7 @@ var default_cards = {
     },
     "nr_poor_infantry_3": {
         "name": "Poor Fucking Infantry",
-        "id": 47,
+        "id": 3,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -547,7 +512,6 @@ var default_cards = {
     },
     "nr_stennis": {
         "name": "Prince Stennis",
-        "id": 49,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -558,7 +522,6 @@ var default_cards = {
     },
     "nr_redania": {
         "name": "Redanian Foot Soldier",
-        "id": 50,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -569,7 +532,6 @@ var default_cards = {
     },
     "nr_redania_1": {
         "name": "Redanian Foot Soldier",
-        "id": 51,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -580,7 +542,6 @@ var default_cards = {
     },
     "nr_sheldon": {
         "name": "Sheldon Skaggs",
-        "id": 52,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -591,7 +552,6 @@ var default_cards = {
     },
     "nr_siege_tower": {
         "name": "Siege Tower",
-        "id": 53,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -602,7 +562,6 @@ var default_cards = {
     },
     "nr_siegfried": {
         "name": "Siegfried of Denesle",
-        "id": 54,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -613,7 +572,6 @@ var default_cards = {
     },
     "nr_dijkstra": {
         "name": "Sigismund Dijkstra",
-        "id": 55,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -624,7 +582,6 @@ var default_cards = {
     },
     "nr_sheala": {
         "name": "Síle de Tansarville",
-        "id": 56,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -635,7 +592,6 @@ var default_cards = {
     },
     "nr_thaler": {
         "name": "Thaler",
-        "id": 57,
         "deck": "realms",
         "row": "siege",
         "strength": "1",
@@ -646,7 +602,6 @@ var default_cards = {
     },
     "nr_sabrina": {
         "name": "Sabrina Glevissig",
-        "id": 58,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -657,7 +612,6 @@ var default_cards = {
     },
     "nr_vernon": {
         "name": "Vernon Roche",
-        "id": 59,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -668,7 +622,6 @@ var default_cards = {
     },
     "nr_ves": {
         "name": "Ves",
-        "id": 60,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -679,7 +632,6 @@ var default_cards = {
     },
     "nr_yarpen": {
         "name": "Yarpen Zigrin",
-        "id": 61,
         "deck": "realms",
         "row": "close",
         "strength": "2",
@@ -690,7 +642,6 @@ var default_cards = {
     },
     "nr_trebuchet": {
         "name": "Trebuchet",
-        "id": 62,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -701,7 +652,6 @@ var default_cards = {
     },
     "nr_trebuchet_1": {
         "name": "Trebuchet",
-        "id": 63,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -712,7 +662,6 @@ var default_cards = {
     },
     "ne_emhyr_imperial": {
         "name": "Emhyr var Emreis - His Imperial Majesty",
-        "id": 64,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
@@ -723,7 +672,6 @@ var default_cards = {
     },
     "ne_emhyr_emperor": {
         "name": "Emhyr var Emreis - Emperor of Nilfgaard",
-        "id": 65,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
@@ -734,18 +682,16 @@ var default_cards = {
     },
     "ne_emhyr_whiteflame": {
         "name": "Emhyr var Emreis - the White Flame",
-        "id": 66,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
         "ability": "emhyr_whiteflame",
         "filename": "emhyr_whiteflame",
         "count": "1",
-        "quote" :"A sword is but one of many tools at a ruler's disposal."
+        "quote": "A sword is but one of many tools at a ruler's disposal."
     },
     "ne_emhyr_relentless": {
         "name": "Emhyr var Emreis - The Relentless",
-        "id": 67,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
@@ -756,7 +702,6 @@ var default_cards = {
     },
     "ne_emhyr_invader_of_the_north": {
         "name": "Emhyr var Emreis - Invader of the North",
-        "id": 68,
         "deck": "nilfgaard",
         "row": "leader",
         "strength": "",
@@ -767,7 +712,6 @@ var default_cards = {
     },
     "ne_albrich": {
         "name": "Albrich",
-        "id": 69,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "2",
@@ -778,7 +722,6 @@ var default_cards = {
     },
     "ne_assire": {
         "name": "Assire var Anahid",
-        "id": 70,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "6",
@@ -789,7 +732,6 @@ var default_cards = {
     },
     "ne_black_archer": {
         "name": "Black Infantry Archer",
-        "id": 71,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "10",
@@ -800,7 +742,6 @@ var default_cards = {
     },
     "ne_black_archer_1": {
         "name": "Black Infantry Archer",
-        "id": 72,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "10",
@@ -811,7 +752,6 @@ var default_cards = {
     },
     "ne_cahir": {
         "name": "Cahir Mawr Dyffryn aep Ceallach",
-        "id": 73,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "6",
@@ -822,7 +762,6 @@ var default_cards = {
     },
     "ne_cynthia": {
         "name": "Cynthia",
-        "id": 74,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "4",
@@ -833,7 +772,6 @@ var default_cards = {
     },
     "ne_archer_support": {
         "name": "Etolian Auxiliary Archers",
-        "id": 75,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "1",
@@ -844,7 +782,6 @@ var default_cards = {
     },
     "ne_archer_support_1": {
         "name": "Etolian Auxiliary Archers",
-        "id": 76,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "1",
@@ -855,7 +792,6 @@ var default_cards = {
     },
     "ne_fringilla": {
         "name": "Fringilla Vigo",
-        "id": 77,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "6",
@@ -866,7 +802,6 @@ var default_cards = {
     },
     "ne_heavy_zerri": {
         "name": "Heavy Zerrikanian Fire Scorpion",
-        "id": 78,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "10",
@@ -877,7 +812,7 @@ var default_cards = {
     },
     "ne_impera_brigade_1": {
         "name": "Impera Brigade Guard",
-        "id": 79,
+        "id": 1,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
@@ -889,7 +824,7 @@ var default_cards = {
     },
     "ne_impera_brigade_2": {
         "name": "Impera Brigade Guard",
-        "id": 80,
+        "id": 2,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
@@ -901,7 +836,7 @@ var default_cards = {
     },
     "ne_impera_brigade_3": {
         "name": "Impera Brigade Guard",
-        "id": 81,
+        "id": 3,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
@@ -913,7 +848,7 @@ var default_cards = {
     },
     "ne_impera_brigade_4": {
         "name": "Impera Brigade Guard",
-        "id": 82,
+        "id": 4,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
@@ -925,7 +860,6 @@ var default_cards = {
     },
     "ne_letho": {
         "name": "Letho of Gulet",
-        "id": 83,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -936,7 +870,6 @@ var default_cards = {
     },
     "ne_menno": {
         "name": "Menno Coehoorn",
-        "id": 84,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -947,18 +880,16 @@ var default_cards = {
     },
     "ne_morteisen": {
         "name": "Morteisen",
-        "id": 85,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
         "ability": "",
         "filename": "morteisen",
         "count": "1",
-        "quote" :"No Nordling pikemen or dwarven spearbearers can hope to best trained cavalary."
+        "quote": "No Nordling pikemen or dwarven spearbearers can hope to best trained cavalary."
     },
     "ne_moorvran": {
         "name": "Morvran Voorhis",
-        "id": 86,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "10",
@@ -969,7 +900,7 @@ var default_cards = {
     },
     "ne_nauzicaa_1": {
         "name": "Nausicaa Cavalry Rider",
-        "id": 87,
+        "id": 1,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "2",
@@ -981,7 +912,7 @@ var default_cards = {
     },
     "ne_nauzicaa_2": {
         "name": "Nausicaa Cavalry Rider",
-        "id": 88,
+        "id": 2,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "2",
@@ -993,7 +924,7 @@ var default_cards = {
     },
     "ne_nauzicaa_3": {
         "name": "Nausicaa Cavalry Rider",
-        "id": 89,
+        "id": 3,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "2",
@@ -1005,7 +936,6 @@ var default_cards = {
     },
     "ne_puttkammer": {
         "name": "Puttkammer",
-        "id": 90,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "3",
@@ -1016,7 +946,6 @@ var default_cards = {
     },
     "ne_rainfarn": {
         "name": "Rainfarn",
-        "id": 91,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "4",
@@ -1027,7 +956,6 @@ var default_cards = {
     },
     "ne_renuald": {
         "name": "Renuald aep Matsen",
-        "id": 92,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "5",
@@ -1038,7 +966,6 @@ var default_cards = {
     },
     "ne_rotten": {
         "name": "Rotten Mangonel",
-        "id": 93,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "3",
@@ -1049,7 +976,6 @@ var default_cards = {
     },
     "ne_shilard": {
         "name": "Shilard Fitz-Oesterlen",
-        "id": 94,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "7",
@@ -1060,7 +986,6 @@ var default_cards = {
     },
     "ne_siege_engineer": {
         "name": "Siege Engineer",
-        "id": 95,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "6",
@@ -1071,7 +996,6 @@ var default_cards = {
     },
     "ne_siege_support": {
         "name": "Siege Technician",
-        "id": 96,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "0",
@@ -1082,7 +1006,6 @@ var default_cards = {
     },
     "ne_stefan": {
         "name": "Stefan Skellen",
-        "id": 97,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "9",
@@ -1093,7 +1016,6 @@ var default_cards = {
     },
     "ne_sweers": {
         "name": "Sweers",
-        "id": 98,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "2",
@@ -1104,7 +1026,6 @@ var default_cards = {
     },
     "ne_tibor": {
         "name": "Tibor Eggebracht",
-        "id": 99,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "10",
@@ -1115,7 +1036,6 @@ var default_cards = {
     },
     "ne_vanhemar": {
         "name": "Vanhemar",
-        "id": 100,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "4",
@@ -1126,7 +1046,6 @@ var default_cards = {
     },
     "ne_vattier": {
         "name": "Vattier de Rideaux",
-        "id": 101,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "4",
@@ -1137,7 +1056,6 @@ var default_cards = {
     },
     "ne_vreemde": {
         "name": "Vreemde",
-        "id": 102,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "2",
@@ -1148,7 +1066,7 @@ var default_cards = {
     },
     "ne_young_emissary_1": {
         "name": "Young Emissary",
-        "id": 103,
+        "id": 1,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "5",
@@ -1160,7 +1078,7 @@ var default_cards = {
     },
     "ne_young_emissary_2": {
         "name": "Young Emissary",
-        "id": 104,
+        "id": 2,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "5",
@@ -1172,7 +1090,6 @@ var default_cards = {
     },
     "ne_zerri": {
         "name": "Zerrikanian Fire Scorpion",
-        "id": 105,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "5",
@@ -1183,7 +1100,6 @@ var default_cards = {
     },
     "mo_eredin_commander": {
         "name": "Eredin - Commander of the Red Riders",
-        "id": 106,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
@@ -1194,7 +1110,6 @@ var default_cards = {
     },
     "mo_eredin_bringer_of_death": {
         "name": "Eredin - Bringer of Death",
-        "id": 107,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
@@ -1205,7 +1120,6 @@ var default_cards = {
     },
     "mo_eredin_destroyer": {
         "name": "Eredin - Destroyer of Worlds",
-        "id": 108,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
@@ -1216,7 +1130,6 @@ var default_cards = {
     },
     "mo_eredin_king": {
         "name": "Eredin - King of the Wild Hunt",
-        "id": 109,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
@@ -1227,7 +1140,6 @@ var default_cards = {
     },
     "mo_eredin_the_treacherous": {
         "name": "Eredin Bréacc Glas - The Treacherous",
-        "id": 110,
         "deck": "monsters",
         "row": "leader",
         "strength": "",
@@ -1238,7 +1150,7 @@ var default_cards = {
     },
     "mo_arachas": {
         "name": "Arachas ",
-        "id": 111,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1250,7 +1162,7 @@ var default_cards = {
     },
     "mo_arachas_1": {
         "name": "Arachas ",
-        "id": 112,
+        "id": 2,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1262,7 +1174,7 @@ var default_cards = {
     },
     "mo_arachas_2": {
         "name": "Arachas ",
-        "id": 113,
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1274,7 +1186,7 @@ var default_cards = {
     },
     "mo_arachas_behemoth": {
         "name": "Arachas- Behemoth",
-        "id": 114,
+        "id": 4,
         "deck": "monsters",
         "row": "siege",
         "strength": "6",
@@ -1286,7 +1198,6 @@ var default_cards = {
     },
     "mo_botchling": {
         "name": "Botchling",
-        "id": 115,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1298,7 +1209,6 @@ var default_cards = {
     },
     "mo_celaeno_harpy": {
         "name": "Celaeno Harpy",
-        "id": 116,
         "deck": "monsters",
         "row": "agile",
         "strength": "2",
@@ -1309,7 +1219,6 @@ var default_cards = {
     },
     "mo_cockatrice": {
         "name": "Cockatrice",
-        "id": 117,
         "deck": "monsters",
         "row": "ranged",
         "strength": "2",
@@ -1320,7 +1229,7 @@ var default_cards = {
     },
     "mo_witch_velen": {
         "name": "Crone - Brewess",
-        "id": 118,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "6",
@@ -1332,7 +1241,7 @@ var default_cards = {
     },
     "mo_witch_velen_1": {
         "name": "Crone - Weavess",
-        "id": 119,
+        "id": 2,
         "deck": "monsters",
         "row": "close",
         "strength": "6",
@@ -1344,7 +1253,7 @@ var default_cards = {
     },
     "mo_witch_velen_2": {
         "name": "Crone - Whispess",
-        "id": 120,
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "6",
@@ -1356,7 +1265,6 @@ var default_cards = {
     },
     "mo_draug": {
         "name": "Draug",
-        "id": 121,
         "deck": "monsters",
         "row": "close",
         "strength": "10",
@@ -1367,7 +1275,6 @@ var default_cards = {
     },
     "mo_earth_elemental": {
         "name": "Earth Elemental",
-        "id": 122,
         "deck": "monsters",
         "row": "siege",
         "strength": "6",
@@ -1378,7 +1285,6 @@ var default_cards = {
     },
     "mo_endrega": {
         "name": "Endrega",
-        "id": 123,
         "deck": "monsters",
         "row": "ranged",
         "strength": "2",
@@ -1389,7 +1295,6 @@ var default_cards = {
     },
     "mo_fiend": {
         "name": "Fiend",
-        "id": 124,
         "deck": "monsters",
         "row": "close",
         "strength": "6",
@@ -1400,7 +1305,6 @@ var default_cards = {
     },
     "mo_fire_elemental": {
         "name": "Fire Elemental",
-        "id": 125,
         "deck": "monsters",
         "row": "siege",
         "strength": "6",
@@ -1411,7 +1315,6 @@ var default_cards = {
     },
     "mo_fogling": {
         "name": "Foglet",
-        "id": 126,
         "deck": "monsters",
         "row": "close",
         "strength": "2",
@@ -1422,7 +1325,6 @@ var default_cards = {
     },
     "mo_forktail": {
         "name": "Forktail",
-        "id": 127,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1433,7 +1335,6 @@ var default_cards = {
     },
     "mo_frightener": {
         "name": "Frightener",
-        "id": 128,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1444,7 +1345,6 @@ var default_cards = {
     },
     "mo_gargoyle": {
         "name": "Gargoyle",
-        "id": 129,
         "deck": "monsters",
         "row": "ranged",
         "strength": "2",
@@ -1455,7 +1355,7 @@ var default_cards = {
     },
     "mo_ghoul": {
         "name": "Ghoul",
-        "id": 130,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "1",
@@ -1467,7 +1367,7 @@ var default_cards = {
     },
     "mo_ghoul_1": {
         "name": "Ghoul",
-        "id": 131,
+        "id": 2,
         "deck": "monsters",
         "row": "close",
         "strength": "1",
@@ -1479,7 +1379,7 @@ var default_cards = {
     },
     "mo_ghoul_2": {
         "name": "Ghoul",
-        "id": 132,
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "1",
@@ -1491,7 +1391,6 @@ var default_cards = {
     },
     "mo_gravehag": {
         "name": "Grave Hag",
-        "id": 133,
         "deck": "monsters",
         "row": "ranged",
         "strength": "5",
@@ -1502,7 +1401,6 @@ var default_cards = {
     },
     "mo_gryffin": {
         "name": "Griffin",
-        "id": 134,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1513,7 +1411,6 @@ var default_cards = {
     },
     "mo_harpy": {
         "name": "Harpy",
-        "id": 135,
         "deck": "monsters",
         "row": "agile",
         "strength": "2",
@@ -1524,7 +1421,6 @@ var default_cards = {
     },
     "mo_frost_giant": {
         "name": "Ice Giant",
-        "id": 136,
         "deck": "monsters",
         "row": "siege",
         "strength": "5",
@@ -1535,7 +1431,6 @@ var default_cards = {
     },
     "mo_imlerith": {
         "name": "Imlerith",
-        "id": 137,
         "deck": "monsters",
         "row": "close",
         "strength": "10",
@@ -1546,7 +1441,6 @@ var default_cards = {
     },
     "mo_kayran": {
         "name": "Kayran",
-        "id": 138,
         "deck": "monsters",
         "row": "agile",
         "strength": "8",
@@ -1557,7 +1451,6 @@ var default_cards = {
     },
     "mo_leshen": {
         "name": "Leshen",
-        "id": 139,
         "deck": "monsters",
         "row": "ranged",
         "strength": "10",
@@ -1568,7 +1461,7 @@ var default_cards = {
     },
     "mo_nekker": {
         "name": "Nekker",
-        "id": 140,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "2",
@@ -1580,7 +1473,7 @@ var default_cards = {
     },
     "mo_nekker_1": {
         "name": "Nekker",
-        "id": 141,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "2",
@@ -1592,7 +1485,7 @@ var default_cards = {
     },
     "mo_nekker_2": {
         "name": "Nekker",
-        "id": 142,
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "2",
@@ -1604,7 +1497,6 @@ var default_cards = {
     },
     "mo_mighty_maiden": {
         "name": "Plague Maiden",
-        "id": 143,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1615,7 +1507,7 @@ var default_cards = {
     },
     "mo_bruxa": {
         "name": "Vampire - Bruxa",
-        "id": 144,
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1627,7 +1519,7 @@ var default_cards = {
     },
     "mo_ekkima": {
         "name": "Vampire - Ekimmara",
-        "id": 145,
+        "id": 2,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1639,7 +1531,7 @@ var default_cards = {
     },
     "mo_fleder": {
         "name": "Vampire - Fleder",
-        "id": 146,
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1651,7 +1543,7 @@ var default_cards = {
     },
     "mo_garkain": {
         "name": "Vampire - Garkain",
-        "id": 147,
+        "id": 4,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -1663,7 +1555,7 @@ var default_cards = {
     },
     "mo_katakan": {
         "name": "Vampire - Katakan",
-        "id": 148,
+        "id": 5,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1675,7 +1567,6 @@ var default_cards = {
     },
     "mo_werewolf": {
         "name": "Werewolf",
-        "id": 149,
         "deck": "monsters",
         "row": "close",
         "strength": "5",
@@ -1686,7 +1577,6 @@ var default_cards = {
     },
     "mo_wyvern": {
         "name": "Wyvern",
-        "id": 150,
         "deck": "monsters",
         "row": "ranged",
         "strength": "2",
@@ -1697,7 +1587,6 @@ var default_cards = {
     },
     "mo_toad": {
         "name": "Toad",
-        "id": 151,
         "deck": "monsters",
         "row": "ranged",
         "strength": "7",
@@ -1708,7 +1597,6 @@ var default_cards = {
     },
     "sc_francesca_queen": {
         "name": "Francesca Findabair - Queen of Dol Blathanna",
-        "id": 152,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
@@ -1719,7 +1607,6 @@ var default_cards = {
     },
     "sc_francesca_beautiful": {
         "name": "Francesca Findabair - the Beautiful",
-        "id": 153,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
@@ -1730,7 +1617,6 @@ var default_cards = {
     },
     "sc_francesca_daisy": {
         "name": "Francesca Findabair - Daisy of the Valley",
-        "id": 154,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
@@ -1741,7 +1627,6 @@ var default_cards = {
     },
     "sc_francesca_pureblood": {
         "name": "Francesca Findabair - Pureblood Elf",
-        "id": 155,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
@@ -1752,7 +1637,6 @@ var default_cards = {
     },
     "sc_francesca_hope_of_the_aen_seidhe": {
         "name": "Francesca Findabair - Hope of the Aen Seidhe",
-        "id": 156,
         "deck": "scoiatael",
         "row": "leader",
         "strength": "",
@@ -1763,7 +1647,6 @@ var default_cards = {
     },
     "sc_ciaran": {
         "name": "Ciaran aep Easnillien",
-        "id": 157,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "3",
@@ -1774,7 +1657,6 @@ var default_cards = {
     },
     "sc_barclay": {
         "name": "Barclay Els",
-        "id": 158,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -1785,7 +1667,6 @@ var default_cards = {
     },
     "sc_dennis": {
         "name": "Dennis Cranmer",
-        "id": 159,
         "deck": "scoiatael",
         "row": "close",
         "strength": "6",
@@ -1796,7 +1677,6 @@ var default_cards = {
     },
     "sc_dol_archer": {
         "name": "Dol Blathanna Archer",
-        "id": 160,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -1807,7 +1687,6 @@ var default_cards = {
     },
     "sc_dol_infantry": {
         "name": "Dol Blathanna Scout",
-        "id": 161,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -1818,7 +1697,6 @@ var default_cards = {
     },
     "sc_dol_infantry_1": {
         "name": "Dol Blathanna Scout",
-        "id": 162,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -1829,7 +1707,6 @@ var default_cards = {
     },
     "sc_dol_infantry_2": {
         "name": "Dol Blathanna Scout",
-        "id": 163,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -1840,7 +1717,7 @@ var default_cards = {
     },
     "sc_dwarf": {
         "name": "Dwarven Skirmisher",
-        "id": 164,
+        "id": 1,
         "deck": "scoiatael",
         "row": "close",
         "strength": "3",
@@ -1852,7 +1729,7 @@ var default_cards = {
     },
     "sc_dwarf_1": {
         "name": "Dwarven Skirmisher",
-        "id": 165,
+        "id": 2,
         "deck": "scoiatael",
         "row": "close",
         "strength": "3",
@@ -1864,7 +1741,7 @@ var default_cards = {
     },
     "sc_dwarf_2": {
         "name": "Dwarven Skirmisher",
-        "id": 166,
+        "id": 3,
         "deck": "scoiatael",
         "row": "close",
         "strength": "3",
@@ -1876,7 +1753,6 @@ var default_cards = {
     },
     "sc_eithne": {
         "name": "Eithné",
-        "id": 167,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "10",
@@ -1887,7 +1763,7 @@ var default_cards = {
     },
     "sc_elf_skirmisher": {
         "name": "Elven Skirmisher",
-        "id": 168,
+        "id": 1,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "2",
@@ -1899,7 +1775,7 @@ var default_cards = {
     },
     "sc_elf_skirmisher_1": {
         "name": "Elven Skirmisher",
-        "id": 169,
+        "id": 2,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "2",
@@ -1911,7 +1787,7 @@ var default_cards = {
     },
     "sc_elf_skirmisher_2": {
         "name": "Elven Skirmisher",
-        "id": 170,
+        "id": 3,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "2",
@@ -1923,7 +1799,6 @@ var default_cards = {
     },
     "sc_filavandrel": {
         "name": "Filavandrel aen Fidhail",
-        "id": 171,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -1934,7 +1809,6 @@ var default_cards = {
     },
     "sc_havekar_nurse": {
         "name": "Havekar Healer",
-        "id": 172,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "0",
@@ -1945,7 +1819,6 @@ var default_cards = {
     },
     "sc_havekar_nurse_1": {
         "name": "Havekar Healer",
-        "id": 173,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "0",
@@ -1956,7 +1829,6 @@ var default_cards = {
     },
     "sc_havekar_nurse_2": {
         "name": "Havekar Healer",
-        "id": 174,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "0",
@@ -1967,7 +1839,7 @@ var default_cards = {
     },
     "sc_havekar_support": {
         "name": "Havekar Smuggler",
-        "id": 175,
+        "id": 1,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -1979,7 +1851,7 @@ var default_cards = {
     },
     "sc_havekar_support_1": {
         "name": "Havekar Smuggler",
-        "id": 176,
+        "id": 2,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -1991,7 +1863,7 @@ var default_cards = {
     },
     "sc_havekar_support_2": {
         "name": "Havekar Smuggler",
-        "id": 177,
+        "id": 3,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2003,7 +1875,6 @@ var default_cards = {
     },
     "sc_ida": {
         "name": "Ida Emean aep Sivney",
-        "id": 178,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "6",
@@ -2014,7 +1885,6 @@ var default_cards = {
     },
     "sc_iorveth": {
         "name": "Iorveth",
-        "id": 179,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "10",
@@ -2025,7 +1895,6 @@ var default_cards = {
     },
     "sc_isengrim": {
         "name": "Isengrim Faoiltiarna",
-        "id": 180,
         "deck": "scoiatael",
         "row": "close",
         "strength": "10",
@@ -2036,7 +1905,6 @@ var default_cards = {
     },
     "sc_mahakam": {
         "name": "Mahakaman Defender",
-        "id": 181,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2047,7 +1915,6 @@ var default_cards = {
     },
     "sc_mahakam_1": {
         "name": "Mahakaman Defender",
-        "id": 182,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2058,7 +1925,6 @@ var default_cards = {
     },
     "sc_mahakam_2": {
         "name": "Mahakaman Defender",
-        "id": 183,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2069,7 +1935,6 @@ var default_cards = {
     },
     "sc_mahakam_3": {
         "name": "Mahakaman Defender",
-        "id": 184,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2080,7 +1945,6 @@ var default_cards = {
     },
     "sc_mahakam_4": {
         "name": "Mahakaman Defender",
-        "id": 185,
         "deck": "scoiatael",
         "row": "close",
         "strength": "5",
@@ -2091,7 +1955,6 @@ var default_cards = {
     },
     "sc_milva": {
         "name": "Milva",
-        "id": 186,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "10",
@@ -2102,7 +1965,6 @@ var default_cards = {
     },
     "sc_riordain": {
         "name": "Riordain",
-        "id": 187,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "1",
@@ -2113,7 +1975,6 @@ var default_cards = {
     },
     "sc_saskia": {
         "name": "Saesenthessis",
-        "id": 188,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "10",
@@ -2124,7 +1985,6 @@ var default_cards = {
     },
     "sc_toruviel": {
         "name": "Toruviel",
-        "id": 189,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "2",
@@ -2135,7 +1995,6 @@ var default_cards = {
     },
     "sc_vrihedd_cadet": {
         "name": "Vrihedd Brigade Recruit",
-        "id": 190,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -2146,7 +2005,6 @@ var default_cards = {
     },
     "sc_vrihedd_brigade": {
         "name": "Vrihedd Brigade Veteran",
-        "id": 191,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "5",
@@ -2157,7 +2015,6 @@ var default_cards = {
     },
     "sc_vrihedd_brigade_1": {
         "name": "Vrihedd Brigade Veteran",
-        "id": 192,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "5",
@@ -2168,7 +2025,6 @@ var default_cards = {
     },
     "sc_yaevinn": {
         "name": "Yaevinn",
-        "id": 193,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "6",
@@ -2179,7 +2035,6 @@ var default_cards = {
     },
     "sk_berserker": {
         "name": "Berserker",
-        "id": 194,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2191,7 +2046,6 @@ var default_cards = {
     },
     "sk_birna": {
         "name": "Birna Bran",
-        "id": 195,
         "deck": "skellige",
         "row": "close",
         "strength": "2",
@@ -2202,7 +2056,6 @@ var default_cards = {
     },
     "sk_blueboy": {
         "name": "Blueboy Lugos",
-        "id": 196,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
@@ -2213,7 +2066,7 @@ var default_cards = {
     },
     "sk_cerys": {
         "name": "Cerys",
-        "id": 197,
+        "id": 4,
         "deck": "skellige",
         "row": "close",
         "strength": "10",
@@ -2225,7 +2078,6 @@ var default_cards = {
     },
     "sk_brokva_archer": {
         "name": "Clan Brokvar Archer",
-        "id": 198,
         "deck": "skellige",
         "row": "ranged",
         "strength": "6",
@@ -2236,7 +2088,6 @@ var default_cards = {
     },
     "sk_dimun_pirate": {
         "name": "Clan Dimun Pirate",
-        "id": 199,
         "deck": "skellige",
         "row": "ranged",
         "strength": "6",
@@ -2246,8 +2097,8 @@ var default_cards = {
         "quote": "Can see the fear in their eyes. Fear o' me... fer o' Clan Dimun!"
     },
     "sk_shield_maiden_1": {
-        "name": "Cerys - Clan Drummond Shield Maiden",
-        "id": 200,
+        "name": "Clan Drummond Shield Maiden",
+        "id": 1,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2258,8 +2109,8 @@ var default_cards = {
         "quote": "They'll shatter on our shields like waves on a rocky shore."
     },
     "sk_shield_maiden_2": {
-        "name": "Cerys - Clan Drummond Shield Maiden",
-        "id": 201,
+        "name": "Clan Drummond Shield Maiden",
+        "id": 2,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2270,8 +2121,8 @@ var default_cards = {
         "quote": "They'll shatter on our shields like waves on a rocky shore."
     },
     "sk_shield_maiden_3": {
-        "name": "Cerys - Clan Drummond Shield Maiden",
-        "id": 202,
+        "name": "Clan Drummond Shield Maiden",
+        "id": 3,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2283,7 +2134,6 @@ var default_cards = {
     },
     "sk_heymaey": {
         "name": "Clan Heymaey Skald",
-        "id": 203,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2294,7 +2144,6 @@ var default_cards = {
     },
     "sk_tordarroch": {
         "name": "Clan Tordarroch Armorsmith",
-        "id": 204,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2305,7 +2154,7 @@ var default_cards = {
     },
     "sk_craite_warrior_1": {
         "name": "Clan an Craite Warrior",
-        "id": 205,
+        "id": 1,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
@@ -2317,7 +2166,7 @@ var default_cards = {
     },
     "sk_craite_warrior_2": {
         "name": "Clan an Craite Warrior",
-        "id": 206,
+        "id": 2,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
@@ -2329,7 +2178,7 @@ var default_cards = {
     },
     "sk_craite_warrior_3": {
         "name": "Clan an Craite Warrior",
-        "id": 207,
+        "id": 3,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
@@ -2341,7 +2190,6 @@ var default_cards = {
     },
     "sk_donar": {
         "name": "Donar an Hindar",
-        "id": 208,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2352,7 +2200,6 @@ var default_cards = {
     },
     "sk_draig": {
         "name": "Draig Bon-Dhu",
-        "id": 209,
         "deck": "skellige",
         "row": "siege",
         "strength": "2",
@@ -2363,7 +2210,6 @@ var default_cards = {
     },
     "sk_ermion": {
         "name": "Ermion",
-        "id": 210,
         "deck": "skellige",
         "row": "ranged",
         "strength": "8",
@@ -2374,7 +2220,6 @@ var default_cards = {
     },
     "sk_hemdall": {
         "name": "Hemdall",
-        "id": 211,
         "deck": "skellige",
         "row": "close",
         "strength": "11",
@@ -2385,7 +2230,6 @@ var default_cards = {
     },
     "sk_hjalmar": {
         "name": "Hjalmar",
-        "id": 212,
         "deck": "skellige",
         "row": "ranged",
         "strength": "10",
@@ -2396,7 +2240,6 @@ var default_cards = {
     },
     "sk_holger": {
         "name": "Holger Blackhand",
-        "id": 213,
         "deck": "skellige",
         "row": "siege",
         "strength": "4",
@@ -2407,7 +2250,6 @@ var default_cards = {
     },
     "sk_kambi": {
         "name": "Kambi",
-        "id": 214,
         "deck": "skellige",
         "row": "close",
         "strength": "0",
@@ -2419,7 +2261,7 @@ var default_cards = {
     },
     "sk_light_longship": {
         "name": "Light Longship",
-        "id": 215,
+        "id": 1,
         "deck": "skellige",
         "row": "ranged",
         "strength": "4",
@@ -2431,7 +2273,6 @@ var default_cards = {
     },
     "sk_madman_lugos": {
         "name": "Madman Lugos",
-        "id": 216,
         "deck": "skellige",
         "row": "close",
         "strength": "6",
@@ -2442,7 +2283,6 @@ var default_cards = {
     },
     "spe_mardroeme": {
         "name": "Mardroeme",
-        "id": 217,
         "deck": "special skellige",
         "row": "",
         "strength": "",
@@ -2453,7 +2293,6 @@ var default_cards = {
     },
     "sk_olaf": {
         "name": "Olaf",
-        "id": 218,
         "deck": "skellige",
         "row": "agile",
         "strength": "12",
@@ -2464,7 +2303,6 @@ var default_cards = {
     },
     "spe_storm": {
         "name": "Skellige Storm",
-        "id": 219,
         "deck": "weather realms skellige",
         "row": "",
         "strength": "",
@@ -2475,7 +2313,6 @@ var default_cards = {
     },
     "sk_svanrige": {
         "name": "Svanrige",
-        "id": 220,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2486,7 +2323,6 @@ var default_cards = {
     },
     "sk_vildkaarl": {
         "name": "Transformed Vildkaarl",
-        "id": 221,
         "deck": "skellige",
         "row": "close",
         "strength": "14",
@@ -2497,7 +2333,7 @@ var default_cards = {
     },
     "sk_young_vildkaarl": {
         "name": "Transformed Young Vildkaarl",
-        "id": 222,
+        "id": 1,
         "deck": "skellige",
         "row": "ranged",
         "strength": "8",
@@ -2509,7 +2345,6 @@ var default_cards = {
     },
     "sk_udalryk": {
         "name": "Udalryk",
-        "id": 223,
         "deck": "skellige",
         "row": "close",
         "strength": "4",
@@ -2520,7 +2355,7 @@ var default_cards = {
     },
     "sk_war_longship_1": {
         "name": "War Longship",
-        "id": 224,
+        "id": 1,
         "deck": "skellige",
         "row": "siege",
         "strength": "6",
@@ -2532,7 +2367,7 @@ var default_cards = {
     },
     "sk_war_longship_2": {
         "name": "War Longship",
-        "id": 225,
+        "id": 2,
         "deck": "skellige",
         "row": "siege",
         "strength": "6",
@@ -2544,7 +2379,6 @@ var default_cards = {
     },
     "sk_young_berserker": {
         "name": "Young Berserker",
-        "id": 226,
         "deck": "skellige",
         "row": "ranged",
         "strength": "2",
@@ -2556,7 +2390,6 @@ var default_cards = {
     },
     "sk_crach_an_craite": {
         "name": "Crach an Craite",
-        "id": 227,
         "deck": "skellige",
         "row": "leader",
         "strength": "",
@@ -2567,7 +2400,6 @@ var default_cards = {
     },
     "sk_king_bran": {
         "name": "King Bran",
-        "id": 228,
         "deck": "skellige",
         "row": "leader",
         "strength": "",
@@ -2578,7 +2410,6 @@ var default_cards = {
     },
     "sc_schirru": {
         "name": "Schirru",
-        "id": 229,
         "deck": "scoiatael",
         "row": "siege",
         "strength": "8",
@@ -2597,7 +2428,6 @@ var default_cards = {
 var ext_nr_cards = {
     "nr_foltest_pride": {
         "name": "Foltest's Pride",
-        "id": 1001,
         "deck": "realms",
         "row": "siege",
         "strength": "9",
@@ -2607,8 +2437,8 @@ var ext_nr_cards = {
         "quote": "As King Foltest likes to say, it's not size that count, but whether it gets the job done."
     },
     "nr_temerian_soldier_1": {
-        "name": "Temerian Foot Solider",
-        "id": 1002,
+        "name": "Temerian Foot Soldier",
+        "id": 1,
         "deck": "realms",
         "row": "close",
         "strength": "2",
@@ -2619,8 +2449,8 @@ var ext_nr_cards = {
         "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
     },
     "nr_temerian_soldier_2": {
-        "name": "Temerian Foot Solider",
-        "id": 1003,
+        "name": "Temerian Foot Soldier",
+        "id": 2,
         "deck": "realms",
         "row": "close",
         "strength": "2",
@@ -2631,8 +2461,8 @@ var ext_nr_cards = {
         "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
     },
     "nr_temerian_soldier_3": {
-        "name": "Temerian Foot Solider",
-        "id": 1004,
+        "name": "Temerian Foot Soldier",
+        "id": 3,
         "deck": "realms",
         "row": "close",
         "strength": "2",
@@ -2644,7 +2474,6 @@ var ext_nr_cards = {
     },
     "nr_reaver_scout": {
         "name": "Reaver Scout",
-        "id": 1005,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -2655,7 +2484,6 @@ var ext_nr_cards = {
     },
     "nr_temerian_drummer": {
         "name": "Temerian Drummer",
-        "id": 1006,
         "deck": "realms",
         "row": "siege",
         "strength": "1",
@@ -2666,7 +2494,6 @@ var ext_nr_cards = {
     },
     "nr_stripes_scout": {
         "name": "Blue Stripes Scout",
-        "id": 1007,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -2677,7 +2504,6 @@ var ext_nr_cards = {
     },
     "nr_tridam_infantry": {
         "name": "Tridam Infantry",
-        "id": 1008,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -2688,7 +2514,6 @@ var ext_nr_cards = {
     },
     "nr_vandergrift": {
         "name": "Vandergrift",
-        "id": 1009,
         "deck": "realms",
         "row": "ranged",
         "strength": "9",
@@ -2699,7 +2524,6 @@ var ext_nr_cards = {
     },
     "nr_kaedweni_siege_support_1": {
         "name": "Kaedweni Siege Support",
-        "id": 1010,
         "deck": "realms",
         "row": "siege",
         "strength": "2",
@@ -2710,7 +2534,6 @@ var ext_nr_cards = {
     },
     "nr_kaedweni_siege_support_2": {
         "name": "Kaedweni Siege Support",
-        "id": 1011,
         "deck": "realms",
         "row": "siege",
         "strength": "2",
@@ -2721,7 +2544,6 @@ var ext_nr_cards = {
     },
     "nr_henselt": {
         "name": "Henselt",
-        "id": 1012,
         "deck": "realms",
         "row": "siege",
         "strength": "10",
@@ -2732,7 +2554,6 @@ var ext_nr_cards = {
     },
     "nr_kaedweni_reinforcement": {
         "name": "Kaedweni Reinforcement",
-        "id": 1013,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -2743,7 +2564,7 @@ var ext_nr_cards = {
     },
     "nr_reinforced_ballista_1": {
         "name": "Reinforced Ballista",
-        "id": 1014,
+        "id": 1,
         "deck": "realms",
         "row": "siege",
         "strength": "4",
@@ -2755,7 +2576,7 @@ var ext_nr_cards = {
     },
     "nr_reinforced_ballista_2": {
         "name": "Reinforced Ballista",
-        "id": 1015,
+        "id": 2,
         "deck": "realms",
         "row": "siege",
         "strength": "4",
@@ -2767,7 +2588,7 @@ var ext_nr_cards = {
     },
     "nr_reinforced_trebuchet_1": {
         "name": "Reinforced Trebuchet",
-        "id": 1016,
+        "id": 1,
         "deck": "realms",
         "row": "siege",
         "strength": "5",
@@ -2779,7 +2600,7 @@ var ext_nr_cards = {
     },
     "nr_reinforced_trebuchet_2": {
         "name": "Reinforced Trebuchet",
-        "id": 1017,
+        "id": 2,
         "deck": "realms",
         "row": "siege",
         "strength": "5",
@@ -2791,7 +2612,6 @@ var ext_nr_cards = {
     },
     "nr_ban_ard_tutor": {
         "name": "Ban Ard Tutor",
-        "id": 1018,
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -2802,7 +2622,6 @@ var ext_nr_cards = {
     },
     "nr_demavend": {
         "name": "Demavend",
-        "id": 1019,
         "deck": "realms",
         "row": "siege",
         "strength": "10",
@@ -2813,7 +2632,6 @@ var ext_nr_cards = {
     },
     "nr_kaedweni_knight": {
         "name": "Kaedweni Knight",
-        "id": 1020,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -2824,7 +2642,6 @@ var ext_nr_cards = {
     },
     "nr_dun_banner_heavy_cavalry_1": {
         "name": "Dun Banner Heavy Cavalry",
-        "id": 1021,
         "deck": "realms",
         "row": "ranged",
         "strength": "7",
@@ -2835,7 +2652,6 @@ var ext_nr_cards = {
     },
     "nr_dun_banner_heavy_cavalry_2": {
         "name": "Dun Banner Heavy Cavalry",
-        "id": 1022,
         "deck": "realms",
         "row": "ranged",
         "strength": "7",
@@ -2846,7 +2662,6 @@ var ext_nr_cards = {
     },
     "nr_odrin": {
         "name": "Odrin",
-        "id": 1023,
         "deck": "realms",
         "row": "agile",
         "strength": "3",
@@ -2857,7 +2672,6 @@ var ext_nr_cards = {
     },
     "nr_seltkirk": {
         "name": "Seltkirk of Gulet",
-        "id": 1024,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -2868,7 +2682,6 @@ var ext_nr_cards = {
     },
     "nr_kaedweni_sergeant": {
         "name": "Kaedweni Sergeant",
-        "id": 1025,
         "deck": "realms",
         "row": "siege",
         "strength": "5",
@@ -2879,7 +2692,6 @@ var ext_nr_cards = {
     },
     "nr_queen_calanthe": {
         "name": "Queen Calanthe: Lioness of Cintra",
-        "id": 1026,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -2890,7 +2702,6 @@ var ext_nr_cards = {
     },
     "nr_viraxas": {
         "name": "Viraxas",
-        "id": 1027,
         "deck": "realms",
         "row": "siege",
         "strength": "9",
@@ -2899,33 +2710,9 @@ var ext_nr_cards = {
         "count": "1",
         "quote": "Revenge is a dish that tastes best when served for two."
     },
-    "nr_kerack_fleet_marine_2": {
-        "name": "Kerack Fleet: Marine",
-        "id": 1028,
-        "deck": "realms",
-        "row": "ranged",
-        "strength": "3",
-        "ability": "muster",
-        "filename": "kerack_fleet_marine_2",
-        "count": "1",
-        "target": "nr_kerack_fleet",
-        "quote": "I spy with my little eye something that is... green. Oh, shite! That's a dryad!"
-    },
-    "nr_kerack_fleet_frigate": {
-        "name": "Kerack Fleet: Frigate",
-        "id": 1029,
-        "deck": "realms",
-        "row": "ranged",
-        "strength": "4",
-        "ability": "muster",
-        "filename": "kerack_fleet_frigate",
-        "count": "1",
-        "target": "nr_kerack_fleet",
-        "quote": "'I should buy a boat' said a Kerackian cat once. Or so claims the drunken ballad."
-    },
     "nr_kerack_fleet_marine_1": {
         "name": "Kerack Fleet: Marine",
-        "id": 1030,
+        "id": 1,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -2935,9 +2722,32 @@ var ext_nr_cards = {
         "target": "nr_kerack_fleet",
         "quote": "I spy with my little eye something that is... green. Oh, shite! That's a dryad!"
     },
+    "nr_kerack_fleet_frigate": {
+        "name": "Kerack Fleet: Frigate",
+        "id": 2,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "kerack_fleet_frigate",
+        "count": "1",
+        "target": "nr_kerack_fleet",
+        "quote": "'I should buy a boat' said a Kerackian cat once. Or so claims the drunken ballad."
+    },
+    "nr_kerack_fleet_marine_2": {
+        "name": "Kerack Fleet: Marine",
+        "id": 3,
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "kerack_fleet_marine_2",
+        "count": "1",
+        "target": "nr_kerack_fleet",
+        "quote": "I spy with my little eye something that is... green. Oh, shite! That's a dryad!"
+    },
     "nr_vissegerd": {
         "name": "Vissegerd",
-        "id": 1031,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -2948,7 +2758,6 @@ var ext_nr_cards = {
     },
     "nr_cintrian_royal_guard": {
         "name": "Cintrian Royal Guard",
-        "id": 1032,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -2959,7 +2768,6 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_1": {
         "name": "Slaughter of Cintra",
-        "id": 1033,
         "deck": "special realms",
         "row": "",
         "strength": "",
@@ -2970,7 +2778,6 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_2": {
         "name": "Slaughter of Cintra",
-        "id": 1034,
         "deck": "special realms",
         "row": "",
         "strength": "",
@@ -2981,7 +2788,6 @@ var ext_nr_cards = {
     },
     "spe_slaughther_cintra_3": {
         "name": "Slaughter of Cintra",
-        "id": 1035,
         "deck": "special realms",
         "row": "",
         "strength": "",
@@ -2992,7 +2798,7 @@ var ext_nr_cards = {
     },
     "nr_eist_tuirseach": {
         "name": "Eist Tuirseach",
-        "id": 1036,
+        "id": 4,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -3004,7 +2810,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_1": {
         "name": "Skellige Raiders Fleet",
-        "id": 1037,
+        "id": 1,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3016,7 +2822,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_2": {
         "name": "Skellige Raiders Fleet",
-        "id": 1038,
+        "id": 2,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3028,7 +2834,7 @@ var ext_nr_cards = {
     },
     "nr_skellige_fleet_3": {
         "name": "Skellige Raiders Fleet",
-        "id": 1039,
+        "id": 3,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3040,7 +2846,6 @@ var ext_nr_cards = {
     },
     "nr_cintrian_knight": {
         "name": "Cintrian Knight",
-        "id": 1040,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3051,7 +2856,6 @@ var ext_nr_cards = {
     },
     "nr_roegner": {
         "name": "Roegner de Salm",
-        "id": 1041,
         "deck": "realms",
         "row": "close",
         "strength": "6",
@@ -3062,7 +2866,6 @@ var ext_nr_cards = {
     },
     "nr_pavetta": {
         "name": "Roegner de Salm",
-        "id": 1042,
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -3073,7 +2876,6 @@ var ext_nr_cards = {
     },
     "nr_kistrin_verden": {
         "name": "Kistrin of Verden",
-        "id": 1043,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -3084,7 +2886,6 @@ var ext_nr_cards = {
     },
     "nr_sha": {
         "name": "Sha",
-        "id": 1044,
         "deck": "realms",
         "row": "siege",
         "strength": "3",
@@ -3096,7 +2897,6 @@ var ext_nr_cards = {
     },
     "nr_kraken": {
         "name": "Kraken",
-        "id": 1045,
         "deck": "realms",
         "row": "ranged",
         "strength": "11",
@@ -3107,7 +2907,6 @@ var ext_nr_cards = {
     },
     "nr_egmund": {
         "name": "Egmund",
-        "id": 1046,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3118,7 +2917,6 @@ var ext_nr_cards = {
     },
     "nr_eylembert_tigg": {
         "name": "Eylembert of Tigg",
-        "id": 1047,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -3129,7 +2927,6 @@ var ext_nr_cards = {
     },
     "nr_young_ciri": {
         "name": "Young Ciri",
-        "id": 1048,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -3141,7 +2938,6 @@ var ext_nr_cards = {
     },
     "nr_cintrian_peasants": {
         "name": "Cintrian Peasants",
-        "id": 1049,
         "deck": "realms",
         "row": "close",
         "strength": "3",
@@ -3152,7 +2948,6 @@ var ext_nr_cards = {
     },
     "nr_windhalm": {
         "name": "Windhalm of Attre",
-        "id": 1050,
         "deck": "realms",
         "row": "close",
         "strength": "6",
@@ -3163,7 +2958,6 @@ var ext_nr_cards = {
     },
     "nr_queen_meve": {
         "name": "Queen Meve",
-        "id": 1051,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -3174,7 +2968,6 @@ var ext_nr_cards = {
     },
     "nr_prince_anseis": {
         "name": "Prince Anseis",
-        "id": 1052,
         "deck": "realms",
         "row": "close",
         "strength": "10",
@@ -3185,7 +2978,7 @@ var ext_nr_cards = {
     },
     "nr_nastrog_levecque": {
         "name": "Nastrog Division: Levecque",
-        "id": 1053,
+        "id": 4,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -3197,7 +2990,7 @@ var ext_nr_cards = {
     },
     "nr_nastrog_junghans": {
         "name": "Nastrog Division: Junghans",
-        "id": 1054,
+        "id": 1,
         "deck": "realms",
         "row": "close",
         "strength": "3",
@@ -3209,7 +3002,7 @@ var ext_nr_cards = {
     },
     "nr_nastrog_brick": {
         "name": "Nastrog Division: Brick",
-        "id": 1055,
+        "id": 2,
         "deck": "realms",
         "row": "close",
         "strength": "3",
@@ -3221,7 +3014,7 @@ var ext_nr_cards = {
     },
     "nr_nastrog_beady_eyes": {
         "name": "Nastrog Division: Beady-eyes",
-        "id": 1056,
+        "id": 3,
         "deck": "realms",
         "row": "close",
         "strength": "3",
@@ -3233,7 +3026,6 @@ var ext_nr_cards = {
     },
     "nr_letande_lavet": {
         "name": "Letande Lavet",
-        "id": 1057,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3244,7 +3036,7 @@ var ext_nr_cards = {
     },
     "nr_kerack_city_guard": {
         "name": "Kerack City Guard",
-        "id": 1058,
+        "id": 1,
         "deck": "realms",
         "row": "close",
         "strength": "6",
@@ -3256,7 +3048,6 @@ var ext_nr_cards = {
     },
     "nr_rainfarn": {
         "name": "Rainfarn of Attre",
-        "id": 1059,
         "deck": "realms",
         "row": "close",
         "strength": "5",
@@ -3267,7 +3058,6 @@ var ext_nr_cards = {
     },
     "nr_falibor": {
         "name": "Falibor",
-        "id": 1060,
         "deck": "realms",
         "row": "close",
         "strength": "8",
@@ -3278,7 +3068,6 @@ var ext_nr_cards = {
     },
     "nr_black_rayla": {
         "name": "Black Rayla",
-        "id": 1061,
         "deck": "realms",
         "row": "close",
         "strength": "7",
@@ -3289,7 +3078,6 @@ var ext_nr_cards = {
     },
     "nr_lyrian_landsknecht": {
         "name": "Lyrian Landsknecht",
-        "id": 1062,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -3300,7 +3088,6 @@ var ext_nr_cards = {
     },
     "nr_lyrian_heavy_cavalry": {
         "name": "Lyrian Heavy Cavalry",
-        "id": 1063,
         "deck": "realms",
         "row": "close",
         "strength": "6",
@@ -3311,7 +3098,7 @@ var ext_nr_cards = {
     },
     "nr_poor_infantry_4": {
         "name": "Poor Fucking Infantry",
-        "id": 1064,
+        "id": 4,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -3323,7 +3110,7 @@ var ext_nr_cards = {
     },
     "nr_poor_infantry_5": {
         "name": "Poor Fucking Infantry",
-        "id": 1065,
+        "id": 5,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -3335,7 +3122,7 @@ var ext_nr_cards = {
     },
     "nr_poor_infantry_6": {
         "name": "Poor Fucking Infantry",
-        "id": 1066,
+        "id": 6,
         "deck": "realms",
         "row": "close",
         "strength": "1",
@@ -3347,7 +3134,6 @@ var ext_nr_cards = {
     },
     "nr_dun_banner_light_cavalry": {
         "name": "Dun Banner Light Cavalry",
-        "id": 1067,
         "deck": "realms",
         "row": "close",
         "strength": "4",
@@ -3358,7 +3144,6 @@ var ext_nr_cards = {
     },
     "nr_cintrian_envoy": {
         "name": "Cintrian Envoy",
-        "id": 1068,
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -3369,7 +3154,6 @@ var ext_nr_cards = {
     },
     "nr_freixenet": {
         "name": "Freixenet",
-        "id": 1069,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -3380,7 +3164,6 @@ var ext_nr_cards = {
     },
     "nr_dorregaray": {
         "name": "Dorregaray of Vole",
-        "id": 1070,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -3391,7 +3174,6 @@ var ext_nr_cards = {
     },
     "nr_valdo_marx": {
         "name": "Valdo Marx",
-        "id": 1071,
         "deck": "realms",
         "row": "ranged",
         "strength": "2",
@@ -3402,7 +3184,6 @@ var ext_nr_cards = {
     },
     "nr_mousesack": {
         "name": "Mousesack",
-        "id": 1072,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -3413,7 +3194,6 @@ var ext_nr_cards = {
     },
     "nr_isbel_hagge": {
         "name": "Isbel of Hagge",
-        "id": 1073,
         "deck": "realms",
         "row": "ranged",
         "strength": "5",
@@ -3424,7 +3204,6 @@ var ext_nr_cards = {
     },
     "nr_lyrian_arbalest": {
         "name": "Lyrian Arbalest",
-        "id": 1074,
         "deck": "realms",
         "row": "ranged",
         "strength": "6",
@@ -3435,7 +3214,6 @@ var ext_nr_cards = {
     },
     "nr_northern_wind": {
         "name": "Northern Wind",
-        "id": 1075,
         "deck": "realms",
         "row": "ranged",
         "strength": "3",
@@ -3446,7 +3224,6 @@ var ext_nr_cards = {
     },
     "nr_aretuza_adept": {
         "name": "Aretuza Adept",
-        "id": 1076,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -3457,7 +3234,7 @@ var ext_nr_cards = {
     },
     "nr_blue_stripes_skirmisher_1": {
         "name": "Blue Stripes Skirmisher",
-        "id": 1077,
+        "id": 1,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -3469,7 +3246,7 @@ var ext_nr_cards = {
     },
     "nr_blue_stripes_skirmisher_2": {
         "name": "Blue Stripes Skirmisher",
-        "id": 1078,
+        "id": 2,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -3481,7 +3258,7 @@ var ext_nr_cards = {
     },
     "nr_blue_stripes_skirmisher_3": {
         "name": "Blue Stripes Skirmisher",
-        "id": 1079,
+        "id": 3,
         "deck": "realms",
         "row": "ranged",
         "strength": "4",
@@ -3493,7 +3270,6 @@ var ext_nr_cards = {
     },
     "nr_ethain_cidaris": {
         "name": "Ethain of Cidaris",
-        "id": 1080,
         "deck": "realms",
         "row": "siege",
         "strength": "10",
@@ -3504,7 +3280,6 @@ var ext_nr_cards = {
     },
     "nr_henry_attre": {
         "name": "Henry var Attre",
-        "id": 1081,
         "deck": "realms",
         "row": "siege",
         "strength": "8",
@@ -3515,7 +3290,6 @@ var ext_nr_cards = {
     },
     "nr_ildiko_breckl": {
         "name": "Ildiko Breckl",
-        "id": 1082,
         "deck": "realms",
         "row": "siege",
         "strength": "4",
@@ -3526,7 +3300,6 @@ var ext_nr_cards = {
     },
     "nr_king_belohun": {
         "name": "King Belohun",
-        "id": 1083,
         "deck": "realms",
         "row": "siege",
         "strength": "5",
@@ -3537,7 +3310,6 @@ var ext_nr_cards = {
     },
     "nr_urcheon": {
         "name": "Urcheon of Erlenwald",
-        "id": 1084,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -3548,7 +3320,6 @@ var ext_nr_cards = {
     },
     "nr_rivian_onager": {
         "name": "Rivian Onager",
-        "id": 1085,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -3559,7 +3330,6 @@ var ext_nr_cards = {
     },
     "nr_reinforced_tower": {
         "name": "Reinforced Tower",
-        "id": 1086,
         "deck": "realms",
         "row": "siege",
         "strength": "7",
@@ -3570,7 +3340,6 @@ var ext_nr_cards = {
     },
     "nr_battering_ram": {
         "name": "Battering Ram",
-        "id": 1087,
         "deck": "realms",
         "row": "siege",
         "strength": "6",
@@ -3581,7 +3350,6 @@ var ext_nr_cards = {
     },
     "nr_fake_ciri": {
         "name": "Fake Ciri: Empress of Nilfgaard",
-        "id": 1088,
         "deck": "realms",
         "row": "leader",
         "strength": "",
@@ -3595,7 +3363,6 @@ var ext_nr_cards = {
 var ext_ne_cards = {
     "ne_vicovaro_medic": {
         "name": "Vicovaro Medic",
-        "id": 1201,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "1",
@@ -3606,7 +3373,6 @@ var ext_ne_cards = {
     },
     "ne_alba_pikeman_1": {
         "name": "Alba Pikeman",
-        "id": 1202,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "5",
@@ -3617,7 +3383,6 @@ var ext_ne_cards = {
     },
     "ne_alba_spearman": {
         "name": "Alba Spearman",
-        "id": 1203,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "5",
@@ -3628,7 +3393,6 @@ var ext_ne_cards = {
     },
     "ne_nausicaa_brigade": {
         "name": "Nausicaa Brigade",
-        "id": 1204,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "6",
@@ -3639,7 +3403,6 @@ var ext_ne_cards = {
     },
     "ne_imperial_golem": {
         "name": "Imperial Golem",
-        "id": 1205,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "8",
@@ -3650,7 +3413,6 @@ var ext_ne_cards = {
     },
     "ne_daerlan_soldier": {
         "name": "Daerlan Foot Soldier",
-        "id": 1206,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "6",
@@ -3661,7 +3423,6 @@ var ext_ne_cards = {
     },
     "ne_hefty_helge": {
         "name": "Hefty Helge",
-        "id": 1207,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "7",
@@ -3672,7 +3433,7 @@ var ext_ne_cards = {
     },
     "ne_slave_infantry_1": {
         "name": "Slave Infantry",
-        "id": 1208,
+        "id": 1,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "4",
@@ -3684,7 +3445,7 @@ var ext_ne_cards = {
     },
     "ne_slave_infantry_2": {
         "name": "Slave Infantry",
-        "id": 1209,
+        "id": 2,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "4",
@@ -3696,7 +3457,6 @@ var ext_ne_cards = {
     },
     "ne_magne_division": {
         "name": "Magne Division",
-        "id": 1210,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "5",
@@ -3707,7 +3467,6 @@ var ext_ne_cards = {
     },
     "ne_emissary": {
         "name": "Emissary",
-        "id": 1211,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "10",
@@ -3718,7 +3477,6 @@ var ext_ne_cards = {
     },
     "ne_standard_bearer": {
         "name": "Standard Bearer",
-        "id": 1212,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "1",
@@ -3729,7 +3487,6 @@ var ext_ne_cards = {
     },
     "ne_deithwen_arbalest": {
         "name": "Deithwen Arbalest",
-        "id": 1213,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "7",
@@ -3740,7 +3497,6 @@ var ext_ne_cards = {
     },
     "ne_guardian": {
         "name": "The Guardian",
-        "id": 1214,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -3751,7 +3507,6 @@ var ext_ne_cards = {
     },
     "ne_nausicaa_standard_bearer": {
         "name": "Nausicaa Standard Bearer",
-        "id": 1215,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "1",
@@ -3762,7 +3517,6 @@ var ext_ne_cards = {
     },
     "ne_knight": {
         "name": "Nilfgaardian Knight",
-        "id": 1216,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -3773,7 +3527,6 @@ var ext_ne_cards = {
     },
     "ne_alba_armored_cavalry": {
         "name": "Alba Armored Cavalry",
-        "id": 1217,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "6",
@@ -3784,7 +3537,6 @@ var ext_ne_cards = {
     },
     "ne_peter_saar_gwynleve": {
         "name": "Peter Saar Gwynleve",
-        "id": 1218,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "9",
@@ -3795,7 +3547,7 @@ var ext_ne_cards = {
     },
     "ne_impera_brigade_5": {
         "name": "Impera Brigade Guard",
-        "id": 1219,
+        "id": 5,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "3",
@@ -3807,7 +3559,6 @@ var ext_ne_cards = {
     },
     "ne_jan_calveit": {
         "name": "Jan Calveit",
-        "id": 1220,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "8",
@@ -3818,18 +3569,16 @@ var ext_ne_cards = {
     },
     "ne_bribery": {
         "name": "Bribery",
-        "id": 1221,
         "deck": "nilfgaard",
         "row": "agile",
         "strength": "10",
         "ability": "spy",
-        "filename": "Bribery",
+        "filename": "bribery",
         "count": "1",
         "quote": "In truth, the Nilfgaardian floren rules the world."
     },
     "ne_rot_tosser": {
         "name": "Rot Tosser",
-        "id": 1222,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "0",
@@ -3841,7 +3590,6 @@ var ext_ne_cards = {
     },
     "ne_epidemic": {
         "name": "Epidemic",
-        "id": 1223,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "7",
@@ -3852,7 +3600,6 @@ var ext_ne_cards = {
     },
     "ne_joachim_de_wett": {
         "name": "Joachim de Wett",
-        "id": 1224,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "7",
@@ -3863,7 +3610,6 @@ var ext_ne_cards = {
     },
     "ne_ardal_aep_dahy": {
         "name": "Ardal aep Dahy",
-        "id": 1225,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "9",
@@ -3874,7 +3620,6 @@ var ext_ne_cards = {
     },
     "ne_cantarella": {
         "name": "Cantarella",
-        "id": 1226,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -3885,7 +3630,6 @@ var ext_ne_cards = {
     },
     "ne_treason": {
         "name": "Treason",
-        "id": 1227,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "3",
@@ -3896,7 +3640,6 @@ var ext_ne_cards = {
     },
     "ne_usurper": {
         "name": "Usurper",
-        "id": 1228,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "10",
@@ -3907,7 +3650,6 @@ var ext_ne_cards = {
     },
     "ne_infiltrator": {
         "name": "Infiltrator",
-        "id": 1229,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "8",
@@ -3918,7 +3660,6 @@ var ext_ne_cards = {
     },
     "ne_venendal_elite": {
         "name": "Venendal Elite",
-        "id": 1230,
         "deck": "nilfgaard",
         "row": "close",
         "strength": "7",
@@ -3929,7 +3670,6 @@ var ext_ne_cards = {
     },
     "ne_master_disguise": {
         "name": "Master of Disguise",
-        "id": 1231,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "7",
@@ -3940,7 +3680,6 @@ var ext_ne_cards = {
     },
     "ne_fake_ciri": {
         "name": "Fake Ciri",
-        "id": 1232,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "2",
@@ -3951,7 +3690,6 @@ var ext_ne_cards = {
     },
     "ne_imperial_diviner": {
         "name": "Imperial Diviner",
-        "id": 1233,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "6",
@@ -3962,7 +3700,6 @@ var ext_ne_cards = {
     },
     "ne_xarthisius": {
         "name": "Xarthisius",
-        "id": 1234,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "7",
@@ -3973,7 +3710,6 @@ var ext_ne_cards = {
     },
     "ne_impera_enforcers": {
         "name": "Impera Enforcers",
-        "id": 1235,
         "deck": "nilfgaard",
         "row": "ranged",
         "strength": "5",
@@ -3984,7 +3720,6 @@ var ext_ne_cards = {
     },
     "ne_mangonel": {
         "name": "Mangonel",
-        "id": 1236,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "6",
@@ -3995,7 +3730,6 @@ var ext_ne_cards = {
     },
     "ne_combat_engineer": {
         "name": "Combat Engineer",
-        "id": 1237,
         "deck": "nilfgaard",
         "row": "siege",
         "strength": "3",
@@ -4029,6 +3763,7 @@ var ext_mo_cards = {
     },
     "mo_ifrit_1": {
         "name": "Ifrit",
+        "id": 1,
         "deck": "monsters",
         "row": "siege",
         "strength": "6",
@@ -4040,6 +3775,7 @@ var ext_mo_cards = {
     },
     "mo_ifrit_2": {
         "name": "Ifrit",
+        "id": 2,
         "deck": "monsters",
         "row": "siege",
         "strength": "6",
@@ -4051,6 +3787,7 @@ var ext_mo_cards = {
     },
     "mo_wild_hunt_rider_1": {
         "name": "Wild Hunt Rider",
+        "id": 1,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -4062,6 +3799,7 @@ var ext_mo_cards = {
     },
     "mo_wild_hunt_rider_2": {
         "name": "Wild Hunt Rider",
+        "id": 2,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -4073,6 +3811,7 @@ var ext_mo_cards = {
     },
     "mo_wild_hunt_rider_3": {
         "name": "Wild Hunt Rider",
+        "id": 3,
         "deck": "monsters",
         "row": "close",
         "strength": "4",
@@ -4184,6 +3923,7 @@ var ext_mo_cards = {
     },
     "mo_lamia_1": {
         "name": "Lamia",
+        "id": 1,
         "deck": "monsters",
         "row": "ranged",
         "strength": "4",
@@ -4195,6 +3935,7 @@ var ext_mo_cards = {
     },
     "mo_lamia_2": {
         "name": "Lamia",
+        "id": 2,
         "deck": "monsters",
         "row": "ranged",
         "strength": "4",
@@ -4206,6 +3947,7 @@ var ext_mo_cards = {
     },
     "mo_lamia_3": {
         "name": "Lamia",
+        "id": 3,
         "deck": "monsters",
         "row": "ranged",
         "strength": "4",
@@ -4227,6 +3969,7 @@ var ext_mo_cards = {
     },
     "mo_alghoul": {
         "name": "Alghoul",
+        "id": 4,
         "deck": "monsters",
         "row": "close",
         "strength": "6",
@@ -4279,6 +4022,7 @@ var ext_mo_cards = {
     },
     "mo_arachas_drone": {
         "name": "Arachas Drone",
+        "id": 1,
         "deck": "monsters",
         "row": "siege",
         "strength": "2",
@@ -4443,17 +4187,19 @@ var ext_mo_cards = {
 var ext_st_cards = {
     "sc_elven_mercenary_1": {
         "name": "Elven Mercenary",
+        "id": 1,
         "deck": "scoiatael",
         "row": "close",
         "strength": "6",
         "ability": "muster",
         "filename": "elven_mercenary_1",
         "count": "1",
-        "target":"sc_elven_mercenary",
+        "target": "sc_elven_mercenary",
         "quote": "I spit on Scoia'Tael ideals, but not on their coin."
     },
     "sc_elven_mercenary_2": {
         "name": "Elven Mercenary",
+        "id": 2,
         "deck": "scoiatael",
         "row": "close",
         "strength": "6",
@@ -4475,6 +4221,7 @@ var ext_st_cards = {
     },
     "sc_vrihedd_dragoon_1": {
         "name": "Vrihedd Dragoon",
+        "id": 1,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4486,6 +4233,7 @@ var ext_st_cards = {
     },
     "sc_vrihedd_dragoon_2": {
         "name": "Vrihedd Dragoon",
+        "id": 2,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4497,6 +4245,7 @@ var ext_st_cards = {
     },
     "sc_vrihedd_dragoon_3": {
         "name": "Vrihedd Dragoon",
+        "id": 3,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4570,6 +4319,7 @@ var ext_st_cards = {
     "sc_dryads_1": {
         "name": "Dryads",
         "deck": "scoiatael",
+        "id": 1,
         "row": "ranged",
         "strength": "4",
         "ability": "muster",
@@ -4580,6 +4330,7 @@ var ext_st_cards = {
     },
     "sc_dryads_2": {
         "name": "Dryads",
+        "id": 2,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4591,6 +4342,7 @@ var ext_st_cards = {
     },
     "sc_dryads_3": {
         "name": "Dryads",
+        "id": 3,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4602,6 +4354,7 @@ var ext_st_cards = {
     },
     "sc_dryads_4": {
         "name": "Dryads",
+        "id": 4,
         "deck": "scoiatael",
         "row": "ranged",
         "strength": "4",
@@ -4623,6 +4376,7 @@ var ext_st_cards = {
     },
     "sc_dol_blathanna_guard_1": {
         "name": "Dol Blathanna Guard",
+        "id": 1,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "3",
@@ -4634,6 +4388,7 @@ var ext_st_cards = {
     },
     "sc_dol_blathanna_guard_2": {
         "name": "Dol Blathanna Guard",
+        "id": 2,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "3",
@@ -4645,6 +4400,7 @@ var ext_st_cards = {
     },
     "sc_dol_blathanna_guard_3": {
         "name": "Dol Blathanna Guard",
+        "id": 3,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "3",
@@ -4696,6 +4452,7 @@ var ext_st_cards = {
     },
     "sc_mahakam_guard_1": {
         "name": "Mahakam Guard",
+        "id": 1,
         "deck": "scoiatael",
         "row": "close",
         "strength": "6",
@@ -4707,6 +4464,7 @@ var ext_st_cards = {
     },
     "sc_mahakam_guard_2": {
         "name": "Mahakam Guard",
+        "id": 2,
         "deck": "scoiatael",
         "row": "close",
         "strength": "6",
@@ -4788,6 +4546,7 @@ var ext_st_cards = {
     },
     "sc_dwarven_mercenary_1": {
         "name": "Dwarven Mercenary",
+        "id": 1,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "5",
@@ -4799,6 +4558,7 @@ var ext_st_cards = {
     },
     "sc_dwarven_mercenary_2": {
         "name": "Dwarven Mercenary",
+        "id": 2,
         "deck": "scoiatael",
         "row": "agile",
         "strength": "5",
@@ -5044,6 +4804,7 @@ var ext_sk_cards = {
     },
     "sk_war_longship_3": {
         "name": "War Longship",
+        "id": 3,
         "deck": "skellige",
         "row": "siege",
         "strength": "6",
@@ -5075,6 +4836,7 @@ var ext_sk_cards = {
     },
     "sk_tuirseach_warrior_1": {
         "name": "Clan Tuirseach Warrior",
+        "id": 1,
         "deck": "skellige",
         "row": "agile",
         "strength": "3",
@@ -5086,6 +4848,7 @@ var ext_sk_cards = {
     },
     "sk_tuirseach_warrior_2": {
         "name": "Clan Tuirseach Warrior",
+        "id": 2,
         "deck": "skellige",
         "row": "agile",
         "strength": "3",
