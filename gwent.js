@@ -558,6 +558,23 @@ class Player {
 		this.passed = false;
 		this.handsize = 10;
 		this.winning = false;
+		this.factionAbilityUses = 0;
+
+		// Handling Faction abilities: active or passive
+		let factionAbility = factions[this.deck.faction];
+		if (factionAbility["activeAbility"]) {
+			// Init ability if need be
+			if (factionAbility.factionAbilityInit) {
+				factionAbility.factionAbilityInit(this);
+            }
+			this.updateFactionAbilityUses(factionAbility["abilityUses"]);
+
+			document.getElementById("faction-ability-" + this.tag).classList.remove("hide");
+			if (this.tag === "me")
+				document.getElementById("faction-ability-" + this.tag).addEventListener("click", () => this.activateFactionAbility(), false);
+		} else {
+			document.getElementById("faction-ability-" + this.tag).classList.add("hide");
+        }
 
 		this.enableLeader();
 		this.setPassed(false);
@@ -747,6 +764,38 @@ class Player {
 		await ui.viewCard(player_me.leader, async () => await player_me.activateLeader());
 	}
 
+	async activateFactionAbility() {
+		let factionData = factions[this.deck.faction];
+		if (factionData.activeAbility && this.factionAbilityUses > 0) {
+			await ui.popup("Use faction ability [E]", () => this.useFactionAbility(), "Cancel [Q]", () => this.escapeFactionAbility(), "Would you like to use your faction ability?", "Faction ability: " + factionData.description);
+		}
+		return;
+    }
+
+	async useFactionAbility() {
+		let factionData = factions[this.deck.faction];
+		if (factionData.activeAbility && this.factionAbilityUses > 0) {
+			await factionData.factionAbility(this);
+			this.updateFactionAbilityUses(this.factionAbilityUses - 1);
+			this.endTurn();
+		}
+		return;
+	}
+
+	// Called when chose to not play the faction ability
+	async escapeFactionAbility() {
+		ui.enablePlayer(true);
+	}
+
+	updateFactionAbilityUses(count) {
+		this.factionAbilityUses = Math.max(0,count);
+		document.getElementById("faction-ability-count-" + this.tag).innerHTML = this.factionAbilityUses;
+		if (this.factionAbilityUses === 0) {
+			document.getElementById("faction-ability-" + this.tag).classList.add("fade");
+		} else {
+			document.getElementById("faction-ability-" + this.tag).classList.remove("fade");
+        }
+    }
 }
 
 var called_leader = false;
@@ -1266,9 +1315,9 @@ class Row extends CardContainer {
 		let bond = this.effects.bond[card.id()];
 		if (isNumber(bond) && bond > 1)
 			total *= Number(bond);
+		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		if (this.effects.horn - (card.abilities.includes("horn") ? 1 : 0) > 0)
 			total *= 2;
-		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		return total;
 	}
 
@@ -1587,7 +1636,8 @@ class Game {
 		}
 
 		function initFaction(player) {
-			if (factions[player.deck.faction] && factions[player.deck.faction].factionAbility)
+			//Only passive faction abilities
+			if (factions[player.deck.faction] && factions[player.deck.faction].factionAbility && !factions[player.deck.faction].activeAbility)
 				factions[player.deck.faction].factionAbility(player);
 		}
 		

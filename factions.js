@@ -10,11 +10,15 @@ var factions = {
 			}
 			return false;
 		}),
+		activeAbility: true,
+		abilityUses: 0,
 		description: "Draw a card from your deck whenever you win a round."
 	},
 	nilfgaard: {
 		name: "Nilfgaardian Empire",
-		description: "Wins any round that ends in a draw."
+		description: "Wins any round that ends in a draw.",
+		activeAbility: false,
+		abilityUses: 0,
 	},
 	monsters: {
 		name: "Monsters",
@@ -32,7 +36,9 @@ var factions = {
 			});
 			return false;
 		}),
-		description: "Keeps a random Unit Card out after each round."
+		description: "Keeps a random Unit Card out after each round.",
+		activeAbility: false,
+		abilityUses: 0,
 	},
 	scoiatael: {
 		name: "Scoia'tael",
@@ -53,7 +59,9 @@ var factions = {
 			await ui.notification(notif, 1200);
 			return true;
 		}),
-		description: "Decides who takes first turn."
+		description: "Decides who takes first turn.",
+		activeAbility: false,
+		abilityUses: 0,
 	},
 	skellige: {
 		name: "Skellige",
@@ -64,6 +72,8 @@ var factions = {
 			await Promise.all(player.grave.findCardsRandom(c => c.isUnit(), 2).map(c => board.toRow(c, player.grave)));
 			return true;
 		}),
-		description: "2 random cards from the graveyard are placed on the battlefield at the start of the third round."
+		description: "2 random cards from the graveyard are placed on the battlefield at the start of the third round.",
+		activeAbility: false,
+		abilityUses: 0,
 	}
 }

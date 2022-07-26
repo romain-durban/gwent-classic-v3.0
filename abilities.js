@@ -152,7 +152,7 @@ var ability_dict = {
 		name: "Tight Bond",
 		description: "Place next to a card with the same name to double the strength of both cards. ",
 		placed: async card => {
-			let bonds = board.getRow(card, card.row, card.holder).findCards(c => c.target === card.target);
+			let bonds = card.currentLocation.findCards(c => c.target === card.target).filter(c => c.abilities.includes("bond"));
 			if (bonds.length > 1)
 				await Promise.all( bonds.map(c => c.animate("bond")) );
 		}

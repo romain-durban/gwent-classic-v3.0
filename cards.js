@@ -2615,6 +2615,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "temerian_soldier_1",
         "count": "1",
+        "target": "nr_temerian_soldier",
         "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
     },
     "nr_temerian_soldier_2": {
@@ -2626,6 +2627,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "temerian_soldier_2",
         "count": "1",
+        "target": "nr_temerian_soldier",
         "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
     },
     "nr_temerian_soldier_3": {
@@ -2637,6 +2639,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "temerian_soldier_3",
         "count": "1",
+        "target": "nr_temerian_soldier",
         "quote": "Temeria! Gods shed all grace on thee! And smite thy foes with horrid woes, for all eternity!"
     },
     "nr_reaver_scout": {
@@ -2747,6 +2750,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "reinforced_ballista_1",
         "count": "1",
+        "target": "nr_reinforced_ballista",
         "quote": "Never manages to hit the same place twice, which might constitute a real problem."
     },
     "nr_reinforced_ballista_2": {
@@ -2758,6 +2762,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "reinforced_ballista_2",
         "count": "1",
+        "target": "nr_reinforced_ballista",
         "quote": "Never manages to hit the same place twice, which might constitute a real problem."
     },
     "nr_reinforced_trebuchet_1": {
@@ -2769,6 +2774,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "reinforced_trebuchet_1",
         "count": "1",
+        "target": "nr_reinforced_trebuchet",
         "quote": "Feel that? The earth trembles each time Big Bertha loose a stone."
     },
     "nr_reinforced_trebuchet_2": {
@@ -2780,6 +2786,7 @@ var ext_nr_cards = {
         "ability": "bond",
         "filename": "reinforced_trebuchet_2",
         "count": "1",
+        "target": "nr_reinforced_trebuchet",
         "quote": "Feel that? The earth trembles each time Big Bertha loose a stone."
     },
     "nr_ban_ard_tutor": {
@@ -3672,6 +3679,7 @@ var ext_ne_cards = {
         "ability": "bond",
         "filename": "slave_infantry_1",
         "count": "1",
+        "target": "ne_slave_infantry",
         "quote": "A free man's got a choice. A slave's choices are made for him."
     },
     "ne_slave_infantry_2": {
@@ -3683,6 +3691,7 @@ var ext_ne_cards = {
         "ability": "bond",
         "filename": "slave_infantry_2",
         "count": "1",
+        "target": "ne_slave_infantry",
         "quote": "A free man's got a choice. A slave's choices are made for him."
     },
     "ne_magne_division": {
