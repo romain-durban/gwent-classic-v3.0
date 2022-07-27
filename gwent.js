@@ -126,9 +126,9 @@ class ControllerAI {
 						data["scorch"].push(c);
 						break;
 					case "bond":
-						if (!data.bond[c.name])
-							data.bond[c.name] = 0;
-						data.bond[c.name]++;
+						if (!data.bond[c.target])
+							data.bond[c.target] = 0;
+						data.bond[c.target]++;
 				}
 			}
 		});
@@ -601,6 +601,9 @@ class Player {
 		this.handsize = 10;
 		this.winning = false;
 		this.factionAbilityUses = 0;
+		this.effects = {
+			"witchers": {}
+		};
 
 		// Handling Faction abilities: active or passive
 		let factionAbility = factions[this.deck.faction];
@@ -623,6 +626,12 @@ class Player {
 		document.getElementById("gem1-" + this.tag).classList.add("gem-on");
 		document.getElementById("gem2-" + this.tag).classList.add("gem-on");
 	}
+
+	roundStartReset() {
+		this.effects = {
+			"witchers": {}
+		};
+    }
 
 	// Returns the opponent Player
 	opponent() {
@@ -837,6 +846,19 @@ class Player {
 		} else {
 			document.getElementById("faction-ability-" + this.tag).classList.remove("fade");
         }
+	}
+
+	// Get all rows for this player
+	getAllRows() {
+		if (this === player_me) {
+			return board.row.filter((r, i) => i > 2);
+		}
+		return board.row.filter((r, i) => i < 3);
+	}
+
+	//Get all cards in rows for this player
+	getAllRowCards() {
+		return this.getAllRows().reduce((a, r) => r.cards.concat(a), []);
     }
 }
 
@@ -1214,6 +1236,7 @@ class Row extends CardContainer {
 			horn: 0,
 			mardroeme: 0
 		};
+		this.halfWeather = false;
 		this.elem.addEventListener("click", () => ui.selectRow(this), true);
 		this.elem.addEventListener("mouseover", function() {
 			if (hover_row) {
@@ -1295,9 +1318,9 @@ class Row extends CardContainer {
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "bond":
-					if (!this.effects.bond[card.key])
-						this.effects.bond[card.key] = 0;
-					this.effects.bond[card.key] += activate ? 1 : -1;
+					if (!this.effects.bond[card.target])
+						this.effects.bond[card.target] = 0;
+					this.effects.bond[card.target] += activate ? 1 : -1;
 					break;
 			}
 		}
@@ -1350,14 +1373,27 @@ class Row extends CardContainer {
 		let total = card.basePower;
 		if (card.hero)
 			return total;
+		if (card.abilities.includes("spy"))
+			total = Math.floor(game.spyPowerMult * total);
 		if (this.effects.weather)
-			total = Math.min(1, total);
-		if (game.doubleSpyPower && card.abilities.includes("spy"))
-			total *= 2;
-		let bond = this.effects.bond[card.key];
+			if (this.halfWeather)
+				total = Math.max(1, Math.floor(total/2));
+			else
+				total = Math.min(1, total);
+		// Bond
+		let bond = this.effects.bond[card.target];
 		if (isNumber(bond) && bond > 1)
 			total *= Number(bond);
+		// Morale
 		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
+		//Witcher Schools
+		if (card.abilities.at(-1) && card.abilities.at(-1).startsWith("witcher_")) {
+			let school = card.abilities.at(-1);
+			if (card.holder.effects["witchers"][school]) {
+				total += card.holder.effects["witchers"][school] - 1;
+            }
+        }
+		// Horn
 		if (this.effects.horn - (card.abilities.includes("horn") ? 1 : 0) > 0)
 			total *= 2;
 		return total;
@@ -1611,6 +1647,10 @@ class Board {
 		player_me.setWinning(dif > 0);
 		player_op.setWinning(dif < 0);
 	}
+
+	updateScores() {
+		this.row.map(r => r.cards.map(c => r.cardScore(c)));
+    }
 }
 
 function limpar() {
@@ -1649,7 +1689,7 @@ class Game {
 		this.roundHistory = [];
 
 		this.randomRespawn = false;
-		this.doubleSpyPower = false;
+		this.spyPowerMult = 1;
 
 		weather.reset();
 		board.row.forEach(r => r.reset());
@@ -1728,6 +1768,9 @@ class Game {
 		} else {
 			this.currPlayer = (this.roundCount % 2 === 0) ? this.firstPlayer : this.firstPlayer.opponent();
 		}
+		player_me.roundStartReset();
+		player_op.roundStartReset();
+
 		await this.runEffects(this.roundStart);
 
 		if (!player_me.canPlay())
@@ -1766,6 +1809,7 @@ class Game {
 		await this.runEffects(this.turnEnd);
 		if (this.currPlayer.passed)
 			await ui.notification(this.currPlayer.tag + "-pass", 1200);
+		board.updateScores();
 		if (player_op.passed && player_me.passed)
 			this.endRound();
 		else
@@ -1995,7 +2039,7 @@ class Card {
 		if (name === "scorch") {
 			return await this.scorch(name);
 		}
-		let anim = this.elem.children[3];
+		let anim = this.elem.children[this.elem.children.length - 1];
 		anim.style.backgroundImage = iconURL("anim_" + name);
 		await sleep(50);
 
@@ -2015,7 +2059,7 @@ class Card {
 
 	// Animates the scorch effect
 	async scorch(name) {
-		let anim = this.elem.children[3];
+		let anim = this.elem.children[this.elem.children.length-1];
 		anim.style.backgroundSize = "cover";
 		anim.style.backgroundImage = iconURL("anim_" + name);
 		await sleep(50);
@@ -2112,6 +2156,21 @@ class Card {
 			abi.style.backgroundImage = iconURL("card_ability_" + str);
 		} else if (card.row === "agile")
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
+
+		// For cards with 2 abilities
+		if (card.abilities.length > 1) {
+			let abi2 = document.createElement("div");
+			abi2.classList.add("card-ability-2");
+			elem.appendChild(abi2);
+			let str = card.abilities[card.abilities.length - 2];
+			if (str === "cerys")
+				str = "muster";
+			if (str.startsWith("avenger"))
+				str = "avenger";
+			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
+				str = "scorch_combat";
+			abi2.style.backgroundImage = iconURL("card_ability_" + str);
+        }
 
 		elem.appendChild(document.createElement("div")); // animation overlay
 		return elem;
@@ -2415,7 +2474,8 @@ class UI {
 			"notif-monsters": "Monsters faction ability triggered - one randomly-chosen Monster Unit Card stays on the board",
 			"notif-scoiatael": "Opponent used the Scoia'tael faction perk to go first.",
 			"notif-skellige-op": "Opponent Skellige Ability Triggered!",
-			"notif-skellige-me": "Skellige Ability Triggered!"
+			"notif-skellige-me": "Skellige Ability Triggered!",
+			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn"
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -3588,6 +3648,22 @@ function getPreviewElem(elem, card, nb = 0) {
 		} else if (card.row === "agile") {
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
 		}
+
+		// In case of double abilities
+		if ((c_abilities.length > 1 && !(c_abilities[0] === "hero")) || (c_abilities.length > 2 && c_abilities[0] === "hero")) {
+			let abi2 = document.createElement("div");
+			abi2.classList.add("card-large-ability-2");
+			elem.appendChild(abi2);
+
+			let str = c_abilities[c_abilities.length - 2];
+			if (str === "cerys")
+				str = "muster";
+			if (str.startsWith("avenger"))
+				str = "avenger";
+			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
+				str = "scorch_combat";
+			abi2.style.backgroundImage = iconURL("card_ability_" + str);
+        }
 	}
 
 	return elem;

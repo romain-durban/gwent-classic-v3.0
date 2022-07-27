@@ -18,7 +18,7 @@ var factions = {
 		name: "Nilfgaardian Empire",
 		description: "Wins any round that ends in a draw.",
 		activeAbility: false,
-		abilityUses: 0,
+		abilityUses: 0
 	},
 	monsters: {
 		name: "Monsters",
@@ -38,7 +38,7 @@ var factions = {
 		}),
 		description: "Keeps a random Unit Card out after each round.",
 		activeAbility: false,
-		abilityUses: 0,
+		abilityUses: 0
 	},
 	scoiatael: {
 		name: "Scoia'tael",
@@ -61,7 +61,7 @@ var factions = {
 		}),
 		description: "Decides who takes first turn.",
 		activeAbility: false,
-		abilityUses: 0,
+		abilityUses: 0
 	},
 	skellige: {
 		name: "Skellige",
@@ -74,6 +74,19 @@ var factions = {
 		}),
 		description: "2 random cards from the graveyard are placed on the battlefield at the start of the third round.",
 		activeAbility: false,
-		abilityUses: 0,
+		abilityUses: 0
+	},
+	witcher_universe: {
+		name: "Witcher Universe",
+		factionAbility: async player => {
+			await ui.notification("witcher_universe", 1200);
+		},
+		factionAbilityInit: player => game.roundStart.push(async () => {
+			player.updateFactionAbilityUses(1);
+			return false;
+		}),
+		description: "Can skip a turn once every round.",
+		activeAbility: true,
+		abilityUses: 1
 	}
 }

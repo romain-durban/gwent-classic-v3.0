@@ -322,6 +322,14 @@ html {
 	content: "Skellige Ability Triggered!"
 }
 
+#notif-witcher_universe {
+	background-image: url(img/icons/notif_witcher_universe.png)
+}
+
+#notif-witcher_universe::after {
+	content: "Witcher Universe faction ability used: \A Turn skipped."
+}
+
 .card-preview {
 	position: relative;
 	z-index: 80
@@ -1394,6 +1402,18 @@ html {
 	background-size: contain;
 }
 
+.card-array .card-lg .card-large-ability-2 {
+	position: absolute;
+	top: 56%;
+	left: 0vw;
+	width: 3.5vw;
+	height: 2.5vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
 /*
 	Custom display of cards in Preview
 */
@@ -1500,6 +1520,18 @@ html {
 .card-preview .card-lg .card-large-ability {
 	position: absolute;
 	top: 40%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.card-preview .card-lg .card-large-ability-2 {
+	position: absolute;
+	top: 55%;
 	left: 2%;
 	width: 10vw;
 	height: 4vw;
@@ -1675,7 +1707,19 @@ html {
 
 #carousel .card-lg .card-large-ability {
 	position: absolute;
-	top: 40%;
+	top: 41%;
+	left: 2%;
+	width: 10vw;
+	height: 4vw;
+	font-size: 1.2vw;
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#carousel .card-lg .card-large-ability-2 {
+	position: absolute;
+	top: 56%;
 	left: 2%;
 	width: 10vw;
 	height: 4vw;
@@ -1686,19 +1730,31 @@ html {
 }
 
 #carousel > :nth-child(1) > :nth-child(2n) .card-large-ability {
-	height: 3.8vw;
-	top: 43%;
-	left: 0%;
+	height: 3.4vw;
+	top: 41%;
+	left: 2.5%;
 }
 
 #carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-ability {
+	height: 3vw;
+	top: 42%;
+	left: 2.5%;
+}
+
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-ability-2 {
 	height: 3.4vw;
-	top: 45%;
-	left: 0%;
+	top: 56%;
+	left: 2.5%;
+}
+
+#carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-ability-2 {
+	height: 3vw;
+	top: 57%;
+	left: 2.5%;
 }
 
 #carousel .hide .card-large-bg, #carousel .hide .card-large-faction-band, #carousel .hide .card-large-name, #carousel .hide .card-large-power,
-#carousel .hide .card-large-power-strength, #carousel .hide .card-large-row, #carousel .hide .card-large-ability, #carousel .hide .card-large-quote {
+#carousel .hide .card-large-power-strength, #carousel .hide .card-large-row, #carousel .hide .card-large-ability, #carousel .hide .card-large-ability-2, #carousel .hide .card-large-quote {
 	display: none;
 }
 /*
@@ -1881,12 +1937,12 @@ html {
 	font-size: 1vw;
 	font-weight: 700;
 	color: #000;
-	text-shadow: 0 0 .1vw #fff
+	text-shadow: 0 0 .1vw #fff;
 }
 
 .hero>div:nth-child(1)>div {
 	color: #fff;
-	text-shadow: 0 0 .1vw #000
+	text-shadow: 0 0 .1vw #000;
 }
 
 .card>div:nth-child(2) {
@@ -1894,26 +1950,35 @@ html {
 	left: 65%;
 	width: 33%;
 	height: 22%;
-	margin-bottom: -32%
+	margin-bottom: -32%;
 }
 
 .card>div:nth-child(3) {
 	top: 75%;
-	left: 31%;
+	left: 32%;
 	width: 33%;
 	height: 22%;
 	margin-bottom: -32%;
-	font-size: 1vw
+	font-size: 1vw;
 }
 
-.card>div:nth-child(4) {
+.card > .card-ability-2:nth-child(4) {
+	top: 75%;
+	left: 0%;
+	width: 33%;
+	height: 22%;
+	margin-bottom: -32%;
+	font-size: 1vw;
+}
+
+.card > div:last-child {
 	width: 100%;
 	height: 100%;
 	background-position: center;
 	background-size: 40% auto;
 	opacity: 0;
 	filter: alpha(opacity=0);
-	transition: background-size 0.25s
+	transition: background-size 0.25s;
 }
 
 .card-container {

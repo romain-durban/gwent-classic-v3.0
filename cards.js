@@ -4415,7 +4415,7 @@ var ext_st_cards = {
         "deck": "scoiatael",
         "row": "agile",
         "strength": "8",
-        "ability": "medic",
+        "ability": "hero medic",
         "filename": "aglais",
         "count": "1",
         "quote": "Brokilon bleeds… and not even I can heal it."
@@ -5080,6 +5080,519 @@ var ext_sk_cards = {
     }
 };
 
+var ext_wu_cards = {
+    "wu_vilgefortz_magician_kovir": {
+        "name": "Vilgefortz: Magician of Kovir",
+        "deck": "witcher_universe",
+        "row": "leader",
+        "strength": "",
+        "ability": "vilgefortz_magician_kovir",
+        "filename": "vilgefortz_magician_kovir",
+        "count": "1",
+        "quote": "The nature does not have the knowledge of the philosophical thought."
+    },
+    "wu_tissaia": {
+        "name": "Tissaia de Vries",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "medic",
+        "filename": "tissaia",
+        "count": "1",
+        "quote": "They will not enter here. No one invited those royalist lackeys, who carry out the orders of their short-sighted kings!"
+    },
+    "wu_rats_giselher": {
+        "name": "The Rats: Giselher",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "rats_giselher",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "He wants to make us angry? Let the bastard talk."
+    },
+    "wu_rats_asse": {
+        "name": "The Rats: Asse",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "rats_asse",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "He had been hunting the Nilfgaardians for three days, insane with the desire for revenge for what the marauders had done to his familly."
+    },
+    "wu_rats_iskra": {
+        "name": "The Rats: Iskra",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "rats_iskra",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "The speed blew her beautiful, dark hair around, revealing a small, pointed ear decorated with a filigree earring."
+    },
+    "wu_rats_kayleigh": {
+        "name": "The Rats: Kayleigh",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "rats_kayleigh",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "He had woken up in smoke, fire and blood, lying among the corpses of his adoptive parents and siblings."
+    },
+    "wu_rats_mistle": {
+        "name": "The Rats: Mistle",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "rats_mistle",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "The tree stump was followed by a young woman with close-cropped fair hair in a red doublet and high, shiny boots reaching above the knee."
+    },
+    "wu_rats_reef": {
+        "name": "The Rats: Reef",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "rats_reef",
+        "count": "1",
+        "target": "wu_rats",
+        "quote": "Caring for the wounded was not a custom among the killers of the Nilfgaardian special squads."
+    },
+    "wu_ralf_blunden": {
+        "name": "Ralf Blunden",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "ralf_blunden",
+        "count": "1",
+        "quote": "The Professor's trademark is his sophisticated choice of words, and witty comments."
+    },
+    "wu_bomb_heaver": {
+        "name": "Bomb Heaver",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "3",
+        "ability": "scorch",
+        "filename": "bomb_heaver",
+        "count": "1",
+        "quote": "Watch your heads!"
+    },
+    "wu_gascon_light_cavalry": {
+        "name": "Gascon's Light Cavalry",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "gascon_light_cavalry",
+        "count": "1",
+        "target": "wu_gascon_troops",
+        "quote": "The chase is on!"
+    },
+    "wu_gascon_slinger": {
+        "name": "Gascon's Slingers",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "gascon_slinger",
+        "count": "1",
+        "target": "wu_gascon_troops",
+        "quote": "Bigger they are, easier they are to target."
+    },
+    "wu_gascon_infiltrator": {
+        "name": "Gascon's Infiltrator",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "gascon_infiltrator",
+        "count": "1",
+        "target": "wu_gascon_troops",
+        "quote": "We got a job to do."
+    },
+    "wu_gascon": {
+        "name": "Gascon",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "7",
+        "ability": "hero muster",
+        "filename": "gascon",
+        "count": "1",
+        "target": "wu_gascon_troops",
+        "quote": "Th' Strays of Spalla – 'tis you who lead them? 'Tis you they call the Duke of Dogs?"
+    },
+    "wu_dorregaray": {
+        "name": "Dorregaray of Vole",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "dorregaray",
+        "count": "1",
+        "quote": "Dorregaray is a monster aficionado, though he's developed his own classification system."
+    },
+    "wu_ortolan": {
+        "name": "Grandmaster Ortolan",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "5",
+        "ability": "medic",
+        "filename": "ortolan",
+        "count": "1",
+        "quote": "He was a legendary mage who was in charge of the experiments done at Rissberg Castle."
+    },
+    "wu_coral": {
+        "name": "Coral",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "coral",
+        "count": "1",
+        "quote": "Her true name's Astrid Lyttneyd Ásgeirrfinnbjornsdottir, but that never fit on any forms."
+    },
+    "wu_leo_bonhart": {
+        "name": "Leo Bonhart",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "leo_bonhart",
+        "count": "1",
+        "quote": "So you do not fear death? Then look at that little Rat. This is death."
+    },
+    "wu_azar_javed": {
+        "name": "Azar Javed",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "azar_javed",
+        "count": "1",
+        "quote": "This time you pissed into a tornado."
+    },
+    "wu_strays_spalla": {
+        "name": "Strays of Spalla",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "strays_spalla",
+        "count": "1",
+        "quote": "I'll release ye o' that pouch."
+    },
+    "wu_gerhart_aelle": {
+        "name": "Gerhart of Aelle",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "gerhart_aelle",
+        "count": "1",
+        "quote": "Gerhart of Aelle, otherwise known as Hen Gedymdeith, was the oldest living sorcerer. That is, until his death on Thanedd Island during the coup."
+    },
+    "wu_lydia_bredevoort": {
+        "name": "Lydia van Bredevoort",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "medic",
+        "filename": "lydia_bredevoort",
+        "count": "1",
+        "quote": "Whether by brush or by sorcery, there was no event, emotion, or scene beyond Lydia's power to depict. Apart from joy."
+    },
+    "wu_dana_meadbh": {
+        "name": "Dana Meadbh",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero morale",
+        "filename": "dana_meadbh",
+        "count": "1",
+        "quote": "Through the grasses covering the glade floated a golden-haired queen. Queen of the Fields."
+    },
+    "wu_rience": {
+        "name": "Rience",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "5",
+        "ability": "",
+        "filename": "rience",
+        "count": "1",
+        "quote": "I love watching people suffer."
+    },
+    "wu_visenna": {
+        "name": "Visenna",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "3",
+        "ability": "medic",
+        "filename": "visenna",
+        "count": "1",
+        "quote": "The scar will remain, of course. A new one for your collection."
+    },
+    "wu_operator": {
+        "name": "Operator",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "operator",
+        "count": "1",
+        "quote": "As time and space collapse before us, they expand behind us..."
+    },
+    "wu_cosimo_malaspina": {
+        "name": "Cosimo Malaspina: Master of Mutations",
+        "deck": "witcher_universe",
+        "row": "leader",
+        "strength": "",
+        "ability": "cosimo_malaspina",
+        "filename": "cosimo_malaspina",
+        "count": "1",
+        "quote": "Children keep asking him for gifts. He doesn’t know why, but it really helps with finding subjects for his experiments."
+    },
+    "wu_coen": {
+        "name": "Coën",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "8",
+        "ability": "witcher_griffin_school",
+        "filename": "coen",
+        "count": "1",
+        "quote": "There is no such thing as a fair fight. Every advantage and every opportunity that arises is used in combat."
+    },
+    "wu_stygga_castle": {
+        "name": "Stygga Castle",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero resilience witcher_cat_school",
+        "filename": "stygga_castle",
+        "count": "1",
+        "quote": "The Feline witchers did not stay in Stygga Castle for long. Nor anywhere else, actually."
+    },
+    "wu_vesemir": {
+        "name": "Vesemir",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "witcher_wolf_school",
+        "filename": "vesemir",
+        "count": "1",
+        "quote": "If you're to be hanged, ask for water. Anything can happen before they fetch it."
+    },
+    "wu_haern_caduch": {
+        "name": "Haern Caduch",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero resilience witcher_bear_school",
+        "filename": "haern_caduch",
+        "count": "1",
+        "quote": "Carved into the icy rock of the Amell Mountains, the location of the long-abandoned School of the Bear remains a well-kept secret."
+    },
+    "wu_ivo_belhaven": {
+        "name": "Ivo of Belhaven",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "witcher_bear_school",
+        "filename": "ivo_belhaven",
+        "count": "1",
+        "quote": "It's not reason I'm devoid of, just emotion."
+    },
+    "wu_lambert": {
+        "name": "Lambert",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "witcher_wolf_school",
+        "filename": "lambert",
+        "count": "1",
+        "quote": "Now that's the kind of negotiating I understand."
+    },
+    "wu_keldar": {
+        "name": "Keldar",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "6",
+        "ability": "medic witcher_griffin_school",
+        "filename": "keldar",
+        "count": "1",
+        "quote": "You blunt, brainless humanoids! What do you mean by 'I don't know?'. You would go hunt the vampires with the Lebioda idol, smeared in garlic!"
+    },
+    "wu_ivar": {
+        "name": "Ivar Evil-Eye",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "witcher_viper_school",
+        "filename": "ivar",
+        "count": "1",
+        "quote": "There’s a terrible tale behind each and every scar⁠—you’d be surprised just how many are true."
+    },
+    "wu_gorthur_gvaed": {
+        "name": "Gorthur Gvaed",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero resilience witcher_viper_school",
+        "filename": "gorthur_gvaed",
+        "count": "1",
+        "quote": "There were many scrolls and manuscripts about the legend of the Wild Hunt in the stronghold—and for a good reason."
+    },
+    "wu_kaer_morhen": {
+        "name": "Kaer Morhen",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero resilience witcher_wolf_school",
+        "filename": "kaer_morhen",
+        "count": "1",
+        "quote": "The bones of the dead remain at the bottom of the moat surrounding the stronghold, left there as a reminder of the massacre that was born from hatred."
+    },
+    "wu_kaer_seren": {
+        "name": "Kaer Seren",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero resilience witcher_griffin_school",
+        "filename": "kaer_seren",
+        "count": "1",
+        "quote": "Kaer Seren’s literary collection was its greatest treasure and the envy of a group of overzealous mages."
+    },
+    "wu_gezras": {
+        "name": "Gezras of Leyda",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "9",
+        "ability": "witcher_cat_school",
+        "filename": "gezras",
+        "count": "1",
+        "quote": "Take a contract from Aen Seidhe over a dh'oine any day, as you’re far less likely to receive a knife between the ribs in place of coin."
+    },
+    "wu_geralt_1": {
+        "name": "Geralt of Rivia",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "9",
+        "ability": "scorch_c witcher_wolf_school",
+        "filename": "geralt_1",
+        "count": "1",
+        "quote": "If that's what it takes to save the world, it's better to let that world die."
+    },
+    "wu_gaetan": {
+        "name": "Gaetan",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "witcher_cat_school",
+        "filename": "gaetan",
+        "count": "1",
+        "quote": "Murder me just to save few crowns? I’m supposed to protect whoresons like that?"
+    },
+    "wu_brehen": {
+        "name": "Brehen",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "scorch_c witcher_cat_school",
+        "filename": "brehen",
+        "count": "1",
+        "quote": "Known as the Cat of Iello. A moniker earned not from origins, but as a result of slaughtering peasants there. More of a massacre, really."
+    },
+    "wu_gerd": {
+        "name": "Gerd",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "8",
+        "ability": "scorch_c witcher_bear_school",
+        "filename": "gerd",
+        "count": "1",
+        "quote": "He was contracted to slay a dragon, a siren, and a striga. He was also being pursued by a vengeful knight, bounty hunters, and bandits."
+    },
+    "wu_warrit": {
+        "name": "Warrit the All-Seeing",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "witcher_viper_school",
+        "filename": "warrit",
+        "count": "1",
+        "quote": "By slightly modifying the Supirre sign, Warritt gained the ability to see... everything."
+    },
+    "wu_erland": {
+        "name": "Erland of Larvik",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "witcher_griffin_school",
+        "filename": "erland",
+        "count": "1",
+        "quote": "Erland founded the School of the Griffin, and hoped his emphasis on knightly values would help elevate the reputation of witchers among the common folk."
+    },
+    "wu_arnaghad": {
+        "name": "Arnaghad",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "9",
+        "ability": "witcher_bear_school",
+        "filename": "arnaghad",
+        "count": "1",
+        "quote": "A witcher’s job is to kill monsters and collect coin. No more, no less."
+    },
+    "wu_letho": {
+        "name": "Letho of Gulet",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "9",
+        "ability": "witcher_viper_school",
+        "filename": "letho",
+        "count": "1",
+        "quote": "Witchers never die in their beds."
+    },
+    "wu_eskel": {
+        "name": "Eskel",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "witcher_wolf_school",
+        "filename": "eskel",
+        "count": "1",
+        "quote": "I'm a simple witcher, Wolf. Don't fight dragons, don't fraternize with kings and don't sleep with sorceresses..."
+    },
+    "wu_kolgrim": {
+        "name": "Kolgrim",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "witcher_viper_school",
+        "filename": "kolgrim",
+        "count": "1",
+        "quote": "Fortune only smiled upon him if it was accompanied by a stroke of very bad luck."
+    },
+    "wu_swallow_potion": {
+        "name": "Swallow Potion",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "2",
+        "ability": "morale",
+        "filename": "swallow_potion",
+        "count": "1",
+        "quote": "Symbolizing spring and rejuvenation, the swallow lent its name to this potion that accelerates the rate at which wounds scab over and heal."
+    }
+};
+
 /*
  * Selecting decks to use
  */
@@ -5090,3 +5603,4 @@ card_dict = Object.assign({}, card_dict, ext_ne_cards);
 card_dict = Object.assign({}, card_dict, ext_mo_cards);
 card_dict = Object.assign({}, card_dict, ext_st_cards);
 card_dict = Object.assign({}, card_dict, ext_sk_cards);
+card_dict = Object.assign({}, card_dict, ext_wu_cards);

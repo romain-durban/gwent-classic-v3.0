@@ -161,6 +161,8 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
+			if (game.roundCount > 2)
+				return;
 			// Some avengers are related to muster
 			if (card_dict[card.target]["ability"].includes("muster")) {
 				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
@@ -372,7 +374,7 @@ var ability_dict = {
 	},
 	eredin_treacherous: {
 		description: "Doubles the strength of all spy cards (affects both players).",
-		gameStart: () => game.doubleSpyPower = true
+		gameStart: () => game.spyPowerMult = 2
 	},
 	francesca_queen: {
 		description: "Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.",
@@ -448,7 +450,14 @@ var ability_dict = {
 	},
 	king_bran: {
 		description: "Units only lose half their Strength in bad weather conditions.",
-		placed: card => board.row.filter((c,i) => card.holder === player_me ^ i<3).forEach(r => r.halfWeather = true)
+		placed: card => {
+			for (var i = 0; i < board.row.length; i++) {
+				if (card.holder === player_me && i > 2)
+					board.row[i].halfWeather = true;
+				else if (card.holder === player_op && i < 3)
+					board.row[i].halfWeather = true;
+            }
+        }
 	},
 	queen_calanthe: {
 		description: "Play a unit then draw a card from you deck.",
@@ -495,6 +504,105 @@ var ability_dict = {
 			if (card.holder.hand.cards.length === 0)
 				return 0;
 			return 15;
+		}
+	},
+	vilgefortz_magician_kovir: {
+		description: "Halves the strength of all spy cards (affects both players).",
+		gameStart: () => game.spyPowerMult = 0.5
+	},
+	cosimo_malaspina: {
+		description: "Destroy your enemy's strongest Melee unit(s) if the combined strength of all his or her Melee units is 10 or more.",
+		activated: async card => await ability_dict["scorch_c"].placed(card),
+		weight: (card, ai, max) => ai.weightScorchRow(card, max, "close")
+	},
+	resilience: {
+		name: "Resilience",
+		description: "Remains on the board for the following round if another unit on your side of the board had an ability in common.",
+		placed: async card => {
+			game.roundEnd.push(() => {
+				let units = card.holder.getAllRowCards().filter(c => c.abilities.includes(card.abilities.at(-1)));
+				if (units.length < 2)
+					return;
+				card.noRemove = true;
+				game.roundStart.push(async () => {
+					delete card.noRemove;
+					let school = card.abilities.at(-1);
+					if (!card.holder.effects["witchers"][school])
+						card.holder.effects["witchers"][school] = 0
+					card.holder.effects["witchers"][school]++;
+					return true;
+				});
+			});
+		}
+	},
+	witcher_wolf_school: {
+		name: "Wolf School of Witcher",
+		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		placed: async card => {
+			let school = card.abilities.at(-1);
+			if (!card.holder.effects["witchers"][school])
+				card.holder.effects["witchers"][school] = 0
+			card.holder.effects["witchers"][school]++;
+		},
+		removed: async card => {
+			let school = card.abilities.at(-1);
+			card.holder.effects["witchers"][school]++;
+		}
+	},
+	witcher_viper_school: {
+		name: "Viper School of Witcher",
+		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		placed: async card => {
+			let school = card.abilities.at(-1);
+			if (!card.holder.effects["witchers"][school])
+				card.holder.effects["witchers"][school] = 0
+			card.holder.effects["witchers"][school]++;
+		},
+		removed: async card => {
+			let school = card.abilities.at(-1);
+			card.holder.effects["witchers"][school]++;
+		}
+	},
+	witcher_bear_school: {
+		name: "Bear School of Witcher",
+		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		placed: async card => {
+			let school = card.abilities.at(-1);
+			if (!card.holder.effects["witchers"][school])
+				card.holder.effects["witchers"][school] = 0
+			card.holder.effects["witchers"][school]++;
+		},
+		removed: async card => {
+			let school = card.abilities.at(-1);
+			card.holder.effects["witchers"][school]++;
+		}
+	},
+	witcher_cat_school: {
+		name: "Cat School of Witcher",
+		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		placed: async card => {
+			let school = card.abilities.at(-1);
+			if (!card.holder.effects["witchers"][school])
+				card.holder.effects["witchers"][school] = 0
+			card.holder.effects["witchers"][school]++;
+		},
+		removed: async card => {
+			let school = card.abilities.at(-1);
+			card.holder.effects["witchers"][school]++;
+		}
+	},
+	witcher_griffin_school: {
+		name: "Griffin School of Witcher",
+		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		placed: async card => {
+			let school = card.abilities.at(-1);
+			if (!card.holder.effects["witchers"][school])
+				card.holder.effects["witchers"][school] = 0
+			card.holder.effects["witchers"][school]++;
+		},
+		removed: async card => {
+			let school = card.abilities.at(-1);
+			card.holder.effects["witchers"][school]++;
 		}
 	}
 };

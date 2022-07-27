@@ -644,8 +644,7 @@ var custom_decks = [
             ["mo_leshen", 1],
             ["mo_dragon_fyresdal", 1],
             ["mo_manticore", 1],
-            ["mo_manticore_venom", 1],
-            ["mo_arachas_queen", 1]
+            ["mo_manticore_venom", 1]
         ]
     },
     {
@@ -784,6 +783,76 @@ var custom_decks = [
             ["sk_sigrdrifa", 1],
             ["sk_dimun_pirate", 1],
             ["sk_jutta", 1]
+        ]
+    },
+    {
+        "title": "Witcher Universe - Fighters & Mages",
+        "description": "Witcher Universe deck focusing on the famous fighters and mages - Playstyle: Muster, Medic",
+        "leader": "wu_vilgefortz_magician_kovir",
+        "faction": "witcher_universe",
+        "cards": [
+            ["spe_frost", 1],
+            ["spe_fog", 1],
+            ["spe_decoy", 1],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["spe_horn", 1],
+            ["wu_tissaia", 1],
+            ["wu_rats_giselher", 1],
+            ["wu_rats_asse", 1],
+            ["wu_rats_iskra", 1],
+            ["wu_rats_kayleigh", 1],
+            ["wu_rats_mistle", 1],
+            ["wu_rats_reef", 1],
+            ["wu_ralf_blunden", 1],
+            ["wu_bomb_heaver", 1],
+            ["wu_gascon_light_cavalry", 1],
+            ["wu_gascon_slinger", 1],
+            ["wu_gascon_infiltrator", 1],
+            ["wu_gascon", 1],
+            ["wu_dorregaray", 1],
+            ["wu_ortolan", 1],
+            ["wu_coral", 1],
+            ["wu_leo_bonhart", 1],
+            ["wu_azar_javed", 1],
+            ["wu_strays_spalla", 1],
+            ["wu_gerhart_aelle", 1],
+            ["wu_lydia_bredevoort", 1],
+            ["wu_dana_meadbh", 1],
+            ["wu_rience", 1],
+            ["wu_visenna", 1],
+            ["wu_operator",1]
+        ]
+    },
+    {
+        "title": "Witcher Universe - Witchers",
+        "description": "Witcher Universe deck focusing on witcher schools - Playstyle: Witcher Schools, Resilience, Scorch",
+        "leader": "wu_cosimo_malaspina",
+        "faction": "witcher_universe",
+        "cards": [
+            ["wu_coen", 1],
+            ["wu_stygga_castle", 1],
+            ["wu_vesemir", 1],
+            ["wu_haern_caduch", 1],
+            ["wu_ivo_belhaven", 1],
+            ["wu_lambert", 1],
+            ["wu_keldar", 1],
+            ["wu_ivar", 1],
+            ["wu_gorthur_gvaed", 1],
+            ["wu_kaer_morhen", 1],
+            ["wu_kaer_seren", 1],
+            ["wu_gezras", 1],
+            ["wu_geralt_1", 1],
+            ["wu_gaetan", 1],
+            ["wu_brehen", 1],
+            ["wu_gerd", 1],
+            ["wu_warrit", 1],
+            ["wu_erland", 1],
+            ["wu_arnaghad", 1],
+            ["wu_letho", 1],
+            ["wu_eskel", 1],
+            ["wu_kolgrim", 1],
+            ["wu_swallow_potion", 1]
         ]
     }
 ];
