@@ -10,7 +10,7 @@ var factions = {
 			}
 			return false;
 		}),
-		activeAbility: true,
+		activeAbility: false,
 		abilityUses: 0,
 		description: "Draw a card from your deck whenever you win a round."
 	},

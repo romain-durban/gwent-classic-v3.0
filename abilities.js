@@ -38,6 +38,8 @@ var ability_dict = {
 		name: "Mardroeme",
 		description: "Triggers transformation of all Berserker cards on the same row. ",
 		placed: async (card, row) => {
+			if (card.isLocked())
+				return;
 			let berserkers = row.findCards(c => c.abilities.includes("berserker"));
 			await Promise.all(berserkers.map(async c => await ability_dict["berserker"].placed(c, row)));
 		}
@@ -46,7 +48,7 @@ var ability_dict = {
 		name: "Berserker",
 		description: "Transforms into a bear when a Mardroeme card is on its row. ",
 		placed: async (card, row) => {
-			if (row.effects.mardroeme === 0)
+			if (row.effects.mardroeme === 0 || card.isLocked())
 				return;
 			row.removeCard(card);
 			await row.addCard(new Card(card.target, card_dict[card.target], card.holder));
@@ -60,9 +62,11 @@ var ability_dict = {
 			await board.toGrave(card, card.holder.hand);
 		},
 		placed: async (card, row) => {
+			if (card.isLocked())
+				return;
 			if (row !== undefined)
-				row.cards.splice( row.cards.indexOf(card), 1);
-			let maxUnits = board.row.map( r => [r,r.maxUnits()] ).filter( p => p[1].length > 0);
+				row.cards.splice(row.cards.indexOf(card), 1);
+			let maxUnits = board.row.map(r => [r, r.maxUnits()]).filter(p => p[1].length > 0).filter(p => !p[0].isShielded());
 			if (row !== undefined)
 				row.cards.push(card);
 			let maxPower = maxUnits.reduce( (a,p) => Math.max(a, p[1][0].power), 0 );
@@ -96,6 +100,8 @@ var ability_dict = {
 		name:"muster", 
 		description: "Find any cards with the same name in your deck and play them instantly. ",
 		placed: async (card) => {
+			if (card.isLocked())
+				return;
 			let pred = c => c.target === card.target;
 			let units = card.holder.hand.getCards(pred).map(x => [card.holder.hand, x])
 			.concat(card.holder.deck.getCards(pred).map( x => [card.holder.deck, x] ) );
@@ -113,6 +119,8 @@ var ability_dict = {
 		name: "spy",
 		description: "Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck. ",
 		placed: async (card) => {
+			if (card.isLocked())
+				return;
 			await card.animate("spy");
 			for (let i=0;i<2;i++) {
 				if (card.holder.deck.cards.length > 0)
@@ -125,6 +133,8 @@ var ability_dict = {
 		name: "medic",
 		description: "Choose one card from your discard pile and play it instantly (no Heroes or Special Cards). ",
 		placed: async (card) => {
+			if (card.isLocked())
+				return;
 			let grave = board.getRow(card, "grave", card.holder);
 			let units = card.holder.grave.findCards(c => c.isUnit());
 			if (units.length <= 0)
@@ -152,7 +162,9 @@ var ability_dict = {
 		name: "Tight Bond",
 		description: "Place next to a card with the same name to double the strength of both cards. ",
 		placed: async card => {
-			let bonds = card.currentLocation.findCards(c => c.target === card.target).filter(c => c.abilities.includes("bond"));
+			if (card.isLocked())
+				return;
+			let bonds = card.currentLocation.findCards(c => c.target === card.target).filter(c => c.abilities.includes("bond")).filter(c => !c.isLocked());
 			if (bonds.length > 1)
 				await Promise.all( bonds.map(c => c.animate("bond")) );
 		}
@@ -161,7 +173,7 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
-			if (game.roundCount > 2)
+			if (game.roundCount > 2 || card.isLocked())
 				return;
 			// Some avengers are related to muster
 			if (card_dict[card.target]["ability"].includes("muster")) {
@@ -183,6 +195,8 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async card => {
+			if (card.isLocked())
+				return;
 			let bdf = new Card("sk_hemdall",card_dict["sk_hemdall"], card.holder);
 			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
 			await board.addCardToRow(bdf, "close", card.holder);
@@ -193,7 +207,7 @@ var ability_dict = {
 		name: "Slaughter of Cintra",
 		description: "When using the Slaugther of Cintra special card, destroy all units on your side of the board having the Slaughter of Cintra ability then draw as many cards as units destroyed.",
 		activated: async card => {
-			let targets = board.row.map(r => [r, r.findCards(c => c.abilities.includes("cintra_slaughter")).filter(c => c.holder === card.holder)]);
+			let targets = board.row.map(r => [r, r.findCards(c => c.abilities.includes("cintra_slaughter")).filter(c => c.holder === card.holder)]).filter(c => !c.isLocked());
 			let cards = targets.reduce((a, p) => a.concat(p[1].map(u => [p[0], u])), []);
 			let nb_draw = cards.length;
 			await Promise.all(cards.map(async u => await u[1].animate("scorch", true, false)));
@@ -205,7 +219,7 @@ var ability_dict = {
 					await card.holder.deck.draw(card.holder.hand);
 			}
 		},
-		weight: () => 30
+		weight: (card) => 30
     },
 	foltest_king: {
 		description: "Pick an Impenetrable Fog card from your deck and play it instantly.",
@@ -520,6 +534,8 @@ var ability_dict = {
 		description: "Remains on the board for the following round if another unit on your side of the board had an ability in common.",
 		placed: async card => {
 			game.roundEnd.push(() => {
+				if (card.isLocked())
+					return;
 				let units = card.holder.getAllRowCards().filter(c => c.abilities.includes(card.abilities.at(-1)));
 				if (units.length < 2)
 					return;
@@ -604,5 +620,83 @@ var ability_dict = {
 			let school = card.abilities.at(-1);
 			card.holder.effects["witchers"][school]++;
 		}
-	}
+	},
+	shield: {
+		name: "Shield",
+		description: "Protects units in the row from all abilities except weather effects.",
+		weight: (card) => 30
+	},
+	seize: {
+		name: "Shield",
+		description: "Move the Melee unit(s) with the lowest strength on your side of the board",
+		activated: async card => {
+			let opCloseRow = board.getRow(card, "close", card.holder.opponent());
+			if (opCloseRow.isShielded())
+				return;
+			let units = opCloseRow.minUnits();
+			if (units.length === 0)
+				return;
+			units.forEach(async c => {
+				c.holder = card.holder;
+				await board.moveToNoEffects(c, "close", opCloseRow);
+			});
+			await board.toGrave(card, card.holder.hand);
+		},
+		weight: (card) => {
+			if (card.holder.opponent().getAllRows()[0].isShielded())
+				return 0;
+			return card.holder.opponent().getAllRows()[0].minUnits().reduce((a, c) => a + c.power, 0) * 2
+		}
+	},
+	lock: {
+		name: "Lock",
+		description: "Lock/cancels the ability of the next unit played in that row (ignores units without abilities and heroes).",
+		weight: (card) => 20
+	},
+	knockback: {
+		name: "Knockback",
+		description: "Pushes all units of the selected row (Melee or Ranged) or row back towards the Siege row, ignores shields.",
+		activated: async (card, row) => {
+			let units = row.findCards(c => c.isUnit());
+			if (units.length === 0)
+				return;
+			let targetRow;
+			for (var i = 0; i < board.row.length; i++) {
+				if (board.row[i] === row) {
+					if (i < 3)
+						targetRow = board.row[Math.max(0,i - 1)];
+					else
+						targetRow = board.row[Math.min(5,i + 1)];
+                }
+            }
+			units.forEach(async c => {
+				await board.moveToNoEffects(c, targetRow, row);
+			});
+			await board.toGrave(card, card.holder.hand);
+		},
+		weight: (card) => {
+			if (board.row[3].cards.length + board.row[4].cards.length === 0)
+				return 0;
+			let score = 0;
+			if (board.row[3].cards.length > 0 && (board.row[3].effects.horn > 0 || board.row[4].effects.weather || Object.keys(board.row[3].effects.bond).length > 1 || board.row[3].isShielded()))
+				score = Math.floor(board.row[3].cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
+			if (board.row[4].cards.length > 0 && (board.row[4].effects.horn > 0 || board.row[5].effects.weather || Object.keys(board.row[4].effects.bond).length > 1 || board.row[4].isShielded()))
+				score = Math.floor(board.row[3].cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
+			return Math.max(1, score);
+        }
+	},
+	alzur_maker: {
+		description: "Destroy one of your units on the board and summon a Koshchey.",
+		activated: (card, player) => {
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			if(!player instanceof ControllerAI)
+				ui.setSelectable(card, true);
+        },
+		weight: (card, ai, max) => {
+			if (ai.player.getAllRowCards().filter(c => c.isUnit()).length === 0)
+				return 0;
+			return ai.weightScorchRow(card, max, "close");
+		}
+	},
 };

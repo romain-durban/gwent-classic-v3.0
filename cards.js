@@ -5556,7 +5556,7 @@ var ext_wu_cards = {
         "deck": "witcher_universe",
         "row": "close",
         "strength": "9",
-        "ability": "witcher_viper_school",
+        "ability": "scorch_c witcher_viper_school",
         "filename": "letho",
         "count": "1",
         "quote": "Witchers never die in their beds."
@@ -5586,10 +5586,263 @@ var ext_wu_cards = {
         "deck": "witcher_universe",
         "row": "agile",
         "strength": "2",
-        "ability": "morale",
+        "ability": "horn",
         "filename": "swallow_potion",
         "count": "1",
         "quote": "Symbolizing spring and rejuvenation, the swallow lent its name to this potion that accelerates the rate at which wounds scab over and heal."
+    },
+    "spe_sign_igni": {
+        "name": "Sign: Igni",
+        "deck": "special witcher_universe",
+        "row": "",
+        "strength": "",
+        "ability": "scorch",
+        "filename": "sign_igni",
+        "count": "3",
+        "quote": "A twist of a witcher's fingers can light a lamp… or incinerate a foe."
+    },
+    "spe_sign_quen": {
+        "name": "Sign: Quen",
+        "deck": "special witcher_universe",
+        "row": "",
+        "strength": "",
+        "ability": "shield",
+        "filename": "sign_quen",
+        "count": "3",
+        "quote": "Geralt, feeling the iron taste of blood in his mouth, shouted a spell, with his fingers open in the Quen Sign."
+    },
+    "spe_sign_axii": {
+        "name": "Sign: Axii",
+        "deck": "special witcher_universe",
+        "row": "",
+        "strength": "",
+        "ability": "seize",
+        "filename": "sign_axii",
+        "count": "3",
+        "quote": "Geralt makes the Axii sign with the fingers of his right hand above the steed's head and whispers the incantation."
+    },
+    "spe_sign_aard": {
+        "name": "Sign: Aard",
+        "deck": "special witcher_universe",
+        "row": "",
+        "strength": "",
+        "ability": "knockback",
+        "filename": "sign_aard",
+        "count": "3",
+        "quote": "A blast of concentrated energy that pummels everything in its path. Great for when you forget your keys."
+    },
+    "spe_sign_yrden": {
+        "name": "Sign: Yrden",
+        "deck": "special witcher_universe",
+        "row": "",
+        "strength": "",
+        "ability": "lock",
+        "filename": "sign_yrden",
+        "count": "3",
+        "quote": "He lay down next to Adda's mummified remains, drawing the Yrden Sign on the inner side of her sarcophagus' lid."
+    },
+    "wu_alzur_maker": {
+        "name": "Alzur: The Maker of Spells",
+        "deck": "witcher_universe",
+        "row": "leader",
+        "strength": "",
+        "ability": "alzur_maker",
+        "filename": "alzur_maker",
+        "count": "1",
+        "quote": "A rebel… outcast... knight… even sorcerer if you can believe that."
+    },
+    "wu_koshchey": {
+        "name": "Koshchey",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "9",
+        "ability": "scorch_c",
+        "filename": "koshchey",
+        "count": "0",
+        "quote": "If I tell you koshchey is death, you'll go to the creek anyway, right?"
+    },
+    "wu_doppler_1": {
+        "name": "Doppler",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "4",
+        "ability": "spy",
+        "filename": "doppler_1",
+        "count": "1",
+        "quote": "I'll be on my way and lose myself in the crowd."
+    },
+    "wu_idr": {
+        "name": "Idr",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "10",
+        "ability": "",
+        "filename": "idr",
+        "count": "1",
+        "quote": "Who's a good boy? ⁠— Idarran"
+    },
+    "wu_iris_von_everec": {
+        "name": "Iris von Everec",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "iris_von_everec",
+        "count": "1",
+        "quote": "I remember so little... Yet when I think of my rose, I begin to recall what was."
+    },
+    "wu_sarah": {
+        "name": "Sarah",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "sarah",
+        "count": "1",
+        "quote": "Little Sarah wants to play!"
+    },
+    "wu_djinn": {
+        "name": "Djinn",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "6",
+        "ability": "hero scorch_c",
+        "filename": "djinn",
+        "count": "1",
+        "quote": "A djinn, good sirs, fulfills but three wishes. Thus freed, it flees to dimensions unknown."
+    },
+    "wu_myrgtabrakke": {
+        "name": "Myrgtabrakke",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "10",
+        "ability": "",
+        "filename": "myrgtabrakke",
+        "count": "1",
+        "quote": "Never get between a mother dragon and her young."
+    },
+    "wu_vincent_meis": {
+        "name": "Vincent Meis",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "vincent_meis",
+        "count": "1",
+        "quote": "By day, Captain of the Vizima City Guard. By night, merciless avenger and defender of the downtrodden."
+    },
+    "wu_raging_bear": {
+        "name": "Raging Bear",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "6",
+        "ability": "scorch",
+        "filename": "raging_bear",
+        "count": "1",
+        "quote": "Tame? Och, lad, people might train bears but that don't at all mean they tame 'em..."
+    },
+    "wu_iris_companions_1": {
+        "name": "Iris Companions: Black Dog",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "iris_companions",
+        "count": "1",
+        "target": "wu_iris_companions",
+        "quote": "We'd rather keep our names to ourselves. Think of us as… friends of the house."
+    },
+    "wu_iris_companions_2": {
+        "name": "Iris Companions: Black Cat",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "iris_companions",
+        "count": "1",
+        "target": "wu_iris_companions",
+        "quote": "We'd rather keep our names to ourselves. Think of us as… friends of the house."
+    },
+    "wu_vlodimir_von_everec": {
+        "name": "Vlodimir von Everec",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "vlodimir_von_everec",
+        "count": "1",
+        "quote": "Vlodimir liked to have a good time when he was alive and greatly missed having fun after his death."
+    },
+    "wu_phoenix": {
+        "name": "Phoenix",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "phoenix",
+        "count": "1",
+        "quote": "What came first, the chicken or the egg? Compared to the conundrum that is the phoenix, that question seems downright trivial."
+    },
+    "wu_boris": {
+        "name": "Boris",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "boris",
+        "count": "1",
+        "quote": "After getting a taste of human flesh, he won't eat anything else."
+    },
+    "wu_marlene_trastamara": {
+        "name": "Marlene de Trastamara",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "marlene_trastamara",
+        "count": "1",
+        "quote": "None shall sit and dine with you at your table, no spoon you have shall sate you, never again shall you wish to spy your reflection in the mirror."
+    },
+    "wu_idarran_ulivo": {
+        "name": "Idarran of Ulivo",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero avenger",
+        "filename": "idarran_ulivo",
+        "count": "1",
+        "target": "wu_idr",
+        "quote": "After getting a taste of human flesh, he won't eat anything else."
+    },
+    "wu_mad_kiyan": {
+        "name": "Mad Kiyan",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "witcher_cat_school",
+        "filename": "mad_kiyan",
+        "count": "1",
+        "quote": "We live on a placid island of ignorance in the midst of black seas of infinity, and it was not meant that we should voyage far."
+    },
+    "wu_cicada": {
+        "name": "Cicada",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "cicada",
+        "count": "1",
+        "quote": "Ivo Mierce, better known by his nickname Cicada, war a criminal and bodyguard."
+    },
+    "wu_nivellen": {
+        "name": "Nivellen",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "8",
+        "ability": "",
+        "filename": "nivellen",
+        "count": "1",
+        "quote": "Flee mortal man! I'll devour you! Tear you to pieces!"
     }
 };
 

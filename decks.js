@@ -852,7 +852,48 @@ var custom_decks = [
             ["wu_letho", 1],
             ["wu_eskel", 1],
             ["wu_kolgrim", 1],
-            ["wu_swallow_potion", 1]
+            ["spe_sign_igni", 2],
+            ["spe_sign_quen", 2],
+            ["spe_sign_axii", 2],
+            ["spe_sign_aard", 2],
+            ["spe_sign_yrden", 2],
+            ["wu_swallow_potion", 1],
+        ]
+    },
+    {
+        "title": "Witcher Universe - Demons & Creatures",
+        "description": "Witcher Universe deck focusing on demons and rare creatures - Playstyle: Muster, Scorch, Spy",
+        "leader": "wu_alzur_maker",
+        "faction": "witcher_universe",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_sign_yrden", 1],
+            ["spe_rain", 1],
+            ["spe_decoy", 2],
+            ["spe_scorch", 2],
+            ["spe_clear", 1],
+            ["wu_doppler_1", 1],
+            ["ntr_gaunter_odimm_darkness", 3],
+            ["ntr_gaunter_odimm", 1],
+            ["wu_idr", 1],
+            ["wu_iris_von_everec", 1],
+            ["wu_sarah", 1],
+            ["wu_djinn", 1],
+            ["wu_myrgtabrakke", 1],
+            ["wu_vincent_meis", 1],
+            ["wu_raging_bear", 1],
+            ["wu_iris_companions_1", 1],
+            ["wu_iris_companions_2", 1],
+            ["wu_vlodimir_von_everec", 1],
+            ["wu_phoenix", 1],
+            ["wu_boris", 1],
+            ["ntr_olgierd", 1],
+            ["wu_marlene_trastamara", 1],
+            ["wu_idarran_ulivo", 1],
+            ["wu_mad_kiyan", 1],
+            ["wu_cicada", 1],
+            ["wu_nivellen", 1]
+            
         ]
     }
 ];

@@ -89,10 +89,29 @@ class ControllerAI {
 				card: c
 			}))), []);
 
+		// Also compute for rows without a shield
+		let rmax_noshield = rmax.filter((r, i) => !r.row.isShielded());
+		let max_noshield = rmax_noshield.filter((r, i) => r.cards.length && i < 3).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+		let max_me_noshield = rmax_noshield.filter((r, i) => i < 3 && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
+			a.concat(r.cards.map(c => ({
+				row: r,
+				card: c
+			}))), []);
+
+		max_noshield = rmax_noshield.filter((r, i) => r.cards.length && i > 2).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+		let max_op_noshield = rmax_noshield.filter((r, i) => i > 2 && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
+			a.concat(r.cards.map(c => ({
+				row: r,
+				card: c
+			}))), []);
+
 		return {
 			rmax: rmax,
 			me: max_me,
-			op: max_op
+			op: max_op,
+			rmax_noshield: rmax_noshield,
+			me_noshield: max_me_noshield,
+			op_noshield: max_op_noshield
 		};
 	}
 
@@ -189,10 +208,18 @@ class ControllerAI {
 			await this.mardroeme(c);
 		else if (c.key === "spe_decoy")
 			await this.decoy(c, max, data);
-		else if (c.key === "spe_scorch")
+		else if (c.faction === "special" && c.abilities.includes("scorch"))
 			await this.scorch(c, max, data);
-		else if (c.key.startsWith("spe_slaughther_cintra_"))
+		else if (c.faction === "special" && c.abilities.includes("cintra_slaughter"))
 			await this.slaughterCintra(c);
+		else if (c.faction === "special" && c.abilities.includes("seize"))
+			await this.seizeCards(c);
+		else if (c.faction === "special" && c.abilities.includes("shield"))
+			await this.shieldCards(c);
+		else if (c.faction === "special" && c.abilities.includes("lock"))
+			await this.lock(c);
+		else if (c.faction === "special" && c.abilities.includes("knockback"))
+			await this.knockback(c);
 		else
 			await this.player.playCard(c);
 	}
@@ -292,6 +319,39 @@ class ControllerAI {
 		await this.player.playSlaughterCintra(card);
 	}
 
+	// Tells the controlled Player to play the seize special card
+	async seizeCards(card) {
+		await this.player.playSeize(card);
+	}
+
+	// Plays a shield special card to the most beneficial row. Assumes at least one viable row.
+	async shieldCards(card) {
+		let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
+		let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
+		units.forEach(c => {
+			rowStats[c.row] += c.power;
+		});
+		rowStats["close"] += rowStats["agile"];
+		let max_row;
+		if (rowStats["close"] >= rowStats["ranged"] && rowStats["close"] >= rowStats["siege"])
+			max_row = board.row[2];
+		else if (rowStats["ranged"] > rowStats["close"] && rowStats["ranged"] >= rowStats["siege"])
+			max_row = board.row[1];
+		else
+			max_row = board.row[0];
+		await this.player.playCardToRow(card, max_row);
+	}
+
+	// Plays the lock special card in the enemy melee row
+	async lock(card) {
+		await this.player.playCardToRow(card, board.row[3]);
+	}
+
+	// Plays the knockback special card in the most beneficial row - by default enemy melee row
+	async knockback(card) {
+		await this.player.playKnockback(card);
+	}
+
 	// Assigns a weight for how likely the conroller is to Pass the round
 	weightPass() {
 		if (this.player.health === 1)
@@ -317,7 +377,7 @@ class ControllerAI {
 	// Assigns a weight for how likely the controller will use a scorch-row card
 	weightScorchRow(card, max, row_name) {
 		let index = 3 + (row_name === "close" ? 0 : row_name === "ranged" ? 1 : 2);
-		if (board.row[index].total < 10)
+		if (board.row[index].total < 10 || board.row[index].isShielded() )
 			return 0;
 		let score = max.rmax[index].cards.reduce((a, c) => a + c.power, 0);
 		return score;
@@ -349,12 +409,12 @@ class ControllerAI {
 	weightWeather(card) {
 		let rows;
 		if (card.abilities) {
-			if (card.key === "spe_clear")	//Replace card.name === "Clear Weather"
+			if (card.key === "spe_clear")
 				rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
 			else
 				rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.abilities[0]).flatMap(t => t.rows);
 		} else {
-			if (card.ability == "clear")	//Replace card.name === "Clear Weather"
+			if (card.ability == "clear")
 				rows = Object.values(weather.types).filter(t => t.count > 0).flatMap(t => t.rows);
 			else
 				rows = Object.values(weather.types).filter(t => t.count === 0 && t.name === card.ability).flatMap(t => t.rows);
@@ -380,9 +440,6 @@ class ControllerAI {
 		let ermion = card.holder.hand.cards.filter(c => c.key === "sk_ermion").length > 0;
 		if (ermion && card.key !== "sk_ermion" && row === board.row[1])
 			return 0;
-		//let name = row === board.row[1] ? "Young Berserker" : "Berserker";
-		//let n = row.cards.filter(c => c.abilities[-1] === "berserker").length;
-		//let weight = row === board.row[2] ? 10 * n : 8 * n * n - 2 * n
 		let bers_cards = row.cards.filter(c => c.abilities.includes("berserker"));
 		let weightData = { bond: {}, strength:0 };
 
@@ -399,15 +456,6 @@ class ControllerAI {
             }
 		}
 		let weight = weightData.strength + Object.keys(weightData.bond).reduce((s, c) => s + Math.pow(weightData.bond[c][0],2) * weightData.bond[c][1], 0)
-		console.log(weight);
-		console.log(weightData);
-		/*let weight = -1 * bers_cards.reduce((s, c) => s + c.basePower, 0);
-		if (bers_cards.filter(c => c.key === "sk_young_berserker").length)
-			weight += Math.pow(bers_cards.filter(c => c.key === "sk_young_berserker").length, 2) * card_dict["sk_young_vildkaarl"]["strength"];
-		if (bers_cards.filter(c => c.key === "sk_berserker").length)
-			weight += bers_cards.filter(c => c.key === "sk_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
-		if (bers_cards.filter(c => c.key === "sk_drummond_berserker").length)
-			weight += bers_cards.filter(c => c.key === "sk_drummond_berserker").length * card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;*/
 		return Math.max(1, weight);
 	}
 
@@ -430,9 +478,9 @@ class ControllerAI {
 		else if (ctarget.ability.includes("bond")) {
 			let n = 1;
 			if (!row.effects.mardroeme)
-				n += row.cards.filter(c => c.key === card.key).length;
+				n += row.cards.filter(c => c.key === card.key).filter(c => !c.isLocked()).length;
 			else
-				n += row.cards.filter(c => c.key === card.target).length;
+				n += row.cards.filter(c => c.key === card.target).filter(c => !c.isLocked()).length;
 			score += Number(ctarget["strength"]) * (n * n);
 		} else {
 			score += Number(ctarget["strength"]);
@@ -489,10 +537,10 @@ class ControllerAI {
 
 		if (abi) {
 			if (abi.includes("scorch")) {
-				let power_op = max.op.length ? max.op[0].card.power : 0;
-				let power_me = max.me.length ? max.me[0].card.power : 0;
-				let total_op = power_op * max.op.length;
-				let total_me = power_me * max.me.length;
+				let power_op = max.op_noshield.length ? max.op_noshield[0].card.power : 0;
+				let power_me = max.me_noshield.length ? max.me_noshield[0].card.power : 0;
+				let total_op = power_op * max.op_noshield.length;
+				let total_me = power_me * max.me_noshield.length;
 				return power_me > power_op ? 0 : power_me < power_op ? total_op : Math.max(0, total_op - total_me);
 			}
 			if (abi.includes("decoy")) {
@@ -502,9 +550,9 @@ class ControllerAI {
 				let rows = [1, 2].map(i => board.row[i]);
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
 			}
-			if (abi.includes("cintra_slaughter")) {
-				return ability_dict["cintra_slaughter"].weight();
-			}
+			if (["cintra_slaughter","seize","lock","shield","knockback"].includes(abi.at(-1))) {
+				return ability_dict[abi.at(-1)].weight(card);
+            }
 		}
 
 		if (card.row === "weather" || (card.deck && card.deck.startsWith("weather"))) {
@@ -691,6 +739,26 @@ class Player {
 		await this.playCardAction(card, async () => await ability_dict["cintra_slaughter"].activated(card)); 
 	}
 
+	// Plays a Seize special card card
+	async playSeize(card) {
+		await this.playCardAction(card, async () => await ability_dict["seize"].activated(card));
+	}
+
+	// Plays a Knockback special card card
+	async playKnockback(card) {
+		let best_row = board.row[3];
+		// If siege has an active weather effect, better target ranged
+		if (board.row[4].cards.length > 1 && board.row[5].effects.weather)
+			best_row = board.row[4];
+		// If ranged has a horn or shield effect, better target it
+		if ((board.row[4].isShielded() || board.row[4].effects.horn > 0) && board.row[4].cards.length > 0)
+			best_row = board.row[4];
+		// If there are some bond units in the ranged row, better try to break it before it grows
+		if (Object.keys(board.row[4].effects.bond).length > 0 && board.row[5].effects.horn === 0)
+			best_row = board.row[4];
+		await this.playCardAction(card, async () => await ability_dict["knockback"].activated(card, best_row));
+    }
+
 	// Plays a card to a specific row
 	async playCardToRow(card, row) {
 		await this.playCardAction(card, async () => await board.moveTo(card, row, this.hand));
@@ -747,9 +815,21 @@ class Player {
 		} catch (err) {	}
 		if (this.leaderAvailable) {
 			called_leader = true;
+			this.endTurnAfterAbilityUse = true;
 			await this.leader.activated[0](this.leader, this);
 			this.disableLeader();
-			this.endTurn();
+			// Some abilities require further actions before ending the turn, such as selecting a card
+			if (this.endTurnAfterAbilityUse)
+				this.endTurn();
+			else {
+				// Make selections for AI player
+				if (this.controller instanceof ControllerAI) {
+					if (this.leader.key === "wu_alzur_maker") {
+						let worse_unit = this.getAllRowCards().filter(c => c.isUnit()).sort((a, b) => a.power - b.power)[0];
+						ui.selectCard(worse_unit);
+                    }
+                }
+            }
 		}
 	}
 
@@ -848,12 +928,12 @@ class Player {
         }
 	}
 
-	// Get all rows for this player
+	// Get all rows for this player, sorted to have close > ranged > siege
 	getAllRows() {
 		if (this === player_me) {
 			return board.row.filter((r, i) => i > 2);
 		}
-		return board.row.filter((r, i) => i < 3);
+		return board.row.filter((r, i) => i < 3).reverse();
 	}
 
 	//Get all cards in rows for this player
@@ -1234,7 +1314,9 @@ class Row extends CardContainer {
 			bond: {},
 			morale: 0,
 			horn: 0,
-			mardroeme: 0
+			mardroeme: 0,
+			shield: 0,
+			lock: 0,
 		};
 		this.halfWeather = false;
 		this.elem.addEventListener("click", () => ui.selectRow(this), true);
@@ -1261,7 +1343,7 @@ class Row extends CardContainer {
 	}
 
 	// Override
-	async addCard(card) {
+	async addCard(card, runEffect = true) {
 		if (card.isSpecial()) {
 			this.special.addCard(card);
 		} else {
@@ -1270,16 +1352,23 @@ class Row extends CardContainer {
 			this.resize();
 		}
 		card.currentLocation = this;
+		if (this.effects.lock && card.abilities.length) {
+			card.locked = true;
+			this.effects.lock -= 1;
+			await board.toGrave(this.special.findCard(c => c.abilities.includes("lock")), this.special);
+        }
 		this.updateState(card, true);
-		for (let x of card.placed)
-			await x(card, this);
+		if (runEffect && !card.isLocked()) {
+			for (let x of card.placed)
+				await x(card, this);
+		}
 		card.elem.classList.add("noclick");
 		await sleep(600);
 		this.updateScore();
 	}
 
 	// Override
-	removeCard(card) {
+	removeCard(card,runEffect=true) {
 		// TODO: This case should no longer happen
 		if (isNumber(card) && card === -1) {
 			card = this.special.cards[0];
@@ -1290,12 +1379,15 @@ class Row extends CardContainer {
 		if (card.isSpecial()) {
 			this.special.removeCard(card);
 		} else {
+			card.locked = false;
 			super.removeCard(card);
 			card.resetPower();
 		}
 		this.updateState(card, false);
-		for (let x of card.removed)
-			x(card);
+		if (runEffect) {
+			for (let x of card.removed)
+				x(card);
+        }
 		this.updateScore();
 		return card;
 	}
@@ -1315,6 +1407,8 @@ class Row extends CardContainer {
 				case "morale":
 				case "horn":
 				case "mardroeme":
+				case "shield":
+				case "lock":
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "bond":
@@ -1382,12 +1476,12 @@ class Row extends CardContainer {
 				total = Math.min(1, total);
 		// Bond
 		let bond = this.effects.bond[card.target];
-		if (isNumber(bond) && bond > 1)
+		if (isNumber(bond) && bond > 1 && !card.isLocked())
 			total *= Number(bond);
 		// Morale
 		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		//Witcher Schools
-		if (card.abilities.at(-1) && card.abilities.at(-1).startsWith("witcher_")) {
+		if (card.abilities.at(-1) && card.abilities.at(-1).startsWith("witcher_") && !card.isLocked()) {
 			let school = card.abilities.at(-1);
 			if (card.holder.effects["witchers"][school]) {
 				total += card.holder.effects["witchers"][school] - 1;
@@ -1410,7 +1504,7 @@ class Row extends CardContainer {
 
 	// Applies a local scorch effect to this row
 	async scorch() {
-		if (this.total >= 10)
+		if (this.total >= 10 && !this.isShielded())
 			await Promise.all(this.maxUnits().map(async c => {
 				await c.animate("scorch", true, false);
 				await board.toGrave(c, this);
@@ -1438,6 +1532,20 @@ class Row extends CardContainer {
 		return max;
 	}
 
+	minUnits() {
+		let min = [];
+		for (let i = 0; i < this.cards.length; ++i) {
+			let card = this.cards[i];
+			if (!card.isUnit())
+				continue;
+			if (!min[0] || min[0].power > card.power)
+				min = [card];
+			else if (min[0].power === card.power)
+				min.push(card);
+		}
+		return min;
+    }
+
 	// Override
 	reset() {
 		super.reset();
@@ -1448,9 +1556,16 @@ class Row extends CardContainer {
 			bond: {},
 			morale: 0,
 			horn: 0,
-			mardroeme: 0
+			mardroeme: 0,
+			shield: 0,
+			lock: 0
 		};
 	}
+
+	// Indicates whether or not a shield is protecting that row from abilities (does not protect from weather effects though)
+	isShielded() {
+		return (this.effects.shield > 0);
+    }
 }
 
 // Handles how weather effects are added and removed
@@ -1482,9 +1597,11 @@ class Weather extends CardContainer {
 	}
 
 	// Adds a card if unique and clears all weather if 'clear weather' card added
-	async addCard(card) {
+	async addCard(card,withEffects=true) {
 		super.addCard(card);
 		card.elem.classList.add("noclick");
+		if (!withEffects)
+			return;
 		if (card.key === "spe_clear") {
 			// TODO Sunlight animation
 			tocar("clear", false);
@@ -1504,10 +1621,11 @@ class Weather extends CardContainer {
 	}
 
 	// Override
-	removeCard(card) {
+	removeCard(card, withEffects = true) {
 		card = super.removeCard(card);
 		card.elem.classList.remove("noclick");
-		this.changeWeather(card, x => --this.types[x].count === 0, (r, t) => r.removeOverlay(t.name));
+		if (withEffects)
+			this.changeWeather(card, x => --this.types[x].count === 0, (r, t) => r.removeOverlay(t.name));
 		return card;
 	}
 
@@ -1592,6 +1710,19 @@ class Board {
 		await translateTo(card, source ? source : null, dest);
 		if (dest instanceof Row || dest instanceof Weather)
 			await dest.addCard(source ? source.removeCard(card) : card);	//Only the override in the Row/Weather classes are asynchronous
+		else
+			dest.addCard(source ? source.removeCard(card) : card);
+	}
+
+	// Sends and translates a card from the source to a specified row name or CardContainer - NO EFFECTS/ABILITIES
+	async moveToNoEffects(card, dest, source) {
+		if (isString(dest)) dest = this.getRow(card, dest);
+		try {
+			cartaNaLinha(dest.elem.id, card);
+		} catch (err) { }
+		await translateTo(card, source ? source : null, dest);
+		if (dest instanceof Row || dest instanceof Weather)
+			await dest.addCard(source ? source.removeCard(card,false) : card,false);	//Only the override in the Row/Weather classes are asynchronous
 		else
 			dest.addCard(source ? source.removeCard(card) : card);
 	}
@@ -1950,6 +2081,7 @@ class Card {
 		this.removed = [];
 		this.activated = [];
 		this.holder = player;
+		this.locked = false;
 		this.target = "";
 		this.currentLocation = board;	// By default, updated later
 		if ("target" in card_data) {
@@ -1978,6 +2110,8 @@ class Card {
 			this.desc_name = "Leader Ability";
 		else if (this.abilities.length > 0)
 			this.desc_name = ability_dict[this.abilities[this.abilities.length - 1]].name;
+		else if (this.abilities.length > 1)
+			this.desc_name = this.desc_name + " / " + ability_dict[this.abilities[this.abilities.length - 2]].name;
 		else if (this.row === "agile")
 			this.desc_name = "agile";
 		else if (this.hero)
@@ -1987,7 +2121,7 @@ class Card {
 
 		this.desc = this.row === "agile" ? ability_dict["agile"].description : "";
 		for (let i = this.abilities.length - 1; i >= 0; --i) {
-			this.desc += ability_dict[this.abilities[i]].description;
+			this.desc += ability_dict[this.abilities[i]].description + "<br>";
 		}
 		if (this.hero)
 			this.desc += ability_dict["hero"].description;
@@ -2081,7 +2215,7 @@ class Card {
 
 	// Returns true if card is sent to a Row's special slot
 	isSpecial() {
-		return this.key === "spe_horn" || this.key === "spe_mardroeme";
+		return this.key === "spe_horn" || this.key === "spe_mardroeme" || this.key === "spe_sign_quen" || this.key === "spe_sign_yrden";
 	}
 
 	// Compares by type then power then name
@@ -2175,6 +2309,11 @@ class Card {
 		elem.appendChild(document.createElement("div")); // animation overlay
 		return elem;
 	}
+
+	// Indicates whether or not the abilities of this card are locked
+	isLocked() {
+		return this.locked;
+    }
 }
 
 function passBreak() {
@@ -2344,6 +2483,14 @@ class UI {
 			board.toHand(card, row);
 			await board.moveTo(pCard, row, pCard.holder.hand);
 			pCard.holder.endTurn();
+		} else if (pCard.abilities.includes("alzur_maker")) {
+			this.hidePreview(card);
+			this.enablePlayer(false);
+			await board.toGrave(card, row);
+			let target = new Card("wu_koshchey", card_dict["wu_koshchey"], card.holder);
+			//target.removed.push(() => setTimeout(() => target.holder.grave.removeCard(target), 1001));
+			await board.addCardToRow(target, target.row, card.holder);
+			pCard.holder.endTurn();
 		}
 	}
 
@@ -2354,19 +2501,25 @@ class UI {
 			await ui.viewCardsInContainer(row);
 			return;
 		}
-		if (this.previewCard.key === "spe_decoy")
+		if (this.previewCard.key === "spe_decoy" || this.previewCard.abilities.includes("alzur_maker"))
 			return;
 		let card = this.previewCard;
 		let holder = card.holder;
 		this.hidePreview();
 		this.enablePlayer(false);
-		if (card.key === "spe_scorch") {
+		if (card.faction === "special" && card.abilities.includes("scorch")) {
 			this.hidePreview();
 			await ability_dict["scorch"].activated(card);
-		} else if (card.key.startsWith("spe_slaughther_cintra_")) {
+		} else if (card.faction === "special" && card.abilities.includes("cintra_slaughter")) {
 			this.hidePreview();
 			await ability_dict["cintra_slaughter"].activated(card);
-		} else if (card.key === "spe_decoy") {
+		} else if (card.faction === "special" && card.abilities.includes("seize")) {
+			this.hidePreview();
+			await ability_dict[card.abilities.at(-1)].activated(card);
+		} else if (card.faction === "special" && card.abilities.includes("knockback")) {
+			this.hidePreview();
+			await ability_dict[card.abilities.at(-1)].activated(card,row);
+		} else if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
 			return;
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
@@ -2597,16 +2750,21 @@ class UI {
 		weather.elem.classList.add("noclick");
 
 		// Affects all board
-		if (card.key === "spe_scorch") {
+		if (card.faction === "special" && card.abilities.includes("scorch")) {
 			for (let r of board.row) {
-				r.elem.classList.add("row-selectable");
-				r.special.elem.classList.add("row-selectable");
-				alteraClicavel(r, true);
+				if (r.isShielded()) {
+					r.elem.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
+				} else {
+					r.elem.classList.add("row-selectable");
+					r.special.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+                }
 			}
 			return;
 		}
 		// Affects only own side of board
-		if (card.key.startsWith("spe_slaughther_cintra_")) {
+		if (card.faction === "special" && card.abilities.includes("cintra_slaughter")) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
 				if (i > 2) {
@@ -2617,22 +2775,58 @@ class UI {
 			}
 			return;
 		}
+		// Affects enemy side of the board
+		// Affects only opponent melee and ranged row
+		if (card.faction === "special" && card.abilities.includes("knockback")) {
+			for (var i = 1; i < 3; i++) {
+				let r = board.row[i];
+				if (!r.isShielded()) {
+					r.elem.classList.add("row-selectable");
+					r.special.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+				}
+            }
+			return;
+		}
+		// Affects only opponent melee row
+		if (card.faction === "special" && card.abilities.includes("seize")) {
+			let r = board.row[2];
+			if (!r.isShielded()) {
+				r.elem.classList.add("row-selectable");
+				r.special.elem.classList.add("row-selectable");
+				alteraClicavel(r, true);
+            }
+			return;
+		}
 		//Affects only own rows that are available
 		if (card.isSpecial()) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
-				if (i < 3 || r.special.containsCardByKey(card.key)) {
-					r.elem.classList.add("noclick");
-					r.special.elem.classList.add("noclick");
+				//Affects OP side
+				if (card.abilities.includes("lock")) {
+					if (i > 2 || r.special.containsCardByKey(card.key) || r.isShielded()) {
+						r.elem.classList.add("noclick");
+						r.special.elem.classList.add("noclick");
+					} else {
+						r.special.elem.classList.add("row-selectable");
+						fileira_clicavel = null;
+					}
 				} else {
-					r.special.elem.classList.add("row-selectable");
-					fileira_clicavel = null;
-				}
+					// Affects own side
+					if (i < 3 || r.special.containsCardByKey(card.key)) {
+						r.elem.classList.add("noclick");
+						r.special.elem.classList.add("noclick");
+					} else {
+						r.special.elem.classList.add("row-selectable");
+						fileira_clicavel = null;
+					}
+                }
+				
 			}
 			return;
 		}
 
-		if (card.key === "spe_decoy") {
+		if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
 			for (let i = 0; i < 6; ++i) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());
