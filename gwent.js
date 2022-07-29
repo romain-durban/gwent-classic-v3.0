@@ -744,9 +744,12 @@ class Player {
 		await this.playCardAction(card, async () => await ability_dict["seize"].activated(card));
 	}
 
-	// Plays a Knockback special card card
+	// Plays a Knockback special card card, assuming 1 valid
 	async playKnockback(card) {
 		let best_row = board.row[3];
+		//If melee row is empty, better target ranged
+		if (board.row[3].cards.length === 0)
+			best_row = board.row[4];
 		// If siege has an active weather effect, better target ranged
 		if (board.row[4].cards.length > 1 && board.row[5].effects.weather)
 			best_row = board.row[4];
@@ -1354,6 +1357,7 @@ class Row extends CardContainer {
 		card.currentLocation = this;
 		if (this.effects.lock && card.abilities.length) {
 			card.locked = true;
+			await card.animate("lock")
 			this.effects.lock -= 1;
 			await board.toGrave(this.special.findCard(c => c.abilities.includes("lock")), this.special);
         }
@@ -1379,9 +1383,9 @@ class Row extends CardContainer {
 		if (card.isSpecial()) {
 			this.special.removeCard(card);
 		} else {
-			card.locked = false;
 			super.removeCard(card);
 			card.resetPower();
+			card.locked = false;
 		}
 		this.updateState(card, false);
 		if (runEffect) {
@@ -1407,8 +1411,11 @@ class Row extends CardContainer {
 				case "morale":
 				case "horn":
 				case "mardroeme":
-				case "shield":
 				case "lock":
+					this.effects[x] += activate ? 1 : -1;
+					break;
+				case "shield":
+					Promise.all(this.cards.map(c => c.animate("shield")));
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "bond":
@@ -2487,7 +2494,7 @@ class UI {
 			this.hidePreview(card);
 			this.enablePlayer(false);
 			await board.toGrave(card, row);
-			let target = new Card("wu_koshchey", card_dict["wu_koshchey"], card.holder);
+			let target = new Card(ability_dict["alzur_maker"].target, card_dict[ability_dict["alzur_maker"].target], card.holder);
 			//target.removed.push(() => setTimeout(() => target.holder.grave.removeCard(target), 1001));
 			await board.addCardToRow(target, target.row, card.holder);
 			pCard.holder.endTurn();

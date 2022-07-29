@@ -895,6 +895,41 @@ var custom_decks = [
             ["wu_nivellen", 1]
             
         ]
+    },
+    {
+        "title": "Witcher Universe - Geralt & Friends",
+        "description": "Witcher Universe deck focusing on Geralt and his friends - Playstyle: Muster, Summon Avenger, Medic",
+        "leader": "wu_vilgefortz_sorcerer",
+        "faction": "witcher_universe",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_sign_aard", 1],
+            ["spe_rain", 1],
+            ["spe_fog", 1],
+            ["spe_clear", 1],
+            ["wu_doppler_2", 1],
+            ["wu_pellar", 1],
+            ["ntr_yennefer", 1],
+            ["ntr_geralt", 1],
+            ["wu_kelpie", 1],
+            ["wu_vysogota", 1],
+            ["wu_angouleme", 1],
+            ["wu_tea_vea_1", 1],
+            ["wu_tea_vea_2", 1],
+            ["wu_iola", 1],
+            ["ntr_villen", 1],
+            ["wu_rhapsodic_melody", 1],
+            ["ntr_mysterious_elf", 1],
+            ["ntr_zoltan", 1],
+            ["ntr_triss", 1],
+            ["wu_nenneke", 1],
+            ["wu_roach", 1],
+            ["ntr_dandelion", 1],
+            ["ntr_emiel", 1],
+            ["ntr_ciri", 1],
+            ["ntr_vesemir", 1],
+            ["wu_kalkstein", 1]
+        ]
     }
 ];
 

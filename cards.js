@@ -2253,7 +2253,7 @@ var default_cards = {
         "deck": "skellige",
         "row": "close",
         "strength": "0",
-        "ability": "avenger_kambi",
+        "ability": "avenger",
         "filename": "kambi",
         "count": "1",
         "target": "sk_hemdall",
@@ -5843,6 +5843,433 @@ var ext_wu_cards = {
         "filename": "nivellen",
         "count": "1",
         "quote": "Flee mortal man! I'll devour you! Tear you to pieces!"
+    },
+    "wu_vilgefortz_sorcerer": {
+        "name": "Vilgefortz: Sorcerer of Roggeveen",
+        "deck": "witcher_universe",
+        "row": "leader",
+        "strength": "",
+        "ability": "vilgefortz_sorcerer",
+        "filename": "vilgefortz_sorcerer",
+        "count": "1",
+        "quote": "You've mistaken the stars reflected on the surface of the lake at night for the heavens."
+    },
+    "wu_doppler_2": {
+        "name": "Doppler",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "6",
+        "ability": "spy",
+        "filename": "doppler_2",
+        "count": "1",
+        "quote": "I'll be on my way and lose myself in the crowd."
+    },
+    "wu_pellar": {
+        "name": "Pellar",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "pellar",
+        "count": "1",
+        "quote": "Gather spirits for this wake, A passing soul ne'er forsake, Hear my call, my humble plea, Unbind his chains, set him free."
+    },
+    "wu_kelpie": {
+        "name": "Kelpie",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "0",
+        "ability": "avenger",
+        "filename": "kelpie",
+        "count": "1",
+        "target": "ntr_ciri",
+        "quote": "In the north 'Kelpie' was a sea monster..."
+    },
+    "wu_vysogota": {
+        "name": "Vysogota of Corvo",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "vysogota",
+        "count": "1",
+        "quote": "I, Vysogota of Corvo, do not believe in the existence of the gods."
+    },
+    "wu_angouleme": {
+        "name": "Angouleme",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "5",
+        "ability": "",
+        "filename": "angouleme",
+        "count": "1",
+        "quote": "You damned tricksters! Nothing but swindlers!"
+    },
+    "wu_tea_vea_1": {
+        "name": "Tea & Vea",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "tea_vea_1",
+        "count": "1",
+        "target" :"wu_tea_vea",
+        "quote": "Her sabre, drawn faster than they eye could see, cut through the air."
+    },
+    "wu_tea_vea_2": {
+        "name": "Tea & Vea",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "tea_vea_2",
+        "count": "1",
+        "target": "wu_tea_vea",
+        "quote": "Her sabre, drawn faster than they eye could see, cut through the air."
+    },
+    "wu_iola": {
+        "name": "Iola",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "0",
+        "ability": "medic",
+        "filename": "iola",
+        "count": "1",
+        "quote": "The priestess slowly shook her head, sniffed and wiped a tear away."
+    },
+    "wu_rhapsodic_melody": {
+        "name": "Rhapsodic Melody",
+        "deck": "witcher_universe",
+        "row": "agile",
+        "strength": "2",
+        "ability": "horn",
+        "filename": "rhapsodic_melody",
+        "count": "1",
+        "quote": "War's not so horrific when you put a catchy tune to it."
+    },
+    "wu_nenneke": {
+        "name": "Nenneke",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "1",
+        "ability": "medic",
+        "filename": "nenneke",
+        "count": "1",
+        "quote": "Few know more about healing than Nenneke."
+    },
+    "wu_roach": {
+        "name": "Roach",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "0",
+        "ability": "avenger",
+        "filename": "roach",
+        "count": "1",
+        "target": "ntr_geralt",
+        "quote": "Geralt, we gotta have a man–to–horse talk. No offense, but your riding skills? They leave a bit to be desired, buddy."
+    },
+    "wu_kalkstein": {
+        "name": "Adalbertus Kalkstein",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "4",
+        "ability": "morale",
+        "filename": "kalkstein",
+        "count": "1",
+        "quote": "Before Kalkstein departed this world, he left us with some rather unflattering words about our gracious king..."
+    },
+    "wu_gerd_2": {
+        "name": "Gerd",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "gerd_2",
+        "count": "1",
+        "quote": "Righteous and brave, of death never scared. Such a man had we in the witcher Gerd."
+    },
+    "wu_lambert_2": {
+        "name": "Lambert",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "lambert_2",
+        "count": "1",
+        "quote": "Lambert, Lambert, what a prick."
+    },
+    "wu_eskel_2": {
+        "name": "Eskel",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero morale",
+        "filename": "eskel_2",
+        "count": "1",
+        "quote": "Heard you panting from three miles away. Just didn't wanna give up that vantage point."
+    },
+    "wu_sheenaz": {
+        "name": "Sh'eenaz",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "hero morale",
+        "filename": "sheenaz",
+        "count": "1",
+        "quote": "The excuses, the stupid and naive excuses: not the slightest bit of dedication!"
+    },
+    "wu_george_kagen": {
+        "name": "George of Kagen",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "witcher_griffin_school",
+        "filename": "george_kagen",
+        "count": "1",
+        "quote": "Instead of monsters, he only found villagers lighting fake fires to sink and loot all arriving ships."
+    },
+    "wu_leo": {
+        "name": "Leo",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "witcher_wolf_school",
+        "filename": "leo",
+        "count": "1",
+        "quote": "He would have caught the arrow if he only had some heads-up."
+    },
+    "wu_renfri": {
+        "name": "Renfri",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "renfri",
+        "count": "1",
+        "quote": "In this fairytale, the princess and the monster are the same person."
+    },
+    "wu_gimpy_gerwin": {
+        "name": "Gimpy Gerwin",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "gimpy_gerwin",
+        "count": "1",
+        "quote": "Keep the vermin on a short leash. And don't be afraid to use that whip!"
+    },
+    "wu_fugas": {
+        "name": "Fugas",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "fugas",
+        "count": "1",
+        "quote": "Heh, givin' me orders? You? A human?"
+    },
+    "wu_barnabas": {
+        "name": "Barnabas Beckenbauer",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "1",
+        "ability": "medic",
+        "filename": "barnabas",
+        "count": "1",
+        "quote": "I think you'll really like this one!"
+    },
+    "wu_torque": {
+        "name": "Torque",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "torque",
+        "count": "1",
+        "quote": "Where an elf cannot go himself, he sends a devil."
+    },
+    "wu_deserter_1": {
+        "name": "Deserter",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "deserter_1",
+        "count": "1",
+        "target": "wu_deserter",
+        "quote": "It is interesting that every second deserter is a volunteer."
+    },
+    "wu_deserter_2": {
+        "name": "Deserter",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "deserter_2",
+        "count": "1",
+        "target": "wu_deserter",
+        "quote": "It is interesting that every second deserter is a volunteer."
+    },
+    "wu_deserter_3": {
+        "name": "Deserter",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "deserter_3",
+        "count": "1",
+        "target": "wu_deserter",
+        "quote": "It is interesting that every second deserter is a volunteer."
+    },
+    "wu_bloody_baron": {
+        "name": "Bloody Baron",
+        "deck": "witcher_universe",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "bloody_baron",
+        "count": "1",
+        "quote": "I've not been a good father, I know, but… perhaps it's not too late."
+    },
+    "wu_essi_daven": {
+        "name": "Essi Daven",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "horn",
+        "filename": "essi_daven",
+        "count": "1",
+        "quote": "When you have no talent, you don't have the luxury of choosing your audience."
+    },
+    "wu_fercart": {
+        "name": "Fercart",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "fercart",
+        "count": "1",
+        "quote": "Pawns will never know of the unseen hands, maneuvering them toward certain doom."
+    },
+    "wu_artaud_terranova": {
+        "name": "Artaud Terranova",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "artaud_terranova",
+        "count": "1",
+        "quote": "Ambition can be blinding."
+    },
+    "wu_auckes": {
+        "name": "Auckes",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "witcher_viper_school",
+        "filename": "auckes",
+        "count": "1",
+        "quote": "Letho's got a plan… what could go wrong?"
+    },
+    "wu_serrit": {
+        "name": "Serrit",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "witcher_viper_school",
+        "filename": "serrit",
+        "count": "1",
+        "quote": "We do what we must. I am not ashamed of that."
+    },
+    "wu_junod": {
+        "name": "Junod of Belhaven",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "witcher_bear_school",
+        "filename": "junod",
+        "count": "1",
+        "quote": "Rumour has it he was born of an unusual love between a lady giant and one VERY brave dwarf."
+    },
+    "wu_berengar": {
+        "name": "Berengar",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "witcher_wolf_school",
+        "filename": "berengar",
+        "count": "1",
+        "quote": "Talking the vodyanoi out of sacrificing the prize-winning cow wasn’t an easy task."
+    },
+    "wu_stregobor": {
+        "name": "Stregobor",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "",
+        "filename": "stregobor",
+        "count": "1",
+        "quote": "I'll be honest, although for my own sake I shouldn't."
+    },
+    "wu_renew": {
+        "name": "Renew",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "renew",
+        "count": "1",
+        "quote": "Medicus curat, magicae sanat."
+    },
+    "wu_prophet_lebioda": {
+        "name": "Prophet Lebioda",
+        "deck": "witcher_universe",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "",
+        "filename": "prophet_lebioda",
+        "count": "1",
+        "quote": "To thine own self be judge and ruler for thou alone shalt answer for thine deeds before thee."
+    },
+    "wu_johnny": {
+        "name": "Johnny",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "johnny",
+        "count": "1",
+        "quote": "Peter Piper picked Prince Proximo a peck of pickled peppers by the Pontar."
+    },
+    "wu_istredd": {
+        "name": "Istredd",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "5",
+        "ability": "",
+        "filename": "istredd",
+        "count": "1",
+        "quote": "Love can make one do crazy things. The loss of love, even more so."
+    },
+    "wu_salma": {
+        "name": "Salma",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "4",
+        "ability": "",
+        "filename": "salma",
+        "count": "1",
+        "quote": "I'm not one to lie. Nor do I kill without reason."
+    },
+    "wu_field_marshal_duda": {
+        "name": "Field Marshal Duda",
+        "deck": "witcher_universe",
+        "row": "siege",
+        "strength": "1",
+        "ability": "morale",
+        "filename": "field_marshal_duda",
+        "count": "1",
+        "quote": "Brilliants! Brilliants!"
     }
 };
 

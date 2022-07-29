@@ -173,33 +173,21 @@ var ability_dict = {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
 		removed: async (card) => {
-			if (game.roundCount > 2 || card.isLocked())
+			if (game.roundHistory.length > 2 || card.isLocked())
 				return;
 			// Some avengers are related to muster
 			if (card_dict[card.target]["ability"].includes("muster")) {
 				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
 					let bdf = new Card(card.target, card_dict[card.target], card.holder);
-					bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
+					//bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
 					await board.addCardToRow(bdf, bdf.row, card.holder);
 				}
 			} else {
 				let bdf = new Card(card.target, card_dict[card.target], card.holder);
-				bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
+				//bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
 				await board.addCardToRow(bdf, bdf.row, card.holder);
             }
 			
-		},
-		weight: () => 50
-	},
-	avenger_kambi: {
-		name: "Avenger",
-		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
-		removed: async card => {
-			if (card.isLocked())
-				return;
-			let bdf = new Card("sk_hemdall",card_dict["sk_hemdall"], card.holder);
-			bdf.removed.push( () => setTimeout( () => bdf.holder.grave.removeCard(bdf), 1001) );
-			await board.addCardToRow(bdf, "close", card.holder);
 		},
 		weight: () => 50
 	},
@@ -207,7 +195,7 @@ var ability_dict = {
 		name: "Slaughter of Cintra",
 		description: "When using the Slaugther of Cintra special card, destroy all units on your side of the board having the Slaughter of Cintra ability then draw as many cards as units destroyed.",
 		activated: async card => {
-			let targets = board.row.map(r => [r, r.findCards(c => c.abilities.includes("cintra_slaughter")).filter(c => c.holder === card.holder)]).filter(c => !c.isLocked());
+			let targets = board.row.map(r => [r, r.findCards(c => c.abilities.includes("cintra_slaughter")).filter(c => c.holder === card.holder).filter(c => !c.isLocked())]);
 			let cards = targets.reduce((a, p) => a.concat(p[1].map(u => [p[0], u])), []);
 			let nb_draw = cards.length;
 			await Promise.all(cards.map(async u => await u[1].animate("scorch", true, false)));
@@ -533,13 +521,14 @@ var ability_dict = {
 		name: "Resilience",
 		description: "Remains on the board for the following round if another unit on your side of the board had an ability in common.",
 		placed: async card => {
-			game.roundEnd.push(() => {
+			game.roundEnd.push(async () => {
 				if (card.isLocked())
 					return;
 				let units = card.holder.getAllRowCards().filter(c => c.abilities.includes(card.abilities.at(-1)));
 				if (units.length < 2)
 					return;
 				card.noRemove = true;
+				await card.animate("resilience");
 				game.roundStart.push(async () => {
 					delete card.noRemove;
 					let school = card.abilities.at(-1);
@@ -627,7 +616,7 @@ var ability_dict = {
 		weight: (card) => 30
 	},
 	seize: {
-		name: "Shield",
+		name: "Seize",
 		description: "Move the Melee unit(s) with the lowest strength on your side of the board",
 		activated: async card => {
 			let opCloseRow = board.getRow(card, "close", card.holder.opponent());
@@ -636,6 +625,7 @@ var ability_dict = {
 			let units = opCloseRow.minUnits();
 			if (units.length === 0)
 				return;
+			await Promise.all(units.map(async c => await c.animate("seize")));
 			units.forEach(async c => {
 				c.holder = card.holder;
 				await board.moveToNoEffects(c, "close", opCloseRow);
@@ -668,10 +658,9 @@ var ability_dict = {
 					else
 						targetRow = board.row[Math.min(5,i + 1)];
                 }
-            }
-			units.forEach(async c => {
-				await board.moveToNoEffects(c, targetRow, row);
-			});
+			}
+			await Promise.all(units.map(async c => await c.animate("knockback")));
+			units.map(async c => await board.moveToNoEffects(c, targetRow, row));
 			await board.toGrave(card, card.holder.hand);
 		},
 		weight: (card) => {
@@ -692,11 +681,20 @@ var ability_dict = {
 			ui.showPreviewVisuals(card);
 			if(!player instanceof ControllerAI)
 				ui.setSelectable(card, true);
-        },
+		},
+		target: "wu_koshchey",
 		weight: (card, ai, max) => {
 			if (ai.player.getAllRowCards().filter(c => c.isUnit()).length === 0)
 				return 0;
 			return ai.weightScorchRow(card, max, "close");
 		}
 	},
+	vilgefortz_sorcerer: {
+		description: "Clear all weather effects in play.",
+		activated: async () => {
+			tocar("clear", false);
+			await weather.clearWeather()
+		},
+		weight: (card, ai) => ai.weightCard(card_dict["spe_clear"])
+	}
 };
