@@ -330,12 +330,16 @@ html {
 	content: "Witcher Universe faction ability used: \A Turn skipped.";
 }
 
-#notif-toussaint {
+#notif-toussaint, #notif-toussaint-decoy-cancelled {
 	background-image: url(img/icons/notif_toussaint.png);
 }
 
-#notif-toussaint::after {
-	content: "Toussaint faction ability triggered: \A Toussaint draws an additional card.";
+#notif-toussaint::after{
+	content: "Toussaint faction ability used: \A Toussaint draws an additional card.";
+}
+
+#notif-toussaint-decoy-cancelled::after {
+	content: "Toussaint leader ability used: \A Decoy ability cancelled for the rest of the round.";
 }
 
 .card-preview {

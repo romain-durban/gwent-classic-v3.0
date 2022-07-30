@@ -178,14 +178,15 @@ var ability_dict = {
 			// Some avengers are related to muster
 			if (card_dict[card.target]["ability"].includes("muster")) {
 				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
-					let bdf = new Card(card.target, card_dict[card.target], card.holder);
-					//bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
-					await board.addCardToRow(bdf, bdf.row, card.holder);
+					let avenger = new Card(card.target, card_dict[card.target], card.holder);
+					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+					await board.addCardToRow(avenger, avenger.row, card.holder);
 				}
 			} else {
-				let bdf = new Card(card.target, card_dict[card.target], card.holder);
-				//bdf.removed.push(() => setTimeout(() => bdf.holder.grave.removeCard(bdf), 1001));
-				await board.addCardToRow(bdf, bdf.row, card.holder);
+				// Summon it from the grave if one copy already there, otherwise create one
+				let avenger = new Card(card.target, card_dict[card.target], card.holder);
+				avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+				await board.addCardToRow(avenger, avenger.row, card.holder);
             }
 			
 		},
@@ -717,4 +718,33 @@ var ability_dict = {
 		description: "Placed on Melee or Ranged row, boosts all units of the selected row by two. Limited to one per row.",
 		placed: async card => await card.animate("morale")
 	},
+	anna_henrietta_ladyship: {
+		description: "Restore a unit from your discard pile and play it immediatly.",
+		activated: async card => {
+			let newCard;
+			if (card.holder.controller instanceof ControllerAI) {
+				newCard = card.holder.controller.medic(card, card.holder.grave);
+			} else {
+				try {
+					Carousel.curr.exit();
+				} catch (err) { }
+				await ui.queueCarousel(card.holder.grave, 1, (c, i) => newCard = c.cards[i], c => c.isUnit(), false, false);
+			}
+			if (newCard)
+				await newCard.autoplay(card.holder.grave);
+		},
+		weight: (card, ai, max, data) => ai.weightMedic(data, 0, card.holder)
+	},
+	anna_henrietta_grace: {
+		description: "Cancel Decoy ability for one round.",
+		activated: async card => {
+			game.decoyCancelled = true;
+			await ui.notification("toussaint-decoy-cancelled", 1200);
+			game.roundStart.push(async () => {
+				game.decoyCancelled = false;
+				return true;
+			});
+		},
+		weight: (card) => game.decoyCancelled ? 0 : 10
+	}
 };

@@ -228,7 +228,7 @@ class ControllerAI {
 
 	// Plays a Commander's Horn to the most beneficial row. Assumes at least one viable row.
 	async horn(card) {
-		let rows = [0, 1, 2].map(i => board.row[i]).filter(r => r.special.isEmpty());
+		let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn")); 
 		let max_row;
 		let max = 0;
 		for (let i = 0; i < rows.length; ++i) {
@@ -282,6 +282,8 @@ class ControllerAI {
 	// Selects a card to return to the Hand and replaces it with a Decoy. Assumes at least one valid card.
 	async decoy(card, max, data) {
 		let targ, row;
+		if (game.decoyCancelled)
+			return;
 		if (data.spy.length) {
 			let min = data.spy.reduce((a, c) => Math.min(a, c.power), Number.MAX_VALUE);
 			targ = data.spy.filter(c => c.power === min)[0];
@@ -366,6 +368,10 @@ class ControllerAI {
 			rowStats[c.row] += 1;
 		});
 		rowStats["close"] += rowStats["agile"];
+		let rows = card.holder.getAllRows();
+		rowStats["close"] = rows[0].effects.toussaint_wine > 0 ? 0 : rowStats["close"];
+		rowStats["ranged"] = rows[1].effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
+		rowStats["siege"] = rows[2].effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
 		let max_row;
 		if (rowStats["close"] >= rowStats["ranged"] && rowStats["close"] >= rowStats["siege"])
 			max_row = board.row[2];
@@ -550,7 +556,7 @@ class ControllerAI {
 			console.log(card);
 		}
 		if (abi.includes("decoy"))
-			return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
+			return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 		if (abi.includes("horn")) {
 			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn"));
 			if (!rows.length)
@@ -568,7 +574,7 @@ class ControllerAI {
 				return power_me > power_op ? 0 : power_me < power_op ? total_op : Math.max(0, total_op - total_me);
 			}
 			if (abi.includes("decoy")) {
-				return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
+				return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 			}
 			if (abi.includes("mardroeme")) {
 				let rows = [0, 1, 2].map(i => board.row[i]);
@@ -1870,6 +1876,7 @@ class Game {
 
 		this.randomRespawn = false;
 		this.spyPowerMult = 1;
+		this.decoyCancelled = false;
 
 		weather.reset();
 		board.row.forEach(r => r.reset());
@@ -2692,7 +2699,8 @@ class UI {
 			"notif-skellige-op": "Opponent Skellige Ability Triggered!",
 			"notif-skellige-me": "Skellige Ability Triggered!",
 			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn",
-			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card."
+			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card.",
+			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round."
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -2894,7 +2902,7 @@ class UI {
 			for (let i = 0; i < 6; ++i) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());
-				if (i < 3 || units.length === 0) {
+				if (i < 3 || units.length === 0 || (card.abilities.includes("decoy") && game.decoyCancelled) ) {
 					r.elem.classList.add("noclick");
 					r.special.elem.classList.add("noclick");
 					r.elem.classList.remove("card-selectable");

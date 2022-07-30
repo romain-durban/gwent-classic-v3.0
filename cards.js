@@ -6536,15 +6536,266 @@ var ext_to_cards = {
         "quote": "Mhmm."
     },
     "spe_toussaint_wine": {
-        "name": "Toussaint whine",
+        "name": "Toussaint Wine",
         "deck": "special toussaint",
         "row": "",
         "strength": "",
         "ability": "toussaint_wine",
         "filename": "toussaint_wine",
         "count": "3",
-        "quote": "To honour our fair knights, we shall feast from eve till dawn's first light!."
+        "quote": "To honour our fair knights, we shall feast from eve till dawn's first light!"
     },
+    "to_anna_henrietta_ladyship": {
+        "name": "Anna Henrietta: Her Enlightened Ladyship",
+        "deck": "toussaint",
+        "row": "leader",
+        "strength": "",
+        "ability": "anna_henrietta_ladyship",
+        "filename": "anna_henrietta_ladyship",
+        "count": "1",
+        "quote": "Impertinence is the one thing I cannot abide."
+    },
+    "to_protofleder": {
+        "name": "Protofleder",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "protofleder",
+        "count": "1",
+        "quote": "Limited to only one region of the Continent, scholars consider them critically endangered. Gods be praised..."
+    },
+    "to_dettlaff_higher_vampire": {
+        "name": "Dettlaff: Higher Vampire",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "dettlaff_higher_vampire",
+        "count": "1",
+        "quote": "In his true form, the Beast of Beauclair could cause even a witcher to quake in his boots."
+    },
+    "to_barghest_1": {
+        "name": "Barghest",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "barghest_1",
+        "count": "1",
+        "target": "to_barghest",
+        "quote": "Some claim they're the vanguard of the Wild Hunt."
+    },
+    "to_barghest_2": {
+        "name": "Barghest",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "barghest_2",
+        "count": "1",
+        "target": "to_barghest",
+        "quote": "Some claim they're the vanguard of the Wild Hunt."
+    },
+    "to_barghest_3": {
+        "name": "Barghest",
+        "id": 3,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "barghest_3",
+        "count": "1",
+        "target": "to_barghest",
+        "quote": "Some claim they're the vanguard of the Wild Hunt."
+    },
+    "to_cloud_giant": {
+        "name": "Cloud Giant",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "5",
+        "ability": "scorch",
+        "filename": "cloud_giant",
+        "count": "1",
+        "quote": "Many things fall from the sky. Frogs for instance... And the Cloud Giant."
+    },
+    "to_garkain": {
+        "name": "Garkain",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "garkain",
+        "count": "1",
+        "quote": "Blood on the ceiling, entrails on the wall... Got garkain written all over it."
+    },
+    "to_wolves_1": {
+        "name": "Wolves",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "wolves_1",
+        "count": "1",
+        "target": "to_wolves",
+        "quote": "We never hunt in these woods."
+    },
+    "to_wolves_2": {
+        "name": "Wolves",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "wolves_2",
+        "count": "1",
+        "target": "to_wolves",
+        "quote": "We never hunt in these woods."
+    },
+    "to_yghern": {
+        "name": "Yghern",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "10",
+        "ability": "",
+        "filename": "yghern",
+        "count": "1",
+        "quote": "Its other name is scolopendromorph. Rarely used, as it's hard to say without spitting all over oneself."
+    },
+    "to_unseen_elder": {
+        "name": "Unseen Elder",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "12",
+        "ability": "hero",
+        "filename": "unseen_elder",
+        "count": "1",
+        "quote": "No one, not even among the higher vampires, knows exactly how old the Unseen Elder is."
+    },
+    "to_alpha_garkain": {
+        "name": "Alpha Garkain",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "alpha_garkain",
+        "count": "1",
+        "quote": "The vilest vampire I've ever had the misfortune to lay eyes upon."
+    },
+    "to_archespore": {
+        "name": "Archespore",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "archespore",
+        "count": "1",
+        "quote": "Folklore claims they sprout from soil watered with the blood of the dying."
+    },
+    "to_dettlaff": {
+        "name": "Dettlaff van der Eretein",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero avenger",
+        "filename": "dettlaff",
+        "count": "1",
+        "target": "to_dettlaff_ghastly_beast",
+        "quote": "He did not love like a man, but like an animal. Madly, deeply, unconditionally. Wildly."
+    },
+    "to_dettlaff_ghastly_beast": {
+        "name": "Dettlaff: Ghastly Beast",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "10",
+        "ability": "",
+        "filename": "dettlaff_ghastly_beast",
+        "count": "1",
+        "quote": "The gentleman suddenly turned into a ghastly beast and... tore those men to shreds."
+    },
+    "to_bruxa_corvo_bianco": {
+        "name": "Bruxa of Corvo Bianco",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "5",
+        "ability": "",
+        "filename": "bruxa_corvo_bianco",
+        "count": "1",
+        "quote": "The vampiress lunged in a blur, unleashing an inhuman shriek."
+    },
+    "to_orianna": {
+        "name": "Orianna",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "orianna",
+        "count": "1",
+        "quote": "Lady Orianna's been a blessin' for us... She 'elps the beggarly, supports the arts – why, she even runs a home for them poor orphans!"
+    },
+    "to_lacerate": {
+        "name": "Lacerate",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "lacerate",
+        "count": "1",
+        "quote": "A sight more horrid you've never seen… The poor soul lay shredded as the beast lapped up its blood from the ground all around."
+    },
+    "to_fleder": {
+        "name": "Fleder",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "fleder",
+        "count": "1",
+        "quote": "The children o' the night come as punishment from the gods!"
+    },
+    "to_golyat": {
+        "name": "Golyat",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "golyat",
+        "count": "1",
+        "quote": "Some claim Golyat was once a famous knight. Sadly, one day he earned the wrath of the Lady of the Lake, who turned him into a monster."
+    },
+    "to_tufo_monster": {
+        "name": "The Tufo Monster",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "tufo_monster",
+        "count": "1",
+        "quote": "A cross between a mole and an armadillo with an appetite for human flesh."
+    },
+    "to_shaelmaar": {
+        "name": "Shaelmaar",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "shaelmaar",
+        "count": "1",
+        "quote": "The earth's innards are home to mighty strange and fearsome beasts."
+    },
+    "to_anna_henrietta_grace": {
+        "name": "Anna Henrietta: Her Grace",
+        "deck": "toussaint",
+        "row": "leader",
+        "strength": "",
+        "ability": "anna_henrietta_grace",
+        "filename": "anna_henrietta_grace",
+        "count": "1",
+        "quote": "You have sworn your vows, you have readied body and soul. The time has come to test them."
+    }
 };
 
 /*
