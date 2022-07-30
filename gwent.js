@@ -220,6 +220,8 @@ class ControllerAI {
 			await this.lock(c);
 		else if (c.faction === "special" && c.abilities.includes("knockback"))
 			await this.knockback(c);
+		else if (c.faction === "special" && c.abilities.includes("toussaint_wine"))
+			await this.toussaintWine(c);
 		else
 			await this.player.playCard(c);
 	}
@@ -351,6 +353,28 @@ class ControllerAI {
 	async knockback(card) {
 		await this.player.playKnockback(card);
 	}
+
+	// Play special wine card to the most beneficial row.
+	async toussaintWine(card) {
+		await this.player.playCardToRow(card,this.bestRowToussaintWine(card));
+	}
+
+	bestRowToussaintWine(card) {
+		let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
+		let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
+		units.forEach(c => {
+			rowStats[c.row] += 1;
+		});
+		rowStats["close"] += rowStats["agile"];
+		let max_row;
+		if (rowStats["close"] >= rowStats["ranged"] && rowStats["close"] >= rowStats["siege"])
+			max_row = board.row[2];
+		else if (rowStats["ranged"] > rowStats["close"] && rowStats["ranged"] >= rowStats["siege"])
+			max_row = board.row[1];
+		else
+			max_row = board.row[0];
+		return max_row;
+    }
 
 	// Assigns a weight for how likely the conroller is to Pass the round
 	weightPass() {
@@ -547,12 +571,21 @@ class ControllerAI {
 				return data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 			}
 			if (abi.includes("mardroeme")) {
-				let rows = [1, 2].map(i => board.row[i]);
+				let rows = [0, 1, 2].map(i => board.row[i]);
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
 			}
 			if (["cintra_slaughter","seize","lock","shield","knockback"].includes(abi.at(-1))) {
 				return ability_dict[abi.at(-1)].weight(card);
-            }
+			}
+			if (abi.includes("toussaint_wine")) {
+				let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
+				let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
+				units.forEach(c => {
+					rowStats[c.row] += 1;
+				});
+				rowStats["close"] += rowStats["agile"];
+				return 2 * Math.max(rowStats["close"], rowStats["ranged"], rowStats["siege"]);
+			}
 		}
 
 		if (card.row === "weather" || (card.deck && card.deck.startsWith("weather"))) {
@@ -808,7 +841,7 @@ class Player {
 
 	// Returns true if the Player can make any action other than passing
 	canPlay() {
-		return this.hand.cards.length > 0 || this.leaderAvailable;
+		return this.hand.cards.length > 0 || this.leaderAvailable || this.factionAbilityUses > 0;
 	}
 
 	// Use a leader's Activate ability, then disable the leader
@@ -830,8 +863,12 @@ class Player {
 					if (this.leader.key === "wu_alzur_maker") {
 						let worse_unit = this.getAllRowCards().filter(c => c.isUnit()).sort((a, b) => a.power - b.power)[0];
 						ui.selectCard(worse_unit);
-                    }
-                }
+					} else if (this.leader.key === "to_anna_henrietta_duchess") {
+						let horns = player_me.getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
+						if (horns[0])
+							ui.selectRow(horns[0]);
+					}
+				} 
             }
 		}
 	}
@@ -1320,6 +1357,7 @@ class Row extends CardContainer {
 			mardroeme: 0,
 			shield: 0,
 			lock: 0,
+			toussaint_wine: 0
 		};
 		this.halfWeather = false;
 		this.elem.addEventListener("click", () => ui.selectRow(this), true);
@@ -1412,6 +1450,7 @@ class Row extends CardContainer {
 				case "horn":
 				case "mardroeme":
 				case "lock":
+				case "toussaint_wine":
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "shield":
@@ -1487,6 +1526,8 @@ class Row extends CardContainer {
 			total *= Number(bond);
 		// Morale
 		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
+		// Toussiant Wine
+		total += Math.max(0, 2 * this.effects.toussaint_wine);
 		//Witcher Schools
 		if (card.abilities.at(-1) && card.abilities.at(-1).startsWith("witcher_") && !card.isLocked()) {
 			let school = card.abilities.at(-1);
@@ -1565,7 +1606,8 @@ class Row extends CardContainer {
 			horn: 0,
 			mardroeme: 0,
 			shield: 0,
-			lock: 0
+			lock: 0,
+			toussaint_wine: 0
 		};
 	}
 
@@ -2112,26 +2154,34 @@ class Card {
 				if ("activated" in ab) this.activated.push(ab.activated);
 			}
 		}
-
 		if (this.row === "leader")
 			this.desc_name = "Leader Ability";
-		else if (this.abilities.length > 0)
+		else if (this.abilities.length > 0) {
 			this.desc_name = ability_dict[this.abilities[this.abilities.length - 1]].name;
-		else if (this.abilities.length > 1)
-			this.desc_name = this.desc_name + " / " + ability_dict[this.abilities[this.abilities.length - 2]].name;
-		else if (this.row === "agile")
-			this.desc_name = "agile";
+			if (this.abilities.length > 1)
+				this.desc_name += " / " + ability_dict[this.abilities[this.abilities.length - 2]].name;
+		} else if (this.row === "agile")
+			this.desc_name = "Agile";
 		else if (this.hero)
-			this.desc_name = "hero";
+			this.desc_name = "Hero";
 		else
 			this.desc_name = "";
 
-		this.desc = this.row === "agile" ? ability_dict["agile"].description : "";
+		this.desc = this.row === "agile" ? "<p><b>Agile:</b> " + ability_dict["agile"].description + "</p>" : "";
 		for (let i = this.abilities.length - 1; i >= 0; --i) {
-			this.desc += ability_dict[this.abilities[i]].description + "<br>";
+			let abi_name = (ability_dict[this.abilities[i]].name ? ability_dict[this.abilities[i]].name : "Leader Ability");
+			this.desc += "<p><b>" + abi_name + ":</b> " + ability_dict[this.abilities[i]].description + "</p>";
 		}
+		// If Summon Avenger card, give information about the card being summoned
+		if (this.abilities.includes("avenger") && this.target) {
+			let target = card_dict[this.target];
+			this.desc += "<p>Summons <b>" + target["name"] + "</b> with strength " + target["strength"];
+			if (target["ability"].length > 0)
+				this.desc += " and abilities " + target["ability"].split(" ").map(a => ability_dict[a]["name"]).join(" / ");
+			this.desc += "</p>";
+        }
 		if (this.hero)
-			this.desc += ability_dict["hero"].description;
+			this.desc += "<p><b>Hero:</b> " + ability_dict["hero"].description + "</p>";
 
 		this.elem = this.createCardElem(this);
 	}
@@ -2174,7 +2224,7 @@ class Card {
 		}
 		var temSom = new Array();
 		for (var x in guia) temSom[temSom.length] = x;
-		var literais = ["scorch", "spy", "horn"];
+		var literais = ["scorch", "spy", "horn", "shield", "lock", "seize", "knockback", "resilience"];
 		var som = literais.indexOf(name) > -1 ? literais[literais.indexOf(name)] : temSom.indexOf(name) > -1 ? guia[name] : "";
 		if (som != "") tocar(som, false);
 		if (name === "scorch") {
@@ -2222,7 +2272,7 @@ class Card {
 
 	// Returns true if card is sent to a Row's special slot
 	isSpecial() {
-		return this.key === "spe_horn" || this.key === "spe_mardroeme" || this.key === "spe_sign_quen" || this.key === "spe_sign_yrden";
+		return this.key === "spe_horn" || this.key === "spe_mardroeme" || this.key === "spe_sign_quen" || this.key === "spe_sign_yrden" || this.key === "spe_toussaint_wine";
 	}
 
 	// Compares by type then power then name
@@ -2528,6 +2578,12 @@ class UI {
 			await ability_dict[card.abilities.at(-1)].activated(card,row);
 		} else if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
 			return;
+		} else if (card.abilities.includes("anna_henrietta_duchess")) {
+			this.hidePreview(card);
+			this.enablePlayer(false);
+			let horn = row.special.cards.filter(c => c.abilities.includes("horn"))[0];
+			if (horn)
+				await board.toGrave(horn, row);
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
 		}
@@ -2635,7 +2691,8 @@ class UI {
 			"notif-scoiatael": "Opponent used the Scoia'tael faction perk to go first.",
 			"notif-skellige-op": "Opponent Skellige Ability Triggered!",
 			"notif-skellige-me": "Skellige Ability Triggered!",
-			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn"
+			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn",
+			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card."
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -2819,8 +2876,8 @@ class UI {
 						fileira_clicavel = null;
 					}
 				} else {
-					// Affects own side
-					if (i < 3 || r.special.containsCardByKey(card.key)) {
+					// Affects own side - Toussaint Wine does not affect siege row
+					if (i < 3 || r.special.containsCardByKey(card.key) || (card.abilities.includes("toussaint_wine") && i == 5)) {
 						r.elem.classList.add("noclick");
 						r.special.elem.classList.add("noclick");
 					} else {
@@ -2845,6 +2902,21 @@ class UI {
 					r.elem.classList.add("row-selectable");
 					alteraClicavel(r, true);
 					units.forEach(c => c.elem.classList.remove("noclick"));
+				}
+			}
+			return;
+		}
+
+		if (card.abilities.includes("anna_henrietta_duchess")) {
+			for (let i = 0; i < 3; ++i) {
+				let r = board.row[i];
+				if (r.effects.horn > 0) {
+					r.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+				} else {
+					r.elem.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
+					r.elem.classList.remove("card-selectable");
 				}
 			}
 			return;
@@ -3241,6 +3313,16 @@ class DeckMaker {
 		window.addEventListener("keydown", function (e) {
 			if (e.keyCode == 13 && carta_selecionada !== null) carta_selecionada();
 		});
+		// Right click allows to see more details about the selected card
+		elem.addEventListener('contextmenu', async (e) => {
+			e.preventDefault();
+			let container = new CardContainer();
+			container.cards = [new Card(index, card_data, null)];
+			try {
+				Carousel.curr.cancel();
+			} catch (err) { }
+			await ui.viewCardsInContainer(container);
+		}, false);
 
 		return bankID;
 	}

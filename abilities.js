@@ -22,7 +22,7 @@ var ability_dict = {
 		description: "Reduces the Strength of all Range and Siege Units to 1. "
 	},
 	hero: {
-		name: "hero",
+		name: "Hero",
 		description: "Not affected by any Special Cards or abilities. "
 	},
 	decoy: {
@@ -93,11 +93,11 @@ var ability_dict = {
 		placed: async (card) => await board.getRow(card, "siege", card.holder.opponent()).scorch()
 	},
 	agile: {
-		name:"agile", 
+		name:"Agile", 
 		description: "Can be placed in either the Close Combat or the Ranged Combat row. Cannot be moved once placed. "
 	},
 	muster: {
-		name:"muster", 
+		name:"Muster", 
 		description: "Find any cards with the same name in your deck and play them instantly. ",
 		placed: async (card) => {
 			if (card.isLocked())
@@ -116,7 +116,7 @@ var ability_dict = {
 		}
 	},
 	spy: {
-		name: "spy",
+		name: "Spy",
 		description: "Place on your opponent's battlefield (counts towards your opponent's total) and draw 2 cards from your deck. ",
 		placed: async (card) => {
 			if (card.isLocked())
@@ -130,7 +130,7 @@ var ability_dict = {
 		}
 	},
 	medic: {
-		name: "medic",
+		name: "Medic",
 		description: "Choose one card from your discard pile and play it instantly (no Heroes or Special Cards). ",
 		placed: async (card) => {
 			if (card.isLocked())
@@ -154,7 +154,7 @@ var ability_dict = {
 		}
 	},
 	morale: {
-		name: "Morale",
+		name: "Morale Boost",
 		description: "Adds +1 to all units in the row (excluding itself). ",
 		placed: async card => await card.animate("morale")
 	},
@@ -541,7 +541,7 @@ var ability_dict = {
 		}
 	},
 	witcher_wolf_school: {
-		name: "Wolf School of Witcher",
+		name: "Wolf School of Witchers",
 		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
@@ -555,7 +555,7 @@ var ability_dict = {
 		}
 	},
 	witcher_viper_school: {
-		name: "Viper School of Witcher",
+		name: "Viper School of Witchers",
 		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
@@ -569,7 +569,7 @@ var ability_dict = {
 		}
 	},
 	witcher_bear_school: {
-		name: "Bear School of Witcher",
+		name: "Bear School of Witchers",
 		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
@@ -583,7 +583,7 @@ var ability_dict = {
 		}
 	},
 	witcher_cat_school: {
-		name: "Cat School of Witcher",
+		name: "Cat School of Witchers",
 		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
@@ -597,7 +597,7 @@ var ability_dict = {
 		}
 	},
 	witcher_griffin_school: {
-		name: "Griffin School of Witcher",
+		name: "Griffin School of Witchers",
 		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
@@ -696,5 +696,25 @@ var ability_dict = {
 			await weather.clearWeather()
 		},
 		weight: (card, ai) => ai.weightCard(card_dict["spe_clear"])
-	}
+	},
+	anna_henrietta_duchess: {
+		description: "Destroy one Commander's Horn in any opponent's row of your choice.",
+		activated: (card, player) => {
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			if (!player instanceof ControllerAI)
+				ui.setSelectable(card, true);
+		},
+		weight: (card, ai) => {
+			let horns = player_me.getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
+			if (horns.length === 0)
+				return 0;
+			return horns[0].total;
+        }
+	},
+	toussaint_wine: {
+		name: "Toussaint Wine",
+		description: "Placed on Melee or Ranged row, boosts all units of the selected row by two. Limited to one per row.",
+		placed: async card => await card.animate("morale")
+	},
 };

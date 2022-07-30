@@ -930,6 +930,43 @@ var custom_decks = [
             ["ntr_vesemir", 1],
             ["wu_kalkstein", 1]
         ]
+    },
+    {
+        "title": "Toussaint - Knight & Nobles",
+        "description": "Toussaint deck focusing on knight and nobles - Playstyle: Tight Bond, Muster, Tall units",
+        "leader": "to_anna_henrietta_duchess",
+        "faction": "toussaint",
+        "cards": [
+            ["spe_horn", 2],
+            ["spe_toussaint_wine", 1],
+            ["spe_rain", 1],
+            ["spe_frost", 1],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["spe_decoy", 1],
+            ["to_dun_tynne_infantry", 1],
+            ["to_champion", 1],
+            ["to_panther_1", 1],
+            ["to_panther_2", 1],
+            ["to_panther_3", 1],
+            ["to_knight_errant_1", 1],
+            ["to_knight_errant_2", 1],
+            ["to_knight_errant_3", 1],
+            ["to_damien_tour", 1],
+            ["to_gregoire_gorgon", 1],
+            ["to_lady_lake", 1],
+            ["to_jousting_champion", 1],
+            ["to_guillaume", 1],
+            ["to_artorius_vigo", 1],
+            ["to_fringilla_vigo", 1],
+            ["to_beauclair_cavalry_1", 1],
+            ["to_beauclair_cavalry_2", 1],
+            ["to_milton", 1],
+            ["to_palmerin", 1],
+            ["to_vivienne_oriole", 1],
+            ["to_syanna", 1],
+            ["to_fisher_king", 1]
+        ]
     }
 ];
 

@@ -88,5 +88,18 @@ var factions = {
 		description: "Can skip a turn once every round.",
 		activeAbility: true,
 		abilityUses: 1
+	},
+	toussaint: {
+		name: "Toussaint",
+		factionAbility: player => game.roundStart.push(async () => {
+			if (game.roundCount > 1 && !(game.roundHistory[game.roundCount - 2].winner === player)) {
+				player.deck.draw(player.hand);
+				await ui.notification("toussaint", 1200);
+			}
+			return false;
+		}),
+		activeAbility: false,
+		abilityUses: 0,
+		description: "Draw a card from your deck whenever you lose a round."
 	}
 }

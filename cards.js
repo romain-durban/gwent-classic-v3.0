@@ -6273,8 +6273,282 @@ var ext_wu_cards = {
     }
 };
 
+var ext_to_cards = {
+    "to_anna_henrietta_duchess": {
+        "name": "Anna Henrietta: Lady Duchess",
+        "deck": "toussaint",
+        "row": "leader",
+        "strength": "",
+        "ability": "anna_henrietta_duchess",
+        "filename": "anna_henrietta_duchess",
+        "count": "1",
+        "quote": "Fair knights I salute you."
+    },
+    "to_dun_tynne_infantry": {
+        "name": "Dun Tynne Infantry",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "dun_tynne_infantry",
+        "count": "1",
+        "quote": "If you've blood in your veins, come collect what's deserved."
+    },
+    "to_champion": {
+        "name": "Toussaint Champion",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "champion",
+        "count": "1",
+        "quote": "With a thunderous roar, hooves pound the ground!"
+    },
+    "to_panther_1": {
+        "name": "Panthers",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "panther_1",
+        "count": "1",
+        "target": "to_panthers",
+        "quote": "Pussy cat, pussy cat, what did you do there? Run fool, that's not a cat but a panther!"
+    },
+    "to_panther_2": {
+        "name": "Panthers",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "panther_2",
+        "count": "1",
+        "target": "to_panthers",
+        "quote": "Pussy cat, pussy cat, what did you do there? Run fool, that's not a cat but a panther!"
+    },
+    "to_panther_3": {
+        "name": "Panthers",
+        "id": 3,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "panther_3",
+        "count": "1",
+        "target": "to_panthers",
+        "quote": "Pussy cat, pussy cat, what did you do there? Run fool, that's not a cat but a panther!"
+    },
+    "to_knight_errant_1": {
+        "name": "Knights-Errant",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "knight_errant_1",
+        "count": "1",
+        "target": "to_knight_errant",
+        "quote": "Abandon the path of shame and we will spare you."
+    },
+    "to_knight_errant_2": {
+        "name": "Knights-Errant",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "knight_errant_2",
+        "count": "1",
+        "target": "to_knight_errant",
+        "quote": "Abandon the path of shame and we will spare you."
+    },
+    "to_knight_errant_3": {
+        "name": "Knights-Errant",
+        "id": 3,
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "knight_errant_3",
+        "count": "1",
+        "target": "to_knight_errant",
+        "quote": "Abandon the path of shame and we will spare you."
+    },
+    "to_damien_tour": {
+        "name": "Damien de la Tour",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "damien_tour",
+        "count": "1",
+        "quote": "I served Beauclair well. At least... I hope I did."
+    },
+    "to_gregoire_gorgon": {
+        "name": "Gregoire de Gorgon",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "gregoire_gorgon",
+        "count": "1",
+        "quote": "Gregoire? That mountain o' muscle wrapped in armor? Course, I 'eard of 'im! Who hasn't?"
+    },
+    "to_lady_lake": {
+        "name": "Lade of the Lake",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "5",
+        "ability": "medic",
+        "filename": "lady_lake",
+        "count": "1",
+        "quote": "Take this sword as a sign of my favor. For centuries it lay in these depths, waiting... for you."
+    },
+    "to_jousting_champion": {
+        "name": "Jousting Champioin",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "8",
+        "ability": "morale",
+        "filename": "jousting_champion",
+        "count": "1",
+        "quote": "The flower of chivalry, at your command!"
+    },
+    "to_guillaume": {
+        "name": "Guillaume de Launfal",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "3",
+        "ability": "",
+        "filename": "guillaume",
+        "count": "1",
+        "quote": "Guillaume was the very model of a knight-errant - the placard boy for Toussaint."
+    },
+    "to_artorius_vigo": {
+        "name": "Artorius Vigo",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero medic",
+        "filename": "artorius_vigo",
+        "count": "1",
+        "quote": "It is said he created an illusion so realistic that he began to believe it himself..."
+    },
+    "to_fringilla_vigo": {
+        "name": "Fringilla Vigo",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "fringilla_vigo",
+        "count": "1",
+        "quote": "Magic is the highest good. It transcends all borders and divisions."
+    },
+    "to_beauclair_cavalry_1": {
+        "name": "Fringilla Vigo",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "7",
+        "ability": "bond",
+        "filename": "beauclair_cavalry_1",
+        "count": "1",
+        "target": "to_beauclair_cavalry",
+        "quote": "I swear upon the heron you will pay with your own blood."
+    },
+    "to_beauclair_cavalry_2": {
+        "name": "Fringilla Vigo",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "7",
+        "ability": "bond",
+        "filename": "beauclair_cavalry_2",
+        "count": "1",
+        "target": "to_beauclair_cavalry",
+        "quote": "I swear upon the heron you will pay with your own blood."
+    },
+    "to_milton": {
+        "name": "Milton de Peyrac-Peyran",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "milton",
+        "count": "1",
+        "target": "to_milton_palmerin",
+        "quote": "Glinting under the rays of the Beauclair sun, there was no mistaking this knight-errant who bore the head of a great, white bull on his shield."
+    },
+    "to_palmerin": {
+        "name": "Palmerin de Launfal",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "palmerin",
+        "count": "1",
+        "target": "to_milton_palmerin",
+        "quote": "Rumor had it the esteemed baron Palmerin de Launfal had fallen into a profane affair with a succubus."
+    },
+    "to_vivienne": {
+        "name": "Vivienne de Tabris",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "avenger",
+        "filename": "vivienne",
+        "count": "1",
+        "target": "to_vivienne_oriole",
+        "quote": "Vivienne's a bit of an odd duck for a lady-in-waitin'. But by the Gods, ye can't deny her beauty an' grace!"
+    },
+    "to_vivienne_oriole": {
+        "name": "Vivienne: Oriole",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "vivienne_oriole",
+        "count": "1",
+        "quote": "Who'd not like to live free as a bird? Well, just ask Vivienne de Tabris."
+    },
+    "to_syanna": {
+        "name": "Sylvia Anna",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "2",
+        "ability": "hero spy",
+        "filename": "syanna",
+        "count": "1",
+        "quote": "Your Majesty... The princess has been touched by the curse o' the Black Sun. There's no hope, I'm afraid..."
+    },
+    "to_fisher_king": {
+        "name": "Fisher King",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "",
+        "filename": "fisher_king",
+        "count": "1",
+        "quote": "Mhmm."
+    },
+    "spe_toussaint_wine": {
+        "name": "Toussaint whine",
+        "deck": "special toussaint",
+        "row": "",
+        "strength": "",
+        "ability": "toussaint_wine",
+        "filename": "toussaint_wine",
+        "count": "3",
+        "quote": "To honour our fair knights, we shall feast from eve till dawn's first light!."
+    },
+};
+
 /*
- * Selecting decks to use
+ * Selecting cards to use
  */
 var card_dict = default_cards;
 
@@ -6284,3 +6558,4 @@ card_dict = Object.assign({}, card_dict, ext_mo_cards);
 card_dict = Object.assign({}, card_dict, ext_st_cards);
 card_dict = Object.assign({}, card_dict, ext_sk_cards);
 card_dict = Object.assign({}, card_dict, ext_wu_cards);
+card_dict = Object.assign({}, card_dict, ext_to_cards);

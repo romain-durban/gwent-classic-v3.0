@@ -1,6 +1,6 @@
 * {
 	box-sizing: border-box;
-	cursor: url(img/icons/cursor.png), auto
+	cursor: url(img/icons/cursor.png), auto;
 }
 
 html,
@@ -10,18 +10,18 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-X: visible;
-	scrollbar-width: none
+	scrollbar-width: none;
 }
 
 body {
 	font-size: 0;
 	font-family: Arial Narrow, sans-serif;
 	color: goldenrod;
-	background-color: #000
+	background-color: #000;
 }
 
 body::-webkit-scrollbar {
-	display: none
+	display: none;
 }
 
 main {
@@ -30,11 +30,11 @@ main {
 	height: calc(100vw * 1080 / 1920);
 	background-image: url(img/board.jpg);
 	background-size: 100% auto;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 a:hover, label:hover, .hover_un:hover {
-	text-decoration:underline
+	text-decoration:underline;
 }
 
 div.abs {
@@ -47,7 +47,7 @@ div.abs {
 #very_start_bg1 {
 	background-image: url(img/start.jpg);
 	background-size: 100% auto;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 #very_start_bg2 {
@@ -55,7 +55,7 @@ div.abs {
 	left: 2%;
 	width: 32%;
 	height: 94%;
-	border: solid 4px white
+	border: solid 4px white;
 }
 
 #very_start {
@@ -65,41 +65,41 @@ div.abs {
 	color: #FFF;
 	z-index: 3000;
 	text-align: center;
-	font-weight: bold
+	font-weight: bold;
 }
 
 ::selection {
-	background: transparent
+	background: transparent;
 }
 
 ::-moz-selection {
-	background: transparent
+	background: transparent;
 }
 
 ::-webkit-scrollbar {
-	width: 1.5vw
+	width: 1.5vw;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: #5559;
 	border-radius: .5vw;
 	height: 3vw;
-	border: .35vw double #000
+	border: .35vw double #000;
 }
 
 ::-webkit-scrollbar-track {
-	background: #131313
+	background: #131313;
 }
 
 html {
-	scrollbar-color: #5559 #131313
+	scrollbar-color: #5559 #131313;
 }
 
 #click-background {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	z-index: 1
+	z-index: 1;
 }
 
 #hand-op {
@@ -108,11 +108,11 @@ html {
 	width: 4.45vw;
 	top: -7vw;
 	left: 33vw;
-	border: 1px solid blue
+	border: 1px solid blue;
 }
 
 #hand-op .card {
-	position: absolute
+	position: absolute;
 }
 
 #youtube {
@@ -120,7 +120,7 @@ html {
 	height: 10px;
 	width: 10px;
 	display: hidden;
-	z-index: -100
+	z-index: -100;
 }
 
 #toggle-music {
@@ -132,11 +132,11 @@ html {
 	font-size: 3vw;
 	color: goldenrod;
 	text-shadow: 0 0 2vw #000;
-	z-index: 86
+	z-index: 86;
 }
 
 .music-customization {
-	transform: translate(22.5vw, -.5vw)
+	transform: translate(22.5vw, -.5vw);
 }
 
 #notification-bar {
@@ -145,7 +145,7 @@ html {
 	height: 14%;
 	top: 43%;
 	background-color: rgba(10, 10, 10, .95);
-	z-index: 100
+	z-index: 100;
 }
 
 #notification-bar>div {
@@ -156,7 +156,7 @@ html {
 	position: absolute;
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: center
+	background-position: center;
 }
 
 #notification-bar>div::after {
@@ -171,179 +171,187 @@ html {
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	white-space: pre
+	white-space: pre;
 }
 
 #notif-nilfgaard-wins-draws {
-	background-image: url(img/icons/notif_nilfgaard.png)
+	background-image: url(img/icons/notif_nilfgaard.png);
 }
 
 #notif-nilfgaard-wins-draws::after {
-	content: "Nilfgaard wins draws"
+	content: "Nilfgaard wins draws";
 }
 
 #notif-op-leader::after {
-	content: "Opponent uses leader"
+	content: "Opponent uses leader";
 }
 
 #notif-op-white-flame {
-	background-image: url(img/icons/notif_nilfgaard.png)
+	background-image: url(img/icons/notif_nilfgaard.png);
 }
 
 #notif-op-white-flame::after {
-	content: "The opponent's leader cancel \A your opponent's Leader Ability"
+	content: "The opponent's leader cancel \A your opponent's Leader Ability";
 }
 
 #notif-me-first::after {
-	content: "You will go first"
+	content: "You will go first";
 }
 
 #notif-op-first::after {
-	content: "Your opponent will go first"
+	content: "Your opponent will go first";
 }
 
 #notif-me-coin {
-	background-image: url(img/icons/notif_me_coin.png)
+	background-image: url(img/icons/notif_me_coin.png);
 }
 
 #notif-me-coin::after {
-	content: "You will go first"
+	content: "You will go first";
 }
 
 #notif-op-coin {
-	background-image: url(img/icons/notif_op_coin.png)
+	background-image: url(img/icons/notif_op_coin.png);
 }
 
 #notif-op-coin::after {
-	content: "Your opponent will go first"
+	content: "Your opponent will go first";
 }
 
 #notif-round-start {
-	background-image: url(img/icons/notif_round_start.png)
+	background-image: url(img/icons/notif_round_start.png);
 }
 
 #notif-round-start::after {
-	content: "Round Start"
+	content: "Round Start";
 }
 
 #notif-me-pass {
-	background-image: url(img/icons/notif_round_passed.png)
+	background-image: url(img/icons/notif_round_passed.png);
 }
 
 #notif-me-pass::after {
-	content: "Round passed"
+	content: "Round passed";
 }
 
 #notif-op-pass {
-	background-image: url(img/icons/notif_round_passed.png)
+	background-image: url(img/icons/notif_round_passed.png);
 }
 
 #notif-op-pass::after {
-	content: "Your opponent has passed"
+	content: "Your opponent has passed";
 }
 
 #notif-win-round {
-	background-image: url(img/icons/notif_win_round.png)
+	background-image: url(img/icons/notif_win_round.png);
 }
 
 #notif-win-round::after {
-	content: "You won the round!"
+	content: "You won the round!";
 }
 
 #notif-lose-round {
-	background-image: url(img/icons/notif_lose_round.png)
+	background-image: url(img/icons/notif_lose_round.png);
 }
 
 #notif-lose-round::after {
-	content: "Your opponent won the round"
+	content: "Your opponent won the round";
 }
 
 #notif-draw-round {
-	background-image: url(img/icons/notif_draw_round.png)
+	background-image: url(img/icons/notif_draw_round.png);
 }
 
 #notif-draw-round::after {
-	content: "The round ended in a draw"
+	content: "The round ended in a draw";
 }
 
 #notif-me-turn {
-	background-image: url(img/icons/notif_me_turn.png)
+	background-image: url(img/icons/notif_me_turn.png);
 }
 
 #notif-me-turn::after {
-	content: "Your turn!"
+	content: "Your turn!";
 }
 
 #notif-op-turn {
-	background-image: url(img/icons/notif_op_turn.png)
+	background-image: url(img/icons/notif_op_turn.png);
 }
 
 #notif-op-turn::after {
-	content: "Opponent's turn"
+	content: "Opponent's turn";
 }
 
 #notif-north {
-	background-image: url(img/icons/notif_north.png)
+	background-image: url(img/icons/notif_north.png);
 }
 
 #notif-north::after {
-	content: "Northern Realms faction ability triggered: \A North draws an additional card."
+	content: "Northern Realms faction ability triggered: \A North draws an additional card.";
 }
 
 #notif-monsters {
-	background-image: url(img/icons/notif_monsters.png)
+	background-image: url(img/icons/notif_monsters.png);
 }
 
 #notif-monsters::after {
-	content: "Monsters faction ability triggered: \A one randomly-chosen Monster Unit Card stays on the board"
+	content: "Monsters faction ability triggered: \A one randomly-chosen Monster Unit Card stays on the board";
 }
 
 #notif-scoiatael {
-	background-image: url(img/icons/notif_scoiatael.png)
+	background-image: url(img/icons/notif_scoiatael.png);
 }
 
 #notif-scoiatael::after {
-	content: "Opponent used the Scoia'tael faction perk to go first."
+	content: "Opponent used the Scoia'tael faction perk to go first.";
 }
 
 #notif-skellige-op {
-	background-image: url(img/icons/notif_skellige.png)
+	background-image: url(img/icons/notif_skellige.png);
 }
 
 #notif-skellige-op::after {
-	content: "Opponent Skellige Ability Triggered!"
+	content: "Opponent Skellige Ability Triggered!";
 }
 
 #notif-skellige-me {
-	background-image: url(img/icons/notif_skellige.png)
+	background-image: url(img/icons/notif_skellige.png);
 }
 
 #notif-skellige-me::after {
-	content: "Skellige Ability Triggered!"
+	content: "Skellige Ability Triggered!";
 }
 
 #notif-witcher_universe {
-	background-image: url(img/icons/notif_witcher_universe.png)
+	background-image: url(img/icons/notif_witcher_universe.png);
 }
 
 #notif-witcher_universe::after {
-	content: "Witcher Universe faction ability used: \A Turn skipped."
+	content: "Witcher Universe faction ability used: \A Turn skipped.";
+}
+
+#notif-toussaint {
+	background-image: url(img/icons/notif_toussaint.png);
+}
+
+#notif-toussaint::after {
+	content: "Toussaint faction ability triggered: \A Toussaint draws an additional card.";
 }
 
 .card-preview {
 	position: relative;
-	z-index: 80
+	z-index: 80;
 }
 
 .card-preview>.card-lg {
 	position: absolute;
 	top: 11.95vw;
-	left: 80.3vw
+	left: 80.3vw;
 }
 
 .card-preview>.card-description {
 	top: 43.1vw;
-	left: 67.95vw
+	left: 67.95vw;
 }
 
 .card-lg {
@@ -364,11 +372,11 @@ html {
 	text-align: center;
 	pointer-events: none;
 	border: .1vw solid #ffffff57;
-	border-width: .1vw 0
+	border-width: .1vw 0;
 }
 
 .card-description>* {
-	position: relative
+	position: relative;
 }
 
 .card-description>div {
@@ -378,7 +386,7 @@ html {
 	height: 1.95vw;
 	margin-bottom: -1.9vw;
 	background-size: cover;
-	background-position: center
+	background-position: center;
 }
 
 .card-description>h1 {
@@ -389,7 +397,7 @@ html {
 	width: 70%;
 	margin-bottom: -2.1vw;
 	text-transform: capitalize;
-	font-size: 1vw
+	font-size: 1vw;
 }
 
 .card-description>p {
@@ -397,14 +405,14 @@ html {
 	left: 5%;
 	width: 90%;
 	height: 50%;
-	font-size: .9vw
+	font-size: .9vw;
 }
 
 #carousel {
 	position: absolute;
 	width: 100%;
 	height: calc(100vw * 1080 / 1920);
-	z-index: 90
+	z-index: 90;
 }
 
 #carousel>:nth-child(1) {
@@ -413,30 +421,30 @@ html {
 	padding: 11.5% 10%;
 	display: flex;
 	align-items: flex-start;
-	justify-content: space-between
+	justify-content: space-between;
 }
 
 #carousel>:nth-child(1)>:nth-child(3) {
 	border: .3vw solid goldenrod;
 	box-shadow: 0 0 4vw goldenrod;
-	background-origin: border-box
+	background-origin: border-box;
 }
 
 #carousel>:nth-child(1)>:nth-child(3):hover {
 	border: .3vw solid goldenrod;
 	box-shadow: 0 0 4vw goldenrod;
-	background-origin: border-box
+	background-origin: border-box;
 }
 
 #carousel>:nth-child(1)>:nth-child(2n) {
 	width: 13.75vw;
-	height: 25.9vw
+	height: 25.9vw;
 }
 
 #carousel>:nth-child(1)>:nth-child(4n - 3) {
 	width: 11.3vw;
 	height: 21.3vw;
-	margin: 0 2.75%
+	margin: 0 2.75%;
 }
 
 #carousel .card-lg {
@@ -456,31 +464,31 @@ html {
 }
 
 .card-lg {
-	border: .1vw solid transparent
+	border: .1vw solid transparent;
 }
 
 .card-lg:hover {
 	border: .1vw solid goldenrod;
-	box-shadow: 0 0 1vw goldenrod
+	box-shadow: 0 0 1vw goldenrod;
 }
 
 .start-game_class:hover {
 	border: .1vw solid white;
-	box-shadow: 0 0 .1vw white
+	box-shadow: 0 0 .1vw white;
 }
 
 #no_hover:hover {
 	border: .1vw solid transparent;
-	box-shadow: none
+	box-shadow: none;
 }
 
 #carousel .card-lg:hover {
-	background-origin: border-box
+	background-origin: border-box;
 }
 
 #carousel .card-description {
 	left: 35.35%;
-	top: 77%
+	top: 77%;
 }
 
 #carousel>:nth-child(3) {
@@ -492,7 +500,7 @@ html {
 	line-height: 250%;
 	background-color: rgba(10, 10, 10, .95);
 	text-align: center;
-	box-shadow: 0 0 1vw #ffffff54
+	box-shadow: 0 0 1vw #ffffff54;
 }
 
 #popup {
@@ -500,7 +508,7 @@ html {
 	width: 100%;
 	height: calc(100vw * 1080 / 1920);
 	background-color: rgba(10, 10, 10, .95);
-	z-index: 1000
+	z-index: 1000;
 }
 
 #popup>div {
@@ -508,7 +516,7 @@ html {
 	width: 26.5%;
 	border: .2vw ridge rgb(40, 40, 40);
 	padding: 0 .5vw;
-	background-color: rgb(20, 20, 20)
+	background-color: rgb(20, 20, 20);
 }
 
 #popup h3 {
@@ -517,14 +525,14 @@ html {
 	text-transform: uppercase;
 	color: grey;
 	text-align: center;
-	line-height: 100%
+	line-height: 100%;
 }
 
 #popup p {
 	text-align: center;
 	font-size: 1.23vw;
 	padding-top: .6vw;
-	color: tan
+	color: tan;
 }
 
 #popup>div>div {
@@ -538,7 +546,7 @@ html {
 	margin: -1.4vw auto 0;
 	border: .2vw ridge rgb(25, 25, 25);
 	background-color: #000;
-	top: 1.3vw
+	top: 1.3vw;
 }
 
 #popup button {
@@ -550,15 +558,15 @@ html {
 	font-size: 1vw;
 	text-shadow: 1vw 1vw 1vw #000;
 	text-transform: capitalize;
-	margin: 0 .3vw
+	margin: 0 .3vw;
 }
 
 #popup button:first-child {
-	color: green
+	color: green;
 }
 
 #popup button:last-child {
-	color: darkred
+	color: darkred;
 }
 
 #end-screen {
@@ -566,11 +574,11 @@ html {
 	height: calc(100vw * 1080 / 1920);
 	position: absolute;
 	z-index: 1000;
-	background-color: rgba(10, 10, 10, .95)
+	background-color: rgba(10, 10, 10, .95);
 }
 
 #end-screen * {
-	position: relative
+	position: relative;
 }
 
 #end-screen>:nth-child(1) {
@@ -579,19 +587,19 @@ html {
 	width: calc(100% * 656 / 1920);
 	height: calc(100% * 416 / 1080);
 	margin-bottom: -21.65%;
-	background-size: contain
+	background-size: contain;
 }
 
 .end-draw {
-	background-image: url(img/icons/end_draw.png)
+	background-image: url(img/icons/end_draw.png);
 }
 
 .end-win {
-	background-image: url(img/icons/end_win.png)
+	background-image: url(img/icons/end_win.png);
 }
 
 .end-lose {
-	background-image: url(img/icons/end_lose.png)
+	background-image: url(img/icons/end_lose.png);
 }
 
 #end-screen>table {
@@ -600,27 +608,27 @@ html {
 	width: 74%;
 	height: 22%;
 	margin-bottom: -12.3%;
-	table-layout: fixed
+	table-layout: fixed;
 }
 
 #end-screen tbody :first-child th {
 	font-size: .9vw;
 	text-align: center;
 	color: darkslategrey;
-	color: rgb(100, 100, 100)
+	color: rgb(100, 100, 100);
 }
 
 #end-screen td {
 	font-size: 1.7vw;
 	text-align: center;
-	color: rgb(180, 180, 180)
+	color: rgb(180, 180, 180);
 }
 
 #end-screen tr :first-child {
 	font-size: 1.2vw;
 	text-align: right;
 	color: darkorange;
-	padding-right: 5%
+	padding-right: 5%;
 }
 
 #end-screen>p {
@@ -629,7 +637,7 @@ html {
 	width: 41%;
 	height: 3%;
 	font-size: 1.21vw;
-	color: rgb(180, 180, 180)
+	color: rgb(180, 180, 180);
 }
 
 #end-screen button {
@@ -643,23 +651,23 @@ html {
 	background-color: #4c390a66;
 	border: .2vw solid #1d180b;
 	border-radius: 1vw;
-	box-shadow: 0 0 1vw #6d5210
+	box-shadow: 0 0 1vw #6d5210;
 }
 
 #pass-button:hover, #toggle-music:hover {
-	text-shadow: 0 0 1vw #6d5210
+	text-shadow: 0 0 1vw #6d5210;
 }
 
 #end-screen button:hover {
-	box-shadow: 0 0 2vw #6d5210
+	box-shadow: 0 0 2vw #6d5210;
 }
 
 #end-screen button:nth-of-type(1) {
-	left: 35%
+	left: 35%;
 }
 
 #end-screen button:nth-of-type(2) {
-	left: 55%
+	left: 55%;
 }
 
 .panel {
@@ -670,27 +678,27 @@ html {
 	overflow-x: visible;
 	overflow-y: visible;
 	position: absolute;
-	height: calc(100vw * 1080 / 1920)
+	height: calc(100vw * 1080 / 1920);
 }
 
 .panel div,
 .panel section,
 .panel span {
-	position: relative
+	position: relative;
 }
 
 #panel-left {
-	width: 26.5%
+	width: 26.5%;
 }
 
 #panel-mid {
 	width: 52.5%;
-	left: 26.5%
+	left: 26.5%;
 }
 
 #panel-right {
 	width: 21%;
-	left: 79%
+	left: 79%;
 }
 
 #weather {
@@ -699,18 +707,18 @@ html {
 	width: 54.9%;
 	height: 12.75%;
 	margin-bottom: -27%;
-	z-index: 1
+	z-index: 1;
 }
 
 .leader-box {
 	left: 27.5%;
 	width: 31.4%;
 	height: 12.5%;
-	margin-bottom: -26.25%
+	margin-bottom: -26.25%;
 }
 
 .leader-box .card {
-	pointer-events: none
+	pointer-events: none;
 }
 
 .leader-box>.leader-container {
@@ -719,21 +727,21 @@ html {
 	margin-bottom: -80%;
 	display: flex;
 	flex-items: center;
-	justify-content: center
+	justify-content: center;
 }
 
 .leader-box>div>.card {
 	position: absolute;
 	height: 98%;
 	width: 95%;
-	border-radius: .6vw
+	border-radius: .6vw;
 }
 
 .leader-active {
 	top: 33%;
 	left: 75%;
 	height: 28%;
-	width: 24%
+	width: 24%;
 }
 
 .leader-active>div {
@@ -741,34 +749,34 @@ html {
 	background-size: cover;
 	background-repeat: no-repeat;
 	width: 100%;
-	height: 100%
+	height: 100%;
 }
 
 #leader-op {
-	top: 7.55%
+	top: 7.55%;
 }
 
 #leader-me {
-	top: 77.5%
+	top: 77.5%;
 }
 
 .stats {
 	height: 12.5%;
 	width: 88.5%;
 	margin-bottom: -27%;
-	background-color: rgba(20, 20, 20, .6)
+	background-color: rgba(20, 20, 20, .6);
 }
 
 .current-turn {
-	box-shadow: -3vw 0 1vw .1vw goldenrod
+	box-shadow: -3vw 0 1vw .1vw goldenrod;
 }
 
 #stats-op {
-	top: 24.25%
+	top: 24.25%;
 }
 
 #stats-me {
-	top: 61.75%
+	top: 61.75%;
 }
 
 .profile-img {
@@ -781,7 +789,7 @@ html {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	border-radius: 100%
+	border-radius: 100%;
 }
 
 .profile-img>div {
@@ -793,7 +801,7 @@ html {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	overflow: visible
+	overflow: visible;
 }
 
 .profile-img>div>div {
@@ -803,7 +811,7 @@ html {
 	top: .5%;
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: center
+	background-position: center;
 }
 
 .faction-ability {
@@ -831,7 +839,7 @@ html {
 }
 
 #stats-me > div > div > div {
-	top: 59%
+	top: 59%;
 }
 
 .score-total {
@@ -847,15 +855,15 @@ html {
 	font-weight: 700;
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: center
+	background-position: center;
 }
 
 #score-total-me {
-	background-image: url(img/icons/score_total_me.png)
+	background-image: url(img/icons/score_total_me.png);
 }
 
 #score-total-op {
-	background-image: url(img/icons/score_total_op.png)
+	background-image: url(img/icons/score_total_op.png);
 }
 
 .score-leader>div {
@@ -866,7 +874,7 @@ html {
 	left: -46%;
 	top: -32%;
 	width: 195%;
-	height: 170%
+	height: 170%;
 }
 
 .hand-count {
@@ -881,42 +889,42 @@ html {
 	background-image: url(img/icons/icon_card_count.png);
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: left
+	background-position: left;
 }
 
 #hand-count-me {
-	top: 18.5%
+	top: 18.5%;
 }
 
 .gem {
 	width: 9%;
 	height: 31%;
 	margin-bottom: -9.25%;
-	background-image: url(img/icons/icon_gem_off.png)
+	background-image: url(img/icons/icon_gem_off.png);
 }
 
 .gem-on {
-	background-image: url(img/icons/icon_gem_on.png)
+	background-image: url(img/icons/icon_gem_on.png);
 }
 
 #gem2-op {
 	top: 56.25%;
-	left: 70.75%
+	left: 70.75%;
 }
 
 #gem1-op {
 	top: 56%;
-	left: 80%
+	left: 80%;
 }
 
 #gem2-me {
 	top: 14.5%;
-	left: 70.75%
+	left: 70.75%;
 }
 
 #gem1-me {
 	top: 14.5%;
-	left: 80%
+	left: 80%;
 }
 
 .name {
@@ -928,11 +936,11 @@ html {
 	overflow: hidden;
 	white-space: nowrap;
 	font-size: 1.1vw;
-	font-weight: 700
+	font-weight: 700;
 }
 
 #name-me {
-	top: 60%
+	top: 60%;
 }
 
 .deck-name {
@@ -944,11 +952,11 @@ html {
 	overflow: hidden;
 	text-transform: capitalize;
 	color: tan;
-	font-size: .95vw
+	font-size: .95vw;
 }
 
 #deck-name-me {
-	top: 80%
+	top: 80%;
 }
 
 .passed {
@@ -959,7 +967,7 @@ html {
 	color: tan;
 	font-size: 1.5vw;
 	font-weight: 700;
-	text-shadow: 1px 1px 2px #000
+	text-shadow: 1px 1px 2px #000;
 }
 
 #passed-me {
@@ -975,44 +983,44 @@ html {
 	font-weight: 700;
 	border: .1vw solid goldenrod;
 	border-radius: .5vw;
-	background-color: rgba(20, 20, 20, .9)
+	background-color: rgba(20, 20, 20, .9);
 }
 
 .field {
 	width: 100%;
-	height: 38.5%
+	height: 38.5%;
 }
 
 .field .hero {
-	pointer-events: none
+	pointer-events: none;
 }
 
 #field-op {
-	top: -1.1%
+	top: -1.1%;
 }
 
 #field-op .card {
-	pointer-events: none
+	pointer-events: none;
 }
 
 #field-me {
-	top: -1%
+	top: -1%;
 }
 
 #field-hand {
 	width: 100%;
-	height: 13%
+	height: 13%;
 }
 
 .field-row {
 	height: 32%;
 	top: 4%;
 	display: flex;
-	z-index: 1
+	z-index: 1;
 }
 
 .field-row>div {
-	position: absolute
+	position: absolute;
 }
 
 .row-score {
@@ -1022,14 +1030,14 @@ html {
 	margin-bottom: -12.65%;
 	font-size: 1.8vw;
 	color: #000;
-	text-shadow: 0 0 5px #fff
+	text-shadow: 0 0 5px #fff;
 }
 
 .row-special {
 	width: 14.25%;
 	height: 100%;
 	left: 5.1%;
-	margin-bottom: -12.65%
+	margin-bottom: -12.65%;
 }
 
 .row-cards {
@@ -1037,7 +1045,7 @@ html {
 	width: 80.65%;
 	left: 19.35%;
 	left: 20%;
-	width: 79.7%
+	width: 79.7%;
 }
 
 .row-weather {
@@ -1049,19 +1057,19 @@ html {
 	pointer-events: none;
 	background-size: cover;
 	background-position: bottom;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 .frost {
-	background-image: url(img/icons/overlay_frost.png)
+	background-image: url(img/icons/overlay_frost.png);
 }
 
 .rain {
-	background-image: url(img/icons/overlay_rain.png)
+	background-image: url(img/icons/overlay_rain.png);
 }
 
 .fog {
-	background-image: url(img/icons/overlay_fog.png)
+	background-image: url(img/icons/overlay_fog.png);
 }
 
 #hand-row {
@@ -1069,23 +1077,23 @@ html {
 	height: 91%;
 	left: 7.1%;
 	width: 92.5%;
-	z-index: 1
+	z-index: 1;
 }
 
 .row-selectable {
-	background-color: rgba(255, 255, 0, .08)
+	background-color: rgba(255, 255, 0, .08);
 }
 
 .row-selectable:hover {
 	box-shadow: 0 0 .25vw rgba(255, 255, 0, 1);
-	box-sizing: border-box
+	box-sizing: border-box;
 }
 
 .card-selectable>.card:hover {
 	border: .12vw outset goldenrod;
 	border-radius: .3vw;
 	margin-bottom: 1vw;
-	z-index: 1
+	z-index: 1;
 }
 
 .cardpile {
@@ -1096,11 +1104,11 @@ html {
 	flex-direction: column-reverse;
 	align-items: center;
 	overflow: visible;
-	z-index: 1
+	z-index: 1;
 }
 
 .cardpile .card {
-	pointer-events: none
+	pointer-events: none;
 }
 
 /*
@@ -1124,22 +1132,22 @@ html {
 
 #grave-op {
 	top: 6.5%;
-	left: 6.5%
+	left: 6.5%;
 }
 
 #deck-op {
 	top: 6.5%;
-	left: 51%
+	left: 51%;
 }
 
 #grave-me {
 	top: 76.5%;
-	left: 6.5%
+	left: 6.5%;
 }
 
 #deck-me {
 	top: 76.5%;
-	left: 51%
+	left: 51%;
 }
 
 .deck-card {
@@ -1149,7 +1157,7 @@ html {
 	width: 4.45vw;
 	background-size: contain;
 	background-repeat: no-repeat;
-	box-shadow: -.1vw -.1vw .5vw rgba(20, 20, 20, .5)
+	box-shadow: -.1vw -.1vw .5vw rgba(20, 20, 20, .5);
 }
 
 .deck-counter {
@@ -1159,17 +1167,17 @@ html {
 	height: 2vw;
 	z-index: 1;
 	color: tan;
-	font-size: 1.3vw
+	font-size: 1.3vw;
 }
 
 .cardpile .deck-card {
 	top: -5%;
-	margin-top: -114.5%
+	margin-top: -114.5%;
 }
 
 .cardpile>.card {
 	top: -5%;
-	margin-top: -108.5%
+	margin-top: -108.5%;
 }
 
 #deck-customization {
@@ -1177,14 +1185,14 @@ html {
 	width: 100%;
 	height: calc(100vw * 1080 / 1920);
 	background-color: rgba(10, 10, 10, .95);
-	z-index: 85
+	z-index: 85;
 }
 
 #faction-title {
 	position: absolute;
 	height: 5%;
 	width: 100%;
-	top: 6%
+	top: 6%;
 }
 
 #deck-customization h1 {
@@ -1196,7 +1204,7 @@ html {
 	padding: 0 3%;
 	top: -60%;
 	background-size: contain;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 #faction-description {
@@ -1206,7 +1214,7 @@ html {
 	top: 9.45%;
 	left: 20.2%;
 	width: 60%;
-	text-align: center
+	text-align: center;
 }
 
 .deck-options {
@@ -1250,17 +1258,17 @@ html {
 	padding: .1vw 1.1vw;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between
+	justify-content: space-between;
 }
 
 #card-bank {
 	top: 22.5%;
-	left: 8.275%
+	left: 8.275%;
 }
 
 #card-deck {
 	top: 22.5%;
-	left: 58.4%
+	left: 58.4%;
 }
 
 /*
@@ -1618,6 +1626,11 @@ html {
 	font-size: 1.3vw;
 }
 
+#carousel > :nth-child(1) > :nth-child(2n) .card-large-quote {
+	font-size: 0.8vw;
+}
+
+
 #carousel > :nth-child(1) > :nth-child(4n - 3) .card-large-name {
 	font-size: 1.1vw;
 }
@@ -1822,14 +1835,14 @@ html {
 	width: 12%;
 	height: 30%;
 	top: 49.5%;
-	left: 44.05%
+	left: 44.05%;
 }
 
 #deck-stats>p:nth-child(odd) {
 	color: #82735f;
 	font-size: 1.05vw;
 	text-align: center;
-	margin-bottom: -6.75%
+	margin-bottom: -6.75%;
 }
 
 #deck-stats>p:nth-child(even) {
@@ -1841,27 +1854,27 @@ html {
 	margin-bottom: -6.75%;
 	background-repeat: no-repeat;
 	background-position: left;
-	background-size: 2.5vw
+	background-size: 2.5vw;
 }
 
 #deck-stats>p:nth-child(2) {
-	background-image: url(img/icons/deck_stats_count.png)
+	background-image: url(img/icons/deck_stats_count.png);
 }
 
 #deck-stats>p:nth-child(4) {
-	background-image: url(img/icons/deck_stats_unit.png)
+	background-image: url(img/icons/deck_stats_unit.png);
 }
 
 #deck-stats>p:nth-child(6) {
-	background-image: url(img/icons/deck_stats_special.png)
+	background-image: url(img/icons/deck_stats_special.png);
 }
 
 #deck-stats>p:nth-child(8) {
-	background-image: url(img/icons/deck_stats_strength.png)
+	background-image: url(img/icons/deck_stats_strength.png);
 }
 
 #deck-stats>p:nth-child(10) {
-	background-image: url(img/icons/deck_stats_hero.png)
+	background-image: url(img/icons/deck_stats_hero.png);
 }
 
 #start-game {
@@ -1870,14 +1883,14 @@ html {
 	left: 46.65%;
 	width: 6%;
 	height: 3%;
-	font-size: .98vw
+	font-size: .98vw;
 }
 
 .start-game_class {
 	white-space: nowrap;
 	color: #fff;
 	background-color: rgb(20, 20, 20);
-	border: .1vw ridge rgb(30, 30, 30)
+	border: .1vw ridge rgb(30, 30, 30);
 }
 
 .card-contianer-title {
@@ -1885,17 +1898,17 @@ html {
 	width: 10%;
 	height: 3%;
 	font-size: 1.3vw;
-	color: #959595
+	color: #959595;
 }
 
 #card-bank-title {
 	top: 7.45%;
-	left: 8.5%
+	left: 8.5%;
 }
 
 #card-deck-title {
 	top: 7.8%;
-	left: 84.45%
+	left: 84.45%;
 }
 
 .card {
@@ -1907,17 +1920,17 @@ html {
 	display: inline-block;
 	position: relative;
 	transition: margin-bottom 0.05s, margin-left .25s, margin-right .25s, transform 0.5s;
-	z-index=1
+	z-index=1;
 }
 
 .deck-card .card {
-	position: absolute
+	position: absolute;
 }
 
 .card>div {
 	background-size: contain;
 	background-position: center;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 .card>div:nth-child(1) {
@@ -1926,7 +1939,7 @@ html {
 	width: 70%;
 	height: 50%;
 	margin-bottom: -71%;
-	background-position: 0 0
+	background-position: 0 0;
 }
 
 .card>div:nth-child(1)>div {
@@ -1984,38 +1997,38 @@ html {
 .card-container {
 	display: flex;
 	justify-content: center;
-	align-items: flex-end
+	align-items: flex-end;
 }
 
 .card-container .card {
 	margin: 0 1px;
-	flex-shrink: 0
+	flex-shrink: 0;
 }
 
 .center {
 	display: flex;
 	justify-content: center;
-	align-items: center
+	align-items: center;
 }
 
 .bg-contain {
 	background-size: contain;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
 }
 
 .visible {
-	display: visible
+	display: visible;
 }
 
 .hide {
-	display: none
+	display: none;
 }
 
 .fade {
 	opacity: .2;
-	filter: alpha(opacity=20)
+	filter: alpha(opacity=20);
 }
 
 .noclick {
-	pointer-events: none
+	pointer-events: none;
 }
