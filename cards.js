@@ -6795,6 +6795,175 @@ var ext_to_cards = {
         "filename": "anna_henrietta_grace",
         "count": "1",
         "quote": "You have sworn your vows, you have readied body and soul. The time has come to test them."
+    },
+    "to_benoit": {
+        "name": "Benoit",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "benoit",
+        "count": "1",
+        "quote": "Aged in barrles of Beauclair oak. Hue - deep burgundy, clarity - high."
+    },
+    "to_roderick": {
+        "name": "Roderick of Dun Tynne",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "9",
+        "ability": "spy",
+        "filename": "roderick",
+        "count": "1",
+        "quote": "Roderick lived as a recluse, avoiding society at large."
+    },
+    "to_vampire_invasion": {
+        "name": "Vampire Invasion",
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "4",
+        "ability": "avenger",
+        "filename": "vampire_invasion",
+        "count": "1",
+        "target" : "to_lacerate",
+        "quote": "Drinking the blood of the Continent since the Conjunction."
+    },
+    "to_ducal_guard_1": {
+        "name": "Ducal Guard",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "ducal_guard_1",
+        "count": "1",
+        "target": "to_ducal_guard",
+        "quote": "Search your hearts! Do you not see that they are blackened?"
+    },
+    "to_ducal_guard_2": {
+        "name": "Ducal Guard",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "close",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "ducal_guard_2",
+        "count": "1",
+        "target": "to_ducal_guard",
+        "quote": "Search your hearts! Do you not see that they are blackened?"
+    },
+    "to_bootblack": {
+        "name": "Bootblack",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "9",
+        "ability": "spy",
+        "filename": "bootblack",
+        "count": "1",
+        "quote": "Wouldn't be looking for work, would you? We'd make a fine duo."
+    },
+    "to_menagerie_keeper": {
+        "name": "Menagerie Keeper",
+        "deck": "toussaint",
+        "row": "agile",
+        "strength": "2",
+        "ability": "scorch",
+        "filename": "menagerie_keeper",
+        "count": "1",
+        "quote": "If there's one thing Nilfgaardians love more than blood-soaked arena battles, it's blood-soaked arena battles with exotic beasts."
+    },
+    "to_barnabas": {
+        "name": "Barnabas Basil-Foulty",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "medic",
+        "filename": "barnabas",
+        "count": "1",
+        "quote": "I shall serve you as majordomo of Corvo Bianco."
+    },
+    "to_caed_myrkvid_druid_1": {
+        "name": "Caed Myrkvid Druid",
+        "id": 1,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "caed_myrkvid_druid_1",
+        "count": "1",
+        "target": "to_caed_myrkvid_druid",
+        "quote": "We fled here to escape people such as you."
+    },
+    "to_caed_myrkvid_druid_2": {
+        "name": "Caed Myrkvid Druid",
+        "id": 2,
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "caed_myrkvid_druid_2",
+        "count": "1",
+        "target": "to_caed_myrkvid_druid",
+        "quote": "We fled here to escape people such as you."
+    },
+    "to_field_medic": {
+        "name": "Field Medic",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "bond",
+        "filename": "field_medic",
+        "count": "1",
+        "quote": "I'm a medic. I tend to know what I am doing when I prescribe something."
+    },
+    "to_seditious_aristocrats": {
+        "name": "Seditious Aristocrats",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "seditious_aristocrats",
+        "count": "1",
+        "quote": "They love expensive wine, horse riding, and good old backstabbing."
+    },
+    "to_poisoner": {
+        "name": "Poisoner",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "scorch_c",
+        "filename": "poisoner",
+        "count": "1",
+        "quote": "For a courtesan, a single drop. For a rock troll, an entire bottle. And for Nordling scum? Why waste good poison when a rusty dagger will do?"
+    },
+    "to_wicked_witch": {
+        "name": "Wicked Witch",
+        "deck": "toussaint",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "scorch_c",
+        "filename": "wicked_witch",
+        "count": "1",
+        "quote": "A bit of butter, a bit of spice, and you'll make a tasty morsel."
+    },
+    "to_alchemist": {
+        "name": "Alchemist",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "3",
+        "ability": "scorch",
+        "filename": "alchemist",
+        "count": "1",
+        "quote": "Two ounces of calcium equum, one ounce of rubedo..."
+    },
+    "to_duchess_informant": {
+        "name": "Duchess Informant",
+        "deck": "toussaint",
+        "row": "siege",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "duchess_informant",
+        "count": "1",
+        "quote": "Anna Henrietta wakes every morn to the tune of her songbirds."
     }
 };
 

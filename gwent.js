@@ -590,6 +590,10 @@ class ControllerAI {
 					rowStats[c.row] += 1;
 				});
 				rowStats["close"] += rowStats["agile"];
+				let rows = card.holder.getAllRows();
+				rowStats["close"] = rows[0].effects.toussaint_wine > 0 ? 0 : rowStats["close"];
+				rowStats["ranged"] = rows[1].effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
+				rowStats["siege"] = rows[2].effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
 				return 2 * Math.max(rowStats["close"], rowStats["ranged"], rowStats["siege"]);
 			}
 		}
@@ -1877,6 +1881,15 @@ class Game {
 		this.randomRespawn = false;
 		this.spyPowerMult = 1;
 		this.decoyCancelled = false;
+
+		// Also resetting some board/row properties affected during the course of a game
+		if (board) {
+			if (board.row) {
+				board.row.forEach(r => {
+					r.halfWeather = false;
+				});
+            }
+        }
 
 		weather.reset();
 		board.row.forEach(r => r.reset());
