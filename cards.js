@@ -6967,6 +6967,234 @@ var ext_to_cards = {
     }
 };
 
+var ext_lr_cards = {
+    "lr_lyria_rivia_morale": {
+        "name": "Lyria & Rivia: Morale Boost",
+        "deck": "special lyria_rivia",
+        "row": "",
+        "strength": "",
+        "ability": "morale",
+        "filename": "lyria_rivia_morale",
+        "count": "0",
+        "quote": "For Lyria and Rivia!"
+    },
+    "lr_meve_princess": {
+        "name": "Meve: The Princess of Lyria",
+        "deck": "lyria_rivia",
+        "row": "leader",
+        "strength": "",
+        "ability": "meve_princess",
+        "filename": "meve_princess",
+        "count": "1",
+        "quote": "The Gods watch over us, we'll come through the fray unharmed."
+    },
+    "lr_rivian_mauler": {
+        "name": "Rivia Mauler",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "rivian_mauler",
+        "count": "1",
+        "quote": "Ugh, these guys can be a real headache."
+    },
+    "lr_grey_rider": {
+        "name": "Grey Rider",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "grey_rider",
+        "count": "2",
+        "target": "lr_grey_rider",
+        "quote": "This is not steel and blood that win wars, but information."
+    },
+    "lr_prince_anseis": {
+        "name": "Prince Anséis",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "prince_anseis",
+        "count": "1",
+        "quote": "Your presence at this tourney is an affront to my honor!"
+    },
+    "lr_royal_guard": {
+        "name": "Royal Guard",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "royal_guard",
+        "count": "1",
+        "quote": "Each must serve with unconditionnal loyalty and possess a devilishly handsome jawline."
+    },
+    "lr_landsknecht": {
+        "name": "Lyrian Landsknecht",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "landsknecht",
+        "count": "3",
+        "target": "lr_landsknecht",
+        "quote": "Best not laugh at their silly-arse hats. Believe me."
+    },
+    "lr_knighthood": {
+        "name": "Knighthood",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "10",
+        "ability": "",
+        "filename": "knighthood",
+        "count": "1",
+        "quote": "Kneel an everyman, arise a knight."
+    },
+    "lr_reynard_odo": {
+        "name": "Reynard Odo",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero morale",
+        "filename": "reynard_odo",
+        "count": "1",
+        "quote": "Under your husband I served ten years, under you another eight."
+    },
+    "lr_war_wagon": {
+        "name": "War Wagon",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "avenger",
+        "filename": "war_wagon",
+        "count": "1",
+        "target": "lr_wagenburg",
+        "quote": "Hay out, archersin! Go, go go!"
+    },
+    "lr_wagenburg": {
+        "name": "Wagenburg",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "wagenburg",
+        "count": "3",
+        "target": "lr_wagenburg_muster",
+        "quote": "Dh'oine can turn anything into a weapon. Even a simple wagon..."
+    },
+    "lr_gascon": {
+        "name": "Gascon",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "gascon",
+        "count": "1",
+        "quote": "I'm doing what I used to do and they're paying me for it!"
+    },
+    "lr_pikeman": {
+        "name": "Rivian Pikeman",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "pikeman",
+        "count": "1",
+        "quote": "Get off your high horse and face me!"
+    },
+    "lr_light_cavalry": {
+        "name": "Light Cavalry",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "light_cavalry",
+        "count": "2",
+        "target": "lr_light_cavalry",
+        "quote": "Stay calm, everyone. And be alert."
+    },
+    "lr_rayla": {
+        "name": "Rayla",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "rayla",
+        "count": "1",
+        "quote": "Exceptions are a clear road to human blood spilt. All Scoia'tael must die."
+    },
+    "lr_wagon": {
+        "name": "Wagon",
+        "deck": "lyria_rivia",
+        "row": "agile",
+        "strength": "1",
+        "ability": "medic",
+        "filename": "wagon",
+        "count": "1",
+        "quote": "The driver swore he was carrying seeds. But seeds don't clank on bumps in the road..."
+    },
+    "lr_lyrian_cavalry": {
+        "name": "Lyrian Cavalry",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "lyrian_cavalry",
+        "count": "1",
+        "quote": "A horseman's worth no less than his steed. And Lyrian horses are among the Continent's best."
+    },
+    "lr_isbel_hagge": {
+        "name": "Isbel of Hagge",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "medic",
+        "filename": "isbel_hagge",
+        "count": "1",
+        "quote": "I promised I would never again use magic to harm others."
+    },
+    "lr_hajduk": {
+        "name": "Lyrian Hajduk",
+        "deck": "lyria_rivia",
+        "row": "agile",
+        "strength": "3",
+        "ability": "horn",
+        "filename": "hajduk",
+        "count": "1",
+        "quote": "War, war... What's it bloody good for..."
+    },
+    "spe_wyvern_shield": {
+        "name": "Wyvern Scale Shield",
+        "deck": "special lyria_rivia",
+        "row": "",
+        "strength": "",
+        "ability": "shield_c",
+        "filename": "wyvern_shield",
+        "count": "1",
+        "quote": "Stronger than your average shield and far more stylish."
+    },
+    "spe_mantlet": {
+        "name": "Mantlet",
+        "deck": "special lyria_rivia",
+        "row": "",
+        "strength": "",
+        "ability": "shield_r",
+        "filename": "mantlet",
+        "count": "1",
+        "quote": "Something like the bastard child of a shield and a palisade."
+    },
+    "spe_garrison": {
+        "name": "Garrison",
+        "deck": "special lyria_rivia",
+        "row": "",
+        "strength": "",
+        "ability": "shield_s",
+        "filename": "garrison",
+        "count": "1",
+        "quote": "Knock, knock… anybody home?"
+    }
+};
+
 /*
  * Selecting cards to use
  */
@@ -6979,3 +7207,4 @@ card_dict = Object.assign({}, card_dict, ext_st_cards);
 card_dict = Object.assign({}, card_dict, ext_sk_cards);
 card_dict = Object.assign({}, card_dict, ext_wu_cards);
 card_dict = Object.assign({}, card_dict, ext_to_cards);
+card_dict = Object.assign({}, card_dict, ext_lr_cards);

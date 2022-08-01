@@ -1002,6 +1002,39 @@ var custom_decks = [
             ["to_tufo_monster", 1],
             ["to_shaelmaar", 1]
         ]
+    },
+    {
+        "title": "Lyria & Rivia - First Line",
+        "description": "Lyria & Rivia deck focusing on cards of the first line (Melee/Ranged) - Playstyle: Muster, Medic",
+        "leader": "lr_meve_princess",
+        "faction": "lyria_rivia",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_decoy", 1],
+            ["spe_rain", 1],
+            ["spe_clear", 2],
+            ["spe_scorch", 1],
+            ["lr_rivian_mauler", 1],
+            ["lr_grey_rider", 2],
+            ["lr_prince_anseis", 1],
+            ["lr_royal_guard", 1],
+            ["lr_landsknecht", 3],
+            ["lr_knighthood", 1],
+            ["lr_reynard_odo", 1],
+            ["lr_war_wagon", 1],
+            ["lr_wagenburg", 3],
+            ["lr_gascon", 1],
+            ["lr_pikeman", 1],
+            ["lr_light_cavalry", 2],
+            ["lr_rayla", 1],
+            ["lr_wagon", 1],
+            ["lr_lyrian_cavalry", 1],
+            ["lr_isbel_hagge", 1],
+            ["lr_hajduk", 1],
+            ["ntr_geralt", 1],
+            ["spe_wyvern_shield", 1],
+            ["spe_mantlet", 1]
+        ]
     }
 ];
 

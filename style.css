@@ -342,6 +342,14 @@ html {
 	content: "Toussaint leader ability used: \A Decoy ability cancelled for the rest of the round.";
 }
 
+#notif-lyria_rivia {
+	background-image: url(img/icons/notif_lyria_rivia.png);
+}
+
+#notif-lyria_rivia::after {
+	content: "Witcher Universe faction ability used: \A Turn skipped.";
+}
+
 .card-preview {
 	position: relative;
 	z-index: 80;

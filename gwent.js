@@ -214,7 +214,7 @@ class ControllerAI {
 			await this.slaughterCintra(c);
 		else if (c.faction === "special" && c.abilities.includes("seize"))
 			await this.seizeCards(c);
-		else if (c.faction === "special" && c.abilities.includes("shield"))
+		else if (c.faction === "special" && (c.abilities.includes("shield") || c.abilities.includes("shield_c") || c.abilities.includes("shield_r") || c.abilities.includes("shield_s")))
 			await this.shieldCards(c);
 		else if (c.faction === "special" && c.abilities.includes("lock"))
 			await this.lock(c);
@@ -329,7 +329,19 @@ class ControllerAI {
 	}
 
 	// Plays a shield special card to the most beneficial row. Assumes at least one viable row.
+	// Also applicable for shield cards which affect only one row.
 	async shieldCards(card) {
+		if (card.abilities.includes("shield_c")) {
+			await this.player.playCardToRow(card, board.row[2]);
+			return;
+		} else if (card.abilities.includes("shield_r")) {
+			await this.player.playCardToRow(card, board.row[1]);
+			return;
+		} if (card.abilities.includes("shield_s")) {
+			await this.player.playCardToRow(card, board.row[0]);
+			return;
+		}
+
 		let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
 		let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
 		units.forEach(c => {
@@ -580,7 +592,7 @@ class ControllerAI {
 				let rows = [0, 1, 2].map(i => board.row[i]);
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
 			}
-			if (["cintra_slaughter","seize","lock","shield","knockback"].includes(abi.at(-1))) {
+			if (["cintra_slaughter", "seize", "lock", "shield", "knockback", "shield_c", "shield_r", "shield_s"].includes(abi.at(-1))) {
 				return ability_dict[abi.at(-1)].weight(card);
 			}
 			if (abi.includes("toussaint_wine")) {
@@ -877,6 +889,18 @@ class Player {
 						let horns = player_me.getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
 						if (horns[0])
 							ui.selectRow(horns[0]);
+					} else if (this.leader.key === "lr_meve_princess") {
+						let max = this.controller.getMaximums();
+						let rows = [this.controller.weightScorchRow(this.leader, max, "close"), this.controller.weightScorchRow(this.leader, max, "ranged"), this.controller.weightScorchRow(this.leader, max, "siege")];
+						let maxv = 0, max_row;
+						for (var i = 0; i < 3; i++) {
+							if (rows[i] > maxv) {
+								maxv = rows[i];
+								max_row = board.row[3 + i];
+                            }
+						}
+						if (max_row)
+							ui.selectRow(max_row);
 					}
 				} 
             }
@@ -956,9 +980,12 @@ class Player {
 	async useFactionAbility() {
 		let factionData = factions[this.deck.faction];
 		if (factionData.activeAbility && this.factionAbilityUses > 0) {
+			this.endTurnAfterAbilityUse = true;
 			await factionData.factionAbility(this);
 			this.updateFactionAbilityUses(this.factionAbilityUses - 1);
-			this.endTurn();
+			// Some faction abilities require extra interractions
+			if (this.endTurnAfterAbilityUse)
+				this.endTurn();
 		}
 		return;
 	}
@@ -1464,8 +1491,11 @@ class Row extends CardContainer {
 					this.effects[x] += activate ? 1 : -1;
 					break;
 				case "shield":
+				case "shield_c":
+				case "shield_r":
+				case "shield_s":
 					Promise.all(this.cards.map(c => c.animate("shield")));
-					this.effects[x] += activate ? 1 : -1;
+					this.effects["shield"] += activate ? 1 : -1;
 					break;
 				case "bond":
 					if (!this.effects.bond[card.target])
@@ -1624,6 +1654,11 @@ class Row extends CardContainer {
 	// Indicates whether or not a shield is protecting that row from abilities (does not protect from weather effects though)
 	isShielded() {
 		return (this.effects.shield > 0);
+	}
+
+	// True if at least 1 unit and total of power >= 10
+	canBeScorched() {
+		return (this.cards.reduce((a, c) => a + c.power, 0) >= 10) && (this.cards.filter(c => c.isUnit()).length > 0);
     }
 }
 
@@ -2292,7 +2327,7 @@ class Card {
 
 	// Returns true if card is sent to a Row's special slot
 	isSpecial() {
-		return this.key === "spe_horn" || this.key === "spe_mardroeme" || this.key === "spe_sign_quen" || this.key === "spe_sign_yrden" || this.key === "spe_toussaint_wine";
+		return ["spe_horn", "spe_mardroeme", "spe_sign_quen", "spe_sign_yrden", "spe_toussaint_wine", "lr_lyria_rivia_morale", "spe_wyvern_shield", "spe_mantlet", "spe_garrison"].includes(this.key);
 	}
 
 	// Compares by type then power then name
@@ -2337,7 +2372,10 @@ class Card {
 		} else if (card.faction === "weather") {
 			bg = "power_" + card.abilities[0];
 		} else if (card.faction === "special") {
-			bg = "power_" + card.abilities[0];
+			let str = card.abilities[0];
+			if (str === "shield_c" || str === "shield_r" || str === "shield_s")
+				str = "shield";
+			bg = "power_" + str;
 			elem.classList.add("special");
 		} else {
 			bg = "power_normal";
@@ -2364,6 +2402,8 @@ class Card {
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
 				str = "scorch_combat";
+			if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+				str = "shield";
 			abi.style.backgroundImage = iconURL("card_ability_" + str);
 		} else if (card.row === "agile")
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
@@ -2380,6 +2420,8 @@ class Card {
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
 				str = "scorch_combat";
+			if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+				str = "shield";
 			abi2.style.backgroundImage = iconURL("card_ability_" + str);
         }
 
@@ -2595,7 +2637,7 @@ class UI {
 			await ability_dict[card.abilities.at(-1)].activated(card);
 		} else if (card.faction === "special" && card.abilities.includes("knockback")) {
 			this.hidePreview();
-			await ability_dict[card.abilities.at(-1)].activated(card,row);
+			await ability_dict[card.abilities.at(-1)].activated(card, row);
 		} else if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
 			return;
 		} else if (card.abilities.includes("anna_henrietta_duchess")) {
@@ -2604,6 +2646,12 @@ class UI {
 			let horn = row.special.cards.filter(c => c.abilities.includes("horn"))[0];
 			if (horn)
 				await board.toGrave(horn, row);
+		} else if (card.key === "lr_lyria_rivia_morale") {
+			await board.moveTo(card, row);
+		} else if (card.abilities.includes("meve_princess")) {
+			this.hidePreview(card);
+			this.enablePlayer(false);
+			await row.scorch();
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
 		}
@@ -2674,6 +2722,8 @@ class UI {
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
 				str = "scorch_combat";
+			if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+				str = "shield";
 			
 			if (card.faction === "faction" || card.abilities.length === 0 && card.row !== "agile")
 				desc.children[0].style.backgroundImage = "";
@@ -2713,7 +2763,8 @@ class UI {
 			"notif-skellige-me": "Skellige Ability Triggered!",
 			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn",
 			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card.",
-			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round."
+			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round.",
+			"notif-lyria_rivia": "Lyria & Rivia ability used - Morale Boost effect applied to a row."
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -2896,6 +2947,14 @@ class UI {
 						r.special.elem.classList.add("row-selectable");
 						fileira_clicavel = null;
 					}
+				} else if (card.abilities.includes("shield_c") || card.abilities.includes("shield_c") || card.abilities.includes("shield_s")) {
+					if ((card.abilities.includes("shield_c") && i == 3) || (card.abilities.includes("shield_r") && i == 4) || (card.abilities.includes("shield_s") && i == 5)) {
+						r.special.elem.classList.add("row-selectable");
+						fileira_clicavel = null;
+					} else {
+						r.elem.classList.add("noclick");
+						r.special.elem.classList.add("noclick");
+                    }
 				} else {
 					// Affects own side - Toussaint Wine does not affect siege row
 					if (i < 3 || r.special.containsCardByKey(card.key) || (card.abilities.includes("toussaint_wine") && i == 5)) {
@@ -2942,6 +3001,22 @@ class UI {
 			}
 			return;
 		}
+
+		// Target only enemy rows
+		if (card.abilities.includes("meve_princess")) {
+			for (let i = 0; i < 3; ++i) {
+				let r = board.row[i];
+				if (r.isShielded() || !r.canBeScorched()) {
+					r.elem.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
+					r.elem.classList.remove("card-selectable");
+				} else {
+					r.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+				}
+			}
+			return;
+        }
 
 		let currRows = card.row === "agile" ? [board.getRow(card, "close", card.holder), board.getRow(card, "ranged", card.holder)] : [board.getRow(card, card.row, card.holder)];
 		for (let i = 0; i < 6; i++) {
@@ -3913,7 +3988,10 @@ function getPreviewElem(elem, card, nb = 0) {
 	} else if (faction.startsWith("weather")) {
 		bg = "power_" + c_abilities[0];
 	} else if (faction.startsWith("special")) {
-		bg = "power_" + c_abilities[0];
+		let str = c_abilities[0];
+		if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+			str = "shield";
+		bg = "power_" + str;
 		elem.classList.add("special");
 	} else {
 		bg = "power_normal";
@@ -3948,6 +4026,8 @@ function getPreviewElem(elem, card, nb = 0) {
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
 				str = "scorch_combat";
+			if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+				str = "shield";
 			abi.style.backgroundImage = iconURL("card_ability_" + str);
 		} else if (card.row === "agile") {
 			abi.style.backgroundImage = iconURL("card_ability_" + "agile");
@@ -3966,6 +4046,8 @@ function getPreviewElem(elem, card, nb = 0) {
 				str = "avenger";
 			if (str === "scorch_c" || str == "scorch_r" || str === "scorch_s")
 				str = "scorch_combat";
+			if (str === "shield_c" || str == "shield_r" || str === "shield_s")
+				str = "shield";
 			abi2.style.backgroundImage = iconURL("card_ability_" + str);
         }
 	}

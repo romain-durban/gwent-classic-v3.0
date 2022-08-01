@@ -175,17 +175,24 @@ var ability_dict = {
 		removed: async (card) => {
 			if (game.roundHistory.length > 2 || card.isLocked())
 				return;
-			// Some avengers are related to muster
-			if (card_dict[card.target]["ability"].includes("muster")) {
+			// Some avengers are related to muster and should trigger it, if not already in deck
+			if (card_dict[card.target]["ability"].includes("muster") && (card.holder.deck.findCards(c => c.key === card.target).length === 0 && card.holder.hand.findCards(c => c.key === card.target).length === 0)) {
 				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
 					let avenger = new Card(card.target, card_dict[card.target], card.holder);
 					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
 					await board.addCardToRow(avenger, avenger.row, card.holder);
 				}
 			} else {
-				// Summon it from the grave if one copy already there, otherwise create one
-				let avenger = new Card(card.target, card_dict[card.target], card.holder);
-				avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+				let avenger;
+				// If one copy at least in hand or deck, use it instead of creating a duplicate
+				if (card.holder.deck.findCards(c => c.key === card.target).length)
+					avenger = card.holder.deck.removeCard(card.holder.deck.findCard(c => c.key === card.target));
+				else if (card.holder.hand.findCards(c => c.key === card.target).length)
+					avenger = card.holder.hand.removeCard(card.holder.hand.findCard(c => c.key === card.target));
+				else {
+					avenger = new Card(card.target, card_dict[card.target], card.holder);
+					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+                }
 				await board.addCardToRow(avenger, avenger.row, card.holder);
             }
 			
@@ -703,7 +710,7 @@ var ability_dict = {
 		activated: (card, player) => {
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
-			if (!player instanceof ControllerAI)
+			if (!(player.controller instanceof ControllerAI))
 				ui.setSelectable(card, true);
 		},
 		weight: (card, ai) => {
@@ -746,5 +753,32 @@ var ability_dict = {
 			});
 		},
 		weight: (card) => game.decoyCancelled ? 0 : 10
+	},
+	meve_princess: {
+		description: "If the opponent has a total of 10 or higher on one row, destroy that row's strongest card(s) (affects only the opponent's side of the battle field).",
+		activated: async (card, player) => {
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			if (!(player.controller instanceof ControllerAI))
+				ui.setSelectable(card, true);
+		},
+		weight: (card, ai, max) => {
+			return Math.max(ai.weightScorchRow(card, max, "close"), ai.weightScorchRow(card, max, "ranged"), ai.weightScorchRow(card, max, "siege"));
+		}
+	},
+	shield_c: {
+		name: "Wyvern Scale Shield",
+		description: "Protects units in the Melee row from all abilities except weather effects.",
+		weight: (card) => 20
+	},
+	shield_r: {
+		name: "Mantlet",
+		description: "Protects units in the Ranged row from all abilities except weather effects.",
+		weight: (card) => 20
+	},
+	shield_s: {
+		name: "Garrison",
+		description: "Protects units in the Siege row from all abilities except weather effects.",
+		weight: (card) => 20
 	}
 };

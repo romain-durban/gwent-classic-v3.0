@@ -101,5 +101,19 @@ var factions = {
 		activeAbility: false,
 		abilityUses: 0,
 		description: "Draw a card from your deck whenever you lose a round."
+	},
+	lyria_rivia: {
+		name: "Lyria & Rivia",
+		factionAbility: player => {
+			let card = new Card("lr_lyria_rivia_morale", card_dict["lr_lyria_rivia_morale"], player);
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
+			if (!(player.controller instanceof ControllerAI))
+				ui.setSelectable(card, true);
+        },
+		activeAbility: true,
+		abilityUses: 1,
+		description: "Apply a Morale Boost effect in the selected row (boost all units by 1 in this turn)."
 	}
 }
