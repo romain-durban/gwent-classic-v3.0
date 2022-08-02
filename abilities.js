@@ -133,24 +133,41 @@ var ability_dict = {
 		name: "Medic",
 		description: "Choose one card from your discard pile and play it instantly (no Heroes or Special Cards). ",
 		placed: async (card) => {
-			if (card.isLocked())
+			if (card.isLocked() || (card.holder.grave.findCards(c => c.isUnit()) <= 0))
 				return;
 			let grave = board.getRow(card, "grave", card.holder);
-			let units = card.holder.grave.findCards(c => c.isUnit());
-			if (units.length <= 0)
-				return;
-			let wrapper = {card : null};
+			let respawns = [];
+			let card_removed = false;
 			if (game.randomRespawn) {
-				 wrapper.card = grave.findCardsRandom(c => c.isUnit())[0];
-			} else if (card.holder.controller instanceof ControllerAI)
-				wrapper.card =  card.holder.controller.medic(card, grave);
-			else
-				await ui.queueCarousel(card.holder.grave, 1, (c, i) => wrapper.card=c.cards[i], c => c.isUnit(), true);
-			let res = wrapper.card;
-			grave.removeCard(res);
-			grave.addCard(res);
-			await res.animate("medic");
-			await res.autoplay(grave);
+				for (var i = 0; i < game.medicCount; i++) {
+					if (card.holder.grave.findCards(c => c.isUnit()) > 0) {
+						let res = card.holder.controller.medic(card, grave);
+						respawns.push({ card: res });
+						grave.removeCard(res);
+						card_removed = true;
+					}
+				}
+			} else if (card.holder.controller instanceof ControllerAI) {
+				for (var i = 0; i < game.medicCount; i++) {
+					if (card.holder.grave.findCards(c => c.isUnit()).length > 0) {
+						let res = card.holder.controller.medic(card, grave);
+						respawns.push({ card: res });
+						grave.removeCard(res);
+						card_removed = true;
+					}
+				}
+			} else
+				await ui.queueCarousel(card.holder.grave, game.medicCount, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+			await Promise.all(respawns.map(async wrapper => {
+				let res = wrapper.card;
+				if (!card_removed)
+					grave.removeCard(res);
+				grave.addCard(res);
+				
+				await res.animate("medic");
+				await res.autoplay(grave);
+			}));
+			
 		}
 	},
 	morale: {
@@ -767,18 +784,22 @@ var ability_dict = {
 		}
 	},
 	shield_c: {
-		name: "Wyvern Scale Shield",
+		name: "Melee Shield",
 		description: "Protects units in the Melee row from all abilities except weather effects.",
 		weight: (card) => 20
 	},
 	shield_r: {
-		name: "Mantlet",
+		name: "Ranged Shield",
 		description: "Protects units in the Ranged row from all abilities except weather effects.",
 		weight: (card) => 20
 	},
 	shield_s: {
-		name: "Garrison",
+		name: "Siege Shield",
 		description: "Protects units in the Siege row from all abilities except weather effects.",
 		weight: (card) => 20
-	}
+	},
+	meve_white_queen: {
+		description: "All medic cards can choose two unit cards from the discard pile (affects both players).",
+		gameStart: () => game.medicCount = 2
+	},
 };

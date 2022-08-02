@@ -206,7 +206,7 @@ class ControllerAI {
 			await this.horn(c);
 		else if (c.key === "spe_mardroeme")
 			await this.mardroeme(c);
-		else if (c.key === "spe_decoy")
+		else if (c.abilities.includes("decoy"))
 			await this.decoy(c, max, data);
 		else if (c.faction === "special" && c.abilities.includes("scorch"))
 			await this.scorch(c, max, data);
@@ -284,13 +284,25 @@ class ControllerAI {
 		let targ, row;
 		if (game.decoyCancelled)
 			return;
-		if (data.spy.length) {
-			let min = data.spy.reduce((a, c) => Math.min(a, c.power), Number.MAX_VALUE);
-			targ = data.spy.filter(c => c.power === min)[0];
-		} else if (data.medic.length) {
-			targ = data.medic[randomInt(data.medic.length)];
-		} else if (data.scorch.length) {
-			targ = data.scorch[randomInt(data.scorch.length)];
+		let usable_data;
+		if (card.row.length > 0) {
+			// Units with decoy ability only work on a specific row
+			if (card.row === "close" || card.row === "agile")
+				usable_data = this.countCards(board.row[2], usable_data);
+			if (card.row === "ranged" || card.row === "agile")
+				usable_data = this.countCards(board.row[1], usable_data);
+			if (card.row === "siege")
+				usable_data = this.countCards(board.row[0], usable_data);
+		} else {
+			usable_data = data;
+        }
+		if (usable_data.spy.length) {
+			let min = usable_data.spy.reduce((a, c) => Math.min(a, c.power), Number.MAX_VALUE);
+			targ = usable_data.spy.filter(c => c.power === min)[0];
+		} else if (usable_data.medic.length) {
+			targ = usable_data.medic[randomInt(usable_data.medic.length)];
+		} else if (usable_data.scorch.length) {
+			targ = usable_data.scorch[randomInt(usable_data.scorch.length)];
 		} else {
 			let pairs = max.rmax.filter((r, i) => i < 3 && r.cards.length).reduce((a, r) =>
 				r.cards.map(c => ({
@@ -1494,7 +1506,8 @@ class Row extends CardContainer {
 				case "shield_c":
 				case "shield_r":
 				case "shield_s":
-					Promise.all(this.cards.map(c => c.animate("shield")));
+					if(activate)
+						Promise.all(this.cards.filter(c => c.isUnit()).map(c => c.animate("shield")));
 					this.effects["shield"] += activate ? 1 : -1;
 					break;
 				case "bond":
@@ -1548,7 +1561,7 @@ class Row extends CardContainer {
 
 	// Calculates the current power of a card affected by row affects
 	calcCardScore(card) {
-		if (card.name === "decoy")
+		if (card.key === "spe_decoy")
 			return 0;
 		let total = card.basePower;
 		if (card.hero)
@@ -1914,6 +1927,7 @@ class Game {
 		this.roundHistory = [];
 
 		this.randomRespawn = false;
+		this.medicCount = 1;
 		this.spyPowerMult = 1;
 		this.decoyCancelled = false;
 
@@ -1934,12 +1948,19 @@ class Game {
 	initPlayers(p1, p2) {
 		let l1 = ability_dict[p1.leader.abilities[0]];
 		let l2 = ability_dict[p2.leader.abilities[0]];
+		let special_abilities = {
+			emhyr_whiteflame: false,
+			meve_white_queen: false
+		};
 		if (l1 === ability_dict["emhyr_whiteflame"] || l2 === ability_dict["emhyr_whiteflame"]) {
 			p1.disableLeader();
 			p2.disableLeader();
+			special_abilities["emhyr_whiteflame"] = true;
 		} else {
 			initLeader(p1, l1);
 			initLeader(p2, l2);
+			if (l1 === ability_dict["meve_white_queen"] || l2 === ability_dict["meve_white_queen"])
+				special_abilities["meve_white_queen"] = true;
 		}
 		if (p1.deck.faction === p2.deck.faction && p1.deck.faction === "scoiatael")
 			return;
@@ -1958,13 +1979,13 @@ class Game {
 				factions[player.deck.faction].factionAbility(player);
 		}
 		
-		return l2 === ability_dict["emhyr_whiteflame"];
+		return special_abilities;
 	}
 
 	// Sets initializes player abilities, player hands and redraw
 	async startGame() {
 		ui.toggleMusic_elem.classList.remove("music-customization");
-		var white_flame = this.initPlayers(player_me, player_op);
+		var special_abilities = this.initPlayers(player_me, player_op);
 		await Promise.all([...Array(10).keys()].map(async () => {
 			await player_me.deck.draw(player_me.hand);
 			await player_op.deck.draw(player_op.hand);
@@ -1973,7 +1994,8 @@ class Game {
 		await this.runEffects(this.gameStart);
 		if (!this.firstPlayer)
 			this.firstPlayer = await this.coinToss();
-		if (white_flame) await ui.notification("op-white-flame", 1200);
+		if (special_abilities["emhyr_whiteflame"]) await ui.notification("op-white-flame", 1200);
+		if (special_abilities["meve_white_queen"]) await ui.notification("meve_white_queen", 1200);
 		this.initialRedraw();
 		somCarta();
 	}
@@ -2596,7 +2618,7 @@ class UI {
 		if (pCard === null || card.holder.hand.cards.includes(card)) {
 			this.setSelectable(null, false);
 			this.showPreview(card);
-		} else if (pCard.key === "spe_decoy") {
+		} else if (pCard.abilities.includes("decoy")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
 			board.toHand(card, row);
@@ -2622,6 +2644,8 @@ class UI {
 		}
 		if (this.previewCard.key === "spe_decoy" || this.previewCard.abilities.includes("alzur_maker"))
 			return;
+		if (this.previewCard.abilities.includes("decoy") && row.cards.filter(c => c.isUnit()).length > 0)
+			return;	// If a unit can be selected, we cannot select the whole row
 		let card = this.previewCard;
 		let holder = card.holder;
 		this.hidePreview();
@@ -2640,6 +2664,8 @@ class UI {
 			await ability_dict[card.abilities.at(-1)].activated(card, row);
 		} else if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
 			return;
+		} else if (card.abilities.includes("decoy") && row.cards.filter(c => c.isUnit()).length > 0) {
+			return;	// If a unit can be selected, we cannot select the whole row
 		} else if (card.abilities.includes("anna_henrietta_duchess")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
@@ -2764,7 +2790,8 @@ class UI {
 			"notif-witcher_universe": "Witcher Universe used its faction ability and skipped a turn",
 			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card.",
 			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round.",
-			"notif-lyria_rivia": "Lyria & Rivia ability used - Morale Boost effect applied to a row."
+			"notif-lyria_rivia": "Lyria & Rivia ability used - Morale Boost effect applied to a row.",
+			"notif-meve_white_queen": "Lyria & Rivia leader allows both players to restore 2 units when using the medic ability."
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -2970,18 +2997,35 @@ class UI {
 			return;
 		}
 
-		if (card.key === "spe_decoy" || card.abilities.includes("alzur_maker")) {
+		if (card.abilities.includes("decoy") || card.abilities.includes("alzur_maker")) {
 			for (let i = 0; i < 6; ++i) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());
-				if (i < 3 || units.length === 0 || (card.abilities.includes("decoy") && game.decoyCancelled) ) {
+				if (i < 3 || (card.key === "spe_decoy" && units.length === 0) || (card.abilities.includes("decoy") && game.decoyCancelled) ) {
 					r.elem.classList.add("noclick");
 					r.special.elem.classList.add("noclick");
 					r.elem.classList.remove("card-selectable");
 				} else {
-					r.elem.classList.add("row-selectable");
-					alteraClicavel(r, true);
-					units.forEach(c => c.elem.classList.remove("noclick"));
+					// For unit cards with Decoy ability, filter by the appropriate row
+					if (card.abilities.includes("decoy") && card.row.length > 0) {
+						if ((card.row === "close" && i === 3) || (card.row === "ranged" && i === 4) || (card.row === "siege" && i === 5) || (card.row === "agile" && i > 2 && i < 5)) {
+							r.elem.classList.add("row-selectable");
+							// Row is selectable if it contains no unit to select, in order to play the unit itself without its effect
+							if (units.length === 0)
+								r.elem.classList.remove("noclick");
+							alteraClicavel(r, true);
+							units.forEach(c => c.elem.classList.remove("noclick"));
+						} else {
+							r.elem.classList.add("noclick");
+							r.special.elem.classList.add("noclick");
+							r.elem.classList.remove("card-selectable");
+                        }
+					} else {
+						r.elem.classList.add("row-selectable");
+						alteraClicavel(r, true);
+						units.forEach(c => c.elem.classList.remove("noclick"));
+                    }
+					
 				}
 			}
 			return;
@@ -3052,6 +3096,7 @@ class Carousel {
 		this.bExit = bExit;
 		this.title = title;
 		this.cancelled = false;
+		this.selection = [];
 
 		if (!Carousel.elem) {
 			Carousel.elem = document.getElementById("carousel");
@@ -3118,17 +3163,30 @@ class Carousel {
 	async select(event) {
 		try {
 			(event || window.event).stopPropagation();
-		} catch (err) {}
-		var label = document.getElementById("carousel_label");
-		if (label.innerText.indexOf("redraw") > -1 && label.className.indexOf("hide") == -1) tocar("redraw", false);
-		--this.count;
-		if (this.isLastSelection())
-			this.elem.classList.add("hide");
-		if (this.count <= 0)
-			ui.enablePlayer(false);
-		await this.action(this.container, this.indices[this.index]);
-		if (this.isLastSelection() && !this.cancelled)
-			return this.exit();
+		} catch (err) { }
+		// In case of multiple selections, we only do action if not already selected
+		if (this.selection.indexOf(this.indices[this.index]) < 0) {
+			var label = document.getElementById("carousel_label");
+			if (label.innerText.indexOf("redraw") > -1 && label.className.indexOf("hide") == -1) {
+				tocar("redraw", false);
+			} else {
+				this.selection.push(this.indices[this.index]);
+            }
+			--this.count;
+			if (this.isLastSelection())
+				this.elem.classList.add("hide");
+			if (this.count <= 0)
+				ui.enablePlayer(false);
+			// For redraw, we run the action right away
+			if (label.innerText.indexOf("redraw") > -1 && label.className.indexOf("hide") == -1)
+				await this.action(this.container, this.indices[this.index]);
+			if (this.isLastSelection() && !this.cancelled)
+				return this.exit();
+		} else {
+			// If already selected, remove from selection
+			this.selection.splice(this.selection.indexOf(this.indices[this.index]), 1);
+			this.count++;
+        }
 		this.update();
 	}
 
@@ -3164,10 +3222,15 @@ class Carousel {
 				getPreviewElem(this.previews[i], card);
 				this.previews[i].classList.remove("hide");
 				this.previews[i].classList.remove("noclick");
+				if (this.selection.indexOf(this.indices[curr]) >= 0)
+					this.previews[i].classList.add("selection");
+				else
+					this.previews[i].classList.remove("selection");
 			} else {
 				this.previews[i].style.backgroundImage = "";
 				this.previews[i].classList.add("hide");
 				this.previews[i].classList.add("noclick");
+				this.previews[i].classList.remove("selection");
 			}
 		}
 		ui.setDescription(this.container.cards[this.indices[this.index]], this.desc);
@@ -3175,8 +3238,12 @@ class Carousel {
 
 	// Clears and quits the current carousel
 	exit() {
-		for (let x of this.previews)
+		// Applying actions for the selection, unless if it was a redraw
+		this.selection.map(async s => await this.action(this.container, s));
+		for (let x of this.previews) {
 			x.style.backgroundImage = "";
+			x.classList.remove("selection");
+		}
 		this.elem.classList.add("hide");
 		Carousel.clearCurrent();
 		ui.quitCarousel();

@@ -106,6 +106,7 @@ var factions = {
 		name: "Lyria & Rivia",
 		factionAbility: player => {
 			let card = new Card("lr_lyria_rivia_morale", card_dict["lr_lyria_rivia_morale"], player);
+			card.removed.push(() => setTimeout(() => card.holder.grave.removeCard(card), 2000));
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
 			ui.enablePlayer(true);

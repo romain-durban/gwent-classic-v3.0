@@ -194,6 +194,14 @@ html {
 	content: "The opponent's leader cancel \A your opponent's Leader Ability";
 }
 
+#notif-meve_white_queen {
+	background-image: url(img/icons/notif_lyria_rivia.png);
+}
+
+#notif-meve_white_queen::after {
+	content: "Lyria & Rivia leader allows both players to restore \A 2 units when using the medic ability.";
+}
+
 #notif-me-first::after {
 	content: "You will go first";
 }
@@ -473,6 +481,12 @@ html {
 	background-size: cover;
 	background-position: top;
 	position: relative;
+}
+
+#carousel .selection {
+	border: .3vw solid green;
+	box-shadow: 0 0 4vw green;
+	background-origin: border-box;
 }
 
 .card-lg {

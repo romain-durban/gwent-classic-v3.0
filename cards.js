@@ -7183,6 +7183,16 @@ var ext_lr_cards = {
         "count": "1",
         "quote": "Something like the bastard child of a shield and a palisade."
     },
+    "spe_watchman": {
+        "name": "Watchman",
+        "deck": "special lyria_rivia",
+        "row": "",
+        "strength": "",
+        "ability": "shield_r",
+        "filename": "watchman",
+        "count": "1",
+        "quote": "I can't even see over this bloody thing."
+    },
     "spe_garrison": {
         "name": "Garrison",
         "deck": "special lyria_rivia",
@@ -7192,6 +7202,247 @@ var ext_lr_cards = {
         "filename": "garrison",
         "count": "1",
         "quote": "Knock, knock… anybody home?"
+    },
+    "lr_meve_white_queen": {
+        "name": "Meve: The White Queen",
+        "deck": "lyria_rivia",
+        "row": "leader",
+        "strength": "",
+        "ability": "meve_white_queen",
+        "filename": "meve_white_queen",
+        "count": "1",
+        "quote": "I've made my choice. Time you made yours."
+    },
+    "lr_piercing_missile": {
+        "name": "Piercing Missile",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "scorch_c",
+        "filename": "piercing_missile",
+        "count": "1",
+        "quote": "There's no armor that can't be pierced."
+    },
+    "lr_eavesdrop": {
+        "name": "Eavesdrop",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "spy",
+        "filename": "eavesdrop",
+        "count": "1",
+        "quote": "There are always more ears in the room than those you can count."
+    },
+    "lr_trebuchet": {
+        "name": "Lyrian Trebuchet",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "9",
+        "ability": "",
+        "filename": "trebuchet",
+        "count": "1",
+        "quote": "Feel that? The earth trembles each time Big Bertha loose a stone."
+    },
+    "lr_arbalest": {
+        "name": "Lyrian Arbalest",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "arbalest",
+        "count": "3",
+        "target": "lr_arbalest",
+        "quote": "I can find the bull's-eye from a hundred paces! Perhaps not with my first shot, mind you..."
+    },
+    "lr_spellweaver": {
+        "name": "Spellweaver",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "spellweaver",
+        "count": "1",
+        "quote": "Reality is so terribly tedious..."
+    },
+    "lr_forager": {
+        "name": "Forager",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "forager",
+        "count": "1",
+        "quote": "If you'll not be needin' it, I'm willin' to take it off your hands..."
+    },
+    "lr_sapper": {
+        "name": "Rivian Sapper",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "scorch",
+        "filename": "sapper",
+        "count": "1",
+        "quote": "First Nilfgaardian who tried to slip 'cross our line was a right sneaky bastard."
+    },
+    "lr_villem": {
+        "name": "Prince Villem",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "villem",
+        "count": "1",
+        "quote": "The boy's not fit to wear the crown. Hasn't sufficient wit nor valor."
+    },
+    "lr_scout": {
+        "name": "Scout",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "5",
+        "ability": "spy",
+        "filename": "scout",
+        "count": "1",
+        "quote": "If our scouts don't come back, we turn around."
+    },
+    "lr_winch": {
+        "name": "Winch",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "5",
+        "ability": "morale",
+        "filename": "winch",
+        "count": "1",
+        "quote": "It's a winch. Not much to flap your jaw about."
+    },
+    "lr_banner": {
+        "name": "Lyrian Banner",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "2",
+        "ability": "horn",
+        "filename": "banner",
+        "count": "1",
+        "quote": "Our emblem? A black eagle. Fate of our foes? Pure misery."
+    },
+    "lr_scytheman_1": {
+        "name": "Lyrian Scytheman",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "3",
+        "ability": "decoy",
+        "filename": "scytheman",
+        "count": "1",
+        "quote": "Our folk they feed, and our foes they bleed."
+    },
+    "lr_scytheman_2": {
+        "name": "Lyrian Scytheman",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "decoy",
+        "filename": "scytheman",
+        "count": "1",
+        "quote": "Our folk they feed, and our foes they bleed."
+    },
+    "lr_scytheman_3": {
+        "name": "Lyrian Scytheman",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "3",
+        "ability": "decoy",
+        "filename": "scytheman",
+        "count": "1",
+        "quote": "Our folk they feed, and our foes they bleed."
+    },
+    "lr_caldwell": {
+        "name": "Count Caldwell",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "9",
+        "ability": "hero spy",
+        "filename": "caldwell",
+        "count": "1",
+        "quote": "Your Majesty... For the queen to question commoners, why, it's simply not proper..."
+    },
+    "lr_physician": {
+        "name": "Physician",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "3",
+        "ability": "medic",
+        "filename": "physician",
+        "count": "1",
+        "quote": "Do not twitch, lie still..."
+    },
+    "lr_pyrokinesis": {
+        "name": "Pyrokinesis",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "",
+        "filename": "pyrokinesis",
+        "count": "1",
+        "quote": "I really hope that's boot leather I smell burning..."
+    },
+    "lr_carroballista": {
+        "name": "Carroballista",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "10",
+        "ability": "",
+        "filename": "carroballista",
+        "count": "1",
+        "quote": "This ballista's on the wagon."
+    },
+    "lr_artificer": {
+        "name": "Artificer",
+        "deck": "lyria_rivia",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "artificer",
+        "count": "1",
+        "quote": "What shall I call it? Perhaps Andúril..."
+    },
+    "lr_siege": {
+        "name": "Siege",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "6",
+        "ability": "scorch",
+        "filename": "siege",
+        "count": "1",
+        "quote": "There's no fortress that can't be taken. There are just fortresses not worth taking."
+    },
+    "lr_onager": {
+        "name": "Rivian Onager",
+        "deck": "lyria_rivia",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "onager",
+        "count": "1",
+        "quote": "For Riviaaa!"
+    },
+    "lr_blacksmith": {
+        "name": "Lyrian Blacksmith",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "4",
+        "ability": "morale",
+        "filename": "blacksmith",
+        "count": "1",
+        "quote": "Somethin' from nothin'... my speciality."
+    },
+    "lr_peasant_militia": {
+        "name": "Peasant Militia",
+        "deck": "lyria_rivia",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "peasant_militia",
+        "count": "1",
+        "quote": "We's the militia. We keep the peace."
     }
 };
 

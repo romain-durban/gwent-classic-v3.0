@@ -1035,6 +1035,40 @@ var custom_decks = [
             ["spe_wyvern_shield", 1],
             ["spe_mantlet", 1]
         ]
+    },
+    {
+        "title": "Lyria & Rivia - Rear Guard",
+        "description": "Lyria & Rivia deck focusing on cards of the rear guard (Ranged/Siege) - Playstyle: Scorch, Spy, Medic",
+        "leader": "lr_meve_white_queen",
+        "faction": "lyria_rivia",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_decoy", 1],
+            ["spe_frost", 2],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["spe_garrison", 1],
+            ["lr_piercing_missile", 1],
+            ["lr_eavesdrop", 1],
+            ["lr_trebuchet", 1],
+            ["lr_arbalest", 3],
+            ["lr_spellweaver", 1],
+            ["lr_forager", 1],
+            ["lr_sapper", 1],
+            ["lr_villem", 1],
+            ["lr_scout", 1],
+            ["lr_winch", 1],
+            ["lr_banner", 1],
+            ["lr_scytheman_2", 1],
+            ["lr_scytheman_3", 1],
+            ["lr_caldwell", 1],
+            ["lr_physician", 1],
+            ["lr_pyrokinesis", 1],
+            ["lr_carroballista", 1],
+            ["lr_artificer", 1],
+            ["lr_siege", 1],
+            ["lr_onager", 1]
+        ]
     }
 ];
 
