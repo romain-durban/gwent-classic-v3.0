@@ -62,7 +62,7 @@ var ability_dict = {
 			await board.toGrave(card, card.holder.hand);
 		},
 		placed: async (card, row) => {
-			if (card.isLocked())
+			if (card.isLocked() || game.scorchCancelled)
 				return;
 			if (row !== undefined)
 				row.cards.splice(row.cards.indexOf(card), 1);
@@ -137,37 +137,38 @@ var ability_dict = {
 				return;
 			let grave = board.getRow(card, "grave", card.holder);
 			let respawns = [];
-			let card_removed = false;
 			if (game.randomRespawn) {
 				for (var i = 0; i < game.medicCount; i++) {
 					if (card.holder.grave.findCards(c => c.isUnit()) > 0) {
-						let res = card.holder.controller.medic(card, grave);
-						respawns.push({ card: res });
+						let res = grave.findCardsRandom(c => c.isUnit())[0];
 						grave.removeCard(res);
-						card_removed = true;
+						grave.addCard(res);
+						await res.animate("medic");
+						await res.autoplay(grave);
 					}
 				}
+				return;
 			} else if (card.holder.controller instanceof ControllerAI) {
 				for (var i = 0; i < game.medicCount; i++) {
 					if (card.holder.grave.findCards(c => c.isUnit()).length > 0) {
 						let res = card.holder.controller.medic(card, grave);
-						respawns.push({ card: res });
 						grave.removeCard(res);
-						card_removed = true;
+						grave.addCard(res);
+						await res.animate("medic");
+						await res.autoplay(grave);
 					}
 				}
-			} else
-				await ui.queueCarousel(card.holder.grave, game.medicCount, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+				return;
+			}
+
+			await ui.queueCarousel(card.holder.grave, game.medicCount, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
 			await Promise.all(respawns.map(async wrapper => {
 				let res = wrapper.card;
-				if (!card_removed)
-					grave.removeCard(res);
+				grave.removeCard(res);
 				grave.addCard(res);
-				
 				await res.animate("medic");
 				await res.autoplay(grave);
 			}));
-			
 		}
 	},
 	morale: {
@@ -531,6 +532,42 @@ var ability_dict = {
 			if (card.holder.hand.cards.length === 0)
 				return 0;
 			return 15;
+		}
+	},
+	radovid_stern: {
+		description: "Discard 2 cards and draw 1 card of your choice from your deck.",
+		activated: async (card) => {
+			let hand = board.getRow(card, "hand", card.holder);
+			let deck = board.getRow(card, "deck", card.holder);
+			if (card.holder.controller instanceof ControllerAI) {
+				let cards = card.holder.controller.discardOrder(card).splice(0, 2).filter(c => c.basePower < 7);
+				await Promise.all(cards.map(async c => await board.toGrave(c, card.holder.hand)));
+				card.holder.deck.draw(card.holder.hand);
+				return;
+			} else {
+				try {
+					Carousel.curr.exit();
+				} catch (err) { }
+			}
+			await ui.queueCarousel(hand, 2, (c, i) => board.toGrave(c.cards[i], c), () => true);
+			await ui.queueCarousel(deck, 1, (c, i) => board.toHand(c.cards[i], deck), () => true, true);
+		},
+		weight: (card, ai) => {
+			let cards = ai.discardOrder(card).splice(0, 2).filter(c => c.basePower < 7);
+			if (cards.length < 2)
+				return 0;
+			return cards[0].abilities.includes("muster") ? 50 : 25;
+		}
+	},
+	radovid_ruthless: {
+		description: "Cancel the scorch ability for one round",
+		activated: async card => {
+			game.scorchCancelled = true;
+			await ui.notification("north-scorch-cancelled", 1200);
+			game.roundStart.push(async () => {
+				game.scorchCancelled = false;
+				return true;
+			});
 		}
 	},
 	vilgefortz_magician_kovir: {

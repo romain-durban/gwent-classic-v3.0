@@ -304,24 +304,32 @@ class ControllerAI {
 		} else if (usable_data.scorch.length) {
 			targ = usable_data.scorch[randomInt(usable_data.scorch.length)];
 		} else {
-			let pairs = max.rmax.filter((r, i) => i < 3 && r.cards.length).reduce((a, r) =>
+			let pairs = max.rmax.filter((r, i) => i < 3 && r.cards.length)
+				.filter((r, i) => card.row.length === 0 || (["close", "agile"].includes(card.row) && i === 2) || (["ranged", "agile"].includes(card.row) && i === 1) || (card.row === "siege" && i === 0))
+				.reduce((a, r) =>
 				r.cards.map(c => ({
 					r: r.row,
 					c: c
 				})).concat(a), []);
-			let pair = pairs[randomInt(pairs.length)];
-			targ = pair.c;
-			row = pair.r;
+			
+			if (pairs.length) {
+				let pair = pairs[randomInt(pairs.length)];
+				targ = pair.c;
+				row = pair.r;
+            }
 		}
 
-		for (let i = 0; !row; ++i) {
-			if (board.row[i].cards.indexOf(targ) !== -1) {
-				row = board.row[i];
-				break;
+		if (targ) {
+			for (let i = 0; !row; ++i) {
+				if (board.row[i].cards.indexOf(targ) !== -1) {
+					row = board.row[i];
+					break;
+				}
 			}
-		}
-
-		setTimeout(() => board.toHand(targ, row), 1000);
+			setTimeout(() => board.toHand(targ, row), 1000);
+		} else {
+			row = ["close", "agile"].includes(card.row) ? board.row[2] : card.row === "ranged" ? board.row[1] : board.row[0];
+        }
 		await this.player.playCardToRow(card, row);
 	}
 
@@ -430,6 +438,8 @@ class ControllerAI {
 
 	// Assigns a weight for how likely the controller will use a scorch-row card
 	weightScorchRow(card, max, row_name) {
+		if (game.scorchCancelled)
+			return 0;
 		let index = 3 + (row_name === "close" ? 0 : row_name === "ranged" ? 1 : 2);
 		if (board.row[index].total < 10 || board.row[index].isShielded() )
 			return 0;
@@ -579,8 +589,19 @@ class ControllerAI {
 			console.log("Missing abilities for card:");
 			console.log(card);
 		}
-		if (abi.includes("decoy"))
-			return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
+		if (abi.includes("decoy")) {
+			if (card.row.length > 0) {
+				let row_data;
+				if (card.row === "close" || card.row === "agile")
+					row_data = this.countCards(board.row[2], row_data);
+				if (card.row === "ranged" || card.row === "agile")
+					row_data = this.countCards(board.row[1], row_data);
+				if (card.row === "siege")
+					row_data = this.countCards(board.row[0], row_data);
+				return game.decoyCancelled ? 0 : row_data.spy.length ? 50 : row_data.medic.length ? 15 : row_data.scorch.length ? 10 : max.me.length ? card.power : 0;
+            } else
+				return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
+		}
 		if (abi.includes("horn")) {
 			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn"));
 			if (!rows.length)
@@ -591,6 +612,8 @@ class ControllerAI {
 
 		if (abi) {
 			if (abi.includes("scorch")) {
+				if (game.scorchCancelled)
+					return Math.max(0, card.power);
 				let power_op = max.op_noshield.length ? max.op_noshield[0].card.power : 0;
 				let power_me = max.me_noshield.length ? max.me_noshield[0].card.power : 0;
 				let total_op = power_op * max.op_noshield.length;
@@ -798,7 +821,8 @@ class Player {
 
 	// Plays a scorch card
 	async playScorch(card) {
-		await this.playCardAction(card, async () => await ability_dict["scorch"].activated(card));
+		if(!game.scorchCancelled)
+			await this.playCardAction(card, async () => await ability_dict["scorch"].activated(card));
 	}
 
 	// Plays a Slaughter of Cintra card
@@ -1605,7 +1629,7 @@ class Row extends CardContainer {
 
 	// Applies a local scorch effect to this row
 	async scorch() {
-		if (this.total >= 10 && !this.isShielded())
+		if (this.total >= 10 && !this.isShielded() && !game.scorchCancelled)
 			await Promise.all(this.maxUnits().map(async c => {
 				await c.animate("scorch", true, false);
 				await board.toGrave(c, this);
@@ -1671,6 +1695,8 @@ class Row extends CardContainer {
 
 	// True if at least 1 unit and total of power >= 10
 	canBeScorched() {
+		if (game.scorchCancelled)
+			return false;
 		return (this.cards.reduce((a, c) => a + c.power, 0) >= 10) && (this.cards.filter(c => c.isUnit()).length > 0);
     }
 }
@@ -1930,6 +1956,7 @@ class Game {
 		this.medicCount = 1;
 		this.spyPowerMult = 1;
 		this.decoyCancelled = false;
+		this.scorchCancelled = false;
 
 		// Also resetting some board/row properties affected during the course of a game
 		if (board) {
@@ -2652,7 +2679,8 @@ class UI {
 		this.enablePlayer(false);
 		if (card.faction === "special" && card.abilities.includes("scorch")) {
 			this.hidePreview();
-			await ability_dict["scorch"].activated(card);
+			if (!game.scorchCancelled)
+				await ability_dict["scorch"].activated(card);
 		} else if (card.faction === "special" && card.abilities.includes("cintra_slaughter")) {
 			this.hidePreview();
 			await ability_dict["cintra_slaughter"].activated(card);
@@ -2677,7 +2705,8 @@ class UI {
 		} else if (card.abilities.includes("meve_princess")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
-			await row.scorch();
+			if (!game.scorchCancelled)
+				await row.scorch();
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
 		}
@@ -2791,7 +2820,8 @@ class UI {
 			"notif-toussaint": "Toussaint faction ability triggered - Toussaint draws an additional card.",
 			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round.",
 			"notif-lyria_rivia": "Lyria & Rivia ability used - Morale Boost effect applied to a row.",
-			"notif-meve_white_queen": "Lyria & Rivia leader allows both players to restore 2 units when using the medic ability."
+			"notif-meve_white_queen": "Lyria & Rivia leader allows both players to restore 2 units when using the medic ability.",
+			"notif-north-scorch-cancelled": "Northern Realms Leader ability used - Scorch ability cancelled for the rest of the round.",
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -2852,9 +2882,9 @@ class UI {
 			return;
 		}
 		let carousel = new Carousel(container, count, action, predicate, bSort, bQuit, title);
-		if (Carousel.curr === undefined || Carousel.curr === null)
+		if (Carousel.curr === undefined || Carousel.curr === null) {
 			carousel.start();
-		else {
+		}  else {
 			this.carousels.push(carousel);
 			return;
 		}
@@ -2915,7 +2945,7 @@ class UI {
 		// Affects all board
 		if (card.faction === "special" && card.abilities.includes("scorch")) {
 			for (let r of board.row) {
-				if (r.isShielded()) {
+				if (r.isShielded() || game.scorchCancelled) {
 					r.elem.classList.add("noclick");
 					r.special.elem.classList.add("noclick");
 				} else {
@@ -3124,6 +3154,7 @@ class Carousel {
 		if (!this.elem)
 			return;
 		this.indices = this.container.cards.reduce((a, c, i) => (!this.predicate || this.predicate(c)) ? a.concat([i]) : a, []);
+		
 		if (this.indices.length <= 0)
 			return this.exit();
 		if (this.bSort)
@@ -3180,8 +3211,13 @@ class Carousel {
 			// For redraw, we run the action right away
 			if (label.innerText.indexOf("redraw") > -1 && label.className.indexOf("hide") == -1)
 				await this.action(this.container, this.indices[this.index]);
-			if (this.isLastSelection() && !this.cancelled)
-				return this.exit();
+			if (this.isLastSelection() && !this.cancelled) {
+				this.exit();
+				this.selection.map(async s => await this.action(this.container, s));
+				this.selection = [];
+				return;
+            }
+				
 		} else {
 			// If already selected, remove from selection
 			this.selection.splice(this.selection.indexOf(this.indices[this.index]), 1);
@@ -3238,8 +3274,6 @@ class Carousel {
 
 	// Clears and quits the current carousel
 	exit() {
-		// Applying actions for the selection, unless if it was a redraw
-		this.selection.map(async s => await this.action(this.container, s));
 		for (let x of this.previews) {
 			x.style.backgroundImage = "";
 			x.classList.remove("selection");

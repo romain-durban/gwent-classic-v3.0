@@ -3357,6 +3357,196 @@ var ext_nr_cards = {
         "filename": "fake_ciri",
         "count": "1",
         "quote": "It is a dull name. A name just right for somebody who's a nobody. As long as a am Cirilla Fiona I mean something."
+    },
+    "nr_radovid_stern": {
+        "name": "Radovid V: the Stern",
+        "deck": "realms",
+        "row": "leader",
+        "strength": "",
+        "ability": "radovid_stern",
+        "filename": "radovid_stern",
+        "count": "1",
+        "quote": "They say chess teaches one ot think strategically. What a load of rubbish!"
+    },
+    "nr_radovid_ruthless": {
+        "name": "Radovid V: the Ruthless",
+        "deck": "realms",
+        "row": "leader",
+        "strength": "",
+        "ability": "radovid_ruthless",
+        "filename": "radovid_ruthless",
+        "count": "1",
+        "quote": "A king should be merciless towards his enemies and generous to his friends."
+    },
+    "nr_redanian_elite": {
+        "name": "Redanian Elite",
+        "deck": "realms",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "redanian_elite",
+        "count": "1",
+        "quote": "I'll die for Redania, I'll kill for Redania… I'll even eat worms for Redania!"
+    },
+    "nr_donimir_troy": {
+        "name": "Donimir of Troy",
+        "deck": "realms",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "donimir_troy",
+        "count": "1",
+        "quote": "I fought twice at Sodden and lived. I think you can surmise I'm not so bad at this sword thing."
+    },
+    "nr_joachim_gratz": {
+        "name": "Joachim von Gratz",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "joachim_gratz",
+        "count": "1",
+        "quote": "Chief surgeon at Vilmerius Hospital was a cool-headed doctor."
+    },
+    "nr_hedwig_malleore": {
+        "name": "Hedwig of Malleore",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "5",
+        "ability": "hero medic",
+        "filename": "hedwig_malleore",
+        "count": "1",
+        "quote": "Queen of Redania, mother of Radovid, figure-head to the Regency Council."
+    },
+    "nr_ewald_borsodi": {
+        "name": "Ewald Borsodi",
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "ewald_borsodi",
+        "count": "1",
+        "quote": "I've crafted this plan for over a year, but now the time's come for action. Can I count on your help?"
+    },
+    "nr_horst_borsodi": {
+        "name": "Horst Borsodi",
+        "deck": "realms",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "horst_borsodi",
+        "count": "1",
+        "quote": "My auction house is, above all, a gathering place for the elite of the elite."
+    },
+    "nr_flying_redanian": {
+        "name": "Flying Redanian",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "10",
+        "ability": "",
+        "filename": "flying_redanian",
+        "count": "1",
+        "quote": "Legend tells of a Redanian crew from generations past..."
+    },
+    "nr_redanian_knight": {
+        "name": "Redanian Knight",
+        "deck": "realms",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "redanian_knight",
+        "count": "1",
+        "quote": "For glory! For Radovid!"
+    },
+    "nr_shani": {
+        "name": "Shani",
+        "deck": "realms",
+        "row": "agile",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "shani",
+        "count": "1",
+        "quote": "I'm a medic. I tend to know what I'm doing when I prescribe something."
+    },
+    "nr_milo_vanderbeck": {
+        "name": "Milo Vanderbeck",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "milo_vanderbeck",
+        "count": "1",
+        "quote": "He's lying on my table. And to me, as I hum to myself, a duke's worth a jester."
+    },
+    "nr_vizimir": {
+        "name": "Vizimir the Just",
+        "deck": "realms",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "vizimir",
+        "count": "1",
+        "quote": "Vizimir II, known as the Just, was the king of Redania and the son of Heribert."
+    },
+    "nr_marching_orders": {
+        "name": "Marching Orders",
+        "deck": "realms",
+        "row": "agile",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "marching_orders",
+        "count": "1",
+        "quote": "We are but pawns in a game played by old men, sent to fight and die on their senile whims..."
+    },
+    "nr_eyck_denesle": {
+        "name": "Eyck of Denesle",
+        "deck": "realms",
+        "row": "close",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "eyck_denesle",
+        "count": "1",
+        "quote": "The Good Book says the world is a garden which the gods once conferred upon man."
+    },
+    "nr_radovid_royal_guards": {
+        "name": "Radovid Royal Guards",
+        "deck": "realms",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "radovid_royal_guards",
+        "count": "1",
+        "quote": "They'll do anything for their king. They know what he'll do to them if they refuse."
+    },
+    "nr_redanian_archer": {
+        "name": "Redanian Archer",
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "redanian_archer",
+        "count": "1",
+        "quote": "The last thing you'll hear is the twang of the bowstring being let go."
+    },
+    "nr_trollololo": {
+        "name": "Trollololo",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "8",
+        "ability": "",
+        "filename": "trollololo",
+        "count": "1",
+        "quote": "Join me King Ravodid army. Order got – guard boatses."
+    },
+    "nr_royal_decree": {
+        "name": "Royal Decree",
+        "deck": "realms",
+        "row": "siege",
+        "strength": "1",
+        "ability": "hero horn",
+        "filename": "royal_decree",
+        "count": "1",
+        "quote": "...do hereby decree the following..."
     }
 };
 

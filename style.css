@@ -290,12 +290,16 @@ html {
 	content: "Opponent's turn";
 }
 
-#notif-north {
+#notif-north, #notif-north-scorch-cancelled {
 	background-image: url(img/icons/notif_north.png);
 }
 
 #notif-north::after {
 	content: "Northern Realms faction ability triggered: \A North draws an additional card.";
+}
+
+#notif-north-scorch-cancelled::after {
+	content: "Northern Realms leader ability used: \A Scorch ability cancelled for the rest of the round.";
 }
 
 #notif-monsters {
