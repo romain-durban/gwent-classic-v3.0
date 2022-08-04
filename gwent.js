@@ -134,20 +134,22 @@ class ControllerAI {
 		};
 		container.cards.filter(c => c.isUnit()).forEach(c => {
 			for (let x of c.abilities) {
-				switch (x) {
-					case "spy":
-					case "medic":
-						data[x].push(c);
-						break;
-					case "scorch_r":
-					case "scorch_c":
-					case "scorch_s":
-						data["scorch"].push(c);
-						break;
-					case "bond":
-						if (!data.bond[c.target])
-							data.bond[c.target] = 0;
-						data.bond[c.target]++;
+				if (!c.isLocked()) {
+					switch (x) {
+						case "spy":
+						case "medic":
+							data[x].push(c);
+							break;
+						case "scorch_r":
+						case "scorch_c":
+						case "scorch_s":
+							data["scorch"].push(c);
+							break;
+						case "bond":
+							if (!data.bond[c.target])
+								data.bond[c.target] = 0;
+							data.bond[c.target]++;
+					}
 				}
 			}
 		});
@@ -268,7 +270,7 @@ class ControllerAI {
 			let min = data.spy.reduce((a, c) => Math.min(a, c.power), Number.MAX_VALUE);
 			targ = data.spy.filter(c => c.power === min)[0];
 		} else if (data.medic.length) {
-			let max = data.medic.reduce((a, c) => Math.max(a, c.power), Number.MIN_VALUE);
+			let max = data.medic.reduce((a, c) => Math.max(a, c.power), 0);
 			targ = data.medic.filter(c => c.power === max)[0];
 		} else if (data.scorch.length) {
 			targ = data.scorch[randomInt(data.scorch.length)];
@@ -326,6 +328,7 @@ class ControllerAI {
 					break;
 				}
 			}
+			targ.decoyTarget = true;
 			setTimeout(() => board.toHand(targ, row), 1000);
 		} else {
 			row = ["close", "agile"].includes(card.row) ? board.row[2] : card.row === "ranged" ? board.row[1] : board.row[0];
@@ -925,7 +928,7 @@ class Player {
 						let horns = player_me.getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
 						if (horns[0])
 							ui.selectRow(horns[0]);
-					} else if (this.leader.key === "lr_meve_princess") {
+					} else if (this.leader.key === "lr_meve_princess" || this.leader.key === "sy_carlo_varese") {
 						let max = this.controller.getMaximums();
 						let rows = [this.controller.weightScorchRow(this.leader, max, "close"), this.controller.weightScorchRow(this.leader, max, "ranged"), this.controller.weightScorchRow(this.leader, max, "siege")];
 						let maxv = 0, max_row;
@@ -933,10 +936,13 @@ class Player {
 							if (rows[i] > maxv) {
 								maxv = rows[i];
 								max_row = board.row[3 + i];
-                            }
+							}
 						}
 						if (max_row)
 							ui.selectRow(max_row);
+					} else if (this.leader.key === "sy_cyrus_hemmelfart") {
+						// We select a random row to put shackles on
+						ui.selectRow(board.row[3+randomInt(2)]);
 					}
 				} 
             }
@@ -1466,14 +1472,17 @@ class Row extends CardContainer {
 			this.resize();
 		}
 		card.currentLocation = this;
-		if (this.effects.lock && card.abilities.length) {
+		if (this.effects.lock && card.isUnit() && card.abilities.length) {
 			card.locked = true;
 			await card.animate("lock")
-			this.effects.lock -= 1;
-			await board.toGrave(this.special.findCard(c => c.abilities.includes("lock")), this.special);
+			this.effects.lock = Math.max(this.effects.lock - 1, 0);
+			let lock_card = this.special.findCard(c => c.abilities.includes("lock"));
+			// If several units arrive at the same time, it will be triggered several times
+			if (lock_card)
+				await board.toGrave(lock_card, this.special);
         }
-		this.updateState(card, true);
 		if (runEffect && !card.isLocked()) {
+			this.updateState(card, true);
 			for (let x of card.placed)
 				await x(card, this);
 		}
@@ -1500,8 +1509,13 @@ class Row extends CardContainer {
 		}
 		this.updateState(card, false);
 		if (runEffect) {
-			for (let x of card.removed)
-				x(card);
+			if (!card.decoyTarget) {
+				for (let x of card.removed)
+					x(card);
+			} else {
+				card.decoyTarget = false;
+            }
+			
         }
 		this.updateScore();
 		return card;
@@ -1518,27 +1532,29 @@ class Row extends CardContainer {
 	// Updates a card's effect on the row
 	updateState(card, activate) {
 		for (let x of card.abilities) {
-			switch (x) {
-				case "morale":
-				case "horn":
-				case "mardroeme":
-				case "lock":
-				case "toussaint_wine":
-					this.effects[x] += activate ? 1 : -1;
-					break;
-				case "shield":
-				case "shield_c":
-				case "shield_r":
-				case "shield_s":
-					if(activate)
-						Promise.all(this.cards.filter(c => c.isUnit()).map(c => c.animate("shield")));
-					this.effects["shield"] += activate ? 1 : -1;
-					break;
-				case "bond":
-					if (!this.effects.bond[card.target])
-						this.effects.bond[card.target] = 0;
-					this.effects.bond[card.target] += activate ? 1 : -1;
-					break;
+			if (!card.isLocked()) {
+				switch (x) {
+					case "morale":
+					case "horn":
+					case "mardroeme":
+					case "lock":
+					case "toussaint_wine":
+						this.effects[x] += activate ? 1 : -1;
+						break;
+					case "shield":
+					case "shield_c":
+					case "shield_r":
+					case "shield_s":
+						if (activate)
+							Promise.all(this.cards.filter(c => c.isUnit()).map(c => c.animate("shield")));
+						this.effects["shield"] += activate ? 1 : -1;
+						break;
+					case "bond":
+						if (!this.effects.bond[card.target])
+							this.effects.bond[card.target] = 0;
+						this.effects.bond[card.target] += activate ? 1 : -1;
+						break;
+				}
 			}
 		}
 	}
@@ -1875,7 +1891,7 @@ class Board {
 		await row.addCard(card);
 	}
 
-	// Returns the CardCard associated with the row name that the card would be sent to
+	// Returns the Card associated with the row name that the card would be sent to
 	getRow(card, row_name, player) {
 		player = player ? player : card ? card.holder : player_me;
 		let isMe = player === player_me;
@@ -2235,6 +2251,7 @@ class Card {
 		this.activated = [];
 		this.holder = player;
 		this.locked = false;
+		this.decoyTarget = false;
 		this.target = "";
 		this.currentLocation = board;	// By default, updated later
 		if ("target" in card_data) {
@@ -2376,7 +2393,7 @@ class Card {
 
 	// Returns true if card is sent to a Row's special slot
 	isSpecial() {
-		return ["spe_horn", "spe_mardroeme", "spe_sign_quen", "spe_sign_yrden", "spe_toussaint_wine", "lr_lyria_rivia_morale", "spe_wyvern_shield", "spe_mantlet", "spe_garrison"].includes(this.key);
+		return ["spe_horn", "spe_mardroeme", "spe_sign_quen", "spe_sign_yrden", "spe_toussaint_wine", "lr_lyria_rivia_morale", "spe_wyvern_shield", "spe_mantlet", "spe_garrison", "spe_dimeritium_shackles"].includes(this.key);
 	}
 
 	// Compares by type then power then name
@@ -2648,6 +2665,7 @@ class UI {
 		} else if (pCard.abilities.includes("decoy")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
+			card.decoyTarget = true;
 			board.toHand(card, row);
 			await board.moveTo(pCard, row, pCard.holder.hand);
 			pCard.holder.endTurn();
@@ -2702,11 +2720,19 @@ class UI {
 				await board.toGrave(horn, row);
 		} else if (card.key === "lr_lyria_rivia_morale") {
 			await board.moveTo(card, row);
-		} else if (card.abilities.includes("meve_princess")) {
+		} else if (card.abilities.includes("meve_princess") || card.abilities.includes("carlo_varese")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
 			if (!game.scorchCancelled)
 				await row.scorch();
+		} else if (card.abilities.includes("cyrus_hemmelfart")) {
+			this.hidePreview(card);
+			this.enablePlayer(false);
+			let new_card = new Card("spe_dimeritium_shackles", card_dict["spe_dimeritium_shackles"], card.holder);
+			await board.moveTo(new_card, row);
+		} else if (card.faction === "special" && card.abilities.includes("bank")) {
+			this.hidePreview();
+			await ability_dict["bank"].activated(card);
 		} else {
 			await board.moveTo(card, row, card.holder.hand);
 		}
@@ -2957,7 +2983,7 @@ class UI {
 			return;
 		}
 		// Affects only own side of board
-		if (card.faction === "special" && card.abilities.includes("cintra_slaughter")) {
+		if (card.faction === "special" && (card.abilities.includes("cintra_slaughter") || card.abilities.includes("bank"))) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
 				if (i > 2) {
@@ -3077,7 +3103,7 @@ class UI {
 		}
 
 		// Target only enemy rows
-		if (card.abilities.includes("meve_princess")) {
+		if (card.abilities.includes("meve_princess") || card.abilities.includes("carlo_varese")) {
 			for (let i = 0; i < 3; ++i) {
 				let r = board.row[i];
 				if (r.isShielded() || !r.canBeScorched()) {
@@ -3090,7 +3116,23 @@ class UI {
 				}
 			}
 			return;
-        }
+		}
+
+		// Play special card on any opponent row, provided it doesn't already have one
+		if (card.abilities.includes("cyrus_hemmelfart")) {
+			for (let i = 0; i < 3; ++i) {
+				let r = board.row[i];
+				if (r.containsCardByKey("spe_dimeritium_shackles") || r.isShielded()) {
+					r.elem.classList.add("noclick");
+					r.special.elem.classList.add("noclick");
+					r.elem.classList.remove("card-selectable");
+				} else {
+					r.elem.classList.add("row-selectable");
+					alteraClicavel(r, true);
+				}
+			}
+			return;
+		}
 
 		let currRows = card.row === "agile" ? [board.getRow(card, "close", card.holder), board.getRow(card, "ranged", card.holder)] : [board.getRow(card, card.row, card.holder)];
 		for (let i = 0; i < 6; i++) {

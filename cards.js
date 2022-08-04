@@ -3543,10 +3543,30 @@ var ext_nr_cards = {
         "deck": "realms",
         "row": "siege",
         "strength": "1",
-        "ability": "hero horn",
+        "ability": "horn",
         "filename": "royal_decree",
         "count": "1",
         "quote": "...do hereby decree the following..."
+    },
+    "nr_voymir": {
+        "name": "Voymir",
+        "deck": "realms",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "voymir",
+        "count": "1",
+        "quote": "Quietly, on tiptoes, no noise, no fuss. Through the back alleys. In Loxia and the port keep your mouth shut! Go!"
+    },
+    "nr_mage_infiltrator": {
+        "name": "Mage Infiltrator",
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "mage_infiltrator",
+        "count": "1",
+        "quote": "In her spare time, she likes playing practical jokes on others. Her favorite gag is switching footwraps and headwear."
     }
 };
 
@@ -7636,6 +7656,1102 @@ var ext_lr_cards = {
     }
 };
 
+var ext_sy_cards = {
+    "sy_carlo_varese": {
+        "name": "Carlo Varese: Cleaver",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "carlo_varese",
+        "filename": "carlo_varese",
+        "count": "1",
+        "quote": "Me hogs willnae go hungry th' day thanks to ye."
+    },
+    "sy_francis_bedlam": {
+        "name": "Francis Bedlam: King of Beggars",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "francis_bedlam",
+        "filename": "francis_bedlam",
+        "count": "1",
+        "quote": "You say tribute, I say taxes."
+    },
+    "sy_cyprian_wiley": {
+        "name": "Cyprian Wiley: Whoreson Junior",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "cyprian_wiley",
+        "filename": "cyprian_wiley",
+        "count": "1",
+        "quote": "A war with Whoreson will see Novigrad's gutters run red with blood."
+    },
+    "sy_gudrun_bjornsdottir": {
+        "name": "Gudrun Bjornsdottir: Pirate Queen",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "gudrun_bjornsdottir",
+        "filename": "gudrun_bjornsdottir",
+        "count": "1",
+        "quote": "She found her freedom among blue waters and salty wind."
+    },
+    "sy_cyrus_hemmelfart": {
+        "name": "Cyrus Hemmelfart: Hierarch of Novigrad",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "cyrus_hemmelfart",
+        "filename": "cyrus_hemmelfart",
+        "count": "1",
+        "quote": "Beneath all that lust, greed, and vanity, stands an honorable man."
+    },
+    "sy_sigi_reuven": {
+        "name": "Sigi Reuven",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero morale",
+        "filename": "sigi_reuven",
+        "count": "0",
+        "quote": "You sure he don't look the least bit familar...?"
+    },
+    "sy_flyndr_crew": {
+        "name": "Flyndr' Crew",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "4",
+        "ability": "horn",
+        "filename": "flyndr_crew",
+        "count": "0",
+        "quote": "Wretches and thieves drunk on grog, bloodshed and booty - could you ever hope for a better crew?"
+    },
+    "spe_dimeritium_shackles": {
+        "name": "Dimeritium Shackles",
+        "deck": "special syndicate",
+        "row": "",
+        "strength": "",
+        "ability": "lock",
+        "filename": "dimeritium_shackles",
+        "count": "3",
+        "quote": "Terranova cried out, lurched, bent backwards, bowed forward, then retched and groaned. It was clear of what his manacles were made."
+    },
+    "sy_flaming_rose_footman": {
+        "name": "Flaming Rose Footman",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "flaming_rose_footman",
+        "count": "1",
+        "quote": "Anyone can join The Order – a knight, a peasant, even a witcher. "
+    },
+    "sy_bare_knuckle_brawler": {
+        "name": "Bare Knuckle Brwaler",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "bare_knuckle_brawler",
+        "count": "1",
+        "quote": "Anyone can join The Order – a knight, a peasant, even a witcher. "
+    },
+    "sy_eibhear_hattori": {
+        "name": "Eibhear Hattori",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "medic",
+        "filename": "eibhear_hattori",
+        "count": "1",
+        "quote": "Only thing that can rival his swords? His dumplings."
+    },
+    "sy_witch_hunter": {
+        "name": "Witch Hunter",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "2",
+        "ability": "scorch",
+        "filename": "witch_hunter",
+        "count": "1",
+        "quote": "Long coats, wide-brimmed hats, and crooked grins – witch hunters are hard to miss."
+    },
+    "sy_witch_hunter_executioner": {
+        "name": "Witch Hunter Executioner",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "scorch_c",
+        "filename": "witch_hunter_executioner",
+        "count": "1",
+        "quote": "It'd be a right shame if I cut any of your beautiful hair."
+    },
+    "sy_casino_bouncers": {
+        "name": "Casino Bouncers",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "casino_bouncers",
+        "count": "1",
+        "quote": "Junior said our nasty mugs was frightenin' off all the coin. Don't rightly see 'ow this helps any..."
+    },
+    "sy_caleb_menge": {
+        "name": "Caleb Menge",
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "7",
+        "ability": "hero scorch_c",
+        "filename": "caleb_menge",
+        "count": "1",
+        "quote": "Deceivers, heretics, witches! They flood our city, corrupt our virtue, and threaten our very way of life!"
+    },
+    "sy_greater_brothers": {
+        "name": "Greater Brothers",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "greater_brothers",
+        "count": "1",
+        "quote": "A battering ram? No need, we'll handle it another way."
+    },
+    "sy_eternal_fire_inquisitor": {
+        "name": "Eternal Fire Inquisitor",
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "2",
+        "ability": "scorch",
+        "filename": "eternal_fire_inquisitor",
+        "count": "1",
+        "quote": "The burning light of the Eternal Fire reveals all!"
+    },
+    "sy_eternal_fire_priest_1": {
+        "name": "Eternal Fire Priest",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "eternal_fire_priest_1",
+        "count": "1",
+        "target": "sy_eternal_fire_priest",
+        "quote": "Closer, my sheep, gather closer. May the Eternal Fire warm your souls!"
+    },
+    "sy_eternal_fire_priest_2": {
+        "name": "Eternal Fire Priest",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "eternal_fire_priest_2",
+        "count": "1",
+        "target": "sy_eternal_fire_priest",
+        "quote": "Closer, my sheep, gather closer. May the Eternal Fire warm your souls!"
+    },
+    "sy_eternal_fire_priest_3": {
+        "name": "Eternal Fire Priest",
+        "id": 3,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "eternal_fire_priest_3",
+        "count": "1",
+        "target": "sy_eternal_fire_priest",
+        "quote": "Closer, my sheep, gather closer. May the Eternal Fire warm your souls!"
+    },
+    "sy_roderick_wett": {
+        "name": "Roderick de Wett",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "roderick_wett",
+        "count": "1",
+        "quote": "Count de Wett is exceptionally loathsome and arrogant, but at least he enjoys a little dice poker on the side."
+    },
+    "sy_ulrich": {
+        "name": "Ulrich",
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "8",
+        "ability": "",
+        "filename": "ulrich",
+        "count": "1",
+        "quote": "When the Order was disbanded, those who didn't join the witch hunters formed the Fallen Knights, of which Ulrich became the Grand Master."
+    },
+    "sy_inquisitional_pyres": {
+        "name": "Inquisitional Pyres",
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "4",
+        "ability": "scorch",
+        "filename": "inquisitional_pyres",
+        "count": "1",
+        "quote": "Fire cleanses."
+    },
+    "sy_imke": {
+        "name": "Imke",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "spy",
+        "filename": "imke",
+        "count": "1",
+        "quote": "No sooner had she caught Gudrun's attention than sought to exploit it."
+    },
+    "sy_professor": {
+        "name": "Professor",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "professor",
+        "count": "1",
+        "quote": "I fear our conventicle may end disastrously for you."
+    },
+    "sy_salamandra_assassin": {
+        "name": "Salamandra Assassin",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "salamandra_assassin",
+        "count": "1",
+        "quote": "A name and bag full of gold. That's all I need."
+    },
+    "sy_salamandra_assassin_2": {
+        "name": "Salamandra Assassin",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "salamandra_assassin_2",
+        "count": "1",
+        "quote": "A name and bag full of gold. That's all I need."
+    },
+    "sy_walter_veritas": {
+        "name": "Walter Veritas",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "walter_veritas",
+        "count": "1",
+        "quote": "In a city that feeds on lies, truth can be a weapon."
+    },
+    "sy_passiflora": {
+        "name": "Passiflora",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "horn",
+        "filename": "passiflora",
+        "count": "1",
+        "quote": "More pilgrims come here than to the Temple of the Eternal Fire..."
+    },
+    "sy_fence": {
+        "name": "Fence",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "",
+        "filename": "fence",
+        "count": "1",
+        "quote": "I prefer the term curator."
+    },
+    "sy_sly_seductress": {
+        "name": "Sly Seductress",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "sly_seductress",
+        "count": "1",
+        "quote": "The sweeter her words, the more bitter your losses."
+    },
+    "sy_azar_javed": {
+        "name": "Azar Javed: Renegade",
+        "deck": "syndicate",
+        "row": "leader",
+        "strength": "",
+        "ability": "azar_javed",
+        "filename": "azar_javed",
+        "count": "1",
+        "quote": "The sorcerer not only deftly manipulates the power of fire, it can be said that fire has become a part of his very being."
+    },
+    "sy_fisstech_trafficker": {
+        "name": "Fisstech Trafficker",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "2",
+        "ability": "avenger",
+        "filename": "fisstech_trafficker",
+        "count": "1",
+        "target": "sy_fisstech",
+        "quote": "Addictive? Why, not at all! I've quit several times before!"
+    },
+    "sy_fisstech": {
+        "name": "Fisstech",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "fisstech",
+        "count": "1",
+        "target": "sy_fisstech",
+        "quote": "Large pupils, chattering teeth, a mad cackle... Aye, that's fisstech for ye."
+    },
+    "sy_savolla": {
+        "name": "Savolla",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "6",
+        "ability": "hero scorch",
+        "filename": "savolla",
+        "count": "1",
+        "quote": "Witcher mutagens are a forgotten treasure. It's time the world learned of their potential."
+    },
+    "sy_madame_luiza": {
+        "name": "Madame Luiza",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "madame_luiza",
+        "count": "1",
+        "quote": "We've bedded more men than all Redania's army barracks combined."
+    },
+    "sy_saul_navarette": {
+        "name": "Saul de Navarette",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "5",
+        "ability": "",
+        "filename": "saul_navarette",
+        "count": "1",
+        "quote": "A connoisseur with bottomless pockets and a soul black as tar."
+    },
+    "sy_cleaver_gang_1": {
+        "name": "Cleaver's Gang",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "cleaver_gang_1",
+        "count": "1",
+        "target": "sy_cleaver_gang",
+        "quote": "With both arms tied behind me back, recall ye said. So feel free to start kickin' me in the arse when the mood strikes ye."
+    },
+    "sy_cleaver_gang_2": {
+        "name": "Cleaver's Gang",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "cleaver_gang_2",
+        "count": "1",
+        "target": "sy_cleaver_gang",
+        "quote": "Frilly frock or Mahakam steel breastplate – wouldn't have mattered."
+    },
+    "sy_cleaver_gang_3": {
+        "name": "Cleaver's Gang",
+        "id": 3,
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "cleaver_gang_3",
+        "count": "1",
+        "target": "sy_cleaver_gang",
+        "quote": "Those who try to cheat Cleaver are in for a rude awakening... And a rough landing."
+    },
+    "sy_cleaver_gang_4": {
+        "name": "Cleaver's Gang",
+        "id": 4,
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "3",
+        "ability": "bond",
+        "filename": "cleaver_gang_4",
+        "count": "1",
+        "target": "sy_cleaver_gang",
+        "quote": "Nae need to be stingy, pal. There's plenty to go 'round. "
+    },
+    "sy_mutant_killer": {
+        "name": "Mutant Killer",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "mutant_killer",
+        "count": "1",
+        "quote": "You have to keep him on a leash, muzzled and with blinders on, otherwise it'll be trouble."
+    },
+    "sy_moreelse": {
+        "name": "Moreelse",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "",
+        "filename": "moreelse",
+        "count": "1",
+        "quote": "Some witch hunters truly believed the eradication of mages and sorceresses would make the world a better place. Some did not require such justification."
+    },
+    "sy_graden": {
+        "name": "Graden",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "morale",
+        "filename": "graden",
+        "count": "1",
+        "quote": "Initially, we burned any tomes on black magic we found.Recently we decided it might be wise to read them first."
+    },
+    "sy_robber_1": {
+        "name": "Robber",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "robber_1",
+        "count": "1",
+        "target": "sy_robber",
+        "quote": "I-I already gave ye all me coin!"
+    },
+    "sy_robber_2": {
+        "name": "Robber",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "robber_2",
+        "count": "1",
+        "target": "sy_robber",
+        "quote": "I-I already gave ye all me coin!"
+    },
+    "sy_robber_3": {
+        "name": "Robber",
+        "id": 3,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "robber_3",
+        "count": "1",
+        "target": "sy_robber",
+        "quote": "I-I already gave ye all me coin!"
+    },
+    "sy_robber_4": {
+        "name": "Robber",
+        "id": 4,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "robber_4",
+        "count": "1",
+        "target": "sy_robber",
+        "quote": "I-I already gave ye all me coin!"
+    },
+    "sy_dudu_biberveldt": {
+        "name": "Dudu Biberveldt",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "spy",
+        "filename": "dudu_biberveldt",
+        "count": "1",
+        "quote": "A mimic, among the many other names for his sort: changelings, doublings, vexlings… or dopplers."
+    },
+    "sy_tamara_strenger": {
+        "name": "Tamara Strenger",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "5",
+        "ability": "",
+        "filename": "tamara_strenger",
+        "count": "1",
+        "quote": "Once the heat of the Fire has set your heart aflame, it gives you strength and leads you down the path of truth for the rest of your life."
+    },
+    "sy_nathaniel_pastodi": {
+        "name": "Nathaniel Pastodi",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "6",
+        "ability": "",
+        "filename": "nathaniel_pastodi",
+        "count": "1",
+        "quote": "Novigrad – where the impossible becomes possible. A professional torturer turned reverend, for instance."
+    },
+    "sy_jacques_aldersberg": {
+        "name": "Jacques de Aldersberg",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "jacques_aldersberg",
+        "count": "1",
+        "quote": "Knowledge is my burden. Only I can prevent a calamity."
+    },
+    "sy_jacques_aldersberg": {
+        "name": "Jacques de Aldersberg",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "jacques_aldersberg",
+        "count": "1",
+        "quote": "Knowledge is my burden. Only I can prevent a calamity."
+    },
+    "sy_igor_hook": {
+        "name": "Igor the Hook",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "igor_hook",
+        "count": "1",
+        "quote": "In the left corner, a bloodthirsty shaelmaar, and in the right co--oh bollocks... Fight's over, hold your bets!"
+    },
+    "sy_fallen_rayla": {
+        "name": "Fallen Rayla",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "fallen_rayla",
+        "count": "1",
+        "quote": "Slain by the arrows of those she had hunted. Or so many thought. The Salamandra had different plans for her."
+    },
+    "sy_sausage_maker": {
+        "name": "Sausage Maker",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "morale",
+        "filename": "sausage_maker",
+        "count": "1",
+        "quote": "Body disposal and sausage makin', that's what I do."
+    },
+    "sy_octavia_hale": {
+        "name": "Vigilantes: Octavia Hale",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero muster",
+        "filename": "octavia_hale",
+        "count": "1",
+        "target": "sy_hale_brothers",
+        "quote": "Woe to all those who find themselves on the wrong side of Octavia Hale, the self-proclaimed world-renowned finder⁠—and punisher⁠."
+    },
+    "sy_fabian_hale": {
+        "name": "Vigilantes: Fabian Hale",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "fabian_hale",
+        "count": "1",
+        "target": "sy_hale_brothers",
+        "quote": "Fabian takes great pride in his work, with each “victory” etched upon his skin as a permanent reminder of memories most pleasant."
+    },
+    "sy_ignatius_hale": {
+        "name": "Vigilantes: Ignatius Hale",
+        "id": 3,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "ignatius_hale",
+        "count": "1",
+        "target": "sy_hale_brothers",
+        "quote": "He’s a good boy."
+    },
+    "sy_gellert_bleinheim": {
+        "name": "Bleinheim Brothers: Gellert",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "bond",
+        "filename": "gellert_bleinheim",
+        "count": "1",
+        "target": "sy_bleinheim_brothers",
+        "quote": "How's my brother doing in the woods, I wonder..."
+    },
+    "sy_roland_bleinheim": {
+        "name": "Bleinheim Brothers: Roland",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "bond",
+        "filename": "roland_bleinheim",
+        "count": "1",
+        "target": "sy_bleinheim_brothers",
+        "quote": "How's my brother doing in the sewers, I wonder..."
+    },
+    "sy_caesar_bilzen": {
+        "name": "Caesar Bilzen",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "caesar_bilzen",
+        "count": "1",
+        "quote": "Avid angler, meticulous collector, and a real piece of work."
+    },
+    "sy_rico_meiersdorf": {
+        "name": "Rico Meiersdorf",
+        "deck": "syndicate",
+        "row": "agile",
+        "strength": "5",
+        "ability": "spy",
+        "filename": "rico_meiersdorf",
+        "count": "1",
+        "quote": "I never did much like bees."
+    },
+    "sy_cleric_flaming_rose": {
+        "name": "Cleric of the Flaming Rose",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "cleric_flaming_rose",
+        "count": "1",
+        "target": "sy_eternal_fire_disciple",
+        "quote": "We have two eyes, two ears, but only one tongue, so that we would look and listen twice more than we speak. "
+    },
+    "sy_eternal_fire_disciple": {
+        "name": "Eternal Fire Disciple",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "",
+        "filename": "eternal_fire_disciple",
+        "count": "2",
+        "target": "sy_eternal_fire_disciple",
+        "quote": "Look into your hearts, dear brethen. Does a contempt for injustice not burn within it?"
+    },
+    "sy_tidecloack_ransacker": {
+        "name": "Tidecloack Ransacker",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "scorch_c",
+        "filename": "tidecloack_ransacker",
+        "count": "1",
+        "quote": "There's more wealth in Novigrad than in all of Skellige – and the number of poor saps to match."
+    },
+    "sy_salamandra_lackey": {
+        "name": "Salamandra Lackey",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "salamandra_lackey",
+        "count": "1",
+        "quote": "Lackeys are expected to perform their first five jobs for no pay, demonstrating their passion for the gig."
+    },
+    "sy_mutant": {
+        "name": "Mutant",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "mutant",
+        "count": "3",
+        "target": "sy_mutant",
+        "quote": "With the right tools you can shape the human body like wet clay."
+    },
+    "sy_salamandra_mage": {
+        "name": "Salamandra Mage",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "salamandra_mage",
+        "count": "1",
+        "quote": "Building a fire warms people for a day, but setting them on fire..."
+    },
+    "sy_sewer_raider": {
+        "name": "Sewer Raider",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "sewer_raider",
+        "count": "1",
+        "quote": "Built for movin' shite, but it moves coin just as well."
+    },
+    "sy_inquisitor_helveed": {
+        "name": "Grand Inquisitor Helveed",
+        "deck": "syndicate",
+        "row": "siege",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "inquisitor_helveed",
+        "count": "1",
+        "quote": "No sinful wretch shall escape his fate in the Fire. Of that, I will make sure."
+    },
+    "sy_boris": {
+        "name": "Boris",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "boris",
+        "count": "1",
+        "quote": "After getting a taste of human flesh, he won't eat anything else."
+    },
+    "sy_halfling_safecracker": {
+        "name": "Halfling Safecracker",
+        "deck": "syndicate",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "halfling_safecracker",
+        "count": "1",
+        "quote": "With ears sharp as his, he could've been a musician. Alas, one cannot get rich as quickly from applause."
+    },
+    "sy_hammond": {
+        "name": "Hammond",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "7",
+        "ability": "",
+        "filename": "hammond",
+        "count": "1",
+        "quote": "Once mistaken for a whale calf and nearly harpooned. He's avoided swimming ever since."
+    },
+    "sy_sir_skewertooth": {
+        "name": "Sir Skewertooth",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "sir_skewertooth",
+        "count": "1",
+        "quote": "Here he is! My knight in swining armor!"
+    },
+    "sy_ferko": {
+        "name": "Ferko the Sculptor",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "scorch",
+        "filename": "ferko",
+        "count": "1",
+        "quote": "Some call it base thuggery. But me, I consider it the highest art form."
+    },
+    "sy_hvitr_aelydia": {
+        "name": "Hvitr and Aelydia",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "8",
+        "ability": "hero",
+        "filename": "hvitr_aelydia",
+        "count": "1",
+        "quote": "Inseparable. Invincible. Irresponsible."
+    },
+    "sy_bincy_blumerholdt": {
+        "name": "Bincy_Blumerholdt",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "7",
+        "ability": "spy",
+        "filename": "bincy_blumerholdt",
+        "count": "1",
+        "quote": "In all Novigrad, she has the hairiest feet and the stickiest hands."
+    },
+    "sy_freak_show_1": {
+        "name": "Freak Show",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "freak_show_1",
+        "count": "1",
+        "target": "sy_freak_show",
+        "quote": "What do ye mean, Why? The game was beginnin' to drag!"
+    },
+    "sy_freak_show_2": {
+        "name": "Freak Show",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "freak_show_2",
+        "count": "1",
+        "target": "sy_freak_show",
+        "quote": "The boss always gets to have the most fun. Truth be told, I prefer to watch anyway."
+    },
+    "sy_freak_show_3": {
+        "name": "Freak Show",
+        "id": 3,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "freak_show_3",
+        "count": "1",
+        "target": "sy_freak_show",
+        "quote": "A game where good aim is considered subjective."
+    },
+    "sy_freak_show_4": {
+        "name": "Freak Show",
+        "id": 4,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "freak_show_4",
+        "count": "1",
+        "target": "sy_freak_show",
+        "quote": "Why the long face, friend?"
+    },
+    "sy_mutated_hound_1": {
+        "name": "Mutated Hounds",
+        "id": 1,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "mutated_hound_1",
+        "count": "1",
+        "target": "sy_mutated_hound",
+        "quote": "We couldn't decide what to name him and it just kind of came up..."
+    },
+    "sy_mutated_hound_2": {
+        "name": "Mutated Hounds",
+        "id": 2,
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "mutated_hound_2",
+        "count": "1",
+        "target": "sy_mutated_hound",
+        "quote": "Out of man's best friend we made his worst enemy."
+    },
+    "sy_adriano_mink": {
+        "name": "Adriano the Mink",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "adriano_mink",
+        "count": "1",
+        "quote": "Right here, beautiful. Have a sit on daddy's lap."
+    },
+    "sy_beggar": {
+        "name": "Beggar",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "avenger",
+        "filename": "beggar",
+        "count": "1",
+        "target": "sy_beggar",
+        "quote": "Say what you will about his technique, I think he captured your good side."
+    },
+    "sy_payroll_specialist": {
+        "name": "Payroll Specialist",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "3",
+        "ability": "morale",
+        "filename": "payroll_specialist",
+        "count": "1",
+        "quote": "Guards in Novigrad work for very little money, yet live like kings. Just another paradox of the Free City..."
+    },
+    "sy_arena_endrega": {
+        "name": "Arena Endrega",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "arena_endrega",
+        "count": "1",
+        "quote": "Strong as an ox, dumb as a box."
+    },
+    "sy_arena_ghoul": {
+        "name": "Arena Ghoul",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "arena_ghoul",
+        "count": "1",
+        "quote": "He'll be a perfect fit for your arena. Just like a mutt lickin' your plate after dinner."
+    },
+    "sy_tatterwing": {
+        "name": "Tatterwing",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "tatterwing",
+        "count": "1",
+        "quote": "She seems a bit sluggish. A few quick jabs to the ribs oughta liven her up."
+    },
+    "sy_temple_guard": {
+        "name": "Temple Guard",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "temple_guard",
+        "count": "1",
+        "quote": "Halt! Who goes there?! Firesworn or heretic?"
+    },
+    "sy_passiflora_peaches": {
+        "name": "Passiflora Peaches",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "9",
+        "ability": "spy",
+        "filename": "passiflora_peaches",
+        "count": "1",
+        "quote": "They'll mess with your head, break your heart and empty your purse."
+    },
+    "sy_lieutenant_herst": {
+        "name": "Lieutenant von Herst",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "lieutenant_herst",
+        "count": "1",
+        "quote": "The fall of the Order wasn’t so hard for him like for the others."
+    },
+    "sy_mutant_maker": {
+        "name": "Mutant Maker",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "avenger",
+        "filename": "mutant_maker",
+        "count": "1",
+        "target": "sy_failed_experiment",
+        "quote": "I’m a scientist, truly. I can’t help it if the Oxenfurt professors were just too narrow-sighted to appreciate my particular research methods."
+    },
+    "sy_sea_jackal": {
+        "name": "Sea Jackal",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "sea_jackal",
+        "count": "1",
+        "quote": "You ever lift rings off a body that's been left to soak for two weeks? No? Then don't complain."
+    },
+    "sy_fallen_knight": {
+        "name": "Fallen Knight",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "fallen_knight",
+        "count": "1",
+        "quote": "He abandoned the righteous fight and the flame in him has long gone."
+    },
+    "sy_sukrus": {
+        "name": "Sukrus",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "sukrus",
+        "count": "1",
+        "quote": "One of many who sought fortune in Novigrad. And one of many more who never found it. "
+    },
+    "sy_kurt": {
+        "name": "Kurt",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "kurt",
+        "count": "1",
+        "quote": "Oy, Kurt, find out what Merigold's hollerin' about, if she needs anything. A hot iron to the tongue, maybe?"
+    },
+    "sy_whoreson_senior": {
+        "name": "Whoreson Senior",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero",
+        "filename": "whoreson_senior",
+        "count": "1",
+        "quote": "Like father, like son."
+    },
+    "sy_lonely_champion": {
+        "name": "Lonely Champion",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "10",
+        "ability": "",
+        "filename": "lonely_champion",
+        "count": "1",
+        "quote": "So long as he continues the righteous fight, the Order and its flame endure."
+    },
+    "sy_failed_experiment": {
+        "name": "Failed Experiment",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "8",
+        "ability": "",
+        "filename": "failed_experiment",
+        "count": "1",
+        "quote": "Even failed experiments can serve a purpose. How else would one be expected to push the boundaries of knowledge?"
+    },
+    "sy_frightener": {
+        "name": "Savolla's Frightener",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero scorch_c",
+        "filename": "frightener",
+        "count": "1",
+        "quote": "The witchers thought the Salamandra thugs wouldn't get through Kaer Morhen's walls. The witchers were wrong."
+    },
+    "sy_stolen_mutagens": {
+        "name": "Stolen Mutagens",
+        "deck": "syndicate",
+        "row": "close",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "stolen_mutagens",
+        "count": "1",
+        "quote": "Like organ harvesting—but far more lucrative."
+    },
+    "spe_vivaldi_bank": {
+        "name": "Vivaldi Bank",
+        "deck": "special syndicate",
+        "row": "",
+        "strength": "",
+        "ability": "bank",
+        "filename": "vivaldi_bank",
+        "count": "2",
+        "quote": "We're sorry to lose your business, but we wish ye well!"
+    }
+};
+
 /*
  * Selecting cards to use
  */
@@ -7649,3 +8765,4 @@ card_dict = Object.assign({}, card_dict, ext_sk_cards);
 card_dict = Object.assign({}, card_dict, ext_wu_cards);
 card_dict = Object.assign({}, card_dict, ext_to_cards);
 card_dict = Object.assign({}, card_dict, ext_lr_cards);
+card_dict = Object.assign({}, card_dict, ext_sy_cards);

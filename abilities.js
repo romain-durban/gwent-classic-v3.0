@@ -70,11 +70,11 @@ var ability_dict = {
 			if (row !== undefined)
 				row.cards.push(card);
 			let maxPower = maxUnits.reduce( (a,p) => Math.max(a, p[1][0].power), 0 );
-			let scorched = maxUnits.filter( p => p[1][0].power === maxPower);
-			let cards = scorched.reduce( (a,p) => a.concat( p[1].map(u => [p[0], u])), []);
-			
-			await Promise.all(cards.map( async u => await u[1].animate("scorch", true, false)) );
-			await Promise.all(cards.map( async u => await board.toGrave(u[1], u[0])) );
+			let scorched = maxUnits.filter(p => p[1][0].power === maxPower);
+			let cards = scorched.reduce((a, p) => a.concat(p[1].map(u => [p[0], u])), []);
+
+			await Promise.all(cards.map(async u => await u[1].animate("scorch", true, false)));
+			await Promise.all(cards.map(async u => await board.toGrave(u[1], u[0])));
 		}
 	},
 	scorch_c: {
@@ -203,15 +203,17 @@ var ability_dict = {
 			} else {
 				let avenger;
 				// If one copy at least in hand or deck, use it instead of creating a duplicate
-				if (card.holder.deck.findCards(c => c.key === card.target).length)
-					avenger = card.holder.deck.removeCard(card.holder.deck.findCard(c => c.key === card.target));
-				else if (card.holder.hand.findCards(c => c.key === card.target).length)
-					avenger = card.holder.hand.removeCard(card.holder.hand.findCard(c => c.key === card.target));
-				else {
+				if (card.holder.deck.findCards(c => c.key === card.target).length) {
+					avenger = card.holder.deck.findCard(c => c.key === card.target);
+					await board.moveTo(avenger, avenger.row, card.holder.deck);
+				} else if (card.holder.hand.findCards(c => c.key === card.target).length) {
+					avenger = card.holder.hand.findCard(c => c.key === card.target);
+					await board.moveTo(avenger, avenger.row, card.holder.hand);
+				} else {
 					avenger = new Card(card.target, card_dict[card.target], card.holder);
+					await board.addCardToRow(avenger, avenger.row, card.holder);
 					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
                 }
-				await board.addCardToRow(avenger, avenger.row, card.holder);
             }
 			
 		},
@@ -682,6 +684,7 @@ var ability_dict = {
 		description: "Move the Melee unit(s) with the lowest strength on your side of the board",
 		activated: async card => {
 			let opCloseRow = board.getRow(card, "close", card.holder.opponent());
+			let meCloseRow = board.getRow(card, "close", card.holder);
 			if (opCloseRow.isShielded())
 				return;
 			let units = opCloseRow.minUnits();
@@ -690,7 +693,7 @@ var ability_dict = {
 			await Promise.all(units.map(async c => await c.animate("seize")));
 			units.forEach(async c => {
 				c.holder = card.holder;
-				await board.moveToNoEffects(c, "close", opCloseRow);
+				await board.moveToNoEffects(c, meCloseRow, opCloseRow);
 			});
 			await board.toGrave(card, card.holder.hand);
 		},
@@ -741,6 +744,7 @@ var ability_dict = {
 		activated: (card, player) => {
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
 			if(!player instanceof ControllerAI)
 				ui.setSelectable(card, true);
 		},
@@ -764,6 +768,7 @@ var ability_dict = {
 		activated: (card, player) => {
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
 			if (!(player.controller instanceof ControllerAI))
 				ui.setSelectable(card, true);
 		},
@@ -813,6 +818,7 @@ var ability_dict = {
 		activated: async (card, player) => {
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
 			if (!(player.controller instanceof ControllerAI))
 				ui.setSelectable(card, true);
 		},
@@ -838,5 +844,101 @@ var ability_dict = {
 	meve_white_queen: {
 		description: "All medic cards can choose two unit cards from the discard pile (affects both players).",
 		gameStart: () => game.medicCount = 2
+	},
+	carlo_varese: {
+		description: "If the opponent has a total of 10 or higher on one row, destroy that row's strongest card(s) (affects only the opponent's side of the battle field).",
+		activated: async (card, player) => {
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
+			if (!(player.controller instanceof ControllerAI))
+				ui.setSelectable(card, true);
+		},
+		weight: (card, ai, max) => {
+			return Math.max(ai.weightScorchRow(card, max, "close"), ai.weightScorchRow(card, max, "ranged"), ai.weightScorchRow(card, max, "siege"));
+		}
+	},
+	francis_bedlam: {
+		description: "Send all spy unit cards to the grave of the side they are on.",
+		activated: async (card, player) => {
+			let op_spies = player_op.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
+			let me_spies = player_me.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
+			await op_spies.map(async c => await board.toGrave(c, c.currentLocation));
+			await me_spies.map(async c => await board.toGrave(c, c.currentLocation));
+		},
+		weight: (card, ai, max) => {
+			let op_spies = player_op.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a,c) => a + c.power,0);
+			let me_spies = player_me.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a, c) => a + c.power,0);
+			return Math.max(0, op_spies - me_spies);
+		}
+	},
+	cyprian_wiley: {
+		description: "Seize the unit(s) with the lowest strength of the opponents melee row.",
+		activated: async card => {
+			let opCloseRow = board.getRow(card, "close", card.holder.opponent());
+			let meCloseRow = board.getRow(card, "close", card.holder);
+			if (opCloseRow.isShielded())
+				return;
+			let units = opCloseRow.minUnits();
+			if (units.length === 0)
+				return;
+			await Promise.all(units.map(async c => await c.animate("seize")));
+			units.forEach(async c => {
+				c.holder = card.holder;
+				await board.moveToNoEffects(c, meCloseRow, opCloseRow);
+			});
+		},
+		weight: (card) => {
+			if (card.holder.opponent().getAllRows()[0].isShielded())
+				return 0;
+			return card.holder.opponent().getAllRows()[0].minUnits().reduce((a, c) => a + c.power, 0) * 2
+		}
+	},
+	gudrun_bjornsdottir: {
+		description: "Summon Flyndr's Crew",
+		activated: async (card, player) => {
+			let new_card = new Card("sy_flyndr_crew", card_dict["sy_flyndr_crew"], player);
+			await board.addCardToRow(new_card, new_card.row, card.holder);
+		},
+		weight: (card, ai, max) => {
+			return card.holder.getAllRows()[0].fitler(c => c.isUnit()).reduce((a, c) => a + c.power, 0) + card_dict["sy_flyndr_crew"]["strength"];
+		}
+	},
+	cyrus_hemmelfart: {
+		description: "Play a Dimeritum Shackles card in any of the opponent's row.",
+		activated: async (card, player) => {
+			player.endTurnAfterAbilityUse = false;
+			ui.showPreviewVisuals(card);
+			ui.enablePlayer(true);
+			if (!(player.controller instanceof ControllerAI))
+				ui.setSelectable(card, true);
+		},
+		weight: (card) => 20
+	},
+	azar_javed: {
+		description: "Destroy the enemy's weakest hero card.",
+		activated: async (card, player) => {
+			let heroes = player.opponent().getAllRowCards().filter(c => c.hero);
+			if (heroes.length === 0)
+				return;
+			let target = heroes.sort((a, b) => a.power - b.power)[0];
+			await target.animate("scorch", true, false)
+			await board.toGrave(target, target.currentLocation);
+		},
+		weight: (card, ai, max) => {
+			let heroes = card.holder.opponent().getAllRowCards().filter(c => c.hero);
+			if (heroes.length === 0)
+				return 0;
+			return heroes.sort((a, b) => a.power - b.power)[0].power;
+		}
+	},
+	bank: {
+		name: "Bank",
+		description: "Draw a card from your deck.",
+		activated: async card => {
+			card.holder.deck.draw(card.holder.hand);
+			await board.toGrave(card, card.holder.hand);
+		},
+		weight: (card) => 20
 	},
 };

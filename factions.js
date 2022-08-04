@@ -116,5 +116,15 @@ var factions = {
 		activeAbility: true,
 		abilityUses: 1,
 		description: "Apply a Morale Boost effect in the selected row (boost all units by 1 in this turn)."
+	},
+	syndicate: {
+		name: "Syndicate",
+		factionAbility: player => game.gameStart.push(async () => {
+			let card = new Card("sy_sigi_reuven", card_dict["sy_sigi_reuven"], player);
+			await board.addCardToRow(card, card.row, card.holder);
+		}),
+		activeAbility: false,
+		abilityUses: 0,
+		description: "Starts the game with the Hero card Sigi Reuven on the board."
 	}
 }
