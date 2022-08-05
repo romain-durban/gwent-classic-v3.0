@@ -224,6 +224,8 @@ class ControllerAI {
 			await this.knockback(c);
 		else if (c.faction === "special" && c.abilities.includes("toussaint_wine"))
 			await this.toussaintWine(c);
+		else if ((c.isUnit() || c.hero) && c.abilities.includes("witch_hunt"))
+			await this.witchHunt(c);
 		else
 			await this.player.playCard(c);
 	}
@@ -395,6 +397,23 @@ class ControllerAI {
 	async toussaintWine(card) {
 		await this.player.playCardToRow(card,this.bestRowToussaintWine(card));
 	}
+
+	// Play special wine card to the most beneficial row.
+	async witchHunt(card) {
+		await this.player.playCardToRow(card, this.bestWitchHuntRow(card).getOppositeRow());
+	}
+
+	bestWitchHuntRow(card) {
+		if (card.row == "agile") {
+			let rows = [3, 4].map(i => board.row[i]).filter(r => !r.isShielded() && !game.scorchCancelled).map(r => ({
+				row: r,
+				value: r.cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0)
+			}));
+			return rows.sort((a, b) => b.value - a.value)[0].row;
+		} else {
+			return board.getRow(card, card.row, card.holder);
+        }
+    }
 
 	bestRowToussaintWine(card) {
 		let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
@@ -633,6 +652,12 @@ class ControllerAI {
 			if (["cintra_slaughter", "seize", "lock", "shield", "knockback", "shield_c", "shield_r", "shield_s"].includes(abi.at(-1))) {
 				return ability_dict[abi.at(-1)].weight(card);
 			}
+			if (abi.includes("witch_hunt")) {
+				let best_row = this.bestWitchHuntRow(card)
+				if (best_row)
+					return best_row.minUnits().reduce((a, c) => a + c.power, 0) + card.power;
+				return card.power
+            }
 			if (abi.includes("toussaint_wine")) {
 				let units = card.holder.getAllRowCards().concat(card.holder.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
 				let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
@@ -1474,12 +1499,12 @@ class Row extends CardContainer {
 		card.currentLocation = this;
 		if (this.effects.lock && card.isUnit() && card.abilities.length) {
 			card.locked = true;
-			await card.animate("lock")
 			this.effects.lock = Math.max(this.effects.lock - 1, 0);
 			let lock_card = this.special.findCard(c => c.abilities.includes("lock"));
-			// If several units arrive at the same time, it will be triggered several times
+			// If several units arrive at the same time, it can be triggered several times, so we first remove the lock before doing animations
 			if (lock_card)
 				await board.toGrave(lock_card, this.special);
+			await card.animate("lock")
         }
 		if (runEffect && !card.isLocked()) {
 			this.updateState(card, true);
@@ -1714,6 +1739,23 @@ class Row extends CardContainer {
 		if (game.scorchCancelled)
 			return false;
 		return (this.cards.reduce((a, c) => a + c.power, 0) >= 10) && (this.cards.filter(c => c.isUnit()).length > 0);
+	}
+
+	// Return the index of the current row in the list of rows on the board
+	getRowIndex() {
+		for (let i = 0; i < board.row.length; i++) {
+			if (board.row[i] === this)
+				return i;
+        }
+		return -1;
+	}
+
+	// Returns the opposite Row object - the one on the opponent's side of the field
+	getOppositeRow() {
+		let index = 5 - this.getRowIndex();
+		if (index >= 0 && index < board.row.length)
+			return board.row[index]
+		return null;
     }
 }
 

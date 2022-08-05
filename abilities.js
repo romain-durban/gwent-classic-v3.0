@@ -941,4 +941,16 @@ var ability_dict = {
 		},
 		weight: (card) => 20
 	},
+	witch_hunt: {
+		name: "Witch Hunt",
+		description: "Destroy the weakest unit(s) on the opposite row",
+		placed: async card => {
+			let row = card.currentLocation.getOppositeRow();
+			if (row.isShielded() || game.scorchCancelled)
+				return;
+			let units = row.minUnits();
+			await Promise.all(units.map(async c => await c.animate("scorch", true, false)));
+			await Promise.all(units.map(async c => await board.toGrave(c, row)));
+		}
+	}
 };

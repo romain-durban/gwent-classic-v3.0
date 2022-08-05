@@ -7772,7 +7772,7 @@ var ext_sy_cards = {
         "deck": "syndicate",
         "row": "close",
         "strength": "2",
-        "ability": "scorch",
+        "ability": "witch_hunt",
         "filename": "witch_hunter",
         "count": "1",
         "quote": "Long coats, wide-brimmed hats, and crooked grins – witch hunters are hard to miss."
@@ -7782,7 +7782,7 @@ var ext_sy_cards = {
         "deck": "syndicate",
         "row": "close",
         "strength": "3",
-        "ability": "scorch_c",
+        "ability": "witch_hunt",
         "filename": "witch_hunter_executioner",
         "count": "1",
         "quote": "It'd be a right shame if I cut any of your beautiful hair."
@@ -7802,7 +7802,7 @@ var ext_sy_cards = {
         "deck": "syndicate",
         "row": "agile",
         "strength": "7",
-        "ability": "hero scorch_c",
+        "ability": "hero witch_hunt",
         "filename": "caleb_menge",
         "count": "1",
         "quote": "Deceivers, heretics, witches! They flood our city, corrupt our virtue, and threaten our very way of life!"
@@ -7822,7 +7822,7 @@ var ext_sy_cards = {
         "deck": "syndicate",
         "row": "agile",
         "strength": "2",
-        "ability": "scorch",
+        "ability": "witch_hunt",
         "filename": "eternal_fire_inquisitor",
         "count": "1",
         "quote": "The burning light of the Eternal Fire reveals all!"
@@ -7888,7 +7888,7 @@ var ext_sy_cards = {
         "deck": "syndicate",
         "row": "agile",
         "strength": "4",
-        "ability": "scorch",
+        "ability": "witch_hunt",
         "filename": "inquisitional_pyres",
         "count": "1",
         "quote": "Fire cleanses."
