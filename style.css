@@ -1280,6 +1280,18 @@ html {
 	font-style: italic;
 }
 
+#site-links {
+    right: 5%;
+    top: 5%;
+    position: absolute;
+    font-size: 1vw;
+    color: #ccc;
+}
+
+#site-links a {
+    color: #aaa;
+}
+
 .card-array {
 	position: absolute;
 	width: 34.4%;

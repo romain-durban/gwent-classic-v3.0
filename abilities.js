@@ -901,7 +901,7 @@ var ability_dict = {
 			await board.addCardToRow(new_card, new_card.row, card.holder);
 		},
 		weight: (card, ai, max) => {
-			return card.holder.getAllRows()[0].fitler(c => c.isUnit()).reduce((a, c) => a + c.power, 0) + card_dict["sy_flyndr_crew"]["strength"];
+			return card.holder.getAllRows()[0].filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) + card_dict["sy_flyndr_crew"]["strength"];
 		}
 	},
 	cyrus_hemmelfart: {

@@ -411,7 +411,7 @@ class ControllerAI {
 			}));
 			return rows.sort((a, b) => b.value - a.value)[0].row;
 		} else {
-			return board.getRow(card, card.row, card.holder);
+            return board.getRow(card, card.row, card.holder).getOppositeRow();
         }
     }
 
@@ -843,7 +843,8 @@ class Player {
 
 	// Passes the round and ends the turn
 	passRound() {
-		this.setPassed(true);
+        this.setPassed(true);
+        ui.notification("op-pass", 1200);
 		this.endTurn();
 	}
 
@@ -902,8 +903,10 @@ class Player {
 
 	// Handles end of turn visuals and behavior the notifies the game
 	endTurn() {
-		if (!this.passed && !this.canPlay())
-			this.setPassed(true);
+        if (!this.passed && !this.canPlay()) {
+            this.setPassed(true);
+            ui.notification("op-pass", 1200);
+        }
 		if (this === player_me) {
 			document.getElementById("pass-button").classList.add("noclick");
 			may_pass1 = false;
@@ -2581,7 +2584,7 @@ class UI {
 		this.preview = document.getElementsByClassName("card-preview")[0];
 		this.previewCard = null;
 		this.lastRow = null;
-		if (!navigator.userAgentData.mobile) {
+        if (!isMobile()) {
 			document.getElementById("pass-button").addEventListener("mousedown", function(e) {
 				if (e.button == 0) {
 					passStart("mouse");
@@ -4450,3 +4453,9 @@ function dimensionar() {
 }
 
 setTimeout(dimensionar(), 300);
+
+function isMobile() {
+    if (navigator.userAgentData)
+        return navigator.userAgentData.mobile;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
