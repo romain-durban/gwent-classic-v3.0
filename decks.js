@@ -399,7 +399,7 @@ var custom_decks = [
             ["spe_scorch", 1],
             ["nr_esterad", 1],
             ["nr_natalis", 1],
-            ["nr_philippa", 1],
+            ["ntr_triss", 1],
             ["nr_vernon", 1],
             ["nr_ballista", 1],
             ["nr_siege_tower", 1],
@@ -412,14 +412,15 @@ var custom_decks = [
             ["nr_blue_stripes_3", 1],
             ["nr_dijkstra", 1],
             ["nr_thaler", 1],
-            ["nr_tridam_infantry", 1],
             ["nr_temerian_soldier_1", 1],
             ["nr_temerian_soldier_2", 1],
             ["nr_temerian_soldier_3", 1],
             ["nr_stripes_scout", 1],
             ["nr_temerian_drummer", 1],
             ["nr_foltest_pride", 1],
-            ["nr_reaver_scout", 1]
+            ["nr_queen_adalia", 1],
+            ["nr_mage_infiltrator", 1],
+            ["nr_aretuza_adept", 1]
         ]
     },
     {
@@ -508,20 +509,17 @@ var custom_decks = [
             ["nr_redanian_elite", 1],
             ["nr_donimir_troy", 1],
             ["nr_joachim_gratz", 1],
-            ["nr_hedwig_malleore", 1],
             ["nr_philippa", 1],
             ["nr_ewald_borsodi", 1],
             ["nr_flying_redanian", 1],
             ["nr_redanian_knight", 1],
             ["nr_shani", 1],
             ["nr_milo_vanderbeck", 1],
-            ["nr_vizimir", 1],
             ["nr_marching_orders", 1],
             ["nr_eyck_denesle", 1],
             ["nr_radovid_royal_guards", 1],
             ["nr_redanian_archer", 1],
             ["nr_trollololo", 1],
-            ["nr_royal_decree", 1],
             ["nr_battering_ram", 1],
             ["nr_dijkstra", 1],
             ["nr_falibor", 1],
@@ -530,7 +528,9 @@ var custom_decks = [
             ["nr_crinfrid_1", 1],
             ["nr_crinfrid_2", 1],
             ["nr_crinfrid_3", 1],
-            ["nr_voymir", 1]
+            ["nr_voymir", 1],
+            ["nr_reaver_scout", 1],
+            ["nr_tridam_infantry", 1]
         ]
     },
     {
@@ -594,20 +594,55 @@ var custom_decks = [
             ["ne_vattier", 1],
             ["ne_letho", 1],
             ["ne_bribery", 1],
-            ["ne_epidemic", 1],
-            ["ne_rot_tosser", 1],
             ["ne_moorvran", 1],
             ["ne_fringilla", 1],
-            ["ne_tibor", 1],
+            ["ne_fergus_emreis",1],
             ["ne_young_emissary_1", 1],
             ["ne_young_emissary_2", 1],
             ["ne_cahir", 1],
             ["ne_stefan", 1],
-            ["ne_joachim_de_wett", 1],
-            ["ne_ardal_aep_dahy", 1],
+            ["ne_usurper", 1],
             ["ne_cantarella", 1],
             ["ne_assire", 1],
-            ["ne_treason", 1]
+            ["ne_treason", 1],
+            ["ne_peter_saar_gwynleve", 1],
+            ["ne_xarthisius", 1],
+            ["ne_impera_enforcers", 1],
+            ["ne_imperial_diviner", 1],
+            ["ne_renuald", 1]
+        ]
+    },
+    {
+        "title": "Nilfgaard Empire - Second Army",
+        "description": "Nilfgaard Empire deck focusing on other army units - Playstyle: Muster",
+        "leader": "ne_emhyr_invader_of_the_north",
+        "faction": "nilfgaard",
+        "cards": [
+            ["spe_rain", 1],
+            ["spe_fog", 1],
+            ["spe_horn", 2],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["spe_decoy", 1],
+            ["ne_tibor", 1],
+            ["ne_ardal_aep_dahy", 1],
+            ["ne_glynnis_loernach", 1],
+            ["ne_ard_feainn_crossbowman", 1],
+            ["ne_ard_feainn_light_cavalry", 3],
+            ["ne_ard_feainn_tortoise", 3],
+            ["ne_ard_feainn_heavy_cavalry", 1],
+            ["ne_ramon_tyrconnel", 1],
+            ["ne_ffion_gaernel", 1],
+            ["ne_vrygheff", 1],
+            ["ne_epidemic", 1],
+            ["ne_rot_tosser", 1],
+            ["ne_traheaern_vdyffir", 1],
+            ["ne_vreemde", 1],
+            ["ne_spotter", 1],
+            ["ne_illusionist", 1],
+            ["ne_mangonel", 1],
+            ["ne_joachim_de_wett", 1],
+            ["ne_imperial_practitioner", 1]
         ]
     },
     {
@@ -821,7 +856,8 @@ var custom_decks = [
             ["sk_dagur", 1],
             ["sk_sigrdrifa", 1],
             ["sk_dimun_pirate", 1],
-            ["sk_jutta", 1]
+            ["sk_jutta", 1],
+            ["sk_hemdall", 1]
         ]
     },
     {
@@ -1111,7 +1147,7 @@ var custom_decks = [
     },
     {
         "title": "Syndicate - Church of Eternal Fire",
-        "description": "Syndicate deck focusing on cards of the Eternal Fire - Playstyle: Scorch, Muster, Dimeritium",
+        "description": "Syndicate deck focusing on cards of the Eternal Fire - Playstyle: Witch Hunt, Muster, Dimeritium",
         "leader": "sy_cyrus_hemmelfart",
         "faction": "syndicate",
         "cards": [
@@ -1146,7 +1182,7 @@ var custom_decks = [
     },
     {
         "title": "Syndicate - Salamandra",
-        "description": "Syndicate deck focusing on cards of the Salamandra - Playstyle: Muster, Summon Avenger",
+        "description": "Syndicate deck focusing on cards of the Salamandra - Playstyle: Muster, Scorch, Summon Avenger",
         "leader": "sy_azar_javed",
         "faction": "syndicate",
         "cards": [
@@ -1178,7 +1214,7 @@ var custom_decks = [
         ]
     },
     {
-        "title": "Syndicate - Gangs",
+        "title": "Syndicate - Navigrad Gangs",
         "description": "Syndicate deck focusing on cards of the Gangs of Novigrad - Playstyle: Spy, Tight Bond, Muster",
         "leader": "sy_cyprian_wiley",
         "faction": "syndicate",
@@ -1225,3 +1261,63 @@ var custom_decks = [
 
 var premade_deck = default_decks;
 premade_deck = custom_decks.concat(premade_deck);
+
+var deckWeightConsts = {
+    "spyBase": 20,
+    "heroMult": 2,
+    "musterMult": 2,
+    "tightBondMult": 2,
+    "medic": 7,
+    "scorch": 5,
+    "scorch_c": 5,
+    "morale": 5,
+    "agile": 2,
+    "horn": 10,
+    "berserker": 5,
+    "mardroeme": 5,
+    "avenger": 5,
+    "decoy": 7,
+    "clearWeatherWeight": 7,
+    "heroSpyBase": 5,
+    "cintra_slaughter": 5,
+    "resilience": 5,
+    "witcherSchoolWeight": 1,
+    "witch_hunt": 5
+};
+
+function calcDeckWeight(deck) {
+    var total = 0;
+    deck.cards.forEach(entry => {
+        let c = card_dict[entry[0]];
+        let cnt = parseInt(entry[1]);
+        let abi = c["ability"].split(" ");
+        let cStr = 0;
+        if (!c["deck"].startsWith("special") && !c["deck"].startsWith("weather")) {
+            if (abi.includes("spy")) {
+                cStr = deckWeightConsts["spyBase"] - parseInt(c["strength"]);
+                if (abi.includes("hero"))
+                    cStr += deckWeightConsts["heroSpyBase"];
+                if (c.row === "agile")
+                    cStr += deckWeightConsts["agile"];
+            } else {
+                cStr = parseInt(c["strength"]);
+                if (abi.includes("hero"))
+                    cStr *= deckWeightConsts["heroMult"];
+                if (abi.includes("bond"))
+                    cStr *= deckWeightConsts["tightBondMult"];
+                if (abi.includes("muster"))
+                    cStr *= deckWeightConsts["musterMult"];
+                abi.forEach(a => {
+                    if (a in deckWeightConsts)
+                        cStr += deckWeightConsts[a];
+                });
+                if (abi.includes("witcher_wolf_school") || abi.includes("witcher_bear_school") || abi.includes("witcher_viper_school") || abi.includes("witcher_cat_school") || abi.includes("witcher_griffin_school"))
+                    cStr += deckWeightConsts["witcherSchoolWeight"];
+                if (c.row === "agile")
+                    cStr += deckWeightConsts["agile"];
+            }
+        }
+        total += (cStr*cnt);
+    });
+    return total;
+}

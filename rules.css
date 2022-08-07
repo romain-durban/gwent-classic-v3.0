@@ -222,6 +222,10 @@ small screens.
     margin-top: 0.6em;
 }
 
+.menu-other-page {
+    background-color: #553c2e;
+}
+
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
@@ -295,4 +299,76 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
 .ability-list-description {
     margin-left: 30px;
+}
+
+/*
+    Decks list
+*/
+
+.deck-list-name {
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.deck-list-description {
+    margin-left: 30px;
+}
+
+.faction-realms {
+    background-color: #1b205c;
+    color: #fff;
+    padding: 5px;
+}
+
+.faction-nilfgaard {
+    background-color: #111;
+    color: #c68a10;
+    padding: 5px;
+}
+
+.faction-monsters {
+    background-color: #421616;
+    color: #fff;
+    padding: 5px;
+}
+
+.faction-scoiatael {
+    background-color: #214f11;
+    color: #fff;
+    padding: 5px;
+}
+
+.faction-skellige {
+    background-color: #3b1b57;
+    color: #fff;
+    padding: 5px;
+}
+
+.faction-witcher_universe {
+    background-color: #2e4b87;
+    color: #fff;
+    padding: 5px;
+}
+
+.faction-toussaint {
+    background-color: #d5a710;
+    color: #000;
+    padding: 5px;
+}
+
+.faction-lyria_rivia {
+    background-color: #15b08f;
+    color: #000;
+    padding: 5px;
+}
+
+.faction-syndicate {
+    background-color: #ac600d;
+    color: #000;
+    padding: 5px;
+}
+
+.card-preview {
+    border-radius: 0.5vw;
 }

@@ -23,10 +23,12 @@
                 <a class="pure-menu-heading" href="">Gwent 3.0</a>
 
                 <ul class="pure-menu-list">
-                    <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Play Game</a></li>
+                    <li class="pure-menu-item menu-other-page"><a href="index.html" class="pure-menu-link">Play Game</a></li>
+                    <li class="pure-menu-item menu-other-page"><a href="decks.html" class="pure-menu-link">Decks</a></li>
                     <li class="pure-menu-item"><a href="#cards" class="pure-menu-link">Cards</a></li>
                     <li class="pure-menu-item"><a href="#abilities" class="pure-menu-link">Abilities</a></li>
                     <li class="pure-menu-item"><a href="#factions" class="pure-menu-link">Factions</a></li>
+                    <li class="pure-menu-item"><a href="#setup" class="pure-menu-link">Setup</a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +43,7 @@
                 <!-- INTRO -->
                 <h2 class="content-subhead">What is Gwent?</h2>
                 <p>
-                    <b>Gwent</b> used to be a minigame in the video game <b>The Witcher 3</b> developed by CD Project.
+                    <b>Gwent</b> (<i>a.k.a Gwynt</i>) used to be a minigame in the video game <b>The Witcher 3</b> developed by CD Project.
                     It was designed to be a collection card game in which you could play your cards against the computer.
                     You would start with a basic starting deck which you could improve in parallel of the game story and quests by buying more cards here and there or by defeating characters in the game.
                 </p>
@@ -861,9 +863,78 @@
                     </div>
                 </div>
 
+                <!-- SETUP -->
+                <h2 class="content-subhead" id="setup">Setup</h2>
+
+                <h3 class="content-subhead">Building your deck</h3>
+
+                <p>
+                    To play, each player must chose a faction, a leader and select or prepare a deck of the selected faction.
+                    We have prepared a selection of decks which we think are interesting to play and reasonably balanced.
+                    However, you can constitute your own, the only rules are the following:
+
+                    <ul>
+                        <li><b>Minumum 22 unit cards</b> (heroes included) from the selected faction or neutral cards.</li>
+                        <li><b>Maximum 10 special cards</b></li>
+                    </ul>
+                </p>
+
+                <p>
+                    <b>Tips:</b>
+                    <ul>
+                        <li>The more cards you have in your deck, the less likely you are to draw the best cards and make the combos work. Chose wisely, here less is more.</li>
+                        <li>
+                            Hero cards might look powerfull at first, but in the end they are boring and are not the cards that win games because most of them have a limited impact.
+                            Consequently, don't take too many of those.
+                        </li>
+                    </ul>
+                </p>
+
+                <h3 class="content-subhead">Start</h3>
+
+                <p>
+                    A coin toss decides who starts first. Each player shuffles his/her deck and draws 10 cards. Before starting the game, each player can discard up to 2 cards and draw a replacement (aka Mulligan).
+                    The remaining 10 cards will constitute the starting hand of the players, and most likely all the cards the players will have for the game.
+                </p>
+
+                <h3 class="content-subhead">Rounds</h3>
+
+                <p>
+                    Players take turns either playing a card or using the active ability of their leader or faction (when available).
+                    A player can instead chose to pass and sit out of the rest of the round (not play any hard), while the other player is free to play more cards.
+                    When both players have passed or cannot play any other card, the round ends. The player with the lowest total strength loses a round and a life point.
+                    Each player starts with 2 life points and thus loses the game when losing 2 rounds.
+                </p>
+
+                <p>Note that in case of a draw, both players have the lowest strength and lose a life point. Unless you play as Nilfgaard (wins in case of draws), this is not a desirable situation.</p>
+
+                <p><b>The players that wins the round plays first in the next round.</b></p>
+
+                <p>
+                    Counting the total score can be really bothersome, good thing that here the computer is doing it for us.
+                    But it remains important to understand how it's done in order to anticipate the changes when playing certain cards.
+                    Here are the principles to count the scores.
+                </p>
+
+                <p>
+                    For each row:
+                    <ul>
+                        <li>Weather effects always apply first, before anything else. They change the base strength of the unit cards.</li>
+                        <li>Some rare faction/leader abilities also affect the base strength. Weather takes precedence over them, but if no weather effect is active, apply these changes first.</li>
+                        <li>From this point, consider that the strength is calculated from the most specific ability of the card to the more global effects.</li>
+                        <li>First we apply the Tight Bond effects.</li>
+                        <li>Then we apply the various boosts (Morale, Witcher School, Toussaint Wine etc), which simply add up one another, order does not matter.</li>
+                        <li>Last, always last, we apply the row multipler, being the Commander's Horn.</li>
+                    </ul>
+                </p>
+
+                <h3 class="content-subhead">That's it, now you know everything you need to play a round of Gwent!</h3>
+
             </div>
         </div>
     </div>
+
+    <script src="rules.js"></script>
 
 </body>
 </html>

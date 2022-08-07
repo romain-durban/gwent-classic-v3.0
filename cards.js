@@ -1058,7 +1058,7 @@ var default_cards = {
         "name": "Vreemde",
         "deck": "nilfgaard",
         "row": "close",
-        "strength": "2",
+        "strength": "7",
         "ability": "",
         "filename": "vreemde",
         "count": "1",
@@ -2225,7 +2225,7 @@ var default_cards = {
         "strength": "11",
         "ability": "hero",
         "filename": "hemdall",
-        "count": "0",
+        "count": "1",
         "quote": "When the time of the White Frost comes, Hemdall will sound the call for battle."
     },
     "sk_hjalmar": {
@@ -2497,7 +2497,7 @@ var ext_nr_cards = {
         "deck": "realms",
         "row": "close",
         "strength": "5",
-        "ability": "scorch",
+        "ability": "spy",
         "filename": "stripes_scout",
         "count": "1",
         "quote": "Blue Stripes and Scoia'Tael are similar in one regard - hatred fuels both."
@@ -2865,7 +2865,7 @@ var ext_nr_cards = {
         "quote": "Roegner de Salm was the son of a prince of Salm in Ebbing."
     },
     "nr_pavetta": {
-        "name": "Roegner de Salm",
+        "name": "Pavetta",
         "deck": "realms",
         "row": "ranged",
         "strength": "10",
@@ -3567,6 +3567,16 @@ var ext_nr_cards = {
         "filename": "mage_infiltrator",
         "count": "1",
         "quote": "In her spare time, she likes playing practical jokes on others. Her favorite gag is switching footwraps and headwear."
+    },
+    "nr_queen_adalia": {
+        "name": "Queen Adalia",
+        "deck": "realms",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "hero medic",
+        "filename": "queen_adalia",
+        "count": "1",
+        "quote": "Queen Adalia of Cintra possessed the power to raise a drawbridge with a twitch of her brow."
     }
 };
 
@@ -3946,7 +3956,161 @@ var ext_ne_cards = {
         "ability": "morale",
         "filename": "combat_engineer",
         "count": "1",
-        "quote": "Look at war. Man gets better at killing with each one. "
+        "quote": "Look at war. Man gets better at killing with each one."
+    },
+    "ne_affan_hillergrand": {
+        "name": "Affan Hillergrand",
+        "deck": "nilfgaard",
+        "row": "agile",
+        "strength": "3",
+        "ability": "horn",
+        "filename": "affan_hillergrand",
+        "count": "1",
+        "quote": "Jarre doesn't mention him in his books. Maybe he never heard of him. Maybe he heard too much."
+    },
+    "ne_fergus_emreis": {
+        "name": "Fergus var Emreis",
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero avenger",
+        "filename": "fergus_emreis",
+        "count": "1",
+        "target": "ne_dunny",
+        "quote": "Usurper demanded that the fallen emperor grant legitimacy to the coup, and when Fergus refused, his 13-year-old son, Emhyr, was tortured."
+    },
+    "ne_dunny": {
+        "name": "Dunny",
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "9",
+        "ability": "spy",
+        "filename": "dunny",
+        "count": "0",
+        "quote": "After the curse was lifted Duny claimed ignorance regarding its origin, or who was responsible. He was lying, of course."
+    },
+    "ne_glynnis_loernach": {
+        "name": "Glynnis aep Loernach",
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "6",
+        "ability": "morale",
+        "filename": "glynnis_loernach",
+        "count": "1",
+        "quote": "She loved every soldier like a son. She cried for each one."
+    },
+    "ne_ard_feainn_crossbowman": {
+        "name": "Ard Feainn Crossbowman",
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "scorch_c",
+        "filename": "ard_feainn_crossbowman",
+        "count": "1",
+        "quote": "Many thought that mounted crossbowmen wouldn't work. Until they saw them in action."
+    },
+    "ne_ard_feainn_light_cavalry": {
+        "name": "Ard Feainn Light Cavalry",
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "ard_feainn_light_cavalry",
+        "count": "3",
+        "target": "ne_ard_feainn_light_cavalry",
+        "quote": "Light cavalry, heavy burden!"
+    },
+    "ne_ard_feainn_tortoise": {
+        "name": "Ard Feainn Tortoise",
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "ard_feainn_tortoise",
+        "count": "3",
+        "quote": "Close formation, clench your sphincters! Left, right, left, steady!"
+    },
+    "ne_ard_feainn_heavy_cavalry": {
+        "name": "Ard Feainn Heavy Cavalry",
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "",
+        "filename": "ard_feainn_heavy_cavalry",
+        "count": "1",
+        "target": "ne_ard_feainn_heavy_cavalry",
+        "quote": "When Emhyr declared that his cavalry would stomp his enemies into the mud, we thought he was speaking metaphorically. We were wrong."
+    },
+    "ne_ramon_tyrconnel": {
+        "name": "Ramon Tyrconnel",
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero muster",
+        "filename": "ramon_tyrconnel",
+        "count": "1",
+        "target": "ne_ard_feainn_heavy_cavalry",
+        "quote": "When Emhyr declared that his cavalry would stomp his enemies into the mud, we thought he was speaking metaphorically. We were wrong."
+    },
+    "ne_ffion_gaernel": {
+        "name": "Ffion var Gaernel",
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "ffion_gaernel",
+        "count": "1",
+        "quote": "Everyone will die somehow. I'll die last."
+    },
+    "ne_vrygheff": {
+        "name": "Vrygheff",
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "9",
+        "ability": "hero scorch",
+        "filename": "vrygheff",
+        "count": "1",
+        "quote": "An eye for an eye only ends when the whole world's blind."
+    },
+    "ne_traheaern_vdyffir": {
+        "name": "Traheaern var Vdyffir",
+        "deck": "nilfgaard",
+        "row": "close",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "traheaern_vdyffir",
+        "count": "1",
+        "quote": "The man leading the Nilfgaardians was clad in rich robes. He exuded pride... and the scent of musk."
+    },
+    "ne_spotter": {
+        "name": "Spotter",
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "spy",
+        "filename": "spotter",
+        "count": "1",
+        "quote": "The North has nothing with which it could surprise us."
+    },
+    "ne_illusionist": {
+        "name": "Illusionist",
+        "deck": "nilfgaard",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "medic",
+        "filename": "illusionist",
+        "count": "1",
+        "quote": "When you are few, make them believe you are many. If they still attack, well... you were fucked either way."
+    },
+    "ne_imperial_practitioner": {
+        "name": "Imperial Practitioner",
+        "deck": "nilfgaard",
+        "row": "siege",
+        "strength": "3",
+        "ability": "medic",
+        "filename": "imperial_practitioner",
+        "count": "1",
+        "quote": "The body is a slab of wet clay. One need only use the correct tools to shape it into something... more."
     }
 };
 
@@ -8118,7 +8282,7 @@ var ext_sy_cards = {
         "id": 1,
         "deck": "syndicate",
         "row": "ranged",
-        "strength": "6",
+        "strength": "5",
         "ability": "bond",
         "filename": "robber_1",
         "count": "1",
@@ -8130,7 +8294,7 @@ var ext_sy_cards = {
         "id": 2,
         "deck": "syndicate",
         "row": "ranged",
-        "strength": "6",
+        "strength": "5",
         "ability": "bond",
         "filename": "robber_2",
         "count": "1",
@@ -8142,7 +8306,7 @@ var ext_sy_cards = {
         "id": 3,
         "deck": "syndicate",
         "row": "ranged",
-        "strength": "6",
+        "strength": "5",
         "ability": "bond",
         "filename": "robber_3",
         "count": "1",
@@ -8154,7 +8318,7 @@ var ext_sy_cards = {
         "id": 4,
         "deck": "syndicate",
         "row": "ranged",
-        "strength": "6",
+        "strength": "5",
         "ability": "bond",
         "filename": "robber_4",
         "count": "1",
