@@ -2916,10 +2916,11 @@ class UI {
 		const fadeSpeed = 150;
 		fadeIn(this.notif_elem, fadeSpeed);
 		var ch = playingOnline && duration < 1000 & cache_notif.indexOf(name) == -1 ? 800 : 0;
-		cache_notif[cache_notif.length] = name;
-		duration += ch;
-		fadeOut(this.notif_elem, fadeSpeed, duration - fadeSpeed);
-		await sleep(duration);
+        cache_notif[cache_notif.length] = name;
+        duration += ch;
+        let d = new Date().getTime();
+        fadeOut(this.notif_elem, fadeSpeed, duration - fadeSpeed - 50); // Removing some delay to avoid weird behaviours if the fadeOut starts late and has not ended when the next fadeIn starts
+        await sleep(duration);
 	}
 
 	// Displays a cancellable Carousel for a single card 
@@ -4055,15 +4056,15 @@ async function fadeIn(elem, duration, delay) {
 
 // Fades an element over a duration 
 async function fade(fadeIn, elem, dur, delay) {
-	if (delay)
-		await sleep(delay)
+    if (delay)
+        await sleep(delay);
 	let op = fadeIn ? 0.1 : 1;
 	elem.style.opacity = op;
 	elem.style.filter = "alpha(opacity=" + (op * 100) + ")";
 	if (fadeIn)
-		elem.classList.remove("hide");
-	let timer = setInterval(async function () {
-		op += op * (fadeIn ? 0.1 : -0.1);
+        elem.classList.remove("hide");
+    let timer = setInterval(async function () {
+        op += (fadeIn ? 0.1 : -0.1);
 		if (op >= 1) {
 			clearInterval(timer);
 			return;
@@ -4076,7 +4077,7 @@ async function fade(fadeIn, elem, dur, delay) {
 		}
 		elem.style.opacity = op;
 		elem.style.filter = "alpha(opacity=" + (op * 100) + ")";
-	}, dur / 24);
+	}, dur / 10);
 }
 
 // Get Image paths   

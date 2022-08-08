@@ -139,7 +139,7 @@ var ability_dict = {
 			let respawns = [];
 			if (game.randomRespawn) {
 				for (var i = 0; i < game.medicCount; i++) {
-					if (card.holder.grave.findCards(c => c.isUnit()) > 0) {
+                    if (card.holder.grave.findCards(c => c.isUnit()).length > 0) {
 						let res = grave.findCardsRandom(c => c.isUnit())[0];
 						grave.removeCard(res);
 						grave.addCard(res);
@@ -901,7 +901,7 @@ var ability_dict = {
 			await board.addCardToRow(new_card, new_card.row, card.holder);
 		},
 		weight: (card, ai, max) => {
-			return card.holder.getAllRows()[0].filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) + card_dict["sy_flyndr_crew"]["strength"];
+			return card.holder.getAllRows()[0].cards.length + card_dict["sy_flyndr_crew"]["strength"];
 		}
 	},
 	cyrus_hemmelfart: {

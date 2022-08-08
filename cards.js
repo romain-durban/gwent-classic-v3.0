@@ -2413,7 +2413,7 @@ var default_cards = {
         "deck": "scoiatael",
         "row": "siege",
         "strength": "8",
-        "ability": "scorch_s",
+        "ability": "scorch_c",
         "filename": "schirru",
         "count": "1",
         "quote": "Time to look death in the face."
@@ -4028,6 +4028,7 @@ var ext_ne_cards = {
         "ability": "bond",
         "filename": "ard_feainn_tortoise",
         "count": "3",
+        "target": "ne_ard_feainn_tortoise",
         "quote": "Close formation, clench your sphincters! Left, right, left, steady!"
     },
     "ne_ard_feainn_heavy_cavalry": {
@@ -4050,7 +4051,7 @@ var ext_ne_cards = {
         "filename": "ramon_tyrconnel",
         "count": "1",
         "target": "ne_ard_feainn_heavy_cavalry",
-        "quote": "When Emhyr declared that his cavalry would stomp his enemies into the mud, we thought he was speaking metaphorically. We were wrong."
+        "quote": "Colonel Ramon Tyrconnel, the young commander of the Ard Feainn division, whistled softly, staring at a point somewhere off in the distance..;"
     },
     "ne_ffion_gaernel": {
         "name": "Ffion var Gaernel",
