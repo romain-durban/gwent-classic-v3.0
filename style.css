@@ -873,11 +873,10 @@ html {
 }
 
 .score-total {
-	top: 25%;
-	left: 94.5%;
+	top: 21%;
+	left: 94.8%;
 	height: 40%;
 	width: 12%;
-	top: 31%;
 	margin-bottom: -12%;
 	color: #000;
 	text-shadow: 0 0 5px #fff;
@@ -923,7 +922,7 @@ html {
 }
 
 #hand-count-me {
-	top: 18.5%;
+	top: 10%;
 }
 
 .gem {
@@ -948,12 +947,12 @@ html {
 }
 
 #gem2-me {
-	top: 14.5%;
+	top: 9%;
 	left: 70.75%;
 }
 
 #gem1-me {
-	top: 14.5%;
+	top: 9%;
 	left: 80%;
 }
 
@@ -970,23 +969,23 @@ html {
 }
 
 #name-me {
-	top: 60%;
+	top: 46%;
 }
 
 .deck-name {
 	left: 53%;
 	top: 25%;
 	width: 41.5%;
-	height: 20%;
+	height: 30%;
 	margin-bottom: -6%;
 	overflow: hidden;
 	text-transform: capitalize;
 	color: tan;
-	font-size: .95vw;
+	font-size: .9vw;
 }
 
 #deck-name-me {
-	top: 80%;
+	top: 64%;
 }
 
 .passed {

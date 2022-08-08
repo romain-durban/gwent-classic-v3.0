@@ -733,7 +733,8 @@ class Player {
 	constructor(id, name, deck) {
 		this.id = id;
 		this.tag = (id === 0) ? "me" : "op";
-		this.controller = (id === 0) ? new Controller() : new ControllerAI(this);
+        this.controller = (id === 0) ? new Controller() : new ControllerAI(this);
+        console.log(deck);
 
 		this.hand = (id === 0) ? new Hand(document.getElementById("hand-row")) : new HandAI();
 		this.grave = new Grave(document.getElementById("grave-" + this.tag));
@@ -748,7 +749,10 @@ class Player {
 		this.name = name;
 		document.getElementById("name-" + this.tag).innerHTML = name;
 
-		document.getElementById("deck-name-" + this.tag).innerHTML = factions[deck.faction].name;
+        if (deck.title)
+            document.getElementById("deck-name-" + this.tag).innerHTML = deck.title;
+        else
+		    document.getElementById("deck-name-" + this.tag).innerHTML = factions[deck.faction].name;
 		document.getElementById("stats-" + this.tag).getElementsByClassName("profile-img")[0].children[0].children[0];
 		let x = document.querySelector("#stats-" + this.tag + " .profile-img > div > div");
 		x.style.backgroundImage = iconURL("deck_shield_" + deck.faction);
@@ -3457,7 +3461,8 @@ class DeckMaker {
 		start_deck.cards = start_deck.cards.map(c => ({
 			index: c[0],
 			count: c[1]
-		}));
+        }));
+        this.me_deck_title = start_deck.title;
 		this.setLeader(start_deck.leader);
 		this.makeBank(this.faction, start_deck.cards);
 
@@ -3763,7 +3768,8 @@ class DeckMaker {
 		let me_deck = {
 			faction: this.faction,
 			leader: this.leader,
-			cards: this.deck.filter(x => x.count > 0)
+			cards: this.deck.filter(x => x.count > 0),
+            title: this.me_deck_title
 		};
 
 		if (game.randomOPDeck || !this.start_op_deck) {
@@ -3944,7 +3950,8 @@ class DeckMaker {
 		if (card_dict[deck.leader].row === "leader" && deck.faction === card_dict[deck.leader].deck) {
 			this.leader = this.leaders.filter(c => c.index === deck.leader)[0];
 			getPreviewElem(this.leader_elem.children[1], this.leader.card);
-		}
+        }
+        this.me_deck_title = deck.title;
 		this.makeBank(deck.faction, cards);
 		this.update();
 	}
