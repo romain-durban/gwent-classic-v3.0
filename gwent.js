@@ -710,7 +710,7 @@ class ControllerAI {
 				break;
 			case "avenger":
 			case "avenger_kambi":
-				return score + ability_dict[abi[abi.length - 1]].weight();
+				return score + ability_dict[abi[abi.length - 1]].weight(card);
 		}
 
 		return score;
@@ -734,7 +734,6 @@ class Player {
 		this.id = id;
 		this.tag = (id === 0) ? "me" : "op";
         this.controller = (id === 0) ? new Controller() : new ControllerAI(this);
-        console.log(deck);
 
 		this.hand = (id === 0) ? new Hand(document.getElementById("hand-row")) : new HandAI();
 		this.grave = new Grave(document.getElementById("grave-" + this.tag));
@@ -2981,7 +2980,7 @@ class UI {
 	}
 
 	// Enables or disables selection and highlighting of rows specific to the card
-	setSelectable(card, enable) {
+    setSelectable(card, enable) {
 		if (!enable) {
 			for (let row of board.row) {
 				row.elem.classList.remove("row-selectable");
@@ -3103,7 +3102,7 @@ class UI {
 			return;
 		}
 
-		if (card.abilities.includes("decoy") || card.abilities.includes("alzur_maker")) {
+        if (card.abilities.includes("decoy") || card.abilities.includes("alzur_maker")) {
 			for (let i = 0; i < 6; ++i) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());

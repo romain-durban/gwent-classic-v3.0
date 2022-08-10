@@ -217,7 +217,11 @@ var ability_dict = {
             }
 			
 		},
-		weight: () => 50
+        weight: (card) => {
+            if (game.roundHistory.length > 2)
+                return 1;
+            return Number(card_dict[card.target]["strength"]);
+        }
 	},
 	cintra_slaughter: {
 		name: "Slaughter of Cintra",
@@ -744,8 +748,8 @@ var ability_dict = {
 		activated: (card, player) => {
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
-			ui.enablePlayer(true);
-			if(!player instanceof ControllerAI)
+            ui.enablePlayer(true);
+			if(!(player.controller instanceof ControllerAI))
 				ui.setSelectable(card, true);
 		},
 		target: "wu_koshchey",
