@@ -1590,7 +1590,7 @@ var default_cards = {
         "deck": "monsters",
         "row": "ranged",
         "strength": "7",
-        "ability": "scorch_r",
+        "ability": "scorch_c",
         "filename": "toad",
         "count": "1",
         "quote": "Big. Bad. Ugly. Squats in the sewers."

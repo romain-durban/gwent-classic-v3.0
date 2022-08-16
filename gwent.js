@@ -1490,7 +1490,7 @@ class Row extends CardContainer {
 		window.addEventListener("keyup", function (e) {
 			if (e.keyCode == 13) may_act_card = true;
 		});
-		this.special.elem.addEventListener("click", () => ui.selectRow(this), false, true);
+		this.special.elem.addEventListener("click", () => ui.selectRow(this,true), false, true);
 	}
 
 	// Override
@@ -2729,10 +2729,13 @@ class UI {
 	}
 
 	// Called when the player selects a selectable CardContainer
-	async selectRow(row) {
+	async selectRow(row,isSpecial=false) {
 		this.lastRow = row;
-		if (this.previewCard === null) {
-			await ui.viewCardsInContainer(row);
+        if (this.previewCard === null) {
+            if (isSpecial)
+                await ui.viewCardsInContainer(row.special);
+            else
+			    await ui.viewCardsInContainer(row);
 			return;
 		}
 		if (this.previewCard.key === "spe_decoy" || this.previewCard.abilities.includes("alzur_maker"))
@@ -3079,7 +3082,7 @@ class UI {
 						r.special.elem.classList.add("row-selectable");
 						fileira_clicavel = null;
 					}
-				} else if (card.abilities.includes("shield_c") || card.abilities.includes("shield_c") || card.abilities.includes("shield_s")) {
+				} else if (card.abilities.includes("shield_c") || card.abilities.includes("shield_r") || card.abilities.includes("shield_s")) {
 					if ((card.abilities.includes("shield_c") && i == 3) || (card.abilities.includes("shield_r") && i == 4) || (card.abilities.includes("shield_s") && i == 5)) {
 						r.special.elem.classList.add("row-selectable");
 						fileira_clicavel = null;
