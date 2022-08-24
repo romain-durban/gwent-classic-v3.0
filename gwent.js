@@ -4445,11 +4445,9 @@ window.onload = function() {
 	document.getElementById("button_start").addEventListener("click", function() {
 		inicio();
     });
-    if (isMobile) {
-        try {
-            window.screen.orientation.lock("landscape");
-        } catch (err) { }
-    }
+    try {
+        window.screen.orientation.lock("landscape");
+    } catch (err) { }
 	isLoaded = true;
 }
 
