@@ -1214,7 +1214,7 @@ var custom_decks = [
         ]
     },
     {
-        "title": "Syndicate - Navigrad Gangs",
+        "title": "Syndicate - Novigrad Gangs",
         "description": "Syndicate deck focusing on cards of the Gangs of Novigrad - Playstyle: Spy, Tight Bond, Muster",
         "leader": "sy_cyprian_wiley",
         "faction": "syndicate",
@@ -1260,7 +1260,8 @@ var custom_decks = [
  */
 
 var premade_deck = default_decks;
-premade_deck = custom_decks.concat(premade_deck);
+//premade_deck = custom_decks.concat(premade_deck);
+premade_deck = custom_decks;
 
 var deckWeightConsts = {
     "spyBase": 20,

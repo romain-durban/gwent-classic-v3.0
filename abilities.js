@@ -685,7 +685,7 @@ var ability_dict = {
 	},
 	seize: {
 		name: "Seize",
-		description: "Move the Melee unit(s) with the lowest strength on your side of the board",
+		description: "Move the Melee unit(s) with the lowest strength on your side of the board/ Their abilities won't work anymore.",
 		activated: async card => {
 			let opCloseRow = board.getRow(card, "close", card.holder.opponent());
 			let meCloseRow = board.getRow(card, "close", card.holder);
@@ -920,7 +920,7 @@ var ability_dict = {
 		weight: (card) => 20
 	},
 	azar_javed: {
-		description: "Destroy the enemy's weakest hero card.",
+		description: "Destroy the enemy's weakest hero card (max 1 card).",
 		activated: async (card, player) => {
 			let heroes = player.opponent().getAllRowCards().filter(c => c.hero);
 			if (heroes.length === 0)

@@ -4444,7 +4444,12 @@ window.onload = function() {
 	document.getElementsByTagName("main")[0].style.display = "";
 	document.getElementById("button_start").addEventListener("click", function() {
 		inicio();
-	});
+    });
+    if (isMobile) {
+        try {
+            window.screen.orientation.lock("landscape");
+        } catch (err) { }
+    }
 	isLoaded = true;
 }
 
