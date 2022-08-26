@@ -771,7 +771,9 @@ class Player {
 		this.winning = false;
 		this.factionAbilityUses = 0;
 		this.effects = {
-			"witchers": {}
+            "witchers": {},
+            "whorshippers": 0,
+            "inspire": 0
 		};
 
 		// Handling Faction abilities: active or passive
@@ -798,7 +800,9 @@ class Player {
 
 	roundStartReset() {
 		this.effects = {
-			"witchers": {}
+            "witchers": {},
+            "whorshippers": 0,
+            "inspire": 0
 		};
     }
 
@@ -1584,7 +1588,7 @@ class Row extends CardContainer {
 						if (!this.effects.bond[card.target])
 							this.effects.bond[card.target] = 0;
 						this.effects.bond[card.target] += activate ? 1 : -1;
-						break;
+                        break;
 				}
 			}
 		}
@@ -1638,10 +1642,18 @@ class Row extends CardContainer {
 		if (card.hero)
 			return total;
 		if (card.abilities.includes("spy"))
-			total = Math.floor(game.spyPowerMult * total);
+            total = Math.floor(game.spyPowerMult * total);
+        // Inspire - changes base strength, before weather
+        if (card.abilities.includes("inspire") && !card.isLocked()) {
+            let inspires = card.holder.getAllRowCards().filter(c => !c.isLocked() && c.abilities.includes("inspire"));
+            if (inspires.length > 1) {
+                let maxBase = inspires.reduce((a, b) => a.basePower > b.basePower ? a : b);
+                total = maxBase.basePower;
+            }
+        }
 		if (this.effects.weather)
 			if (this.halfWeather)
-				total = Math.max(1, Math.floor(total/2));
+                total = Math.max(Math.min(1, total), Math.floor(total/2));  // 2 special cases, if intially 1, we want to keep one, not 0 (floor(0.5)). If 0, we want to keep 0, not 1
 			else
 				total = Math.min(1, total);
 		// Bond
@@ -1652,13 +1664,16 @@ class Row extends CardContainer {
 		total += Math.max(0, this.effects.morale + (card.abilities.includes("morale") ? -1 : 0));
 		// Toussiant Wine
 		total += Math.max(0, 2 * this.effects.toussaint_wine);
-		//Witcher Schools
+		// Witcher Schools
 		if (card.abilities.at(-1) && card.abilities.at(-1).startsWith("witcher_") && !card.isLocked()) {
 			let school = card.abilities.at(-1);
 			if (card.holder.effects["witchers"][school]) {
 				total += card.holder.effects["witchers"][school] - 1;
             }
         }
+        // Whorshipped
+        if (card.abilities.includes("whorshipped") && card.holder.effects["whorshippers"] > 0 && !card.isLocked())
+            total += card.holder.effects["whorshippers"] * game.whorshipBoost;
 		// Horn
 		if (this.effects.horn - (card.abilities.includes("horn") ? 1 : 0) > 0)
 			total *= 2;
@@ -2017,7 +2032,8 @@ class Game {
 		this.roundHistory = [];
 
 		this.randomRespawn = false;
-		this.medicCount = 1;
+        this.medicCount = 1;
+        this.whorshipBoost = 1;
 		this.spyPowerMult = 1;
 		this.decoyCancelled = false;
 		this.scorchCancelled = false;
@@ -2898,7 +2914,8 @@ class UI {
 			"notif-toussaint-decoy-cancelled": "Toussaint Leader ability used - Decoy ability cancelled for the rest of the round.",
 			"notif-lyria_rivia": "Lyria & Rivia ability used - Morale Boost effect applied to a row.",
 			"notif-meve_white_queen": "Lyria & Rivia leader allows both players to restore 2 units when using the medic ability.",
-			"notif-north-scorch-cancelled": "Northern Realms Leader ability used - Scorch ability cancelled for the rest of the round.",
+            "notif-north-scorch-cancelled": "Northern Realms Leader ability used - Scorch ability cancelled for the rest of the round.",
+            "notif-zerrikania": "Zerrikania ability used - Unit restored from discard pile.",
 		}
 		var guia2 = {
 			"me-pass" : "pass",
@@ -4336,7 +4353,8 @@ function openFullscreen() {
 	try {
 		if (elem_principal.requestFullscreen) elem_principal.requestFullscreen();
 		else if (elem_principal.webkitRequestFullscreen) elem_principal.webkitRequestFullscreen();
-		else if (elem_principal.msRequestFullscreen) elem_principal.msRequestFullscreen();
+        else if (elem_principal.msRequestFullscreen) elem_principal.msRequestFullscreen();
+        window.screen.orientation.lock("landscape");
 	} catch(err) {}
 }
 
@@ -4445,9 +4463,6 @@ window.onload = function() {
 	document.getElementById("button_start").addEventListener("click", function() {
 		inicio();
     });
-    try {
-        window.screen.orientation.lock("landscape");
-    } catch (err) { }
 	isLoaded = true;
 }
 

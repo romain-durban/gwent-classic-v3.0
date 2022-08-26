@@ -1252,6 +1252,77 @@ var custom_decks = [
             ["sy_sewer_raider", 1],
             ["sy_boris", 1]
         ]
+    },
+    {
+        "title": "Zerrikania - Dragon Cult",
+        "description": "Zerrikania deck focusing on dragons and their whorshippers - Playstyle: Worshipper / Whorshipped",
+        "leader": "ze_zerrikanterment",
+        "faction": "zerrikania",
+        "cards": [
+            ["spe_horn", 1],
+            ["spe_decoy", 2],
+            ["spe_dragon_wrath", 1],
+            ["spe_tse_tse_flies", 1],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["ze_villentretenmerth", 1],
+            ["ze_myrgtabrakke", 1],
+            ["ze_merineaevelth", 1],
+            ["ze_ocvist", 1],
+            ["ze_keltullis", 1],
+            ["ze_ostreverg", 1],
+            ["ze_germinus", 1],
+            ["ze_first_faithel_kia", 1],
+            ["ze_tea_vea_1", 1],
+            ["ze_tea_vea_2", 1],
+            ["ze_faithel_1", 1],
+            ["ze_faithel_2", 1],
+            ["ze_faithel_3", 1],
+            ["ze_balladeer", 1],
+            ["ze_tiger_1", 1],
+            ["ze_tiger_2", 1],
+            ["ze_yellow_witch_korath", 1],
+            ["ze_emetouka", 1],
+            ["ze_dragon_priestess_lua", 1],
+            ["ze_high_priestess_nia", 1],
+            ["ze_apucunpture_healer", 1],
+            ["ze_collective_trance", 1],
+        ]
+    },
+    {
+        "title": "Zerrikania - Army",
+        "description": "Zerrikania deck focusing on dragons and their whorshippers - Playstyle: Inspire, Scorch, Tall units",
+        "leader": "ze_rarog",
+        "faction": "zerrikania",
+        "cards": [
+            ["spe_horn", 2],
+            ["spe_decoy", 1],
+            ["spe_giant_spider_web", 2],
+            ["spe_clear", 1],
+            ["spe_scorch", 1],
+            ["ze_hippotoxotai_1", 1],
+            ["ze_hippotoxotai_2", 1],
+            ["ze_hippotoxotai_3", 1],
+            ["ze_azar_javed", 1],
+            ["ze_bomb_maker_1", 1],
+            ["ze_giant_spotted_spider", 1],
+            ["ze_free_warrior_1", 1],
+            ["ze_free_warrior_2", 1],
+            ["ze_free_warrior_3", 1],
+            ["ze_free_warrior_4", 1],
+            ["ze_free_warrior_5", 1],
+            ["ze_heavy_fire_scorpion", 1],
+            ["ze_skuda_amazon_1", 1],
+            ["ze_skuda_amazon_2", 1],
+            ["ze_behemoth", 1],
+            ["ze_war_elephant", 1],
+            ["ze_sandworm", 1],
+            ["ze_alchemist", 1],
+            ["ze_lilit_niya", 1],
+            ["ze_myrgot", 1],
+            ["ze_venomous_basilisk", 1],
+            ["ze_saulrenith", 1],
+        ]
     }
 ];
 
@@ -1283,7 +1354,10 @@ var deckWeightConsts = {
     "cintra_slaughter": 5,
     "resilience": 5,
     "witcherSchoolWeight": 1,
-    "witch_hunt": 5
+    "witch_hunt": 5,
+    "whorshipper": 3,
+    "whorshipped": 3,
+    "inspire": 3
 };
 
 function calcDeckWeight(deck) {

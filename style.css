@@ -359,7 +359,15 @@ html {
 }
 
 #notif-lyria_rivia::after {
-	content: "Witcher Universe faction ability used: \A Turn skipped.";
+	content: "Lyria & Rivia faction ability used: \A Turn skipped.";
+}
+
+#notif-zerrikania {
+    background-image: url(img/icons/notif_zerrikania.png);
+}
+
+#notif-zerrikania::after {
+    content: "Zerrikania faction ability used: \A Unit restored from the discard pile.";
 }
 
 .card-preview {

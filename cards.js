@@ -4928,7 +4928,7 @@ var ext_st_cards = {
         "ability": "muster",
         "filename": "dwarven_mercenary_1",
         "count": "1",
-        "targer": "sc_dwarven_mercenary",
+        "target": "sc_dwarven_mercenary",
         "quote": "The key's mixin' pleasure an' business – like smackin' foes and gettin' coin for it."
     },
     "sc_dwarven_mercenary_2": {
@@ -4940,7 +4940,7 @@ var ext_st_cards = {
         "ability": "muster",
         "filename": "dwarven_mercenary_2",
         "count": "1",
-        "targer": "sc_dwarven_mercenary",
+        "target": "sc_dwarven_mercenary",
         "quote": "The key's mixin' pleasure an' business – like smackin' foes and gettin' coin for it."
     },
     "sc_hawker_smuggler": {
@@ -8917,6 +8917,655 @@ var ext_sy_cards = {
     }
 };
 
+var ext_ze_cards = {
+    "ze_zerrikanterment": {
+        "name": "Zerrikanterment",
+        "deck": "zerrikania",
+        "row": "leader",
+        "strength": "",
+        "ability": "zerrikanterment",
+        "filename": "zerrikanterment",
+        "count": "1",
+        "quote": "Legend says he burned the forests around Zerrikania making it isolated from the world by deserts and wastelands."
+    },
+    "ze_baal_zebuth": {
+        "name": "Ball-Zebuth",
+        "deck": "zerrikania",
+        "row": "leader",
+        "strength": "",
+        "ability": "baal_zebuth",
+        "filename": "baal_zebuth",
+        "count": "1",
+        "quote": "God of moist and dark sky, it is believed to be the polar opposite of Raróg."
+    },
+    "ze_rarog": {
+        "name": "Raróg",
+        "deck": "zerrikania",
+        "row": "leader",
+        "strength": "",
+        "ability": "rarog",
+        "filename": "rarog",
+        "count": "1",
+        "quote": "Fierce deity of fire and warm sky, it is believed to be the polar opposite of Baal-Zebuth."
+    },
+    "ze_villentretenmerth": {
+        "name": "Villentretenmerth",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "8",
+        "ability": "whorshipped",
+        "filename": "villentretenmerth",
+        "count": "1",
+        "quote": "Also calls himself Borkh Three Jackdaws... he's not the best at names."
+    },
+    "ze_myrgtabrakke": {
+        "name": "Myrgtabrakke",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "8",
+        "ability": "whorshipped",
+        "filename": "myrgtabrakke",
+        "count": "1",
+        "quote": "Never get between a mother dragon and her young."
+    },
+    "ze_merineaevelth": {
+        "name": "Merineaevelth",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "merineaevelth",
+        "count": "1",
+        "quote": "Queen of Zerrikania and founder of the Faithel."
+    },
+    "ze_saulrenith": {
+        "name": "Saulrenith",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "hero medic",
+        "filename": "saulrenith",
+        "count": "1",
+        "quote": "Impulsive and violent - not the mixture of traits one would trifle with."
+    },
+    "ze_tea_vea_1": {
+        "name": "Tea & Vea",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster whorshipper",
+        "filename": "tea_vea_1",
+        "count": "1",
+        "target": "wu_tea_vea",
+        "quote": "Her sabre, drawn faster than they eye could see, cut through the air."
+    },
+    "ze_tea_vea_2": {
+        "name": "Tea & Vea",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "muster whorshipper",
+        "filename": "tea_vea_2",
+        "count": "1",
+        "target": "wu_tea_vea",
+        "quote": "Her sabre, drawn faster than they eye could see, cut through the air."
+    },
+    "ze_faithel_1": {
+        "name": "Faithel",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "whorshipper",
+        "filename": "faithel_1",
+        "count": "1",
+        "quote": "Their goal is to find a dragon, honour it and swear their allegiance."
+    },
+    "ze_faithel_2": {
+        "name": "Faithel",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "whorshipper",
+        "filename": "faithel_2",
+        "count": "1",
+        "quote": "Their goal is to find a dragon, honour it and swear their allegiance."
+    },
+    "ze_faithel_3": {
+        "name": "Faithel",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "whorshipper",
+        "filename": "faithel_3",
+        "count": "1",
+        "quote": "Their goal is to find a dragon, honour it and swear their allegiance."
+    },
+    "ze_myrgot": {
+        "name": "Myrgot",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "myrgot",
+        "count": "1",
+        "quote": "Scarred with shame, Myrgot never again returned to Caingorn after his disgraceful lost in the jouting with the pious knight Eyck of Denesle."
+    },
+    "ze_lilit_niya": {
+        "name": "Lilit-Niya",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "lilit_niya",
+        "count": "1",
+        "quote": "The Black Sun was to announce the imminent return of Lilit, still honoured in the East under the name of Niya, and the extermination of the human race."
+    },
+    "ze_ocvist": {
+        "name": "Ocvist",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "whorshipped",
+        "filename": "ocvist",
+        "count": "1",
+        "quote": "The Master of Quartz Mountain, the Destroyer, Trajan's Slayer. In his free time, he likes long walks and candlelight dinners."
+    },
+    "ze_keltullis": {
+        "name": "Keltullis",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "6",
+        "ability": "whorshipped",
+        "filename": "keltullis",
+        "count": "1",
+        "quote": "They fought 'er for near a century and they realized she weren't goin' nowheres, so... they cut a deal.She dinnae bother 'em, they give 'er what she needs."
+    },
+    "ze_ostreverg": {
+        "name": "Ostreverg",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "6",
+        "ability": "whorshipped",
+        "filename": "ostreverg",
+        "count": "1",
+        "quote": "A long time ago the dragon Ostreverg ravaged and plundered the sacred Temple of Freya on the Skellige Islands."
+    },
+    "ze_germinus": {
+        "name": "Germinus",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "whorshipped",
+        "filename": "germinus",
+        "count": "1",
+        "quote": "The dragon valued its treasures above all else, unleashing its wrath on anything threatening it."
+    },
+    "ze_azar_javed": {
+        "name": "Azar Javed",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "scorch",
+        "filename": "azar_javed",
+        "count": "1",
+        "quote": "The sorcerer not only deftly manipulates the power of fire, it can be said that fire has become a part of his very being."
+    },
+    "ze_bart": {
+        "name": "Bart",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "morale",
+        "filename": "bart",
+        "count": "1",
+        "quote": "A good watchman should be brainless enough to render any thought of betraying his master impossible."
+    },
+    "ze_venomous_basilisk": {
+        "name": "Venomous Basilisk",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "scorch_c",
+        "filename": "venomous_basilisk",
+        "count": "1",
+        "quote": "The Basilisk is the most venomous creature in the world! For the basilisk is the king of all serpents!"
+    },
+    "ze_giant_spotted_spider": {
+        "name": "Giant Spotted Spider",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "giant_spotted_spider",
+        "count": "1",
+        "quote": "Every beast roaming the forest is its prey, even elephants."
+    },
+    "ze_emetouka": {
+        "name": "Emetouka",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "6",
+        "ability": "",
+        "filename": "emetouka",
+        "count": "1",
+        "quote": "Their horn have immense value, mostly because many died trying to hunt them."
+    },
+    "ze_leopard_1": {
+        "name": "Leopard",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "leopard_1",
+        "count": "1",
+        "target": "ze_leopard",
+        "quote": "Many their preys have mistaken their relaxed state for safety, leopards simply know they will quickly catch up on them."
+    },
+    "ze_leopard_2": {
+        "name": "Leopard",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "bond",
+        "filename": "leopard_2",
+        "count": "1",
+        "target": "ze_leopard",
+        "quote": "Many their preys have mistaken their relaxed state for safety, leopards simply know they will quickly catch up on them."
+    },
+    "ze_tiger_1": {
+        "name": "Tiger",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "tiger_1",
+        "count": "1",
+        "target": "ze_tiger",
+        "quote": "The queen favourite beast. After dragons obviously."
+    },
+    "ze_tiger_2": {
+        "name": "Tiger",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "bond",
+        "filename": "tiger_2",
+        "count": "1",
+        "target": "ze_tiger",
+        "quote": "The queen favourite beast. After dragons obviously."
+    },
+    "ze_jackals": {
+        "name": "Jackals",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "muster",
+        "filename": "jackals",
+        "count": "3",
+        "target": "ze_jackals",
+        "quote": "Not the most dangerous but surprisingly one of the most hated wild beasts around."
+    },
+    "ze_boa": {
+        "name": "Boa",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "boa",
+        "count": "1",
+        "quote": "Living choking hazard."
+    },
+    "ze_python": {
+        "name": "Python",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "python",
+        "count": "1",
+        "quote": "'Look at this weird fallen tree! Oh shit, it's moving towards us!'"
+    },
+    "ze_viper": {
+        "name": "Viper",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "",
+        "filename": "viper",
+        "count": "1",
+        "quote": "'Had to flee me home, some damn viper had made it its den.'"
+    },
+    "ze_hyenas": {
+        "name": "Hyenas",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "",
+        "filename": "hyenas",
+        "count": "1",
+        "quote": "'Those ploughin' wretches always hunt in packs. They killed all my hens and I couldn't do nothin'.'"
+    },
+    "ze_collective_trance": {
+        "name": "Collective Trance",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "4",
+        "ability": "medic",
+        "filename": "collective_trance",
+        "count": "1",
+        "quote": "Zerrikanians have this old tradition to join together, share a strong psychedelic decoction and escape the harsh reality."
+    },
+    "ze_hippotoxotai_1": {
+        "name": "Hippotoxotai",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "hippotoxotai_1",
+        "count": "1",
+        "target": "ze_hippotoxotai",
+        "quote": "Only dust clouds, arrows and death."
+    },
+    "ze_hippotoxotai_2": {
+        "name": "Hippotoxotai",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "hippotoxotai_2",
+        "count": "1",
+        "target": "ze_hippotoxotai",
+        "quote": "Only dust clouds, arrows and death."
+    },
+    "ze_hippotoxotai_3": {
+        "name": "Hippotoxotai",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "4",
+        "ability": "muster",
+        "filename": "hippotoxotai_3",
+        "count": "1",
+        "target": "ze_hippotoxotai",
+        "quote": "Only dust clouds, arrows and death."
+    },
+    "ze_skuda_amazon_1": {
+        "name": "Skuda Amazon",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "skuda_amazon_1",
+        "count": "1",
+        "target": "ze_skuda_amazon",
+        "quote": "Their legendary markswomanship is very real."
+    },
+    "ze_skuda_amazon_2": {
+        "name": "Skuda Amazon",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "bond",
+        "filename": "skuda_amazon_2",
+        "count": "1",
+        "target": "ze_skuda_amazon",
+        "quote": "'I don't need to cut my breast to hit a bull's eye at full speed.'"
+    },
+    "ze_bomb_maker_1": {
+        "name": "Zerrikanian Bomb Maker",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "scorch",
+        "filename": "bomb_maker_1",
+        "count": "1",
+        "quote": "Business of Zerrikanian bombs is... booming."
+    },
+    "ze_bomb_maker_2": {
+        "name": "Zerrikanian Bomb Maker",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "3",
+        "ability": "scorch",
+        "filename": "bomb_maker_2",
+        "count": "1",
+        "quote": "Business of Zerrikanian bombs is... booming."
+    },
+    "ze_heavy_fire_scorpion": {
+        "name": "Heavy Zerrikanian Fire Scorprion",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "10",
+        "ability": "",
+        "filename": "heavy_fire_scorpion",
+        "count": "1",
+        "quote": "Not the best for taking cities, but great for razing them to the ground."
+    },
+    "ze_free_warrior_1": {
+        "name": "Free Warrior",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "4",
+        "ability": "inspire",
+        "filename": "free_warrior_1",
+        "count": "1",
+        "quote": "'Hmm, that feeling of freedom after defeating your foe!'"
+    },
+    "ze_free_warrior_2": {
+        "name": "Free Warrior",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "5",
+        "ability": "inspire",
+        "filename": "free_warrior_2",
+        "count": "1",
+        "quote": "She first lets her prey get lost in the jungle, then she starts the hunt."
+    },
+    "ze_free_warrior_3": {
+        "name": "Free Warrior",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "8",
+        "ability": "inspire",
+        "filename": "free_warrior_3",
+        "count": "1",
+        "quote": "Few in the northern realms can afford his sword."
+    },
+    "ze_free_warrior_4": {
+        "name": "Free Warrior",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "6",
+        "ability": "inspire",
+        "filename": "free_warrior_4",
+        "count": "1",
+        "quote": "'See that thing running over there, I'll make it stop.'"
+    },
+    "ze_free_warrior_5": {
+        "name": "Free Warrior",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "7",
+        "ability": "inspire",
+        "filename": "free_warrior_5",
+        "count": "1",
+        "quote": "'At first I thought it was one o' those leopards, ye know? Till I saw the spear and realized 'twas in fact a woman.'"
+    },
+    "ze_first_faithel_kia": {
+        "name": "First Faithel Kia",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "9",
+        "ability": "hero whorshipper",
+        "filename": "first_faithel_kia",
+        "count": "1",
+        "quote": "Once a close friend of Merineaevelth, she was the first tasked to find and protect the devine dragons of the world."
+    },
+    "ze_apucunpture_healer": {
+        "name": "Apucunpture Healer",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "6",
+        "ability": "medic",
+        "filename": "apucunpture_healer",
+        "count": "1",
+        "quote": "You might find it surprising, but these needles soothe pain."
+    },
+    "ze_canyon_herbalist": {
+        "name": "Canyon Herbalist",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "5",
+        "ability": "morale",
+        "filename": "canyon_herbalist",
+        "count": "1",
+        "quote": "It is easy to get lost in the canyon, but knowing its herbs is a rare gift."
+    },
+    "ze_high_priestess_nia": {
+        "name": "High Priestess Nia",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "high_priestess_nia",
+        "count": "1",
+        "quote": "Battles have been fought in her name. Each bloodier than the last."
+    },
+    "ze_dragon_priestess_lua": {
+        "name": "Dragon Priestess Lua",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "8",
+        "ability": "hero whorshipper",
+        "filename": "dragon_priestess_lua",
+        "count": "1",
+        "quote": "Mastering the arcana of dragon magic is no small feat."
+    },
+    "ze_rainforest_pathfinder": {
+        "name": "Rainforest Pathfinder",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "8",
+        "ability": "spy",
+        "filename": "rainforest_pathfinder",
+        "count": "1",
+        "quote": "How to cross the Sar'gaedd forest? Take a map, see where the nearest tribal village is, then hire a local guide."
+    },
+    "ze_steppes_nomad_1": {
+        "name": "Steppes Nomad",
+        "id": 1,
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "steppes_nomad_1",
+        "count": "1",
+        "target": "ze_steppes_nomad",
+        "quote": "It takes robustness and unity to survive in these vast steppes."
+    },
+    "ze_steppes_nomad_2": {
+        "name": "Steppes Nomad",
+        "id": 2,
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "5",
+        "ability": "muster",
+        "filename": "steppes_nomad_2",
+        "count": "1",
+        "target": "ze_steppes_nomad",
+        "quote": "It takes robustness and unity to survive in these vast steppes."
+    },
+    "ze_war_elephant": {
+        "name": "War Elephant",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "9",
+        "ability": "",
+        "filename": "war_elephant",
+        "count": "1",
+        "quote": "It's hard to find journals of what it is like to see a Zerrikanian elephant battalion charging towards you, for it requires survivors."
+    },
+    "ze_behemoth": {
+        "name": "Behemoth",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "behemoth",
+        "count": "1",
+        "quote": "A beast so huge its turd piles were big enough to provide housing for whole families. If it wasn't for the stench that is."
+    },
+    "ze_balladeer": {
+        "name": "Balladeer",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "1",
+        "ability": "horn",
+        "filename": "balladeer",
+        "count": "1",
+        "quote": "It is known the Zerrikanian queen was a tought woman and that only the mellifluous voice of a deft singer could penetrate the hard shell around her heart."
+    },
+    "ze_alchemist": {
+        "name": "Zerrikanian Alchemist",
+        "deck": "zerrikania",
+        "row": "siege",
+        "strength": "1",
+        "ability": "medic",
+        "filename": "alchemist",
+        "count": "1",
+        "quote": "'What if I put some of this too...'"
+    },
+    "ze_yellow_witch_korath": {
+        "name": "Yellow Witch Korath",
+        "deck": "zerrikania",
+        "row": "ranged",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "yellow_witch_korath",
+        "count": "1",
+        "quote": "A man once forgot her full title is mistakenly called her a 'sand witch'. Now is lacquered skull decorates her staff."
+    },
+    "ze_sandworm": {
+        "name": "Sandworm",
+        "deck": "zerrikania",
+        "row": "close",
+        "strength": "11",
+        "ability": "hero",
+        "filename": "sandworm",
+        "count": "1",
+        "quote": "Despite its massive size, many sense it coming only too late."
+    },
+    "spe_giant_spider_web": {
+        "name": "Giant Spider Webs",
+        "deck": "weather zerrikania",
+        "row": "",
+        "strength": "",
+        "ability": "frost",
+        "filename": "giant_spider_web",
+        "count": "3",
+        "quote": "Zerrikania hosts spiders so large they can trap elephants in their webs."
+    },
+    "spe_tse_tse_flies": {
+        "name": "Biting Frost",
+        "deck": "weather zerrikania",
+        "row": "",
+        "strength": "",
+        "ability": "fog",
+        "filename": "tse_tse_flies",
+        "count": "3",
+        "quote": "The flies are especially repulsive, laying their eggs in the human body, the resulting larvae maturing within the host's head."
+    },
+    "spe_dragon_wrath": {
+        "name": "Biting Frost",
+        "deck": "weather zerrikania",
+        "row": "",
+        "strength": "",
+        "ability": "rain",
+        "filename": "dragon_wrath",
+        "count": "3",
+        "quote": "Blackened skies from wisps of smoke, the greenery's vanished in a fiery stroke."
+    },
+};
+
 /*
  * Selecting cards to use
  */
@@ -8931,3 +9580,4 @@ card_dict = Object.assign({}, card_dict, ext_wu_cards);
 card_dict = Object.assign({}, card_dict, ext_to_cards);
 card_dict = Object.assign({}, card_dict, ext_lr_cards);
 card_dict = Object.assign({}, card_dict, ext_sy_cards);
+card_dict = Object.assign({}, card_dict, ext_ze_cards);

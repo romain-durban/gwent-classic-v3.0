@@ -126,5 +126,29 @@ var factions = {
 		activeAbility: false,
 		abilityUses: 0,
 		description: "Starts the game with the Hero card Sigi Reuven on the board."
-	}
+    },
+    zerrikania: {
+        name: "Zerrikania",
+        factionAbility: player => game.roundStart.push(async () => {
+            if (game.roundCount > 1 && !(game.roundHistory[game.roundCount - 2].winner === player)) {
+                if (player.grave.findCards(c => c.isUnit()) <= 0)
+                    return;
+                let grave = player.grave;
+                let respawns = [];
+                await ui.queueCarousel(player.grave, 1, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+                await Promise.all(respawns.map(async wrapper => {
+                    let res = wrapper.card;
+                    grave.removeCard(res);
+                    grave.addCard(res);
+                    await res.animate("medic");
+                    await res.autoplay(grave);
+                }));
+                await ui.notification("zerrikania", 1200);
+            }
+            return false;
+        }),
+        activeAbility: false,
+        abilityUses: 0,
+        description: "Restore a unit card of your choice whenever you lose a round."
+    }
 }

@@ -717,19 +717,19 @@ var ability_dict = {
 		description: "Pushes all units of the selected row (Melee or Ranged) or row back towards the Siege row, ignores shields.",
 		activated: async (card, row) => {
 			let units = row.findCards(c => c.isUnit());
-			if (units.length === 0)
-				return;
-			let targetRow;
-			for (var i = 0; i < board.row.length; i++) {
-				if (board.row[i] === row) {
-					if (i < 3)
-						targetRow = board.row[Math.max(0,i - 1)];
-					else
-						targetRow = board.row[Math.min(5,i + 1)];
+            if (units.length > 0) {
+                let targetRow;
+                for (var i = 0; i < board.row.length; i++) {
+                    if (board.row[i] === row) {
+                        if (i < 3)
+                            targetRow = board.row[Math.max(0, i - 1)];
+                        else
+                            targetRow = board.row[Math.min(5, i + 1)];
+                    }
                 }
-			}
-			await Promise.all(units.map(async c => await c.animate("knockback")));
-			units.map(async c => await board.moveToNoEffects(c, targetRow, row));
+                await Promise.all(units.map(async c => await c.animate("knockback")));
+                units.map(async c => await board.moveToNoEffects(c, targetRow, row));
+            }
 			await board.toGrave(card, card.holder.hand);
 		},
 		weight: (card) => {
@@ -956,5 +956,71 @@ var ability_dict = {
 			await Promise.all(units.map(async c => await c.animate("scorch", true, false)));
 			await Promise.all(units.map(async c => await board.toGrave(c, row)));
 		}
-	}
+    },
+    zerrikanterment: {
+        description: "Amount of worshippers boost is doubled.",
+        gameStart: () => game.whorshipBoost *= 2
+    },
+    baal_zebuth: {
+        description: "Select 2 cards from your opponent's discard pile and shuffle them back into his/her deck.",
+        activated: async (card) => {
+            let grave = card.holder.opponent().grave;
+            if (card.holder.controller instanceof ControllerAI) {
+                let cards = grave.findCardsRandom(false,2);
+                await Promise.all(cards.map(async c => await board.toDeck(c, c.holder.grave)));
+                return;
+            } else {
+                try {
+                    Carousel.curr.exit();
+                } catch (err) { }
+            }
+            await ui.queueCarousel(grave, 2, (c, i) => board.toDeck(c.cards[i], c), () => true);
+        },
+        weight: (card) => {
+            if (card.holder.opponent().grave.cards.length < 5)
+                return 0;
+            else
+                return 20;
+        }
+    },
+    rarog: {
+        description: "Draw a random card from the discard pile to your hand (any card) and then shuffle the rest back into the deck.",
+        activated: async (card) => {
+            if (card.holder.grave.cards.length === 0)
+                return;
+            let grave = card.holder.grave;
+            let c = grave.findCardsRandom(false, 1)[0];
+            await board.toHand(c, c.holder.grave);
+            Promise.all(card.holder.grave.cards.map(c => board.toDeck(c, card.holder.grave)));
+        },
+        weight: (card) => {
+            let medics = card.holder.hand.cards.filter(c => c.abilities.includes("medic"));
+            if (medics.length > 0 || card.holder.grave.cards.length == 0)
+                return 0;
+            else
+                return 15;
+        }
+    },
+    whorshipper: {
+        name: "Whorshipper",
+        description: "Boost by 1 all whorshipped units on your side of the board.",
+        placed: async card => {
+            if (card.isLocked())
+                return;
+            card.holder.effects["whorshippers"]++;
+        },
+        removed: async card => {
+            if (card.isLocked())
+                return;
+            card.holder.effects["whorshippers"]--;
+        }
+    },
+    whorshipped: {
+        name: "Whorshipped",
+        description: "Boosted by 1 by all whorshippers present on your side of the board.",
+    },
+    inspire: {
+        name: "Inspire",
+        description: "All units with Inspire ability take the highest base strength of the Inspire units on your side of the board. Still affected by weather.",
+    },
 };
