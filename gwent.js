@@ -26,14 +26,26 @@ class ControllerAI {
 				card: c
 			}));
 		if (player.leaderAvailable)
-			weights.push({
+            weights.push({
+                name: "Leader Ability",
 				weight: this.weightLeader(player.leader, data_max, data_board),
 				action: async () => {
 					await ui.notification("op-leader", 1200);
 					await player.activateLeader();
 				}
-			});
-		weights.push({
+            });
+        if (player.factionAbilityUses > 0) {
+            let factionAbility = factions[player.deck.faction];
+            weights.push({
+                name: "Faction ability",
+                weight: factionAbility.weight(player),
+                action: async () => {
+                    await player.useFactionAbility();
+                }
+            });
+        }
+        weights.push({
+            name: "Pass",
 			weight: this.weightPass(),
 			action: async () => await player.passRound()
 		});
@@ -51,10 +63,8 @@ class ControllerAI {
 			for (var i = 0; i < weights.length; ++i) {
 				if (weights[i].card)
 					console.log("[" + weights[i].card.name + "] Weight: " + weights[i].weight);
-				else if (i == weights.length - 2)
-					console.log("[Leader] Weight: " + weights[i].weight);
 				else
-					console.log("[Pass] Weight: " + weights[i].weight);
+                    console.log("[" + weights[i].name + "] Weight: " + weights[i].weight);
 			}
 			let rand = randomInt(weightTotal);
 			console.log("Chosen weight: " + rand);
@@ -167,38 +177,52 @@ class ControllerAI {
 	}
 
 	// Orders discardable cards from most to least discardable
-	discardOrder(card) {
+	discardOrder(card,src=null) {
 		let cards = [];
-		let groups = {};
-		let musters = card.holder.hand.cards.filter(c => c.abilities.includes("muster"));
-		while (musters.length > 0) {
-			let curr = musters.pop();
-			let i = curr.name.indexOf('-');
-			let name = i === -1 ? curr.name : curr.name.substring(0, i).trim();
-			if (!groups[name])
-				groups[name] = [];
-			let group = groups[name];
-			group.push(curr);
-			for (let j = musters.length - 1; j >= 0; j--)
-				if (musters[j].name.startsWith(name))
-					group.push(musters.splice(j, 1)[0]);
-		}
+        let groups = {};
+        let source = src ? src : card.holder.hand;
 
+        let musters = source.cards.filter(c => c.abilities.includes("muster"));
+        // Grouping Musters together
+        musters.forEach(curr => {
+            let name = curr.target;
+            if(!groups[name])
+                groups[name] = [];
+            groups[name].push(curr);
+        });
+        // Keeping one in hand for each muster group 
 		for (let group of Object.values(groups)) {
 			group.sort(Card.compare);
 			group.pop();
 			cards.push(...group);
 		}
-
-		let weathers = card.holder.hand.cards.filter(c => c.row === "weather");
+        // Discarding randomly weather cards to keep only 1 in hand
+        let weathers = source.cards.filter(c => c.row === "weather");
 		if (weathers.length > 1) {
 			weathers.splice(randomInt(weathers.length), 1);
 			cards.push(...weathers);
 		}
-
-		let normal = card.holder.hand.cards.filter(c => c.abilities.length === 0);
+        // Discarding cards with no abilities by order of strength, unless they are of 7+
+        let normal = source.cards.filter(c => c.abilities.length === 0 && c.basePower < 7);
 		normal.sort(Card.compare);
-		cards.push(...normal);
+        cards.push(...normal);
+
+        // Grouping bonds together
+        let bonds = source.cards.filter(c => c.abilities.includes("bond"));
+        groups = {};
+        bonds.forEach(curr => {
+            let name = curr.target;
+            if (!groups[name])
+                groups[name] = [];
+            groups[name].push(curr);
+        });
+        // Discarding those that are alone and weak (< 6)
+        for (let group of Object.values(groups)) {
+            if (group.length === 1 && group[0].basePower < 6) {
+                cards.push(group[0]);
+            }
+        }
+
 		return cards;
 	}
 
@@ -571,21 +595,6 @@ class ControllerAI {
 		} else {
 			score += Number(ctarget["strength"]);
         }
-		/*
-		if (card.key === "sk_berserker")
-			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
-		else if (card.key === "sk_drummond_berserker")
-			score += card_dict["sk_vildkaarl"]["strength"] + row.cards.filter(c => c.isUnit()).length - 1;
-		else if (card.key === "sk_young_berserker") {
-			let n = 0;
-			if (!row.effects.mardroeme)
-				n = row.cards.filter(c => c.key === "sk_young_berserker").length;
-			else
-				n = row.cards.filter(c => c.key === "sk_young_vildkaarl").length;
-			score = card_dict["sk_young_vildkaarl"]["strength"] * ( n * n );
-		} else {
-			score = card_dict[card.target]["strength"];
-        }*/
 		return Math.max(1, score);
 	}
 
@@ -1062,7 +1071,13 @@ class Player {
 			this.updateFactionAbilityUses(this.factionAbilityUses - 1);
 			// Some faction abilities require extra interractions
 			if (this.endTurnAfterAbilityUse)
-				this.endTurn();
+                this.endTurn();
+            if (this.controller instanceof ControllerAI) {
+                if (this.deck.faction === "lyria_rivia") {
+                    let best_row = this.controller.bestRowToussaintWine(ui.previewCard); // Reusing bestRowToussaintWine because it is nearly the same principle
+                    ui.selectRow(best_row, true);
+                }
+            }
 		}
 		return;
 	}

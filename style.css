@@ -359,7 +359,7 @@ html {
 }
 
 #notif-lyria_rivia::after {
-	content: "Lyria & Rivia faction ability used: \A Turn skipped.";
+	content: "Lyria & Rivia faction ability used: \A Morale Boost effect applied to a row.";
 }
 
 #notif-zerrikania {

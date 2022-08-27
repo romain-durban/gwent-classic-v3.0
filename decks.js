@@ -1291,7 +1291,7 @@ var custom_decks = [
     },
     {
         "title": "Zerrikania - Army",
-        "description": "Zerrikania deck focusing on dragons and their whorshippers - Playstyle: Inspire, Scorch, Tall units",
+        "description": "Zerrikania deck focusing on fighting units and creatures - Playstyle: Inspire, Scorch, Tall units",
         "leader": "ze_rarog",
         "faction": "zerrikania",
         "cards": [

@@ -87,7 +87,8 @@ var factions = {
 		}),
 		description: "Can skip a turn once every round.",
 		activeAbility: true,
-		abilityUses: 1
+        abilityUses: 1,
+        weight: (player) => { return 20; }
 	},
 	toussaint: {
 		name: "Toussaint",
@@ -106,7 +107,8 @@ var factions = {
 		name: "Lyria & Rivia",
 		factionAbility: player => {
 			let card = new Card("lr_lyria_rivia_morale", card_dict["lr_lyria_rivia_morale"], player);
-			card.removed.push(() => setTimeout(() => card.holder.grave.removeCard(card), 2000));
+            card.removed.push(() => setTimeout(() => card.holder.grave.removeCard(card), 2000));
+            card.placed.push(async () => await ui.notification("lyria_rivia", 1200));
 			player.endTurnAfterAbilityUse = false;
 			ui.showPreviewVisuals(card);
 			ui.enablePlayer(true);
@@ -115,7 +117,16 @@ var factions = {
         },
 		activeAbility: true,
 		abilityUses: 1,
-		description: "Apply a Morale Boost effect in the selected row (boost all units by 1 in this turn)."
+        description: "Apply a Morale Boost effect in the selected row (boost all units by 1 in this turn).",
+        weight: (player) => {
+            let units = player.getAllRowCards().concat(player.hand.cards).filter(c => c.isUnit()).filter(c => !c.abilities.includes("spy"));
+            let rowStats = { "close": 0, "ranged": 0, "siege": 0, "agile": 0 };
+            units.forEach(c => {
+                rowStats[c.row] += 1;
+            });
+            rowStats["close"] += rowStats["agile"];
+            return Math.max(rowStats["close"], rowStats["ranged"], rowStats["siege"]);
+        }
 	},
 	syndicate: {
 		name: "Syndicate",
