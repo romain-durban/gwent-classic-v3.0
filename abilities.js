@@ -728,18 +728,25 @@ var ability_dict = {
                     }
                 }
                 await Promise.all(units.map(async c => await c.animate("knockback")));
-                units.map(async c => await board.moveToNoEffects(c, targetRow, row));
+                units.map(async c => {
+                    if (c.abilities.includes("bond") || c.abilities.includes("morale") || c.abilities.includes("horn"))   // Exception for bond cards, these abilities should continue to work after
+                        await board.moveTo(c, targetRow, row);
+                    else
+                        await board.moveToNoEffects(c, targetRow, row);
+                });
+
+                
             }
 			await board.toGrave(card, card.holder.hand);
 		},
-		weight: (card) => {
-			if (board.row[3].cards.length + board.row[4].cards.length === 0)
+        weight: (card) => {
+            if (board.getRow(card, "close", card.holder.opponent()).cards.length + board.getRow(card, "ranged", card.holder.opponent()).cards.length === 0)
 				return 0;
 			let score = 0;
-			if (board.row[3].cards.length > 0 && (board.row[3].effects.horn > 0 || board.row[4].effects.weather || Object.keys(board.row[3].effects.bond).length > 1 || board.row[3].isShielded()))
-				score = Math.floor(board.row[3].cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
-			if (board.row[4].cards.length > 0 && (board.row[4].effects.horn > 0 || board.row[5].effects.weather || Object.keys(board.row[4].effects.bond).length > 1 || board.row[4].isShielded()))
-				score = Math.floor(board.row[3].cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
+            if (board.getRow(card, "close", card.holder.opponent()).cards.length > 0 && (board.getRow(card, "close", card.holder.opponent()).effects.horn > 0 || board.getRow(card, "ranged", card.holder.opponent()).effects.weather || Object.keys(board.getRow(card, "close", card.holder.opponent()).effects.bond).length > 1 || board.getRow(card, "close", card.holder.opponent()).isShielded()))
+                score = Math.floor(board.getRow(card, "close", card.holder.opponent()).cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
+            if (board.getRow(card, "ranged", card.holder.opponent()).cards.length > 0 && (board.getRow(card, "ranged", card.holder.opponent()).effects.horn > 0 || board.getRow(card, "siege", card.holder.opponent()).effects.weather || Object.keys(board.getRow(card, "ranged", card.holder.opponent()).effects.bond).length > 1 || board.getRow(card, "ranged", card.holder.opponent()).isShielded()))
+                score = Math.floor(board.getRow(card, "close", card.holder.opponent()).cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0) * 0.5);
 			return Math.max(1, score);
         }
 	},

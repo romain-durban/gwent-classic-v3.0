@@ -75,7 +75,17 @@ class ControllerAI {
 			}
 			await weights[i].action();
 		}
-	}
+    }
+
+    isSelfRowIndex(i) {
+        return (this.player === player_me && i > 2) || (this.player === player_op && i < 3);
+    }
+
+    getSelfRowIndexes() {
+        if (this.player === player_me)
+            return [3, 4, 5];
+        return [0, 1, 2];
+    }
 
 	// Collects data about card with the hightest power on the board
 	getMaximums() {
@@ -85,15 +95,15 @@ class ControllerAI {
 				(!a.length || a[0].power < c.power) ? [c] : a[0].power === c.power ? a.concat([c]) : a, [])
 		}));
 
-		let max = rmax.filter((r, i) => r.cards.length && i < 3).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
-		let max_me = rmax.filter((r, i) => i < 3 && r.cards.length && r.cards[0].power === max).reduce((a, r) =>
+        let max = rmax.filter((r, i) => r.cards.length && this.isSelfRowIndex(i)).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+        let max_me = rmax.filter((r, i) => this.isSelfRowIndex(i) && r.cards.length && r.cards[0].power === max).reduce((a, r) =>
 			a.concat(r.cards.map(c => ({
 				row: r,
 				card: c
 			}))), []);
 
-		max = rmax.filter((r, i) => r.cards.length && i > 2).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
-		let max_op = rmax.filter((r, i) => i > 2 && r.cards.length && r.cards[0].power === max).reduce((a, r) =>
+        max = rmax.filter((r, i) => r.cards.length && !this.isSelfRowIndex(i)).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+        let max_op = rmax.filter((r, i) => !this.isSelfRowIndex(i) && r.cards.length && r.cards[0].power === max).reduce((a, r) =>
 			a.concat(r.cards.map(c => ({
 				row: r,
 				card: c
@@ -101,15 +111,15 @@ class ControllerAI {
 
 		// Also compute for rows without a shield
 		let rmax_noshield = rmax.filter((r, i) => !r.row.isShielded());
-		let max_noshield = rmax_noshield.filter((r, i) => r.cards.length && i < 3).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
-		let max_me_noshield = rmax_noshield.filter((r, i) => i < 3 && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
+        let max_noshield = rmax_noshield.filter((r, i) => r.cards.length && this.isSelfRowIndex(i)).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+        let max_me_noshield = rmax_noshield.filter((r, i) => this.isSelfRowIndex(i) && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
 			a.concat(r.cards.map(c => ({
 				row: r,
 				card: c
 			}))), []);
 
-		max_noshield = rmax_noshield.filter((r, i) => r.cards.length && i > 2).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
-		let max_op_noshield = rmax_noshield.filter((r, i) => i > 2 && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
+        max_noshield = rmax_noshield.filter((r, i) => r.cards.length && !this.isSelfRowIndex(i)).reduce((a, r) => Math.max(a, r.cards[0].power), 0);
+        let max_op_noshield = rmax_noshield.filter((r, i) => !this.isSelfRowIndex(i) && r.cards.length && r.cards[0].power === max_noshield).reduce((a, r) =>
 			a.concat(r.cards.map(c => ({
 				row: r,
 				card: c
@@ -128,7 +138,7 @@ class ControllerAI {
 	// Collects data about the types of cards on the board and in each player's graves
 	getBoardData() {
 		let data = this.countCards(new CardContainer());
-		Object.keys([0, 1, 2]).map(i => board.row[i]).forEach(r => this.countCards(r, data));
+        this.player.getAllRows().forEach(r => this.countCards(r, data));
 		data.grave_me = this.countCards(this.player.grave);
 		data.grave_op = this.countCards(this.player.opponent().grave);
 		return data;
@@ -172,7 +182,7 @@ class ControllerAI {
 			holder: this.player
 		}).shift();
 		if (card && card.power < 15) {
-			this.player.deck.swap(this.player.hand, this.player.hand.removeCard(card))
+            this.player.deck.swap(this.player.hand, this.player.hand.removeCard(card));
 		}
 	}
 
@@ -256,7 +266,7 @@ class ControllerAI {
 
 	// Plays a Commander's Horn to the most beneficial row. Assumes at least one viable row.
 	async horn(card) {
-		let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn")); 
+        let rows = this.player.getAllRows().filter(r => !r.special.containsCardByKey("spe_horn")); 
 		let max_row;
 		let max = 0;
 		for (let i = 0; i < rows.length; ++i) {
@@ -276,15 +286,15 @@ class ControllerAI {
 	}
 
 	// Plays a Mardroeme to the most beneficial row. Assumes at least one viable row.
-	async mardroeme(card) { // TODO skellige
-		let row, max = 0;
-		for (let i = 1; i < 3; i++) {
-			let curr = this.weightMardroemeRow(card, board.row[i]);
-			if (curr > max) {
-				max = curr;
-				row = board.row[i];
-			}
-		}
+	async mardroeme(card) { 
+        let row, max = 0;
+        this.getSelfRowIndexes().forEach(i => {
+            let curr = this.weightMardroemeRow(card, board.row[i]);
+            if (curr > max) {
+                max = curr;
+                row = board.row[i];
+            }
+        });
 		await this.player.playCardToRow(card, row);
 	}
 
@@ -312,15 +322,15 @@ class ControllerAI {
 		let targ, row;
 		if (game.decoyCancelled)
 			return;
-		let usable_data;
+        let usable_data;
 		if (card.row.length > 0) {
 			// Units with decoy ability only work on a specific row
 			if (card.row === "close" || card.row === "agile")
-				usable_data = this.countCards(board.row[2], usable_data);
+				usable_data = this.countCards(board.getRow(card,"close",this.player), usable_data);
 			if (card.row === "ranged" || card.row === "agile")
-				usable_data = this.countCards(board.row[1], usable_data);
+                usable_data = this.countCards(board.getRow(card, "ranged", this.player), usable_data);
 			if (card.row === "siege")
-				usable_data = this.countCards(board.row[0], usable_data);
+                usable_data = this.countCards(board.getRow(card, "siege", this.player), usable_data);
 		} else {
 			usable_data = data;
         }
@@ -331,9 +341,9 @@ class ControllerAI {
 			targ = usable_data.medic[randomInt(usable_data.medic.length)];
 		} else if (usable_data.scorch.length) {
 			targ = usable_data.scorch[randomInt(usable_data.scorch.length)];
-		} else {
-			let pairs = max.rmax.filter((r, i) => i < 3 && r.cards.length)
-				.filter((r, i) => card.row.length === 0 || (["close", "agile"].includes(card.row) && i === 2) || (["ranged", "agile"].includes(card.row) && i === 1) || (card.row === "siege" && i === 0))
+        } else {
+            let pairs = max.rmax.filter((r, i) => this.isSelfRowIndex(i) && r.cards.length)
+				.filter((r, i) => card.row.length === 0 || (["close", "agile"].includes(card.row) && (i === 2 || i === 3)) || (["ranged", "agile"].includes(card.row) && (i === 1 || i === 4)) || (card.row === "siege" && (i === 0 || i === 5)))
 				.reduce((a, r) =>
 				r.cards.map(c => ({
 					r: r.row,
@@ -357,7 +367,7 @@ class ControllerAI {
 			targ.decoyTarget = true;
 			setTimeout(() => board.toHand(targ, row), 1000);
 		} else {
-			row = ["close", "agile"].includes(card.row) ? board.row[2] : card.row === "ranged" ? board.row[1] : board.row[0];
+            row = ["close", "agile"].includes(card.row) ? board.getRow(card, "close", this.player) : card.row === "ranged" ? board.getRow(card, "ranged", this.player) : board.getRow(card, "siege", this.player);
         }
 		await this.player.playCardToRow(card, row);
 	}
@@ -381,13 +391,13 @@ class ControllerAI {
 	// Also applicable for shield cards which affect only one row.
 	async shieldCards(card) {
 		if (card.abilities.includes("shield_c")) {
-			await this.player.playCardToRow(card, board.row[2]);
+            await this.player.playCardToRow(card, board.getRow(card, "close", this.player));
 			return;
 		} else if (card.abilities.includes("shield_r")) {
-			await this.player.playCardToRow(card, board.row[1]);
+            await this.player.playCardToRow(card, board.getRow(card, "ranged", this.player));
 			return;
 		} if (card.abilities.includes("shield_s")) {
-			await this.player.playCardToRow(card, board.row[0]);
+            await this.player.playCardToRow(card, board.getRow(card, "siege", this.player));
 			return;
 		}
 
@@ -399,17 +409,17 @@ class ControllerAI {
 		rowStats["close"] += rowStats["agile"];
 		let max_row;
 		if (rowStats["close"] >= rowStats["ranged"] && rowStats["close"] >= rowStats["siege"])
-			max_row = board.row[2];
+            max_row = board.getRow(card, "close", this.player);
 		else if (rowStats["ranged"] > rowStats["close"] && rowStats["ranged"] >= rowStats["siege"])
-			max_row = board.row[1];
+            max_row = board.getRow(card, "ranged", this.player);
 		else
-			max_row = board.row[0];
+            max_row = board.getRow(card, "siege", this.player);
 		await this.player.playCardToRow(card, max_row);
 	}
 
 	// Plays the lock special card in the enemy melee row
 	async lock(card) {
-		await this.player.playCardToRow(card, board.row[3]);
+        await this.player.playCardToRow(card, board.getRow(card, "close", this.player.opponent()));
 	}
 
 	// Plays the knockback special card in the most beneficial row - by default enemy melee row
@@ -428,8 +438,9 @@ class ControllerAI {
 	}
 
 	bestWitchHuntRow(card) {
-		if (card.row == "agile") {
-			let rows = [3, 4].map(i => board.row[i]).filter(r => !r.isShielded() && !game.scorchCancelled).map(r => ({
+        if (card.row == "agile") {
+            let r = [board.getRow(card, "close", this.player.opponent()), board.getRow(card, "ranged", this.player.opponent())];
+			let rows = r.filter(r => !r.isShielded() && !game.scorchCancelled).map(r => ({
 				row: r,
 				value: r.cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0)
 			}));
@@ -447,16 +458,16 @@ class ControllerAI {
 		});
 		rowStats["close"] += rowStats["agile"];
 		let rows = card.holder.getAllRows();
-		rowStats["close"] = rows[0].effects.toussaint_wine > 0 ? 0 : rowStats["close"];
-		rowStats["ranged"] = rows[1].effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
-		rowStats["siege"] = rows[2].effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
+        rowStats["close"] = board.getRow(card, "close", this.player).effects.toussaint_wine > 0 ? 0 : rowStats["close"];
+        rowStats["ranged"] = board.getRow(card, "ranged", this.player).effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
+        rowStats["siege"] = board.getRow(card, "siege", this.player).effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
 		let max_row;
 		if (rowStats["close"] >= rowStats["ranged"] && rowStats["close"] >= rowStats["siege"])
-			max_row = board.row[2];
+			max_row = board.getRow(card,"close",this.player);
 		else if (rowStats["ranged"] > rowStats["close"] && rowStats["ranged"] >= rowStats["siege"])
-			max_row = board.row[1];
+            max_row = board.getRow(card, "ranged", this.player);
 		else
-			max_row = board.row[0];
+            max_row = board.getRow(card, "siege", this.player);
 		return max_row;
     }
 
@@ -486,7 +497,9 @@ class ControllerAI {
 	weightScorchRow(card, max, row_name) {
 		if (game.scorchCancelled)
 			return 0;
-		let index = 3 + (row_name === "close" ? 0 : row_name === "ranged" ? 1 : 2);
+        let index = 3 + (row_name === "close" ? 0 : row_name === "ranged" ? 1 : 2);
+        if (this.player === player_me)
+            index = 2 - (row_name === "close" ? 0 : row_name === "ranged" ? 1 : 2);
 		if (board.row[index].total < 10 || board.row[index].isShielded() )
 			return 0;
 		let score = max.rmax[index].cards.reduce((a, c) => a + c.power, 0);
@@ -548,7 +561,7 @@ class ControllerAI {
 		if (card.key === "spe_mardroeme" && row.special.containsCardByKey("spe_mardroeme"))
 			return 0;
 		let ermion = card.holder.hand.cards.filter(c => c.key === "sk_ermion").length > 0;
-		if (ermion && card.key !== "sk_ermion" && row === board.row[1])
+		if (ermion && card.key !== "sk_ermion" && row === board.getRow(card,"ranged",this.player))
 			return 0;
 		let bers_cards = row.cards.filter(c => c.abilities.includes("berserker"));
 		let weightData = { bond: {}, strength:0 };
@@ -624,17 +637,17 @@ class ControllerAI {
 			if (card.row.length > 0) {
 				let row_data;
 				if (card.row === "close" || card.row === "agile")
-					row_data = this.countCards(board.row[2], row_data);
+					row_data = this.countCards(board.getRow(card,"close",this.player), row_data);
 				if (card.row === "ranged" || card.row === "agile")
-					row_data = this.countCards(board.row[1], row_data);
+                    row_data = this.countCards(board.getRow(card, "ranged", this.player), row_data);
 				if (card.row === "siege")
-					row_data = this.countCards(board.row[0], row_data);
+                    row_data = this.countCards(board.getRow(card, "siege", this.player), row_data);
 				return game.decoyCancelled ? 0 : row_data.spy.length ? 50 : row_data.medic.length ? 15 : row_data.scorch.length ? 10 : max.me.length ? card.power : 0;
             } else
 				return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 		}
-		if (abi.includes("horn")) {
-			let rows = [0, 1, 2].map(i => board.row[i]).filter(r => !r.special.containsCardByKey("spe_horn"));
+        if (abi.includes("horn")) {
+            let rows = this.player.getAllRows().filter(r => !r.special.containsCardByKey("spe_horn"));
 			if (!rows.length)
 				return 0;
 			rows = rows.map(r => this.weightHornRow(card, r));
@@ -655,7 +668,7 @@ class ControllerAI {
 				return game.decoyCancelled ? 0 : data.spy.length ? 50 : data.medic.length ? 15 : data.scorch.length ? 10 : max.me.length ? 1 : 0;
 			}
 			if (abi.includes("mardroeme")) {
-				let rows = [0, 1, 2].map(i => board.row[i]);
+                let rows = this.player.getAllRows();
 				return Math.max(...rows.map(r => this.weightMardroemeRow(card, r)));
 			}
 			if (["cintra_slaughter", "seize", "lock", "shield", "knockback", "shield_c", "shield_r", "shield_s"].includes(abi.at(-1))) {
@@ -675,9 +688,9 @@ class ControllerAI {
 				});
 				rowStats["close"] += rowStats["agile"];
 				let rows = card.holder.getAllRows();
-				rowStats["close"] = rows[0].effects.toussaint_wine > 0 ? 0 : rowStats["close"];
-				rowStats["ranged"] = rows[1].effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
-				rowStats["siege"] = rows[2].effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
+				rowStats["close"] = board.getRow(card,"close",this.player).effects.toussaint_wine > 0 ? 0 : rowStats["close"];
+                rowStats["ranged"] = board.getRow(card, "ranged", this.player).effects.toussaint_wine > 0 ? 0 : rowStats["ranged"];
+                rowStats["siege"] = board.getRow(card, "siege", this.player).effects.toussaint_wine > 0 ? 0 : rowStats["siege"];
 				return 2 * Math.max(rowStats["close"], rowStats["ranged"], rowStats["siege"]);
 			}
 		}
@@ -881,20 +894,20 @@ class Player {
 	}
 
 	// Plays a Knockback special card card, assuming 1 valid
-	async playKnockback(card) {
-		let best_row = board.row[3];
+    async playKnockback(card) {
+        let best_row = board.getRow(card, "close", this.opponent());
 		//If melee row is empty, better target ranged
-		if (board.row[3].cards.length === 0)
-			best_row = board.row[4];
+        if (board.getRow(card, "close", this.opponent()).cards.length === 0)
+            best_row = board.getRow(card, "ranged", this.opponent());
 		// If siege has an active weather effect, better target ranged
-		if (board.row[4].cards.length > 1 && board.row[5].effects.weather)
-			best_row = board.row[4];
+        if (board.getRow(card, "ranged", this.opponent()).cards.length > 1 && board.getRow(card, "siege", this.opponent()).effects.weather)
+            best_row = board.getRow(card, "ranged", this.opponent());
 		// If ranged has a horn or shield effect, better target it
-		if ((board.row[4].isShielded() || board.row[4].effects.horn > 0) && board.row[4].cards.length > 0)
-			best_row = board.row[4];
+        if ((board.getRow(card, "ranged", this.opponent()).isShielded() || board.getRow(card, "ranged", this.opponent()).effects.horn > 0) && board.getRow(card, "ranged", this.opponent()).cards.length > 0)
+            best_row = board.getRow(card, "ranged", this.opponent());
 		// If there are some bond units in the ranged row, better try to break it before it grows
-		if (Object.keys(board.row[4].effects.bond).length > 0 && board.row[5].effects.horn === 0)
-			best_row = board.row[4];
+        if (Object.keys(board.getRow(card, "ranged", this.opponent()).effects.bond).length > 0 && board.getRow(card, "siege", this.opponent()).effects.horn === 0)
+            best_row = board.getRow(card, "ranged", this.opponent());
 		await this.playCardAction(card, async () => await ability_dict["knockback"].activated(card, best_row));
     }
 
@@ -975,18 +988,26 @@ class Player {
 					} else if (this.leader.key === "lr_meve_princess" || this.leader.key === "sy_carlo_varese") {
 						let max = this.controller.getMaximums();
 						let rows = [this.controller.weightScorchRow(this.leader, max, "close"), this.controller.weightScorchRow(this.leader, max, "ranged"), this.controller.weightScorchRow(this.leader, max, "siege")];
-						let maxv = 0, max_row;
+                        let maxv = 0, max_row;
+                        let offset = 3;
+                        if (this === player_me) {
+                            offset = 0;
+                            rows = rows.reverse();
+                        }
 						for (var i = 0; i < 3; i++) {
 							if (rows[i] > maxv) {
 								maxv = rows[i];
-								max_row = board.row[3 + i];
+								max_row = board.row[offset + i];
 							}
 						}
 						if (max_row)
 							ui.selectRow(max_row);
 					} else if (this.leader.key === "sy_cyrus_hemmelfart") {
 						// We select a random row to put shackles on
-						ui.selectRow(board.row[3+randomInt(2)]);
+                        let offset = 3;
+                        if (this === player_me)
+                            offset = 0;
+						ui.selectRow(board.row[offset+randomInt(2)]);
 					}
 				} 
             }
@@ -1973,10 +1994,6 @@ class Board {
 	getRow(card, row_name, player) {
 		player = player ? player : card ? card.holder : player_me;
 		let isMe = player === player_me;
-		if (!card.abilities) {
-			console.log("Abilities missing for card:");
-			console.log(card);
-        }
 		let isSpy = card.abilities.includes("spy");
 		switch (row_name) {
 			case "weather":
@@ -3533,12 +3550,12 @@ class DeckMaker {
 	}
 
 	// Called when client selects a deck faction. Clears previous cards and makes valid cards available.
-	setFaction(faction_name, silent) {
+	async setFaction(faction_name, silent) {
 		if (!silent && this.faction === faction_name)
 			return false;
 		if (!silent) {
-			tocar("warning", false);
-			if (!confirm("Changing factions will clear the current deck. Continue? ")) {
+            tocar("warning", false);
+            if (!confirm("Changing factions will clear the current deck. Continue? ")) {
 				tocar("warning", false);
 				return false;
 			}
@@ -3859,7 +3876,7 @@ class DeckMaker {
 		let index = container.cards.reduce((a, c, i) => c.faction === this.faction ? i : a, 0);
 		ui.queueCarousel(container, 1, (c, i) => {
 			this.me_deck_index = i;
-			this.setFaction(c.cards[i].faction);
+			this.setFaction(c.cards[i].faction,true);
 			this.deckFromJSON(premade_deck[i],false);
 		}, () => true, false, true);
 		Carousel.curr.index = this.me_deck_index;
