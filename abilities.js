@@ -499,8 +499,12 @@ var ability_dict = {
 			let units = card.holder.hand.cards.filter(c => c.isUnit());
 			if (units.length === 0)
 				return;
-			let wrapper = { card: null };
-			await ui.queueCarousel(board.getRow(card, "hand", card.holder), 1, (c, i) => wrapper.card = c.cards[i], c => c.isUnit(), true);
+            let wrapper = { card: null };
+            if (card.holder.controller instanceof ControllerAI) {
+                wrapper.card = units[randomInt(units.length)];
+            } else {
+                await ui.queueCarousel(board.getRow(card, "hand", card.holder), 1, (c, i) => wrapper.card = c.cards[i], c => c.isUnit(), true);
+            }
 			wrapper.card.autoplay();
 			card.holder.hand.removeCard(wrapper.card);
 			if (card.holder.deck.cards.length > 0)

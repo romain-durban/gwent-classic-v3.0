@@ -443,10 +443,13 @@ class ControllerAI {
 			let rows = r.filter(r => !r.isShielded() && !game.scorchCancelled).map(r => ({
 				row: r,
 				value: r.cards.filter(c => c.isUnit()).reduce((a, c) => a + c.power, 0)
-			}));
-			return rows.sort((a, b) => b.value - a.value)[0].row;
-		} else {
-            return board.getRow(card, card.row, card.holder).getOppositeRow();
+            }));
+            if (rows.length > 0)
+                return rows.sort((a, b) => b.value - a.value)[0].row;
+            else
+                return board.getRow(card, "close", card.holder.opponent())
+        } else {
+            return board.getRow(card, card.row, card.holder.opponent());
         }
     }
 
@@ -674,8 +677,10 @@ class ControllerAI {
 			if (["cintra_slaughter", "seize", "lock", "shield", "knockback", "shield_c", "shield_r", "shield_s"].includes(abi.at(-1))) {
 				return ability_dict[abi.at(-1)].weight(card);
 			}
-			if (abi.includes("witch_hunt")) {
-				let best_row = this.bestWitchHuntRow(card)
+            if (abi.includes("witch_hunt")) {
+                if (game.scorchCancelled)
+                    return card.power;
+                let best_row = this.bestWitchHuntRow(card)
 				if (best_row)
 					return best_row.minUnits().reduce((a, c) => a + c.power, 0) + card.power;
 				return card.power
@@ -752,12 +757,21 @@ var may_leader = true,
 
 // Can make actions during turns like playing cards that it owns
 class Player {
-	constructor(id, name, deck) {
+	constructor(id, name, deck, isAI=true) {
 		this.id = id;
 		this.tag = (id === 0) ? "me" : "op";
-        this.controller = (id === 0) ? new Controller() : new ControllerAI(this);
+        //this.controller = (id === 0) ? new Controller() : new ControllerAI(this);
+        if (isAI) {
+            this.controller = new ControllerAI(this);
+        } else {
+            this.controller = new Controller();
+        }
 
-		this.hand = (id === 0) ? new Hand(document.getElementById("hand-row")) : new HandAI();
+        if (game.fullAI) {
+            this.hand = (id === 0) ? new Hand(document.getElementById("hand-row"), this.tag) : new Hand(document.getElementById("op-hand-row"), this.tag);
+        } else {
+            this.hand = (id === 0) ? new Hand(document.getElementById("hand-row"), this.tag) : new HandAI(this.tag);
+        }
 		this.grave = new Grave(document.getElementById("grave-" + this.tag));
 		this.deck = new Deck(deck.faction, document.getElementById("deck-" + this.tag));
 		this.deck_data = deck;
@@ -1459,10 +1473,16 @@ class Deck extends CardContainer {
 
 // Hand used by computer AI. Has an offscreen HTML element for card transitions.
 class HandAI extends CardContainer {
-	constructor() {
-		super(undefined);
-		this.counter = document.getElementById("hand-count-op");
-		this.hidden_elem = document.getElementById("hand-op");
+	constructor(tag) {
+        super(undefined, tag);
+        if (this.tag === "me") {
+            this.counter = document.getElementById("hand-count-me");
+            this.hidden_elem = document.getElementById("hand-me");
+        } else {
+            this.counter = document.getElementById("hand-count-op");
+            this.hidden_elem = document.getElementById("hand-op");
+        }
+		
 	}
 	resize() {
 		this.counter.innerHTML = this.cards.length;
@@ -1471,9 +1491,13 @@ class HandAI extends CardContainer {
 
 // Hand used by current player
 class Hand extends CardContainer {
-	constructor(elem) {
-		super(elem);
-		this.counter = document.getElementById("hand-count-me");
+	constructor(elem,tag) {
+        super(elem);
+        this.tag = tag;
+        if (this.tag === "me")
+            this.counter = document.getElementById("hand-count-me");
+        else
+            this.counter = document.getElementById("hand-count-op");
 	}
 
 	// Override
@@ -2047,7 +2071,8 @@ class Game {
 		this.customize_elem.addEventListener("click", () => this.returnToCustomization(), false);
 		this.replay_elem.addEventListener("click", () => this.restartGame(), false);
 		this.reset();
-		this.randomOPDeck = true;
+        this.randomOPDeck = true;
+        this.fullAI = false;
 	}
 
 	reset() {
@@ -2147,11 +2172,18 @@ class Game {
 	}
 
 	// Allows the player to swap out up to two cards from their iniitial hand
-	async initialRedraw() {
-		for (let i = 0; i < 2; i++)
-			player_op.controller.redraw();
-		await ui.queueCarousel(player_me.hand, 2, async (c, i) => await player_me.deck.swap(c, c.removeCard(i)), c => true, true, true, "Choose up to 2 cards to redraw.");
-		ui.enablePlayer(false);
+    async initialRedraw() {
+        if (player_op.controller instanceof ControllerAI) {
+            for (let i = 0; i < 2; i++)
+                player_op.controller.redraw();
+        }
+        if (player_me.controller instanceof ControllerAI) {
+            for (let i = 0; i < 2; i++)
+                player_me.controller.redraw();
+        } else {
+            await ui.queueCarousel(player_me.hand, 2, async (c, i) => await player_me.deck.swap(c, c.removeCard(i)), c => true, true, true, "Choose up to 2 cards to redraw.");
+            ui.enablePlayer(false);
+        }
 		game.startRound();
 	}
 
@@ -3528,7 +3560,8 @@ class DeckMaker {
 		document.getElementById("select-op-deck").addEventListener("click", () => this.selectOPDeck(), false);
 		document.getElementById("download-deck").addEventListener("click", () => this.downloadDeck(), false);
 		document.getElementById("add-file").addEventListener("change", () => this.uploadDeck(), false);
-		document.getElementById("start-game").addEventListener("click", () => this.startNewGame(), false);
+        document.getElementById("start-game").addEventListener("click", () => this.startNewGame(false), false);
+        document.getElementById("start-ai-game").addEventListener("click", () => this.startNewGame(true), false);
 		window.addEventListener("keydown", function (e) {
 			if (document.getElementById("deck-customization").className.indexOf("hide") == -1) {
 				switch(e.keyCode) {
@@ -3805,7 +3838,8 @@ class DeckMaker {
 	}
 
 	// Verifies current deck, creates the players and their decks, then starts a new game
-	startNewGame() {
+    startNewGame(fullAI = false) {
+        game.fullAI = fullAI;
 		openFullscreen();
 		let warning = "";
 		if (this.stats.units < 22)
@@ -3838,9 +3872,15 @@ class DeckMaker {
 			}).filter(c => c.card.row === "leader" && c.card.deck === this.start_op_deck.faction);
 			this.start_op_deck.leader = leaders[randomInt(leaders.length)];
         }
+
+        if (game.fullAI) {
+            player_me = new Player(0, "Player 1", me_deck, true);
+            player_op = new Player(1, "Player 2", this.start_op_deck, true);
+        } else {
+            player_me = new Player(0, "Player 1", me_deck, false);
+            player_op = new Player(1, "Player 2", this.start_op_deck, true);
+        }
 		
-		player_me = new Player(0, "Player 1", me_deck);
-		player_op = new Player(1, "Player 2", this.start_op_deck);
 
 		this.elem.classList.add("hide");
 		called_leader = false;
@@ -4395,7 +4435,7 @@ var lastSound = "";
 function tocar(arquivo, pararMusica) {
 	if (arquivo != lastSound && arquivo != "") {
 		var s = new Audio("sfx/" + arquivo + ".mp3");
-		if (pararMusica && ui.youtube.getPlayerState() === YT.PlayerState.PLAYING) {
+        if (pararMusica && ui.youtube.getPlayerState() === YT.PlayerState.PLAYING && ui.youtube) {
 			ui.youtube.pauseVideo();
 			ui.toggleMusic_elem.classList.add("fade");
 		}

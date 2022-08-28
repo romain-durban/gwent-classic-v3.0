@@ -1117,6 +1117,14 @@ html {
 	z-index: 1;
 }
 
+#op-hand-row {
+    top: 9%;
+    height: 91%;
+    left: 7.1%;
+    width: 92.5%;
+    z-index: 1;
+}
+
 .row-selectable {
 	background-color: rgba(255, 255, 0, .08);
 }
@@ -1933,6 +1941,15 @@ html {
 	width: 6%;
 	height: 3%;
 	font-size: .98vw;
+}
+
+#start-ai-game {
+    position: absolute;
+    top: 91%;
+    left: 46.2%;
+    width: 7%;
+    height: 3%;
+    font-size: .98vw;
 }
 
 .start-game_class {

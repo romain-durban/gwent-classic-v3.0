@@ -122,10 +122,12 @@
 						<div class = "row-weather"></div>
 					</div>
 				</section>
-				<section id = "field-hand">
-					<div id = "hand-row" class = "card-container card-selectable">
-					</div>
-				</section>
+                <section id="field-hand">
+                    <div id="hand-row" class="card-container card-selectable">
+                    </div>
+                    <div id="op-hand-row" class="card-container card-selectable">
+                    </div>
+                </section>
 			</section>
 			<section id = "panel-right" class = "panel">
 				<div id = "grave-op" class = "cardpile"></div>
@@ -206,46 +208,47 @@
 			</section>
 			<section id = "deck-selector"></section>
 		</main>
-		<section id="deck-customization" style="display:none">
-			<div id="faction-title" class="center">
-				<h1></h1>
-			</div>
+        <section id="deck-customization" style="display:none">
+            <div id="faction-title" class="center">
+                <h1></h1>
+            </div>
             <div id="site-links">
                 <a href="rules.html" target="_blank">Rules of Gwent</a>
             </div>
-			<p id="faction-description"></p>
-			<a id="select-deck" class="deck-options">Select Own Deck</a>
-			<label id="upload-deck" class="deck-options">
-				<input type="file" id="add-file" value="Import" style="display:none;" />
-				Upload Deck
-			</label>
-			<a id="change-faction" class="deck-options">Change Faction</a>
-			<a id="download-deck" class="deck-options">Download Deck</a>
-			<a id="download-json" style="display:none;"></a>
-			<a id="select-op-deck" class="deck-options">Select Opponent Deck ></a>
-			<span id="op-deck-name" class="deck-options">Random deck</span>
-			<h2 id="card-bank-title" class="card-contianer-title">Card Collection</h2>
-			<h2 id="card-deck-title" class="card-contianer-title">Cards in Deck</h2>
-			<div id="card-bank" class="card-array"></div>
-			<div id="card-deck" class="card-array"></div>
-			<div id="card-leader">
-				<p>Leader</p>
-				<div></div>
-			</div>
-			<div id="deck-stats">
-				<p>Total cards in deck</p>
-				<p>0</p>
-				<p>Number of Unit Cards</p>
-				<p>0</p>
-				<p>Special Cards</p>
-				<p>0/10</p>
-				<p>Total Unit Card Strength</p>
-				<p>0</p>
-				<p>Hero Cards</p>
-				<p>0</p>
-			</div>
-			<button id="start-game" class="start-game_class">Start game</button>
-		</section>
+            <p id="faction-description"></p>
+            <a id="select-deck" class="deck-options">Select Own Deck</a>
+            <label id="upload-deck" class="deck-options">
+                <input type="file" id="add-file" value="Import" style="display:none;" />
+                Upload Deck
+            </label>
+            <a id="change-faction" class="deck-options">Change Faction</a>
+            <a id="download-deck" class="deck-options">Download Deck</a>
+            <a id="download-json" style="display:none;"></a>
+            <a id="select-op-deck" class="deck-options">Select Opponent Deck ></a>
+            <span id="op-deck-name" class="deck-options">Random deck</span>
+            <h2 id="card-bank-title" class="card-contianer-title">Card Collection</h2>
+            <h2 id="card-deck-title" class="card-contianer-title">Cards in Deck</h2>
+            <div id="card-bank" class="card-array"></div>
+            <div id="card-deck" class="card-array"></div>
+            <div id="card-leader">
+                <p>Leader</p>
+                <div></div>
+            </div>
+            <div id="deck-stats">
+                <p>Total cards in deck</p>
+                <p>0</p>
+                <p>Number of Unit Cards</p>
+                <p>0</p>
+                <p>Special Cards</p>
+                <p>0/10</p>
+                <p>Total Unit Card Strength</p>
+                <p>0</p>
+                <p>Hero Cards</p>
+                <p>0</p>
+            </div>
+            <button id="start-game" class="start-game_class">Start game</button>
+            <button id="start-ai-game" class="start-game_class">Start AI game</button>
+        </section>
 		<div id = "toggle-music" class = "center music-customization" style = "display:none">♫</div>
 		<script type = "text/javascript" src = "cards.js"></script>
 		<script type = "text/javascript" src = "decks.js"></script>
