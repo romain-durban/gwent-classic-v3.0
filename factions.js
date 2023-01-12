@@ -106,7 +106,7 @@ var factions = {
 	lyria_rivia: {
 		name: "Lyria & Rivia",
 		factionAbility: player => {
-			let card = new Card("lr_lyria_rivia_morale", card_dict["lr_lyria_rivia_morale"], player);
+            let card = new Card("spe_lyria_rivia_morale", card_dict["spe_lyria_rivia_morale"], player);
             card.removed.push(() => setTimeout(() => card.holder.grave.removeCard(card), 2000));
             card.placed.push(async () => await ui.notification("lyria_rivia", 1200));
 			player.endTurnAfterAbilityUse = false;
@@ -146,7 +146,11 @@ var factions = {
                     return;
                 let grave = player.grave;
                 let respawns = [];
-                await ui.queueCarousel(player.grave, 1, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+                if (player.controller instanceof ControllerAI) {
+                    respawns.push({ card: player.controller.medic(player.leader, grave) });
+                } else {
+                    await ui.queueCarousel(player.grave, 1, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+                }
                 await Promise.all(respawns.map(async wrapper => {
                     let res = wrapper.card;
                     grave.removeCard(res);

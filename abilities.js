@@ -190,16 +190,19 @@ var ability_dict = {
 	avenger: {
 		name: "Avenger",
 		description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place. ",
-		removed: async (card) => {
-			if (game.roundHistory.length > 2 || card.isLocked())
+        removed: async (card) => {
+			if (game.over || game.roundHistory.length > 2 || card.isLocked())
 				return;
 			// Some avengers are related to muster and should trigger it, if not already in deck
-			if (card_dict[card.target]["ability"].includes("muster") && (card.holder.deck.findCards(c => c.key === card.target).length === 0 && card.holder.hand.findCards(c => c.key === card.target).length === 0)) {
-				for (let i = 0; i < card_dict[card.target]["count"]; i++) {
-					let avenger = new Card(card.target, card_dict[card.target], card.holder);
-					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
-					await board.addCardToRow(avenger, avenger.row, card.holder);
-				}
+            if (card_dict[card.target]["ability"].includes("muster") && (card.holder.deck.findCards(c => c.key === card.target).length === 0 && card.holder.hand.findCards(c => c.key === card.target).length === 0)) {
+                for (let i = 0; i < card_dict[card.target]["count"]; i++) {
+                    let avenger = new Card(card.target, card_dict[card.target], card.holder);
+                    avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+                    if (card.target != card.key)
+                        await board.addCardToRow(avenger, avenger.row, card.holder);
+                }
+            } else if (card.target === card.key) {
+                await board.moveTo(card, card.row, card.holder.grave);
 			} else {
 				let avenger;
 				// If one copy at least in hand or deck, use it instead of creating a duplicate
@@ -211,8 +214,9 @@ var ability_dict = {
 					await board.moveTo(avenger, avenger.row, card.holder.hand);
 				} else {
 					avenger = new Card(card.target, card_dict[card.target], card.holder);
-					await board.addCardToRow(avenger, avenger.row, card.holder);
-					avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
+                    await board.addCardToRow(avenger, avenger.row, card.holder);
+                    if (card.target != card.key)
+					    avenger.removed.push(() => setTimeout(() => avenger.holder.grave.removeCard(avenger), 2000));
                 }
             }
 			
@@ -260,7 +264,7 @@ var ability_dict = {
 	},
 	foltest_siegemaster: {
 		description: "Doubles the strength of all your Siege units (unless a Commander's Horn is also present on that row).",
-		activated: async card => await board.getRow(card, "siege", card.holder).leaderHorn(),
+		activated: async card => await board.getRow(card, "siege", card.holder).leaderHorn(card),
 		weight: (card, ai) => ai.weightHornRow(card, board.getRow(card, "siege", card.holder))
 	},
 	foltest_steelforged: {
@@ -332,7 +336,7 @@ var ability_dict = {
 	},
 	eredin_commander: {
 		description: "Double the strength of all your Close Combat units (unless a Commander's horn is 	also present on that row).",
-		activated: async card => await board.getRow(card, "close", card.holder).leaderHorn(),
+		activated: async card => await board.getRow(card, "close", card.holder).leaderHorn(card),
 		weight: (card, ai) => ai.weightHornRow(card, board.getRow(card, "close", card.holder))
 	},
 	eredin_bringer_of_death: {
@@ -417,7 +421,7 @@ var ability_dict = {
 	},
 	francesca_beautiful: {
 		description: "Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also present on that row).",
-		activated: async card => await board.getRow(card, "ranged", card.holder).leaderHorn(),
+		activated: async card => await board.getRow(card, "ranged", card.holder).leaderHorn(card),
 		weight: (card, ai) => ai.weightHornRow(card, board.getRow(card, "ranged", card.holder))
 	},
 	francesca_daisy: {
@@ -614,7 +618,7 @@ var ability_dict = {
 	},
 	witcher_wolf_school: {
 		name: "Wolf School of Witchers",
-		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+		description: "Each unit of this witcher school is boosted by 2 for each card of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
 			if (!card.holder.effects["witchers"][school])
@@ -623,12 +627,12 @@ var ability_dict = {
 		},
 		removed: async card => {
 			let school = card.abilities.at(-1);
-			card.holder.effects["witchers"][school]++;
+			card.holder.effects["witchers"][school]--;
 		}
 	},
 	witcher_viper_school: {
 		name: "Viper School of Witchers",
-		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+        description: "Each unit of this witcher school is boosted by 2 for each card of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
 			if (!card.holder.effects["witchers"][school])
@@ -637,12 +641,12 @@ var ability_dict = {
 		},
 		removed: async card => {
 			let school = card.abilities.at(-1);
-			card.holder.effects["witchers"][school]++;
+			card.holder.effects["witchers"][school]--;
 		}
 	},
 	witcher_bear_school: {
 		name: "Bear School of Witchers",
-		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+        description: "Each unit of this witcher school is boosted by 2 for each card of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
 			if (!card.holder.effects["witchers"][school])
@@ -651,12 +655,12 @@ var ability_dict = {
 		},
 		removed: async card => {
 			let school = card.abilities.at(-1);
-			card.holder.effects["witchers"][school]++;
+			card.holder.effects["witchers"][school]--;
 		}
 	},
 	witcher_cat_school: {
 		name: "Cat School of Witchers",
-		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+        description: "Each unit of this witcher school is boosted by 2 for each card of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
 			if (!card.holder.effects["witchers"][school])
@@ -665,12 +669,12 @@ var ability_dict = {
 		},
 		removed: async card => {
 			let school = card.abilities.at(-1);
-			card.holder.effects["witchers"][school]++;
+			card.holder.effects["witchers"][school]--;
 		}
 	},
 	witcher_griffin_school: {
 		name: "Griffin School of Witchers",
-		description: "Each unit of this witcher school is boosted by the number of cards of this given school.",
+        description: "Each unit of this witcher school is boosted by 2 for each card of this given school.",
 		placed: async card => {
 			let school = card.abilities.at(-1);
 			if (!card.holder.effects["witchers"][school])
@@ -679,7 +683,7 @@ var ability_dict = {
 		},
 		removed: async card => {
 			let school = card.abilities.at(-1);
-			card.holder.effects["witchers"][school]++;
+			card.holder.effects["witchers"][school]--;
 		}
 	},
 	shield: {
@@ -788,7 +792,7 @@ var ability_dict = {
 				ui.setSelectable(card, true);
 		},
 		weight: (card, ai) => {
-			let horns = player_me.getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
+			let horns = card.holder.opponent().getAllRows().filter(r => r.special.findCards(c => c.abilities.includes("horn")).length > 0).sort((a, b) => b.total - a.total);
 			if (horns.length === 0)
 				return 0;
 			return horns[0].total;
@@ -876,14 +880,14 @@ var ability_dict = {
 	francis_bedlam: {
 		description: "Send all spy unit cards to the grave of the side they are on.",
 		activated: async (card, player) => {
-			let op_spies = player_op.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
-			let me_spies = player_me.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
+            let op_spies = card.holder.opponent().getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
+            let me_spies = card.holder.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy"));
 			await op_spies.map(async c => await board.toGrave(c, c.currentLocation));
 			await me_spies.map(async c => await board.toGrave(c, c.currentLocation));
 		},
 		weight: (card, ai, max) => {
-			let op_spies = player_op.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a,c) => a + c.power,0);
-			let me_spies = player_me.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a, c) => a + c.power,0);
+            let op_spies = card.holder.opponent().getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a,c) => a + c.power,0);
+            let me_spies = card.holder.getAllRowCards().filter(c => c.isUnit() && c.abilities.includes("spy")).reduce((a, c) => a + c.power,0);
 			return Math.max(0, op_spies - me_spies);
 		}
 	},
@@ -916,7 +920,7 @@ var ability_dict = {
 			await board.addCardToRow(new_card, new_card.row, card.holder);
 		},
 		weight: (card, ai, max) => {
-			return card.holder.getAllRows()[0].cards.length + card_dict["sy_flyndr_crew"]["strength"];
+			return card.holder.getAllRows()[0].cards.length + Number(card_dict["sy_flyndr_crew"]["strength"]);
 		}
 	},
 	cyrus_hemmelfart: {
@@ -1024,6 +1028,10 @@ var ability_dict = {
             if (card.isLocked())
                 return;
             card.holder.effects["whorshippers"]--;
+        },
+        weight: (card) => {
+            let wcards = card.holder.getAllRowCards().filter(c => c.abilities.includes("whorshipped"));
+            return wcards.length * game.whorshipBoost;
         }
     },
     whorshipped: {

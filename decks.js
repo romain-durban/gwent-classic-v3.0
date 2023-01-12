@@ -798,9 +798,9 @@ var custom_decks = [
         "leader": "sk_crach_an_craite",
         "faction": "skellige",
         "cards": [
-            ["spe_storm", 2],
+            ["spe_storm", 1],
             ["spe_mardroeme", 3],
-            ["spe_decoy", 1],
+            ["spe_decoy", 2],
             ["spe_clear", 1],
             ["spe_scorch", 1],
             ["spe_horn", 1],
@@ -821,10 +821,10 @@ var custom_decks = [
             ["sk_cerys", 1],
             ["sk_ermion", 1],
             ["sk_svalblod_fanatic", 1],
-            ["sk_an_craite_raiders", 1],
             ["sk_berserker", 1],
+            ["sk_drummond_berserker", 1],
             ["sk_svalblod", 1],
-            ["sk_morkvarg", 1]
+            ["sk_chosen_berserker", 1]
         ]
     },
     {
@@ -1220,7 +1220,6 @@ var custom_decks = [
         "faction": "syndicate",
         "cards": [
             ["spe_horn", 1],
-            ["spe_decoy", 2],
             ["spe_rain", 1],
             ["spe_clear", 1],
             ["spe_scorch", 2],
@@ -1234,7 +1233,6 @@ var custom_decks = [
             ["sy_robber_1", 1],
             ["sy_robber_2", 1],
             ["sy_robber_3", 1],
-            ["sy_robber_4", 1],
             ["sy_igor_hook", 1],
             ["sy_ferko", 1],
             ["sy_hvitr_aelydia", 1],
@@ -1355,8 +1353,8 @@ var deckWeightConsts = {
     "resilience": 5,
     "witcherSchoolWeight": 1,
     "witch_hunt": 5,
-    "whorshipper": 3,
-    "whorshipped": 3,
+    "whorshipper": 2,
+    "whorshipped": 2,
     "inspire": 3
 };
 
