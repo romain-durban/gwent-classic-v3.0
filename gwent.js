@@ -1701,13 +1701,13 @@ class Row extends CardContainer {
 		for (let x of card.abilities) {
 			if (!card.isLocked()) {
 				switch (x) {
-					case "morale":
-					case "horn":
+                    case "morale":
+                    case "horn":
 					case "mardroeme":
 					case "lock":
 					case "toussaint_wine":
 						this.effects[x] += activate ? 1 : -1;
-						break;
+                        break;
 					case "shield":
 					case "shield_c":
 					case "shield_r":
@@ -1909,6 +1909,12 @@ class Row extends CardContainer {
 		if (index >= 0 && index < board.row.length)
 			return board.row[index]
 		return null;
+    }
+
+    // Debug/cheat - Invokes any given card to the row
+    invokeCard(key) {
+        let player = this.elem_parent.parentElement.id === "field-op" ? player_op : player_me;
+        this.addCard(new Card(key, card_dict[key], player),true)
     }
 }
 

@@ -9566,7 +9566,7 @@ var ext_ze_cards = {
         "quote": "Zerrikania hosts spiders so large they can trap elephants in their webs."
     },
     "spe_tse_tse_flies": {
-        "name": "Biting Frost",
+        "name": "Tse Tse Flies",
         "deck": "weather zerrikania",
         "row": "",
         "strength": "",
@@ -9576,7 +9576,7 @@ var ext_ze_cards = {
         "quote": "The flies are especially repulsive, laying their eggs in the human body, the resulting larvae maturing within the host's head."
     },
     "spe_dragon_wrath": {
-        "name": "Biting Frost",
+        "name": "Dragon Wrath",
         "deck": "weather zerrikania",
         "row": "",
         "strength": "",
