@@ -44,9 +44,12 @@ var factions = {
 		name: "Scoia'tael",
 		factionAbility: player => game.gameStart.push(async () => {
             let notif = "";
-            if (player === player_me && !(player.controller instanceof ControllerAI)) {
+            if (!game.isPvP() && player === player_me && !(player.controller instanceof ControllerAI)) {
 				await ui.popup("Go First [E]", () => game.firstPlayer = player, "Let Opponent Start [Q]", () => game.firstPlayer = player.opponent(), "Would you like to go first?", "The Scoia'tael faction perk allows you to decide who will get to go first.");
-				notif = game.firstPlayer.tag + "-first";
+                notif = game.firstPlayer.tag + "-first";
+            } else if (game.isPvP()) {
+                await ui.popup("Player 1 first [E]", () => game.firstPlayer = player_me, "Player 2 first [Q]", () => game.firstPlayer = player_op, "Who should go first?", "The Scoia'tael faction perk allows you to decide who will get to go first.");
+                notif = game.firstPlayer.tag + "-first";
             } else if (player.controller instanceof ControllerAI) {
 				if (Math.random() < 0.5) {
 					game.firstPlayer = player;

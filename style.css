@@ -1036,9 +1036,11 @@ html {
 	top: -1.1%;
 }
 
+/*
 #field-op .card {
 	pointer-events: none;
 }
+*/
 
 #field-me {
 	top: -1%;
@@ -1123,6 +1125,14 @@ html {
     left: 7.1%;
     width: 92.5%;
     z-index: 1;
+}
+
+#op-hand-row.human-op {
+    top: -83%;
+    height: 91%;
+    left: 7.1%;
+    width: 92.5%;
+    z-index: 2;
 }
 
 .row-selectable {
@@ -1945,9 +1955,18 @@ html {
 
 #start-ai-game {
     position: absolute;
-    top: 91%;
+    top: 90%;
     left: 46.2%;
     width: 7%;
+    height: 3%;
+    font-size: .98vw;
+}
+
+#start-pvp-game {
+    position: absolute;
+    top: 94%;
+    left: 45.7%;
+    width: 8%;
     height: 3%;
     font-size: .98vw;
 }

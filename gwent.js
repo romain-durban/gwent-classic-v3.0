@@ -834,8 +834,17 @@ class Player {
             this.controller = new Controller();
         }
 
-        if (game.fullAI) {
+        if (game.mode === 2) {
+            // AI vs AI
             this.hand = (id === 0) ? new Hand(document.getElementById("hand-row"), this.tag) : new Hand(document.getElementById("op-hand-row"), this.tag);
+        } else if (game.mode === 3) {
+            // Player vs Player
+            if (id === 0) {
+                this.hand = new Hand(document.getElementById("hand-row"), this.tag);
+            } else {
+                this.hand = new Hand(document.getElementById("op-hand-row"), this.tag);
+                document.getElementById("op-hand-row").classList.add("human-op"); // This a playable opponent hand
+            }
         } else {
             this.hand = (id === 0) ? new Hand(document.getElementById("hand-row"), this.tag) : new HandAI(this.tag);
         }
@@ -889,7 +898,7 @@ class Player {
 			this.updateFactionAbilityUses(factionAbility["abilityUses"]);
 
 			document.getElementById("faction-ability-" + this.tag).classList.remove("hide");
-			if (this.tag === "me")
+			if (this.tag === "me" || game.isPvP())
 				document.getElementById("faction-ability-" + this.tag).addEventListener("click", () => this.activateFactionAbility(), false);
 		} else {
 			document.getElementById("faction-ability-" + this.tag).classList.add("hide");
@@ -941,7 +950,7 @@ class Player {
 		if (this.leaderAvailable)
 			this.elem_leader.children[1].classList.remove("hide");
 
-		if (this === player_me) {
+		if (this === player_me || game.isPvP()) {
 			document.getElementById("pass-button").classList.remove("noclick");
 			may_pass1 = true;
 		}
@@ -1119,7 +1128,7 @@ class Player {
 		this.elem_leader.children[0].classList.remove("fade");
 		this.elem_leader.children[1].classList.remove("hide");
 
-		if (this.id === 0 && this.leader.activated.length > 0) {
+		if ((this.id === 0 || game.isPvP()) && this.leader.activated.length > 0) {
 			this.elem_leader.children[0].addEventListener("click",
 				async () => await ui.viewCard(this.leader, async () => await this.activateLeader()),
 					false
@@ -1581,7 +1590,24 @@ class Hand extends CardContainer {
 	resize() {
 		this.counter.innerHTML = this.cards.length;
 		this.resizeCardContainer(11, 0.075, .00225);
-	}
+    }
+
+    toggleDisplay() {
+        if (this.elem.hidden) {
+            this.elem.style.visibility = "visible";
+        } else {
+            this.elem.style.visibility = "hidden";
+        }
+        this.elem.hidden = !this.elem.hidden;
+    }
+
+    hide() {
+        this.elem.style.visibility = "hidden";
+    }
+
+    show() {
+        this.elem.style.visibility = "visible";
+    }
 }
 
 var may_act_card = true;
@@ -1779,8 +1805,8 @@ class Row extends CardContainer {
         if (card.abilities.includes("inspire") && !card.isLocked()) {
             let inspires = card.holder.getAllRowCards().filter(c => !c.isLocked() && c.abilities.includes("inspire"));
             if (inspires.length > 1) {
-                let maxBase = inspires.reduce((a, b) => a.basePower > b.basePower ? a : b);
-                total = maxBase.basePower;
+                let maxBase = inspires.reduce((a, b) => a.power > b.power ? a : b);
+                total = maxBase.power;
             }
         }
 		if (this.effects.weather)
@@ -2151,7 +2177,7 @@ class Game {
 		this.replay_elem.addEventListener("click", () => this.restartGame(), false);
 		this.reset();
         this.randomOPDeck = true;
-        this.fullAI = false;
+        this.mode = 1;
 	}
 
 	reset() {
@@ -2237,7 +2263,7 @@ class Game {
 
 		await this.runEffects(this.gameStart);
 		if (!this.firstPlayer)
-			this.firstPlayer = await this.coinToss();
+            this.firstPlayer = await this.coinToss();
 		if (special_abilities["emhyr_whiteflame"]) await ui.notification("op-white-flame", 1200);
 		if (special_abilities["meve_white_queen"]) await ui.notification("meve_white_queen", 1200);
 		this.initialRedraw();
@@ -2261,7 +2287,13 @@ class Game {
             for (let i = 0; i < 2; i++)
                 player_me.controller.redraw();
         } else {
-            await ui.queueCarousel(player_me.hand, 2, async (c, i) => await player_me.deck.swap(c, c.removeCard(i)), c => true, true, true, "Choose up to 2 cards to redraw.");
+            // player vs player - both have a redraw - player 1 first
+            if (this.mode === 3) {
+                await ui.queueCarousel(player_me.hand, 2, async (c, i) => await player_me.deck.swap(c, c.removeCard(i)), c => true, true, true, "Player 1 - Choose up to 2 cards to redraw.");
+                await ui.queueCarousel(player_op.hand, 2, async (c, i) => await player_op.deck.swap(c, c.removeCard(i)), c => true, true, true, "Player 2 - Choose up to 2 cards to redraw.");
+            } else {
+                await ui.queueCarousel(player_me.hand, 2, async (c, i) => await player_me.deck.swap(c, c.removeCard(i)), c => true, true, true, "Choose up to 2 cards to redraw.");
+            }
             ui.enablePlayer(false);
         }
 		game.startRound();
@@ -2277,7 +2309,7 @@ class Game {
 			this.currPlayer = (this.roundCount % 2 === 0) ? this.firstPlayer : this.firstPlayer.opponent();
 		}
 		player_me.roundStartReset();
-		player_op.roundStartReset();
+        player_op.roundStartReset();
 
         await this.runEffects(this.roundStart);
 
@@ -2308,14 +2340,20 @@ class Game {
 			this.currPlayer = this.currPlayer.opponent();
 			await ui.notification(this.currPlayer.tag + "-turn", 1200);
 		}
-		ui.enablePlayer(this.currPlayer === player_me);
+        ui.enablePlayer(this.currPlayer === player_me);
+        // Player vs player - hide opponent's hand
+        if (game.isPvP()) {
+            this.currPlayer.opponent().hand.hide();
+            this.currPlayer.hand.show();
+        }
 		this.currPlayer.startTurn();
 	}
 
 	// Ends the current turn and may end round. Disables client interraction in client's turn.
-	async endTurn() {
-		if (this.currPlayer === player_me)
-			ui.enablePlayer(false);
+    async endTurn() {
+        if (this.currPlayer === player_me)
+            ui.enablePlayer(false);
+		
 		await this.runEffects(this.turnEnd);
 		if (this.currPlayer.passed)
 			await ui.notification(this.currPlayer.tag + "-pass", 1200);
@@ -2433,7 +2471,11 @@ class Game {
 			if (await effect())
 				effects.splice(i, 1)
 		}
-	}
+    }
+
+    isPvP() {
+        return (this.mode === 3);
+    }
 
 }
 
@@ -2506,12 +2548,23 @@ class Card {
 			this.desc += "<p><b>" + abi_name + ":</b> " + ability_dict[this.abilities[i]].description + "</p>";
 		}
 		// If Summon Avenger card, give information about the card being summoned
-		if (this.abilities.includes("avenger") && this.target) {
-			let target = card_dict[this.target];
-			this.desc += "<p>Summons <b>" + target["name"] + "</b> with strength " + target["strength"];
-			if (target["ability"].length > 0)
-				this.desc += " and abilities " + target["ability"].split(" ").map(a => ability_dict[a]["name"]).join(" / ");
-			this.desc += "</p>";
+        if (this.abilities.includes("avenger") && this.target) {
+            let target = card_dict[this.target];
+            this.desc += "<p>Summons <b>" + target["name"] + "</b> with strength " + target["strength"];
+            if (target["ability"].length > 0)
+                this.desc += " and abilities " + target["ability"].split(" ").map(a => ability_dict[a]["name"]).join(" / ");
+            this.desc += "</p>";
+        } else if (this.abilities.includes("muster") && this.target) {
+            let units = Object.keys(card_dict).filter(cid => card_dict[cid].target === this.target).map(cid => card_dict[cid]);
+            let units_summary = {};
+            units.forEach(function (u) {
+                let key = "<b>" + u.name + "</b> (str: " + u.strength + ")";
+                if (!(key in units_summary))
+                    units_summary[key] = 0;
+                units_summary[key] = units_summary[key] + 1;
+            });
+            this.desc += "<p><u>Summons</u> " + Object.keys(units_summary).map(t => units_summary[t] + " * " + t).join(", ");
+            
         }
 		if (this.hero)
 			this.desc += "<p><b>Hero:</b> " + ability_dict["hero"].description + "</p>";
@@ -2783,8 +2836,12 @@ class UI {
 					if (may_pass2 == "keyboard") passBreak();
 				}
 			});
-		} else document.getElementById("pass-button").addEventListener("click", function(e) {
-			player_me.passRound();
+        } else document.getElementById("pass-button").addEventListener("click", function (e) {
+            if (game.isPvP()) {
+                game.currPlayer.passRound();
+            } else {
+                player_me.passRound();
+            }
 		});
 		document.getElementById("click-background").addEventListener("click", () => ui.cancel(), false);
 		this.youtube;
@@ -2799,17 +2856,26 @@ class UI {
 		if (load_pass == -1) {
 			document.getElementById("pass-button").innerHTML = original;
 			load_pass = load_passT;
-			player_me.passRound();
+            if (game.isPvP()) {
+                game.currPlayer.passRound();
+            } else {
+                player_me.passRound();
+            }
 			passBreak();
 		} else document.getElementById("pass-button").innerHTML = load_pass + 1;
 	}
 
 	// Enables or disables client interration
-	enablePlayer(enable) {
-		let main = document.getElementsByTagName("main")[0].classList;
-		if (enable) main.remove("noclick");
-		else main.add("noclick");
-	}
+    enablePlayer(enable) {
+        // Player vs player
+        if (game.isPvP()) {
+            document.getElementsByTagName("main")[0].classList.remove("noclick");
+        } else {
+            let main = document.getElementsByTagName("main")[0].classList;
+            if (enable) main.remove("noclick");
+            else main.add("noclick");
+        }
+    }
 
 	// Initializes the youtube background music object
 	initYouTube() {
@@ -2866,7 +2932,7 @@ class UI {
 	}
 
 	// Called when the player selects a selectable card
-	async selectCard(card) {
+    async selectCard(card) {
 		let row = this.lastRow;
 		let pCard = this.previewCard;
 		if (card === pCard)
@@ -2912,8 +2978,9 @@ class UI {
 		this.enablePlayer(false);
 		if (card.faction === "special" && card.abilities.includes("scorch")) {
 			this.hidePreview();
-			if (!game.scorchCancelled)
-				await ability_dict["scorch"].activated(card);
+            if (game.scorchCancelled)
+                return;
+			await ability_dict["scorch"].activated(card);
 		} else if (card.faction === "special" && card.abilities.includes("cintra_slaughter")) {
 			this.hidePreview();
 			await ability_dict["cintra_slaughter"].activated(card);
@@ -2938,8 +3005,9 @@ class UI {
 		} else if (card.abilities.includes("meve_princess") || card.abilities.includes("carlo_varese")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
-			if (!game.scorchCancelled)
-				await row.scorch();
+            if (game.scorchCancelled)
+                return;
+			await row.scorch();
 		} else if (card.abilities.includes("cyrus_hemmelfart")) {
 			this.hidePreview(card);
 			this.enablePlayer(false);
@@ -3116,12 +3184,11 @@ class UI {
 	// Displays a Carousel menu of filtered container items that match the predicate.
 	// Suspends gameplay until the Carousel is closed. Automatically picks random card if activated for AI player
 	async queueCarousel(container, count, action, predicate, bSort, bQuit, title) {
-		if (game.currPlayer === player_op) {
-			if (player_op.controller instanceof ControllerAI)
-				for (let i = 0; i < count; ++i) {
-					let cards = container.cards.reduce((a, c, i) => !predicate || predicate(c) ? a.concat([i]) : a, []);
-					await action(container, cards[randomInt(cards.length)]);
-				}
+        if (game.currPlayer && game.currPlayer.controller instanceof ControllerAI) {
+			for (let i = 0; i < count; ++i) {
+				let cards = container.cards.reduce((a, c, i) => !predicate || predicate(c) ? a.concat([i]) : a, []);
+				await action(container, cards[randomInt(cards.length)]);
+			}
 			return;
 		}
 		let carousel = new Carousel(container, count, action, predicate, bSort, bQuit, title);
@@ -3203,7 +3270,7 @@ class UI {
 		if (card.faction === "special" && (card.abilities.includes("cintra_slaughter") || card.abilities.includes("bank"))) {
 			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
-				if (i > 2) {
+                if ((!game.isPvP() && i > 2) || (game.isPvP() && ((card.holder.tag === player_me.tag && i > 2) || (card.holder.tag === player_op.tag && i < 3)))) {
 					r.elem.classList.add("row-selectable");
 					r.special.elem.classList.add("row-selectable");
 					alteraClicavel(r, true);
@@ -3213,8 +3280,12 @@ class UI {
 		}
 		// Affects enemy side of the board
 		// Affects only opponent melee and ranged row
-		if (card.faction === "special" && card.abilities.includes("knockback")) {
-			for (var i = 1; i < 3; i++) {
+        if (card.faction === "special" && card.abilities.includes("knockback")) {
+            let rows = [1, 2];
+            if (game.isPvP() && card.holder.tag === player_op.tag) {
+                rows = [3, 4];
+            }
+			for (i of rows) {
 				let r = board.row[i];
 				if (!r.isShielded()) {
 					r.elem.classList.add("row-selectable");
@@ -3226,7 +3297,10 @@ class UI {
 		}
 		// Affects only opponent melee row
 		if (card.faction === "special" && card.abilities.includes("seize")) {
-			let r = board.row[2];
+            let r = board.row[2];
+            if (game.isPvP() && card.holder.tag === player_op.tag) {
+                r = board.row[3];
+            }
 			if (!r.isShielded()) {
 				r.elem.classList.add("row-selectable");
 				r.special.elem.classList.add("row-selectable");
@@ -3240,7 +3314,8 @@ class UI {
 				let r = board.row[i];
 				//Affects OP side
 				if (card.abilities.includes("lock")) {
-					if (i > 2 || r.special.containsCardByKey(card.key) || r.isShielded()) {
+                    if (r.special.containsCardByKey(card.key) || r.isShielded() || (!game.isPvP() && i > 2 )
+                        || (game.isPvP() && ( (card.holder.tag === player_me.tag && i > 2 ) || (card.holder.tag === player_op.tag && i < 3) ) )) {
 						r.elem.classList.add("noclick");
 						r.special.elem.classList.add("noclick");
 					} else {
@@ -3248,16 +3323,20 @@ class UI {
 						fileira_clicavel = null;
 					}
 				} else if (card.abilities.includes("shield_c") || card.abilities.includes("shield_r") || card.abilities.includes("shield_s")) {
-					if ((card.abilities.includes("shield_c") && i == 3) || (card.abilities.includes("shield_r") && i == 4) || (card.abilities.includes("shield_s") && i == 5)) {
-						r.special.elem.classList.add("row-selectable");
-						fileira_clicavel = null;
+                    if (((card.abilities.includes("shield_c") && i == 3) || (card.abilities.includes("shield_r") && i == 4) || (card.abilities.includes("shield_s") && i == 5))
+                        && (!game.isPvP() || (game.isPvP() && card.holder.tag === player_me.tag))) {
+                        r.special.elem.classList.add("row-selectable");
+                        fileira_clicavel = null;
+                    } else if ((game.isPvP() && card.holder.tag === player_op.tag && ((card.abilities.includes("shield_c") && i == 2) || (card.abilities.includes("shield_r") && i == 1) || (card.abilities.includes("shield_s") && i == 0)) )) {
 					} else {
 						r.elem.classList.add("noclick");
 						r.special.elem.classList.add("noclick");
                     }
 				} else {
 					// Affects own side - Toussaint Wine does not affect siege row
-					if (i < 3 || r.special.containsCardByKey(card.key) || (card.abilities.includes("toussaint_wine") && i == 5)) {
+                    if (r.special.containsCardByKey(card.key) || (!game.isPvP() && ((card.abilities.includes("toussaint_wine") && i == 5) || i < 3))
+                        || (game.isPvP() && ((card.holder.tag === player_me.tag && ((card.abilities.includes("toussaint_wine") && i == 5) || i < 3))
+                                        || (card.holder.tag === player_op.tag && ((card.abilities.includes("toussaint_wine") && i == 0) || i > 2)) ))) {
 						r.elem.classList.add("noclick");
 						r.special.elem.classList.add("noclick");
 					} else {
@@ -3271,17 +3350,19 @@ class UI {
 		}
 
         if (card.abilities.includes("decoy") || card.abilities.includes("alzur_maker")) {
-			for (let i = 0; i < 6; ++i) {
+			for (let i = 0; i < 6; i++) {
 				let r = board.row[i];
 				let units = r.cards.filter(c => c.isUnit());
-				if (i < 3 || (card.key === "spe_decoy" && units.length === 0) || (card.abilities.includes("decoy") && game.decoyCancelled) ) {
+                if ((card.key === "spe_decoy" && units.length === 0) || (card.abilities.includes("decoy") && game.decoyCancelled) || (!game.isPvP() && i < 3)
+                    || (game.isPvP() && ((card.holder.tag === player_me.tag && i < 3) || (card.holder.tag === player_op.tag && i > 2) ) ) ) {
 					r.elem.classList.add("noclick");
 					r.special.elem.classList.add("noclick");
 					r.elem.classList.remove("card-selectable");
 				} else {
 					// For unit cards with Decoy ability, filter by the appropriate row
 					if (card.abilities.includes("decoy") && card.row.length > 0) {
-						if ((card.row === "close" && i === 3) || (card.row === "ranged" && i === 4) || (card.row === "siege" && i === 5) || (card.row === "agile" && i > 2 && i < 5)) {
+                        if (((!game.isPvP() || (game.isPvP() && card.holder.tag === player_me.tag)) && ((card.row === "close" && i === 3) || (card.row === "ranged" && i === 4) || (card.row === "siege" && i === 5) || (card.row === "agile" && i > 2 && i < 5)))
+                            || (game.isPvP() && card.holder.tag === player_op.tag && ((card.row === "close" && i === 2) || (card.row === "ranged" && i === 1) || (card.row === "siege" && i === 0) || (card.row === "agile" && i > 0 && i < 3)) ) ) {
 							r.elem.classList.add("row-selectable");
 							// Row is selectable if it contains no unit to select, in order to play the unit itself without its effect
 							if (units.length === 0)
@@ -3304,8 +3385,12 @@ class UI {
 			return;
 		}
 
-		if (card.abilities.includes("anna_henrietta_duchess")) {
-			for (let i = 0; i < 3; ++i) {
+        if (card.abilities.includes("anna_henrietta_duchess")) {
+            let rows = [0, 1, 2];
+            if (game.isPvP() && card.holder.tag === player_op.tag) {
+                rows = [3, 4, 5];
+            }
+			for (i of rows) {
 				let r = board.row[i];
 				if (r.effects.horn > 0) {
 					r.elem.classList.add("row-selectable");
@@ -3320,8 +3405,12 @@ class UI {
 		}
 
 		// Target only enemy rows
-		if (card.abilities.includes("meve_princess") || card.abilities.includes("carlo_varese")) {
-			for (let i = 0; i < 3; ++i) {
+        if (card.abilities.includes("meve_princess") || card.abilities.includes("carlo_varese")) {
+            let rows = [0, 1, 2];
+            if (game.isPvP() && card.holder.tag === player_op.tag) {
+                rows = [3, 4, 5];
+            }
+			for (i of rows) {
 				let r = board.row[i];
 				if (r.isShielded() || !r.canBeScorched()) {
 					r.elem.classList.add("noclick");
@@ -3336,8 +3425,12 @@ class UI {
 		}
 
 		// Play special card on any opponent row, provided it doesn't already have one
-		if (card.abilities.includes("cyrus_hemmelfart")) {
-			for (let i = 0; i < 3; ++i) {
+        if (card.abilities.includes("cyrus_hemmelfart")) {
+            let rows = [0, 1, 2];
+            if (game.isPvP() && card.holder.tag === player_op.tag) {
+                rows = [3, 4, 5];
+            }
+			for (i of rows) {
 				let r = board.row[i];
 				if (r.containsCardByKey("spe_dimeritium_shackles") || r.isShielded()) {
 					r.elem.classList.add("noclick");
@@ -3644,8 +3737,9 @@ class DeckMaker {
 		document.getElementById("select-op-deck").addEventListener("click", () => this.selectOPDeck(), false);
 		document.getElementById("download-deck").addEventListener("click", () => this.downloadDeck(), false);
 		document.getElementById("add-file").addEventListener("change", () => this.uploadDeck(), false);
-        document.getElementById("start-game").addEventListener("click", () => this.startNewGame(false), false);
-        document.getElementById("start-ai-game").addEventListener("click", () => this.startNewGame(true), false);
+        document.getElementById("start-game").addEventListener("click", () => this.startNewGame(1), false);
+        document.getElementById("start-ai-game").addEventListener("click", () => this.startNewGame(2), false);
+        document.getElementById("start-pvp-game").addEventListener("click", () => this.startNewGame(3), false);
 		window.addEventListener("keydown", function (e) {
 			if (document.getElementById("deck-customization").className.indexOf("hide") == -1) {
 				switch(e.keyCode) {
@@ -3922,8 +4016,12 @@ class DeckMaker {
 	}
 
 	// Verifies current deck, creates the players and their decks, then starts a new game
-    startNewGame(fullAI = false) {
-        game.fullAI = fullAI;
+    // Modes:
+    // 1 - player VS AI
+    // 2 - AI vs AI
+    // 3 - player VS player (hotseat)
+    startNewGame(mode = 1) {
+        game.mode = mode;
 		openFullscreen();
 		let warning = "";
 		if (this.stats.units < 22)
@@ -3957,12 +4055,17 @@ class DeckMaker {
 			this.start_op_deck.leader = leaders[randomInt(leaders.length)];
         }
 
-        if (game.fullAI) {
+        if (game.mode === 1) {
+            player_me = new Player(0, "Player 1", me_deck, false);
+            player_op = new Player(1, "Player 2", this.start_op_deck, true);
+        } else if (game.mode === 2) {
+            // AI vs AI
             player_me = new Player(0, "Player 1", me_deck, true);
             player_op = new Player(1, "Player 2", this.start_op_deck, true);
         } else {
+            // PVP
             player_me = new Player(0, "Player 1", me_deck, false);
-            player_op = new Player(1, "Player 2", this.start_op_deck, true);
+            player_op = new Player(1, "Player 2", this.start_op_deck, false);
         }
 		
 
