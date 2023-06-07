@@ -161,7 +161,9 @@ var ability_dict = {
 				return;
 			}
 
-			await ui.queueCarousel(card.holder.grave, game.medicCount, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
+      //Player can't pick more cards than what's actually available in the graveyard
+      let cardPicks = Math.min(game.medicCount, card.holder.grave.findCards(c => c.isUnit()).length);
+      await ui.queueCarousel(card.holder.grave, cardPicks, (c, i) => respawns.push({ card: c.cards[i] }), c => c.isUnit(), true);
 			await Promise.all(respawns.map(async wrapper => {
 				let res = wrapper.card;
 				grave.removeCard(res);
