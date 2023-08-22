@@ -264,7 +264,7 @@ var ability_dict = {
 		},
 		weight: (card, ai) =>  ai.weightCard( card_dict["spe_clear"] )
 	},
-	foltest_siegemaster: {
+  henselt_vanquisher: {
 		description: "Doubles the strength of all your Siege units (unless a Commander's Horn is also present on that row).",
 		activated: async card => await board.getRow(card, "siege", card.holder).leaderHorn(card),
 		weight: (card, ai) => ai.weightHornRow(card, board.getRow(card, "siege", card.holder))
@@ -274,7 +274,7 @@ var ability_dict = {
 		activated: async card => await ability_dict["scorch_s"].placed(card),
 		weight: (card, ai, max) => ai.weightScorchRow(card, max, "siege")
 	},
-	foltest_son: {
+	demavend_son: {
 		description: "Destroy your enemy's strongest Ranged Combat unit(s) if the combined strength of all his or her Ranged Combat units is 10 or more.",
 		activated: async card => await ability_dict["scorch_r"].placed(card),
 		weight: (card, ai, max) => ai.weightScorchRow(card, max, "ranged")

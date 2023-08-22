@@ -426,7 +426,7 @@ var custom_decks = [
     {
         "title": "Northern Realms - Kaedwen & Aedirn",
         "description": "Northern Realms deck focusing on Kaedwen and Aedirn cards - Playstyle: Siege units, Morale boost, Tight Bond",
-        "leader": "nr_foltest_siegemaster",
+        "leader": "nr_henselt_vanquisher",
         "faction": "realms",
         "cards": [
             ["spe_horn", 2],
@@ -440,7 +440,6 @@ var custom_decks = [
             ["nr_kaedweni_siege_support_2", 1],
             ["nr_catapult_1", 1],
             ["nr_catapult_2", 1],
-            ["nr_henselt", 1],
             ["nr_kaedweni_reinforcement", 1],
             ["nr_reinforced_ballista_1", 1],
             ["nr_reinforced_ballista_2", 1],
@@ -448,14 +447,15 @@ var custom_decks = [
             ["nr_reinforced_trebuchet_2", 1],
             ["nr_banner_nurse", 1],
             ["nr_ban_ard_tutor", 1],
-            ["nr_demavend", 1],
             ["nr_kaedweni_knight", 1],
             ["nr_dun_banner_heavy_cavalry_1", 1],
             ["nr_dun_banner_heavy_cavalry_2", 1],
             ["nr_odrin", 1],
             ["nr_seltkirk", 1],
             ["nr_kaedweni_sergeant", 1],
-            ["nr_dethmold", 1]
+            ["nr_dethmold", 1],
+            ["nr_sabrina", 1],
+            ["nr_white_rayla", 1]
         ]
     },
     {

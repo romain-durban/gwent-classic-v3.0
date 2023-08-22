@@ -128,7 +128,7 @@ var default_cards = {
         "deck": "neutral",
         "row": "close",
         "strength": "7",
-        "ability": "hero",
+        "ability": "hero medic",
         "filename": "triss",
         "count": "1",
         "quote": "I can take care of myself. Trust me."
@@ -248,15 +248,15 @@ var default_cards = {
         "count": "1",
         "quote": "Sod advisors and their schemes. I place my trust in my soldiers' blades."
     },
-    "nr_foltest_siegemaster": {
-        "name": "Foltest - The Siegemaster",
+    "nr_henselt_vanquisher": {
+        "name": "Henselt - Vanquisher of Nilfgaard",
         "deck": "realms",
         "row": "leader",
         "strength": "",
-        "ability": "foltest_siegemaster",
-        "filename": "foltest_siegemaster",
+        "ability": "henselt_vanquisher",
+        "filename": "henselt_vanquisher",
         "count": "1",
-        "quote": "A well-aimed ballista razes not just the enemy's wall, but his morale as well."
+        "quote": "King Henselt did not look like a thief, but, with all due respect, that's really what he was."
     },
     "nr_foltest_steelforged": {
         "name": "Foltest - The Steel-Forged",
@@ -268,15 +268,15 @@ var default_cards = {
         "count": "1",
         "quote": "A beautiful day for battle"
     },
-    "nr_foltest_son_of_medell": {
-        "name": "Foltest - Son of Medell",
+    "nr_demavend_son_of_virfuril": {
+        "name": "Demavend III - Son of Virfuril",
         "deck": "realms",
         "row": "leader",
         "strength": "",
-        "ability": "foltest_son",
-        "filename": "foltest_son_of_medell",
+        "ability": "demavend_son",
+        "filename": "demavend_son_of_virfuril",
         "count": "1",
-        "quote": "Dammit, I rule this land and I refuse to creep around its corners."
+        "quote": "War's crux lies in winning, not in being persistent."
     },
     "nr_ballista": {
         "name": "Ballista",
@@ -604,8 +604,8 @@ var default_cards = {
         "name": "Sabrina Glevissig",
         "deck": "realms",
         "row": "ranged",
-        "strength": "4",
-        "ability": "",
+        "strength": "7",
+        "ability": "hero scorch_c",
         "filename": "sabrina",
         "count": "1",
         "quote": "The Daughter of the Kaedweni Wilderness."
@@ -2542,16 +2542,6 @@ var ext_nr_cards = {
         "count": "1",
         "quote": "I never miss twice."
     },
-    "nr_henselt": {
-        "name": "Henselt",
-        "deck": "realms",
-        "row": "siege",
-        "strength": "10",
-        "ability": "hero",
-        "filename": "henselt",
-        "count": "1",
-        "quote": "King Henselt did not look like a thief, but, with all due respect, that's really what he was."
-    },
     "nr_kaedweni_reinforcement": {
         "name": "Kaedweni Reinforcement",
         "deck": "realms",
@@ -2619,16 +2609,6 @@ var ext_nr_cards = {
         "filename": "ban_ard_tutor",
         "count": "1",
         "quote": "Ban Ard deserved a mention, for it is famous for the school of young adepts of the magical arts."
-    },
-    "nr_demavend": {
-        "name": "Demavend",
-        "deck": "realms",
-        "row": "siege",
-        "strength": "10",
-        "ability": "hero",
-        "filename": "demavend",
-        "count": "1",
-        "quote": "War's crux lies in winning, not in being persistent."
     },
     "nr_kaedweni_knight": {
         "name": "Kaedweni Knight",
@@ -3066,13 +3046,13 @@ var ext_nr_cards = {
         "count": "1",
         "quote": "I shan't fail... I cannot fail. For the baron!"
     },
-    "nr_black_rayla": {
-        "name": "Black Rayla",
+    "nr_white_rayla": {
+        "name": "White Rayla",
         "deck": "realms",
         "row": "close",
-        "strength": "7",
-        "ability": "",
-        "filename": "black_rayla",
+        "strength": "10",
+        "ability": "hero",
+        "filename": "white_rayla",
         "count": "1",
         "quote": "Enough chit-chat, draw your weapon. You'll never take me alive."
     },
