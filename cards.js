@@ -6823,7 +6823,7 @@ var ext_to_cards = {
         "quote": "Magic is the highest good. It transcends all borders and divisions."
     },
     "to_beauclair_cavalry_1": {
-        "name": "Fringilla Vigo",
+        "name": "Beauclair Cavalry",
         "id": 1,
         "deck": "toussaint",
         "row": "close",
@@ -6835,7 +6835,7 @@ var ext_to_cards = {
         "quote": "I swear upon the heron you will pay with your own blood."
     },
     "to_beauclair_cavalry_2": {
-        "name": "Fringilla Vigo",
+        "name": "Beauclair Cavalry",
         "id": 2,
         "deck": "toussaint",
         "row": "close",
