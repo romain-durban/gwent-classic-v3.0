@@ -891,6 +891,10 @@ class Player {
 		// Handling Faction abilities: active or passive
 		let factionAbility = factions[this.deck.faction];
 		if (factionAbility["activeAbility"]) {
+			// Cloning to get rid of all past listeners
+			var facAbButton = document.getElementById("faction-ability-" + this.tag);
+			facAbButton.replaceWith(facAbButton.cloneNode(true));
+			
 			// Init ability if need be
 			if (factionAbility.factionAbilityInit) {
 				factionAbility.factionAbilityInit(this);
@@ -898,8 +902,9 @@ class Player {
 			this.updateFactionAbilityUses(factionAbility["abilityUses"]);
 
 			document.getElementById("faction-ability-" + this.tag).classList.remove("hide");
-			if (this.tag === "me" || game.isPvP())
+			if (this.tag === "me" || game.isPvP()) {
 				document.getElementById("faction-ability-" + this.tag).addEventListener("click", () => this.activateFactionAbility(), false);
+			}
 		} else {
 			document.getElementById("faction-ability-" + this.tag).classList.add("hide");
         }
@@ -1802,11 +1807,14 @@ class Row extends CardContainer {
 		if (card.abilities.includes("spy"))
             total = Math.floor(game.spyPowerMult * total);
         // Inspire - changes base strength, before weather
+		// TODO: When using "power" and not "basePower" inspire gets amplified several times when under the effect of a horn because cards amplify each other
+		// 			card1 is under horn and has power*2, card2 is inspired by card1 and also gets power*2, 
+		//			later card1 finds card2 has best card and takes its power, now power = power*2*2 because of the effect of horn still applied 
         if (card.abilities.includes("inspire") && !card.isLocked()) {
             let inspires = card.holder.getAllRowCards().filter(c => !c.isLocked() && c.abilities.includes("inspire"));
             if (inspires.length > 1) {
-                let maxBase = inspires.reduce((a, b) => a.power > b.power ? a : b);
-                total = maxBase.power;
+                let maxBase = inspires.reduce((a, b) => a.basePower > b.basePower ? a : b);
+				total = maxBase.basePower;
             }
         }
 		if (this.effects.weather)
